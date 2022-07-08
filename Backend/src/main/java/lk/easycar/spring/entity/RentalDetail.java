@@ -31,7 +31,7 @@ public class RentalDetail {
     private String driverStatus;
 
     @ManyToOne
-    @JoinColumn(name = "driver_id", referencedColumnName = "driver_id")
+    @JoinColumn(name = "license_no", referencedColumnName = "license_no")
     private Driver driver;
 
     private double feeDeductedFromLDW;
