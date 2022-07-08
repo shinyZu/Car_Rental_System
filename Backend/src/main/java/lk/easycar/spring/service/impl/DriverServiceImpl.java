@@ -49,7 +49,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public DriverDTO updateDriver(DriverDTO dto) {
-        if (driverRepo.existsById(dto.getNic_no())) {
+        if (driverRepo.existsById(dto.getLicense_no())) {
             return mapper.map(driverRepo.save(mapper.map(dto, Driver.class)),DriverDTO.class);
         } else {
             throw new RuntimeException("No Such Driver..Please check the License No...");
