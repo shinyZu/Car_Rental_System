@@ -20,5 +20,5 @@ public class Admin {
     private String email;
     private String password;
     private String address;
-    private String contact_no;
+    private int contact_no;
 }
