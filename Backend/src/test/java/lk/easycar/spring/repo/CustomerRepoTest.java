@@ -29,7 +29,7 @@ class CustomerRepoTest {
         List<RentalRequest> rentalList = new ArrayList<>();
         rentalList.add(new RentalRequest());
 
-        Customer customer1 = new Customer("995922126V", "1212121212", "kamal@gmail.com", "kamal123", "Galle", 0716455453, null);
+        Customer customer1 = new Customer("995922126V", "1212121212", "kamal@gmail.com", "kamal123", "Galle", 0716455453);
         customerRepo.save(customer1);
     }
 

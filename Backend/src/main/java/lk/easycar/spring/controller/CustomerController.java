@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CustomerController {
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllCustomers(){
@@ -31,7 +31,7 @@ public class CustomerController {
 
     // Register Customer
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE/*, produces = MediaType.APPLICATION_JSON_VALUE*/)
+    @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO dto) {
         return new ResponseUtil(HttpServletResponse.SC_CREATED, "Customer Saved Successfully..!", customerService.saveCustomer(dto));
     }

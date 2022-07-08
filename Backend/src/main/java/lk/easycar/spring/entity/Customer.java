@@ -25,7 +25,7 @@ public class Customer {
     private String address;
     private int contact_no;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<RentalRequest> rentalRequestList = new ArrayList<>();
+//    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<RentalRequest> rentalRequestList = new ArrayList<>();
 
 }

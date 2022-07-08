@@ -21,7 +21,7 @@ public class Car {
     private String brand;
     private String color;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fleet_id", referencedColumnName = "fleet_id")
     private CarFleet fleet;
 

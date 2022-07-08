@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +21,11 @@ public class CarFleet {
     private String description;
     private int noOfCars;
 
-    @OneToMany(mappedBy = "fleet", cascade = CascadeType.ALL)
-    private List<Car> carList = new ArrayList<>();
+//    @OneToMany(mappedBy = "fleet", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<Car> carList = new ArrayList<>();
+
+    public CarFleet(String fleet_id, String description) {
+        this.fleet_id = fleet_id;
+        this.description = description;
+    }
 }
