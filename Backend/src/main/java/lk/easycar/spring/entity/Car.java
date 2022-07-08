@@ -33,6 +33,6 @@ public class Car {
     private double price_extraKM;
     private double freeKM_day;
     private double freeKM_month;
-    private String currentStatus;
+    private String currentStatus; // Available, Reserved, Under Maintenance
 
 }
