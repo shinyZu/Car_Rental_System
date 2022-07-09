@@ -1,9 +1,6 @@
 package lk.easycar.spring.controller;
 
-import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
-import lk.easycar.spring.entity.RentalRequest;
-import lk.easycar.spring.service.CustomerService;
 import lk.easycar.spring.service.RentalRequestService;
 import lk.easycar.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;

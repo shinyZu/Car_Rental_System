@@ -8,6 +8,8 @@ public interface CustomerService {
 
     List<CustomerDTO> getAllCustomers();
 
+    int getCustomerCount();
+
     CustomerDTO searchCustomer(String nic_no);
 
     CustomerDTO saveCustomer(CustomerDTO dto);

@@ -32,7 +32,7 @@ public class DriverController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveDriver(@ModelAttribute DriverDTO dto) {
+    public ResponseUtil registerDriver(@ModelAttribute DriverDTO dto) {
         return new ResponseUtil(HttpServletResponse.SC_CREATED, "Driver Saved Successfully..!", driverService.saveDriver(dto));
     }
 

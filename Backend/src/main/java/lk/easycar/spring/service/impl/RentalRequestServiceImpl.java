@@ -63,28 +63,6 @@ public class RentalRequestServiceImpl implements RentalRequestService {
         }
     }
 
-    /*@Override
-    public boolean placeRentalRequest(RentalRequestDTO dto) {
-        RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
-        if (!rentalRequestRepo.existsById(dto.getRental_id())) {
-            rentalRequestRepo.save(rentalRequest);
-
-            if (dto.getRentalDetails().size() < 1) throw new RuntimeException("No Cars have being chosen to place the Rental Request..!");
-
-            //update the no of Cars in Car Fleet
-            for (RentalDetail rentalDetail : rentalRequest.getRentalDetails()) {
-                Car car = carRepo.findById(rentalDetail.getReg_no()).get();
-                CarFleet fleet = car.getFleet();
-                fleet.setNoOfCars(fleet.getNoOfCars() - 1);
-                carFleetRepo.save(fleet);
-            }
-            return true;
-
-        } else {
-            throw new RuntimeException("Failed to Place the Rental..!, A Request with ID " + dto.getRental_id() + " Already Exist.!");
-        }
-    }*/
-
     @Override
     public boolean placeRentalRequest(RentalRequestDTO dto) {
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
@@ -110,18 +88,6 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
             if (!rentalRequestRepo.existsById(dto.getRental_id())) {
                 rentalRequestRepo.save(rentalRequest);
-
-                /*if (dto.getRentalDetails().size() < 1)
-                    throw new RuntimeException("No Cars have being chosen to place the Rental Request..!");*/
-
-                //update the no of Cars in Car Fleet
-                /*for (RentalDetail rentalDetail : rentalRequest.getRentalDetails()) {
-                    Car car = carRepo.findById(rentalDetail.getReg_no()).get();
-                    CarFleet fleet = car.getFleet();
-                    fleet.setNoOfCars(fleet.getNoOfCars() - 1);
-                    carFleetRepo.save(fleet);
-                }*/
-
                 return true;
 
             } else {
@@ -154,35 +120,6 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
     @Override
     public RentalRequestDTO updateRental(RentalRequestDTO dto) {
-        /*if (rentalRequestRepo.existsById(dto.getRental_id())) {
-
-            RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
-            if (dto.getRentalDetails().size() < 1) throw new RuntimeException("No Cars have being chosen for the Rental Request..!");
-
-            for (RentalDetail rentalDetail : rentalRequest.getRentalDetails()) {
-                Car car = carRepo.findById(rentalDetail.getReg_no()).get();
-                CarFleet fleet = car.getFleet();
-                RentalDetail previous = rentalDetailRepo.findById(new RentalCar_PK(rentalDetail.getRental_id(), rentalDetail.getReg_no())).get();
-
-                //update the no of Cars in Car Fleet
-                int newQty = 1;
-                int prevQty = previous.getQty();
-                if (newQty > prevQty) {
-                    int dif = newQty - prevQty;
-                    item.setQtyOnHand(item.getQtyOnHand() - dif);
-                } else if (newQty < prevQty) {
-                    int dif = prevQty - newQty;
-                    item.setQtyOnHand(item.getQtyOnHand() + dif);
-                }
-                itemRepo.save(item);
-            }
-            //then delete the old order
-            ordersRepo.deleteById(dto.getOid());
-            //finally update the new order
-            ordersRepo.save(order);
-        } else {
-            throw new RuntimeException("Failed to Update the Rental..!, A Request with ID " + dto.getRental_id() + " Doesn\'t Exist.!");
-        }*/
         return null;
     }
 

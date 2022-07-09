@@ -23,7 +23,12 @@ public class CustomerController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", customerService.getAllCustomers());
     }
 
-    @GetMapping(path = "{nic_no}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "getCount", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCustomerCount() {
+        return new ResponseUtil(200, "Customer Count", customerService.getCustomerCount());
+    }
+
+    @GetMapping(path = "/{nic_no}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchCustomer(@PathVariable("nic_no") String nic_no) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", customerService.searchCustomer(nic_no));
     }
@@ -31,7 +36,7 @@ public class CustomerController {
     // Register Customer
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO dto) {
+    public ResponseUtil registerCustomer(@ModelAttribute CustomerDTO dto) {
         return new ResponseUtil(HttpServletResponse.SC_CREATED, "Customer Saved Successfully..!", customerService.saveCustomer(dto));
     }
 

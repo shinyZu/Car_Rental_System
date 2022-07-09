@@ -28,6 +28,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public int getCustomerCount() {
+        return (int) customerRepo.count();
+    }
+
+    @Override
     public CustomerDTO searchCustomer(String nic_no) {
         if (customerRepo.existsById(nic_no)) {
             return mapper.map(customerRepo.findById(nic_no), CustomerDTO.class);

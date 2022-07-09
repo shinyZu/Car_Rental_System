@@ -31,7 +31,7 @@ public class AdminController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveAdmin (@ModelAttribute AdminDTO dto) {
+    public ResponseUtil registerAdmin (@ModelAttribute AdminDTO dto) {
         return new ResponseUtil(HttpServletResponse.SC_CREATED, "Admin Saved Successfully..!", adminService.saveAdmin(dto));
     }
 
