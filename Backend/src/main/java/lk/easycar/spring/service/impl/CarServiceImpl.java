@@ -3,6 +3,7 @@ package lk.easycar.spring.service.impl;
 import lk.easycar.spring.dto.CarDTO;
 import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.entity.Car;
+import lk.easycar.spring.entity.CarFleet;
 import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.repo.CarFleetRepo;
 import lk.easycar.spring.repo.CarRepo;
@@ -47,11 +48,21 @@ public class CarServiceImpl implements CarService {
     public CarDTO saveCar(CarDTO dto) {
         if (!carRepo.existsById(dto.getReg_no())) {
             String fleet_id = dto.getFleet().getFleet_id(); // fleet_id of the Car to be added
+
             if (carFleetRepo.existsById(fleet_id)) { // checks whether the car which is going to be added is a Car of an existing Fleet
-                return mapper.map(carRepo.save(mapper.map(dto, Car.class)), CarDTO.class);
+                CarDTO carDTO = mapper.map(carRepo.save(mapper.map(dto, Car.class)), CarDTO.class);// save Car
+                System.out.println("carDTO : "+carDTO);
+
+                CarFleet carFleet = carFleetRepo.getReferenceById(fleet_id); // Update no of cars in the relevant Car Fleet
+                System.out.println("carFleet : " +carFleet);
+                carFleet.setNoOfCars(carFleet.getNoOfCars() + 1);
+
+                return carDTO;
+
             } else { // if not the Car shouldn't be added
                 throw new RuntimeException("Unable to find a CarFleet with ID "+ fleet_id);
             }
+
         } else {
             throw new RuntimeException("Car with Reg_No "+ dto.getReg_no() +" Already Exists...");
         }
@@ -69,6 +80,9 @@ public class CarServiceImpl implements CarService {
     @Override
     public void deleteCar(String reg_no) {
         if (carRepo.existsById(reg_no)) {
+            Car car = carRepo.getReferenceById(reg_no);
+            CarFleet carFleet = car.getFleet();
+            carFleet.setNoOfCars(carFleet.getNoOfCars() - 1);
             carRepo.deleteById(reg_no);
         } else {
             throw new RuntimeException("No Such Car..Please check the Reg_No...");
