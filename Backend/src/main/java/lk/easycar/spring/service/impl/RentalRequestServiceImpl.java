@@ -91,33 +91,53 @@ public class RentalRequestServiceImpl implements RentalRequestService {
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
         List<RentalDetail> rentalDetails = rentalRequest.getRentalDetails();
 
-        for (RentalDetail rentalDetail : rentalDetails) {
+        boolean b = dto.getRentalDetails().size() < 1;
+        System.out.println(b);
+
+        if (!(dto.getRentalDetails().size() < 1)) {
             System.out.println("---------2-------------");
-            if (rentalDetail.getDriverStatus().equals("Required")) { // if a Driver is requested by the Customer
+
+            for (RentalDetail rentalDetail : rentalDetails) {
                 System.out.println("---------3-------------");
-                List<Driver> listOfAvailableDrivers = driverRepo.getAllAvailableDrivers("Available");
-                rentalDetail.setDriver(listOfAvailableDrivers.get(0)); // Assign a Driver to the RentalDetail
-                listOfAvailableDrivers.get(0).setCurrentStatus("Occupied"); // Update the Driver Status
+
+                // Assigning of Driver & Updating Driver Status
+                if (rentalDetail.getDriverStatus().equals("Required")) { // if a Driver is requested by the Customer
+                    System.out.println("---------4-------------");
+                    List<Driver> listOfAvailableDrivers = driverRepo.getAllAvailableDrivers("Available");
+                    rentalDetail.setDriver(listOfAvailableDrivers.get(0)); // Assign a Driver to the RentalDetail
+                    listOfAvailableDrivers.get(0).setCurrentStatus("Occupied"); // Update the Driver Status
+                }
+
+                // Updating Car Status --> Reserved
+                Car car = carRepo.getReferenceById(rentalDetail.getReg_no());
+                System.out.println(car);
+                car.setCurrentStatus("Reserved");
             }
-        }
-        System.out.println("---------4-------------");
 
-        if (!rentalRequestRepo.existsById(dto.getRental_id())) {
-            rentalRequestRepo.save(rentalRequest);
+            System.out.println("---------5-------------");
 
-            if (dto.getRentalDetails().size() < 1) throw new RuntimeException("No Cars have being chosen to place the Rental Request..!");
+            if (!rentalRequestRepo.existsById(dto.getRental_id())) {
+                rentalRequestRepo.save(rentalRequest);
 
-            //update the no of Cars in Car Fleet
-            for (RentalDetail rentalDetail : rentalRequest.getRentalDetails()) {
-                Car car = carRepo.findById(rentalDetail.getReg_no()).get();
-                CarFleet fleet = car.getFleet();
-                fleet.setNoOfCars(fleet.getNoOfCars() - 1);
-                carFleetRepo.save(fleet);
+
+
+                /*if (dto.getRentalDetails().size() < 1)
+                    throw new RuntimeException("No Cars have being chosen to place the Rental Request..!");*/
+
+                //update the no of Cars in Car Fleet
+                /*for (RentalDetail rentalDetail : rentalRequest.getRentalDetails()) {
+                    Car car = carRepo.findById(rentalDetail.getReg_no()).get();
+                    CarFleet fleet = car.getFleet();
+                    fleet.setNoOfCars(fleet.getNoOfCars() - 1);
+                    carFleetRepo.save(fleet);
+                }*/
+                return true;
+
+            } else {
+                throw new RuntimeException("Failed to Place the Rental..!, A Request with ID " + dto.getRental_id() + " Already Exist.!");
             }
-            return true;
-
         } else {
-            throw new RuntimeException("Failed to Place the Rental..!, A Request with ID " + dto.getRental_id() + " Already Exist.!");
+            throw new RuntimeException("No Cars have being chosen to place the Rental Request..!");
         }
     }
 
