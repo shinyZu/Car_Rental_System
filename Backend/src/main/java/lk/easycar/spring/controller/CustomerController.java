@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
@@ -20,12 +19,12 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getAllCustomers(){
+    public ResponseUtil getAllCustomers() {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", customerService.getAllCustomers());
     }
 
     @GetMapping(path = "{nic_no}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchCustomer(@PathVariable("nic_no") String nic_no){
+    public ResponseUtil searchCustomer(@PathVariable("nic_no") String nic_no) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", customerService.searchCustomer(nic_no));
     }
 
@@ -38,7 +37,7 @@ public class CustomerController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO dto) {
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Customer Updated Successfully",  customerService.updateCustomer(dto));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Customer Updated Successfully", customerService.updateCustomer(dto));
     }
 
     @DeleteMapping(params = {"nic_no"}, produces = MediaType.APPLICATION_JSON_VALUE)

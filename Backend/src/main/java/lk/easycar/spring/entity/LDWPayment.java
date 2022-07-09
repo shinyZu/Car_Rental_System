@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,11 +17,12 @@ import java.util.Date;
 public class LDWPayment {
 
     @Id
-    String fee_id;
-    double fee;
-    Date dateOfPayment;
+    private String fee_id;
+    private double fee;
 
-    @OneToOne
+    private LocalDate dateOfPayment;
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fleet_id", referencedColumnName = "fleet_id")
     private CarFleet fleet;
 }
