@@ -2,6 +2,7 @@ package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.CarFleetDTO;
 import lk.easycar.spring.dto.CustomerDTO;
+import lk.easycar.spring.dto.RentalDetailDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
 import lk.easycar.spring.entity.*;
 import lk.easycar.spring.repo.*;
@@ -62,9 +63,45 @@ public class RentalRequestServiceImpl implements RentalRequestService {
         }
     }
 
-    @Override
+    /*@Override
     public boolean placeRentalRequest(RentalRequestDTO dto) {
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
+        if (!rentalRequestRepo.existsById(dto.getRental_id())) {
+            rentalRequestRepo.save(rentalRequest);
+
+            if (dto.getRentalDetails().size() < 1) throw new RuntimeException("No Cars have being chosen to place the Rental Request..!");
+
+            //update the no of Cars in Car Fleet
+            for (RentalDetail rentalDetail : rentalRequest.getRentalDetails()) {
+                Car car = carRepo.findById(rentalDetail.getReg_no()).get();
+                CarFleet fleet = car.getFleet();
+                fleet.setNoOfCars(fleet.getNoOfCars() - 1);
+                carFleetRepo.save(fleet);
+            }
+            return true;
+
+        } else {
+            throw new RuntimeException("Failed to Place the Rental..!, A Request with ID " + dto.getRental_id() + " Already Exist.!");
+        }
+    }*/
+
+    @Override
+    public boolean placeRentalRequest(RentalRequestDTO dto) {
+        System.out.println("---------1-------------");
+        RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
+        List<RentalDetail> rentalDetails = rentalRequest.getRentalDetails();
+
+        for (RentalDetail rentalDetail : rentalDetails) {
+            System.out.println("---------2-------------");
+            if (rentalDetail.getDriverStatus().equals("Required")) { // if a Driver is requested by the Customer
+                System.out.println("---------3-------------");
+                List<Driver> listOfAvailableDrivers = driverRepo.getAllAvailableDrivers("Available");
+                rentalDetail.setDriver(listOfAvailableDrivers.get(0)); // Assign a Driver to the RentalDetail
+                listOfAvailableDrivers.get(0).setCurrentStatus("Occupied"); // Update the Driver Status
+            }
+        }
+        System.out.println("---------4-------------");
+
         if (!rentalRequestRepo.existsById(dto.getRental_id())) {
             rentalRequestRepo.save(rentalRequest);
 
