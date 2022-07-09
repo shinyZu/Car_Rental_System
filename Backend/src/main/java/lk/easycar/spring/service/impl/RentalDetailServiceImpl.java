@@ -36,19 +36,26 @@ public class RentalDetailServiceImpl implements RentalDetailService {
         // if the Driver to be changed is an existing Driver and also is currently Available(all clear to be assigned)
         if (driverRepo.existsById(license_no)) {
 
-            if (newDriverToBeAssigned.getCurrentStatus().equals("Available")) {
-                // Release the Currently Assigned Driver --> make Available
-                String currentlyAssignedDriver = rentalDetail.getDriver().getLicense_no();
-                driverRepo.updateDriverStatus(currentlyAssignedDriver,"Available");
+            // if the Customer has requested for a Driver
+            if (rentalDetail.getDriverStatus().equals("Required")) {
 
-                // Change the Current Driver & update status as Occupied
-                String rental_id = rentalDetail.getRental_id();
-                String reg_no = rentalDetail.getReg_no();
-                rentalDetailRepo.changeAssignedDriver(rental_id, reg_no, new Driver(license_no));
-                newDriverToBeAssigned.setCurrentStatus("Occupied");
+                if (newDriverToBeAssigned.getCurrentStatus().equals("Available")) {
+                    // Release the Currently Assigned Driver --> make Available
+                    String currentlyAssignedDriver = rentalDetail.getDriver().getLicense_no();
+                    driverRepo.updateDriverStatus(currentlyAssignedDriver, "Available");
+
+                    // Change the Current Driver & update status as Occupied
+                    String rental_id = rentalDetail.getRental_id();
+                    String reg_no = rentalDetail.getReg_no();
+                    rentalDetailRepo.changeAssignedDriver(rental_id, reg_no, new Driver(license_no));
+                    newDriverToBeAssigned.setCurrentStatus("Occupied");
+
+                } else {
+                    throw new RuntimeException("Driver with License No " + license_no + " is Currently NOT AVAILABLE...\nPlease select another Driver");
+                }
 
             } else {
-                throw new RuntimeException("Driver with License No " + license_no + " is Currently NOT AVAILABLE...\nPlease select another Driver");
+                throw new RuntimeException("No Driver is Requested by the Customer for this Rental with ID "+ rentalDetail.getRental_id());
             }
 
         } else {
