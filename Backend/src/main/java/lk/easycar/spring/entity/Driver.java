@@ -25,4 +25,7 @@ public class Driver {
     private int contact_no;
     private String currentStatus; // Available, Occupied
 
+    public Driver(String license_no) {
+        this.license_no = license_no;
+    }
 }
