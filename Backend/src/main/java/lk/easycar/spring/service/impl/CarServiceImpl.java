@@ -51,10 +51,8 @@ public class CarServiceImpl implements CarService {
 
             if (carFleetRepo.existsById(fleet_id)) { // checks whether the car which is going to be added is a Car of an existing Fleet
                 CarDTO carDTO = mapper.map(carRepo.save(mapper.map(dto, Car.class)), CarDTO.class);// save Car
-                System.out.println("carDTO : "+carDTO);
 
                 CarFleet carFleet = carFleetRepo.getReferenceById(fleet_id); // Update no of cars in the relevant Car Fleet
-                System.out.println("carFleet : " +carFleet);
                 carFleet.setNoOfCars(carFleet.getNoOfCars() + 1);
 
                 return carDTO;
@@ -80,8 +78,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public void deleteCar(String reg_no) {
         if (carRepo.existsById(reg_no)) {
-            Car car = carRepo.getReferenceById(reg_no);
-            CarFleet carFleet = car.getFleet();
+            CarFleet carFleet = carRepo.getReferenceById(reg_no).getFleet();
             carFleet.setNoOfCars(carFleet.getNoOfCars() - 1);
             carRepo.deleteById(reg_no);
         } else {

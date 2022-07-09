@@ -87,22 +87,15 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
     @Override
     public boolean placeRentalRequest(RentalRequestDTO dto) {
-        System.out.println("---------1-------------");
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
         List<RentalDetail> rentalDetails = rentalRequest.getRentalDetails();
 
-        boolean b = dto.getRentalDetails().size() < 1;
-        System.out.println(b);
-
         if (!(dto.getRentalDetails().size() < 1)) {
-            System.out.println("---------2-------------");
 
             for (RentalDetail rentalDetail : rentalDetails) {
-                System.out.println("---------3-------------");
 
                 // Assigning of Driver & Updating Driver Status
                 if (rentalDetail.getDriverStatus().equals("Required")) { // if a Driver is requested by the Customer
-                    System.out.println("---------4-------------");
                     List<Driver> listOfAvailableDrivers = driverRepo.getAllAvailableDrivers("Available");
                     rentalDetail.setDriver(listOfAvailableDrivers.get(0)); // Assign a Driver to the RentalDetail
                     listOfAvailableDrivers.get(0).setCurrentStatus("Occupied"); // Update the Driver Status
@@ -110,7 +103,6 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
                 // Updating Car Status --> Reserved
                 Car car = carRepo.getReferenceById(rentalDetail.getReg_no());
-                System.out.println(car);
                 car.setCurrentStatus("Reserved");
             }
 
@@ -118,8 +110,6 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
             if (!rentalRequestRepo.existsById(dto.getRental_id())) {
                 rentalRequestRepo.save(rentalRequest);
-
-
 
                 /*if (dto.getRentalDetails().size() < 1)
                     throw new RuntimeException("No Cars have being chosen to place the Rental Request..!");*/
@@ -131,6 +121,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
                     fleet.setNoOfCars(fleet.getNoOfCars() - 1);
                     carFleetRepo.save(fleet);
                 }*/
+
                 return true;
 
             } else {
