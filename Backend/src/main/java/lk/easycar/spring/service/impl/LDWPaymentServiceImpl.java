@@ -35,7 +35,7 @@ public class LDWPaymentServiceImpl implements LDWPaymentService {
         if (ldwPaymentRepo.existsById(fee_id)) {
             return mapper.map(ldwPaymentRepo.findById(fee_id), LDWPaymentDTO.class);
         } else {
-            throw new RuntimeException("No Loss Damage Waiver Payment for " + fee_id);
+            throw new RuntimeException("No Loss Damage Waiver Payment with Fee ID " + fee_id);
         }
     }
 

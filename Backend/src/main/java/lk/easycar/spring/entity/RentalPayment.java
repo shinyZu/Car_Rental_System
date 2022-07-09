@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,9 +17,9 @@ import java.util.Date;
 public class RentalPayment {
 
     @Id
-    String fee_id;
-    double fee;
-    Date dateOfPayment;
+    private String fee_id;
+    private double fee;
+    private LocalDate dateOfPayment;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rental_id", referencedColumnName = "rental_id")
