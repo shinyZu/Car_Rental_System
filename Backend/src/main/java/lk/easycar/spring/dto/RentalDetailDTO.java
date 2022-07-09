@@ -15,8 +15,6 @@ import lombok.ToString;
 public class RentalDetailDTO {
     private String rental_id;
     private String reg_no;
-    private RentalRequest rental;
-    private Car cars;
     private String driverStatus;
     private Driver driver;
     private double feeDeductedFromLDW;

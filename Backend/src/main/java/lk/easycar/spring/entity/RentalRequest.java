@@ -7,8 +7,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -21,20 +21,23 @@ public class RentalRequest {
     @Id
     private String rental_id;
     private LocalDate pickUp_date;
-    private LocalDate pickUp_time;
+    private LocalTime pickUp_time;
     private String pickUp_venue;
     private LocalDate return_date;
-    private LocalDate return_time;
+    private LocalTime return_time;
     private String return_venue;
-    private String requestStatus;
+    private String requestStatus; // when placing the rental --> Accepted, Denied
     private double totalPaymentForRental;
     private double amountToReturn; // To customer , balance from LDW
 
-    @ManyToOne
+    // @ManyToOne(cascade = CascadeType.ALL) // Multiple representations of the same Entity
+    // Because an attempt is made to assign an already persistent object or detached object value to a property of a new transient object.
+    // The transient object that caused the last save or merge to report the error.
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH}) //
     @JoinColumn(name = "customer_nic", referencedColumnName = "nic_no")
     private Customer customer;
 
-    @ManyToOne
+    @ManyToOne/*(cascade = {CascadeType.REFRESH,CascadeType.DETACH})*/
     @JoinColumn(name = "admin_id", referencedColumnName = "admin_id")
     private Admin admin;
 

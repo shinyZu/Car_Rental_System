@@ -4,6 +4,7 @@ import lk.easycar.spring.dto.CarDTO;
 import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.entity.Car;
 import lk.easycar.spring.entity.Customer;
+import lk.easycar.spring.repo.CarFleetRepo;
 import lk.easycar.spring.repo.CarRepo;
 import lk.easycar.spring.service.CarService;
 import org.modelmapper.ModelMapper;
@@ -20,6 +21,9 @@ public class CarServiceImpl implements CarService {
 
     @Autowired
     private CarRepo carRepo;
+
+    @Autowired
+    private CarFleetRepo carFleetRepo;
 
     @Autowired
     private ModelMapper mapper;
@@ -42,7 +46,12 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDTO saveCar(CarDTO dto) {
         if (!carRepo.existsById(dto.getReg_no())) {
-            return mapper.map(carRepo.save(mapper.map(dto, Car.class)), CarDTO.class);
+            String fleet_id = dto.getFleet().getFleet_id(); // fleet_id of the Car to be added
+            if (carFleetRepo.existsById(fleet_id)) { // checks whether the car which is going to be added is a Car of an existing Fleet
+                return mapper.map(carRepo.save(mapper.map(dto, Car.class)), CarDTO.class);
+            } else { // if not the Car shouldn't be added
+                throw new RuntimeException("Unable to find a CarFleet with ID "+ fleet_id);
+            }
         } else {
             throw new RuntimeException("Car with Reg_No "+ dto.getReg_no() +" Already Exists...");
         }

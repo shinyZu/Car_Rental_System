@@ -20,18 +20,18 @@ public class RentalDetail {
     @Id
     private String reg_no;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne/*(cascade = CascadeType.ALL)*/ // Multiple representations of the same Entity
     @JoinColumn(name = "rental_id", referencedColumnName = "rental_id", insertable = false, updatable = false)
     private RentalRequest rental;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne/*(cascade = CascadeType.ALL)*/ // Multiple representations of the same Entity
     @JoinColumn(name = "reg_no", referencedColumnName = "reg_no", insertable = false, updatable = false)
     private Car cars;
 
-    private String driverStatus;
+    private String driverStatus; // Requested, Not Requested
 
     @ManyToOne
-    @JoinColumn(name = "license_no", referencedColumnName = "license_no")
+    @JoinColumn(name = "driver_licenseNo", referencedColumnName = "license_no")
     private Driver driver;
 
     private double feeDeductedFromLDW;

@@ -23,5 +23,6 @@ public class Driver {
     private String password;
     private String address;
     private int contact_no;
+    private String currentStatus; // Available, Occupied
 
 }

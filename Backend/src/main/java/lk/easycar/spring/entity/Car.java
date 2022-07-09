@@ -21,7 +21,7 @@ public class Car {
     private String brand;
     private String color;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne/*(cascade = CascadeType.ALL)*/
     @JoinColumn(name = "fleet_id", referencedColumnName = "fleet_id")
     private CarFleet fleet;
 
@@ -33,6 +33,6 @@ public class Car {
     private double price_extraKM;
     private double freeKM_day;
     private double freeKM_month;
-    private String currentStatus; // Available, Reserved, Under Maintenance
+    private String currentStatus; // Available(if not requested), Unavailable(if Damaged), Reserved(if requested), Under Maintenance
 
 }

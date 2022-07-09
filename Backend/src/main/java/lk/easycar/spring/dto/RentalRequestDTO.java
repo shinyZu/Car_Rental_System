@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class RentalRequestDTO {
     private LocalDate pickUp_date;
 
     @JsonFormat(pattern = "HH:mm:ss")
-    private LocalDate pickUp_time;
+    private LocalTime pickUp_time;
 
     private String pickUp_venue;
 
@@ -33,7 +34,7 @@ public class RentalRequestDTO {
     private LocalDate return_date;
 
     @JsonFormat(pattern = "HH:mm:ss")
-    private LocalDate return_time;
+    private LocalTime return_time;
 
     private String return_venue;
     private String requestStatus;
@@ -41,5 +42,5 @@ public class RentalRequestDTO {
     private double amountToReturn; // To customer , balance from LDW
     private Customer customer;
     private Admin admin;
-    private List<RentalDetail> rentalDetails = new ArrayList<>();
+    private List<RentalDetailDTO> rentalDetails = new ArrayList<>();
 }
