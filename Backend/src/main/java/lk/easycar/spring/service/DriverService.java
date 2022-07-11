@@ -9,6 +9,8 @@ public interface DriverService {
 
     DriverDTO searchDriver(String license_no);
 
+    int getNoOfDriversByStatus(String status);
+
     DriverDTO saveDriver(DriverDTO dto);
 
     DriverDTO updateDriver(DriverDTO dto);

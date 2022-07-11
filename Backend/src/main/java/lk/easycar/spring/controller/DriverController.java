@@ -1,8 +1,6 @@
 package lk.easycar.spring.controller;
 
-import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.dto.DriverDTO;
-import lk.easycar.spring.service.CustomerService;
 import lk.easycar.spring.service.DriverService;
 import lk.easycar.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +19,18 @@ public class DriverController {
     private DriverService driverService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getAllDrivers(){
+    public ResponseUtil getAllDrivers() {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", driverService.getAllDrivers());
     }
 
     @GetMapping(path = "/{license_no}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchDriver(@PathVariable("license_no") String license_no){
+    public ResponseUtil searchDriver(@PathVariable("license_no") String license_no) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", driverService.searchDriver(license_no));
+    }
+
+    @GetMapping(params = {"countOf"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getNoOfDriversByStatus(@RequestParam("countOf") String status) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, status + " Driver Count", driverService.getNoOfDriversByStatus(status));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,7 +41,7 @@ public class DriverController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateDriver(@RequestBody DriverDTO dto) {
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Driver Updated Successfully",  driverService.updateDriver(dto));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Driver Updated Successfully", driverService.updateDriver(dto));
     }
 
     @DeleteMapping(params = {"license_no"}, produces = MediaType.APPLICATION_JSON_VALUE)

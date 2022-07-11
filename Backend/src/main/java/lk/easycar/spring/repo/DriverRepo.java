@@ -15,4 +15,10 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
     @Modifying
     @Query(value = "update Driver d set d.currentStatus=?2 where d.license_no=?1")
     void updateDriverStatus(String currentlyAssignedDriver, String status);
+
+    /*@Query(value = "select count(d.license_no) from Driver d where d.currentStatus=?1")
+    int getNoOfAvailableDrivers(String available);*/
+
+    int countDriversByCurrentStatus(String status);
+
 }

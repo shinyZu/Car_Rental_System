@@ -34,4 +34,16 @@ class DriverRepoTest {
         driverRepo.updateDriverStatus("DL-1000001", "Available");
         getAllAvailableDrivers();
     }
+
+    /*@Test
+    void getNoOfAvailableDrivers() {
+        int noOfAvailableDrivers = driverRepo.getNoOfAvailableDrivers("Available");
+        System.out.println(noOfAvailableDrivers);
+    }*/
+
+    @Test
+    void countDriversByCurrentStatus() {
+        int occupied = driverRepo.countDriversByCurrentStatus("sss");
+        System.out.println(occupied);
+    }
 }

@@ -1,8 +1,6 @@
 package lk.easycar.spring.service.impl;
 
-import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.dto.DriverDTO;
-import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.repo.DriverRepo;
 import lk.easycar.spring.service.DriverService;
@@ -36,6 +34,11 @@ public class DriverServiceImpl implements DriverService {
         } else {
             throw new RuntimeException("No Driver with NIC " + license_no);
         }
+    }
+
+    @Override
+    public int getNoOfDriversByStatus(String status) {
+        return (int) driverRepo.countDriversByCurrentStatus(status);
     }
 
     @Override
