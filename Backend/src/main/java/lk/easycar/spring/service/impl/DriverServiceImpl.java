@@ -1,5 +1,7 @@
 package lk.easycar.spring.service.impl;
 
+import lk.easycar.spring.dto.Custom;
+import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.dto.DriverDTO;
 import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.repo.DriverRepo;
@@ -39,6 +41,11 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public int getNoOfDriversByStatus(String status) {
         return (int) driverRepo.countDriversByCurrentStatus(status);
+    }
+
+    @Override
+    public List<CustomDTO> getDriverSchedule(String license_no) {
+        return driverRepo.getWorkSchedule(license_no);
     }
 
     @Override

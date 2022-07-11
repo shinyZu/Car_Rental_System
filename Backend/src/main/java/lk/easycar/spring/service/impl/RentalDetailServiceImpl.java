@@ -55,7 +55,7 @@ public class RentalDetailServiceImpl implements RentalDetailService {
                 }
 
             } else {
-                throw new RuntimeException("No Driver is Requested by the Customer for this Rental with ID "+ rentalDetail.getRental_id());
+                throw new RuntimeException("No Driver is Requested by the Customer for this Rental with ID " + rentalDetail.getRental_id());
             }
 
         } else {
@@ -63,5 +63,11 @@ public class RentalDetailServiceImpl implements RentalDetailService {
         }
 
         return true;
+    }
+
+    @Override
+    public int updateDetailsAfterReturn(RentalDetailDTO dto) {
+        double km_travelled = dto.getKm_atReturn() - dto.getKm_atPickUp();
+        return rentalDetailRepo.updateDetailsAfterReturn(dto.getRental_id(),dto.getReg_no(),dto.getFeeDeductedFromLDW(),dto.getKm_atReturn(),km_travelled);
     }
 }

@@ -21,8 +21,8 @@ class RentalDetailRepoTest {
     RentalDetailRepo rentalDetailRepo;
 
     @Test
-    void getAllDetails() {
-        RentalDetail detail = rentalDetailRepo.getRentalDetail("RNTL-0001", "PB-5951");
+    void getUpdatedDriverDetails() {
+        RentalDetail detail = rentalDetailRepo.getUpdatedDriverDetails("RNTL-0001", "PB-5951");
 //        System.out.println(detail.getReg_no());
 //        System.out.println(detail.getRental_id());
         detail.getDriver().setCurrentStatus("Occupied");
@@ -35,6 +35,23 @@ class RentalDetailRepoTest {
     @Test
     void changeAssignedDriver() {
         rentalDetailRepo.changeAssignedDriver("RNTL-0001", "PB-5951", new Driver("DL-1000002"));
-        getAllDetails();
+        getUpdatedDriverDetails();
+    }
+
+    @Test
+    void updateDetailsAfterReturn() {
+//        getRentalDetail();
+        int i = rentalDetailRepo.updateDetailsAfterReturn("RNTL-0001", "PB-5951", 1000.00, 8500.00, 500.00);
+        System.out.println(i);
+        getRentalDetail();
+    }
+
+    @Test
+    void getRentalDetail() {
+        RentalDetail detail = rentalDetailRepo.getRentalDetail("RNTL-0001", "PB-5951");
+//        System.out.println(detail.toString());
+        System.out.println(detail.getFeeDeductedFromLDW());
+        System.out.println(detail.getKm_atReturn());
+        System.out.println(detail.getKm_travelled());
     }
 }

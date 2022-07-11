@@ -22,4 +22,9 @@ public class RentalDetailController {
     public ResponseUtil changeAssignedDriver(@RequestBody RentalDetailDTO dto, @RequestParam("changeDriverTo") String newDriver) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Driver Changed Successfully", rentalDetailService.changeAssignedDriver(dto,newDriver));
     }
+
+    @PutMapping(path = "return", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateDetailsAfterReturn(@RequestBody RentalDetailDTO dto) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Details Updated Successfully", rentalDetailService.updateDetailsAfterReturn(dto)==1 ? "Success" : "Fail");
+    }
 }

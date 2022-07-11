@@ -39,4 +39,12 @@ public class RentalDetail {
     private double km_atReturn;
     private double km_travelled;
 
+    public RentalDetail(String rental_id, String reg_no, double feeDeductedFromLDW, double km_atPickUp, double km_atReturn, double km_travelled) {
+        this.rental_id = rental_id;
+        this.reg_no = reg_no;
+        this.feeDeductedFromLDW = feeDeductedFromLDW;
+        this.km_atPickUp = km_atPickUp;
+        this.km_atReturn = km_atReturn;
+        this.km_travelled = km_travelled;
+    }
 }

@@ -33,6 +33,11 @@ public class DriverController {
         return new ResponseUtil(HttpServletResponse.SC_OK, status + " Driver Count", driverService.getNoOfDriversByStatus(status));
     }
 
+    @GetMapping(params = {"scheduleOf"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getWorkSchedule(@RequestParam("scheduleOf") String license_no) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, " Driver Schedule", driverService.getDriverSchedule(license_no));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil registerDriver(@ModelAttribute DriverDTO dto) {

@@ -1,10 +1,15 @@
 package lk.easycar.spring.repo;
 
 import lk.easycar.spring.config.JPAConfig;
+import lk.easycar.spring.dto.Custom;
+import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.entity.Driver;
+import lk.easycar.spring.entity.RentalRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -20,6 +25,9 @@ class DriverRepoTest {
 
     @Autowired
     DriverRepo driverRepo;
+
+//    @Autowired
+//    ModelMapper mapper;
 
     @Test
     void getAllAvailableDrivers() {
@@ -46,4 +54,10 @@ class DriverRepoTest {
         int occupied = driverRepo.countDriversByCurrentStatus("sss");
         System.out.println(occupied);
     }
+
+    @Test
+    void getWorkSchedule() {
+        List<CustomDTO> workSchedule = driverRepo.getWorkSchedule("DL-1000001");
+    }
+
 }
