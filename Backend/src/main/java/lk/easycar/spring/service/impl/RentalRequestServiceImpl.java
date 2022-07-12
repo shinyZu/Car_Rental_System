@@ -64,6 +64,11 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public String getRequestStatus(String rental_id) {
+        return rentalRequestRepo.getRequestStatusByRental_id(rental_id);
+    }
+
+    @Override
     public boolean placeRentalRequest(RentalRequestDTO dto) {
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
         List<RentalDetail> rentalDetails = rentalRequest.getRentalDetails();

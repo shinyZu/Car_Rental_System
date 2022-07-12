@@ -1,5 +1,6 @@
 package lk.easycar.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -47,6 +48,12 @@ public class RentalRequest {
     public RentalRequest(String rental_id, String requestStatus) {
         this.rental_id = rental_id;
         this.requestStatus = requestStatus;
+    }
+
+    public RentalRequest(String rental_id, LocalDate pickUp_date, LocalDate return_date) {
+        this.rental_id = rental_id;
+        this.pickUp_date = pickUp_date;
+        this.return_date = return_date;
     }
 
     public RentalRequest(String rental_id, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus) {

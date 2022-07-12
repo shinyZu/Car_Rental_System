@@ -9,6 +9,8 @@ public interface RentalRequestService {
 
     RentalRequestDTO searchRental(String rental_id);
 
+    String getRequestStatus(String rental_id);
+
     boolean placeRentalRequest(RentalRequestDTO dto);
 
     RentalRequestDTO updateRental(RentalRequestDTO dto);

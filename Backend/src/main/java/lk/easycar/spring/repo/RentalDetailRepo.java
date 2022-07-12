@@ -1,6 +1,7 @@
 package lk.easycar.spring.repo;
 
 import com.sun.org.apache.xpath.internal.objects.XBoolean;
+import lk.easycar.spring.dto.RentalDetailDTO;
 import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.entity.RentalCar_PK;
 import lk.easycar.spring.entity.RentalDetail;
@@ -8,10 +9,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface RentalDetailRepo extends JpaRepository<RentalDetail, RentalCar_PK> {
 
+    @Query(value = "select rd from RentalDetail rd where rd.rental_id=?1")
+    List<RentalDetail> getAllRentalDetailsByRental_id(String rental_id);
+
     @Query(value = "select rd from RentalDetail rd where rd.rental_id=?1 and rd.reg_no=?2")
-    RentalDetail getUpdatedDriverDetails(String rental_id, String reg_no);
+    RentalDetail getRentalDetailByRental_idAndReg_no(String rental_id, String reg_no);
 
     @Modifying
     @Query(value = "update RentalDetail rd set rd.driver=?3 where rd.rental_id=?1 and rd.reg_no=?2")
@@ -26,7 +32,5 @@ public interface RentalDetailRepo extends JpaRepository<RentalDetail, RentalCar_
     @Query(value = "update RentalDetail rd set rd.feeDeductedFromLDW=?3, rd.km_atReturn=?4, rd.km_travelled=?5 where rd.rental_id=?1 and rd.reg_no=?2")
     int updateDetailsAfterReturn(String rental_id, String reg_no, double feeDeductedFromLDW, double km_atReturn, double km_travelled);
 
-    @Query(value = "select rd from RentalDetail rd where rd.rental_id=?1 and rd.reg_no=?2")
-    RentalDetail getRentalDetail(String rental_id, String reg_no);
 
 }

@@ -28,6 +28,11 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", rentalRequestService.searchRental(rental_id));
     }
 
+    @GetMapping(params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getRequestStatus(@RequestParam("rental_id") String rental_id) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Checked Request Status", rentalRequestService.getRequestStatus(rental_id));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil placeRentalRequest(@RequestBody RentalRequestDTO dto) {

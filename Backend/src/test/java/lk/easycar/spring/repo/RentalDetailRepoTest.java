@@ -1,6 +1,7 @@
 package lk.easycar.spring.repo;
 
 import lk.easycar.spring.config.JPAConfig;
+import lk.easycar.spring.dto.RentalDetailDTO;
 import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.entity.RentalDetail;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @WebAppConfiguration
 @ContextConfiguration(classes = {JPAConfig.class})
@@ -21,8 +24,8 @@ class RentalDetailRepoTest {
     RentalDetailRepo rentalDetailRepo;
 
     @Test
-    void getUpdatedDriverDetails() {
-        RentalDetail detail = rentalDetailRepo.getUpdatedDriverDetails("RNTL-0001", "PB-5951");
+    void getRentalDetailByRental_idAndReg_no() {
+        RentalDetail detail = rentalDetailRepo.getRentalDetailByRental_idAndReg_no("RNTL-0001", "PB-5951");
 //        System.out.println(detail.getReg_no());
 //        System.out.println(detail.getRental_id());
         detail.getDriver().setCurrentStatus("Occupied");
@@ -35,7 +38,7 @@ class RentalDetailRepoTest {
     @Test
     void changeAssignedDriver() {
         rentalDetailRepo.changeAssignedDriver("RNTL-0001", "PB-5951", new Driver("DL-1000002"));
-        getUpdatedDriverDetails();
+        getRentalDetailByRental_idAndReg_no();
     }
 
     @Test
@@ -48,10 +51,16 @@ class RentalDetailRepoTest {
 
     @Test
     void getRentalDetail() {
-        RentalDetail detail = rentalDetailRepo.getRentalDetail("RNTL-0001", "PB-5951");
-//        System.out.println(detail.toString());
-        System.out.println(detail.getFeeDeductedFromLDW());
-        System.out.println(detail.getKm_atReturn());
-        System.out.println(detail.getKm_travelled());
+        List<RentalDetail> rentalDetails = rentalDetailRepo.getAllRentalDetailsByRental_id("RNTL-0001");
+//        System.out.println(rentalDetail.toString()); // stack overflow error
+
+        for (RentalDetail detail : rentalDetails) {
+            System.out.println(detail.getRental_id());
+            System.out.println(detail.getReg_no());
+            System.out.println(detail.getFeeDeductedFromLDW());
+            System.out.println(detail.getKm_atReturn());
+            System.out.println(detail.getKm_travelled());
+        }
     }
+
 }

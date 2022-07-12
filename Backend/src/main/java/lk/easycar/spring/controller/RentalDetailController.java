@@ -18,6 +18,11 @@ public class RentalDetailController {
     @Autowired
     RentalDetailService rentalDetailService;
 
+    @GetMapping(path = "/{rental_id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllRentalDetailsByRentalID(@PathVariable("rental_id") String rental_id){
+        return new ResponseUtil(HttpServletResponse.SC_OK, "OK", rentalDetailService.getAllRentalDetailsByRentalID(rental_id));
+    }
+
     @PutMapping(params = {"changeDriverTo"}, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil changeAssignedDriver(@RequestBody RentalDetailDTO dto, @RequestParam("changeDriverTo") String newDriver) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Driver Changed Successfully", rentalDetailService.changeAssignedDriver(dto,newDriver));

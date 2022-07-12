@@ -8,9 +8,12 @@ import lk.easycar.spring.repo.RentalDetailRepo;
 import lk.easycar.spring.repo.RentalRequestRepo;
 import lk.easycar.spring.service.RentalDetailService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -27,6 +30,11 @@ public class RentalDetailServiceImpl implements RentalDetailService {
 
     @Autowired
     private ModelMapper mapper;
+
+    @Override
+    public List<RentalDetailDTO> getAllRentalDetailsByRentalID(String rental_id) {
+        return mapper.map(rentalDetailRepo.getAllRentalDetailsByRental_id(rental_id), new TypeToken<List<RentalDetailDTO>>(){}.getType());
+    }
 
     @Override
     public boolean changeAssignedDriver(RentalDetailDTO dto, String license_no) {
