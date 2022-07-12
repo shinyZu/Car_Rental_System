@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
 
 @RestController
 @CrossOrigin
@@ -31,6 +32,15 @@ public class RentalRequestController {
     @GetMapping(params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getRequestStatus(@RequestParam("rental_id") String rental_id) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Checked Request Status", rentalRequestService.getRequestStatus(rental_id));
+    }
+
+    @GetMapping(params = {"activeForDay"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getNoOfActiveRentalsByDate(@RequestParam("activeForDay") String date) {
+//        System.out.println(date.getClass().getSimpleName()); // String
+//        LocalDate parse = LocalDate.parse(date);
+//        System.out.println(parse); // 2022-09-09
+//        System.out.println(parse.getClass().getSimpleName()); // LocalDate
+        return new ResponseUtil(HttpServletResponse.SC_OK, "No Of Active Rentals", rentalRequestService.getNoOfActiveRentalsByDate(LocalDate.parse(date)));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -67,7 +77,6 @@ public class RentalRequestController {
         rentalRequestService.denyRental(dto);
         return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request "+dto.getRental_id()+" is Denied", null );
     }
-
 
     @DeleteMapping(params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteRental(@RequestParam("rental_id") String rental_id) {

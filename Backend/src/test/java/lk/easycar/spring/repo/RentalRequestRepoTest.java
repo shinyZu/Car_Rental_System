@@ -10,9 +10,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @WebAppConfiguration
 @ContextConfiguration(classes = {JPAConfig.class})
@@ -43,5 +42,14 @@ class RentalRequestRepoTest {
     void getRequestStatusByRental_id() {
         String status = rentalRequestRepo.getRequestStatusByRental_id("RNTL-0001");
         System.out.println(status);
+    }
+
+    @Test
+    void countActiveRentalsForTheDay() {
+//        LocalDate parse = LocalDate.parse("2022-07-09");
+//        System.out.println(parse);
+        String date = "2022-07-09";
+        int active = rentalRequestRepo.countActiveRentalsForTheDay("Active", LocalDate.parse(date));
+        System.out.println(active);
     }
 }

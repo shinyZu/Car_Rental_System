@@ -2,6 +2,7 @@ package lk.easycar.spring.service;
 
 import lk.easycar.spring.dto.RentalRequestDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface RentalRequestService {
@@ -10,6 +11,8 @@ public interface RentalRequestService {
     RentalRequestDTO searchRental(String rental_id);
 
     String getRequestStatus(String rental_id);
+
+    int getNoOfActiveRentalsByDate(LocalDate date);
 
     boolean placeRentalRequest(RentalRequestDTO dto);
 

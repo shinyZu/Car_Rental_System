@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -62,6 +63,12 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     @Override
     public String getRequestStatus(String rental_id) {
         return rentalRequestRepo.getRequestStatusByRental_id(rental_id);
+    }
+
+    @Override
+    public int getNoOfActiveRentalsByDate(LocalDate date) {
+//        System.out.println(date);
+        return rentalRequestRepo.countActiveRentalsForTheDay("Active",date);
     }
 
     @Override

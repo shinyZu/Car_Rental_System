@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> {
@@ -21,4 +22,7 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
     @Modifying
     @Query(value = "update RentalRequest r set r.requestStatus=?2 where r.rental_id=?1")
     void updateRequestStatus(String rental_id, String requestStatus);
+
+    @Query(value="select count(r.rental_id) from RentalRequest r where r.pickUp_date=?2 and r.requestStatus=?1")
+    int countActiveRentalsForTheDay(String status,LocalDate date);
 }
