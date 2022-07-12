@@ -129,6 +129,12 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public void updateRequestStatus(RentalRequestDTO dto) {
+        RentalRequest request = rentalRequestRepo.getReferenceById(dto.getRental_id());
+        request.setRequestStatus(dto.getRequestStatus());
+    }
+
+    @Override
     public void deleteRental(String rental_id) {
         if (rentalRequestRepo.existsById(rental_id)) {
             rentalRequestRepo.deleteById(rental_id);

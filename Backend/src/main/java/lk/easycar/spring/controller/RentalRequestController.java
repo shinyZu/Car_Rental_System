@@ -47,6 +47,12 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request Updated Successfully", rentalRequestService.updateRental(dto));
     }
 
+    @PutMapping(path = "status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateRequestStatus(@RequestBody RentalRequestDTO dto) {
+        rentalRequestService.updateRequestStatus(dto);
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Request Status Updated Successfully", null );
+    }
+
     @DeleteMapping(params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteRental(@RequestParam("rental_id") String rental_id) {
         rentalRequestService.deleteRental(rental_id);

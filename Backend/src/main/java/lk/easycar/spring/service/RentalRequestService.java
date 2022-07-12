@@ -15,5 +15,7 @@ public interface RentalRequestService {
 
     RentalRequestDTO updateRental(RentalRequestDTO dto);
 
+    void updateRequestStatus(RentalRequestDTO dto);
+
     void deleteRental(String rental_id);
 }
