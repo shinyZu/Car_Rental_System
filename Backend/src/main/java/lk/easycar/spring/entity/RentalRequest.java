@@ -27,7 +27,7 @@ public class RentalRequest {
     private LocalDate return_date;
     private LocalTime return_time;
     private String return_venue;
-    private String requestStatus; // when placing the rental --> Accepted, Denied, Pending, Active
+    private String requestStatus; // when placing the rental --> Accepted, Denied, Pending, Active, Returned
     private double totalPaymentForRental;
     private double amountToReturn; // To customer , balance from LDW
 

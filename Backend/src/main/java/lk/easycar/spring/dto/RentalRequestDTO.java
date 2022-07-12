@@ -45,6 +45,8 @@ public class RentalRequestDTO {
     private List<RentalDetailDTO> rentalDetails = new ArrayList<>();
 
 
+
+
     public RentalRequestDTO(String rental_id, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus) {
         this.rental_id = rental_id;
         this.pickUp_date = pickUp_date;

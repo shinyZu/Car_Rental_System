@@ -27,21 +27,33 @@
     <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CustomDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CustomDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/RentalRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/RentalRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/RentalRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/RentalRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalDetailRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalDetailRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalDetailRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalDetailRepoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/RentalRequestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/RentalRequestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/CustomDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/CustomDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/RentalRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/RentalRequestDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalDetailRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalDetailRepo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalRequestRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalRequestRepo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/RentalRequestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/RentalRequestService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/RentalRequestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/RentalRequestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/CustomDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/CustomDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/RentalRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/RentalRequestDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Customer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalDetailRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalDetailRepo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalRequestRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalRequestRepo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/RentalRequestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/RentalRequestService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalDetailRepoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalDetailRepoTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalRequestRepoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalRequestRepoTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,6 +113,22 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.78">
+    <configuration name="RentalDetailRepoTest.getRental_idOfReg_no" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalDetailRepoTest" />
+      <option name="METHOD_NAME" value="getRental_idOfReg_no" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RentalRequestRepoTest.countActiveRentalsForTheDay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
@@ -112,22 +140,6 @@
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
       <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
       <option name="METHOD_NAME" value="countActiveRentalsForTheDay" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RentalRequestRepoTest.countRentalRequestByRequestStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
-      <option name="METHOD_NAME" value="countRentalRequestByRequestStatus" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,7 +161,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RentalRequestRepoTest.getRentalDuration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RentalRequestRepoTest.getRentalByRegNoAndRequestStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -159,13 +171,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
       <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
-      <option name="METHOD_NAME" value="getRentalDuration" />
+      <option name="METHOD_NAME" value="getRentalByRegNoAndRequestStatus" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RentalRequestRepoTest.getRequestStatusByRental_id" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RentalRequestRepoTest.getRentalRequestByCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -175,7 +187,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
       <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
-      <option name="METHOD_NAME" value="getRequestStatusByRental_id" />
+      <option name="METHOD_NAME" value="getRentalRequestByCustomer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -255,11 +267,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RentalRequestRepoTest.getRentalRequestByCustomer" />
+        <item itemvalue="JUnit.RentalDetailRepoTest.getRental_idOfReg_no" />
+        <item itemvalue="JUnit.RentalRequestRepoTest.getRentalByRegNoAndRequestStatus" />
         <item itemvalue="JUnit.RentalRequestRepoTest.countActiveRentalsForTheDay" />
         <item itemvalue="JUnit.RentalRequestRepoTest.countTotalRentalsForTheDay" />
-        <item itemvalue="JUnit.RentalRequestRepoTest.countRentalRequestByRequestStatus" />
-        <item itemvalue="JUnit.RentalRequestRepoTest.getRequestStatusByRental_id" />
-        <item itemvalue="JUnit.RentalRequestRepoTest.getRentalDuration" />
       </list>
     </recent_temporary>
   </component>
@@ -285,7 +297,7 @@
       <workItem from="1657548018617" duration="722000" />
       <workItem from="1657548759660" duration="15976000" />
       <workItem from="1657598026559" duration="144000" />
-      <workItem from="1657610746484" duration="12303000" />
+      <workItem from="1657610746484" duration="19897000" />
     </task>
     <servers />
   </component>
@@ -313,10 +325,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="424" y="159" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657548829140" />
-    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1657623217093">
+    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1657632103559">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657623217093" />
+    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632103559" />
     <state x="553" y="426" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1657569414895">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -325,62 +337,62 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="747" y="259" key="FileChooserDialogImpl/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657548202925" />
-    <state width="1874" height="156" key="GridCell.Tab.0.bottom" timestamp="1657624768980">
+    <state width="1874" height="280" key="GridCell.Tab.0.bottom" timestamp="1657633108549">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="156" key="GridCell.Tab.0.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624768980" />
-    <state width="1874" height="156" key="GridCell.Tab.0.center" timestamp="1657624768980">
+    <state width="1874" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657633108549" />
+    <state width="1874" height="280" key="GridCell.Tab.0.center" timestamp="1657633108549">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="156" key="GridCell.Tab.0.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624768980" />
-    <state width="1874" height="156" key="GridCell.Tab.0.left" timestamp="1657624768980">
+    <state width="1874" height="280" key="GridCell.Tab.0.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657633108549" />
+    <state width="1874" height="280" key="GridCell.Tab.0.left" timestamp="1657633108549">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="156" key="GridCell.Tab.0.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624768980" />
-    <state width="1874" height="156" key="GridCell.Tab.0.right" timestamp="1657624768980">
+    <state width="1874" height="280" key="GridCell.Tab.0.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657633108549" />
+    <state width="1874" height="280" key="GridCell.Tab.0.right" timestamp="1657633108549">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="156" key="GridCell.Tab.0.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624768980" />
-    <state width="1291" height="206" key="GridCell.Tab.1.bottom" timestamp="1657624520645">
+    <state width="1874" height="280" key="GridCell.Tab.0.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657633108549" />
+    <state width="1291" height="167" key="GridCell.Tab.1.bottom" timestamp="1657632961104">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.1.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624520645" />
-    <state width="1291" height="206" key="GridCell.Tab.1.center" timestamp="1657624520644">
+    <state width="1291" height="167" key="GridCell.Tab.1.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
+    <state width="1291" height="167" key="GridCell.Tab.1.center" timestamp="1657632961104">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.1.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624520644" />
-    <state width="1291" height="206" key="GridCell.Tab.1.left" timestamp="1657624520644">
+    <state width="1291" height="167" key="GridCell.Tab.1.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
+    <state width="1291" height="167" key="GridCell.Tab.1.left" timestamp="1657632961104">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.1.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624520644" />
-    <state width="1291" height="206" key="GridCell.Tab.1.right" timestamp="1657624520645">
+    <state width="1291" height="167" key="GridCell.Tab.1.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
+    <state width="1291" height="167" key="GridCell.Tab.1.right" timestamp="1657632961104">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.1.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624520645" />
-    <state width="1291" height="206" key="GridCell.Tab.2.bottom" timestamp="1657624520645">
+    <state width="1291" height="167" key="GridCell.Tab.1.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
+    <state width="1291" height="167" key="GridCell.Tab.2.bottom" timestamp="1657632961104">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.2.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624520645" />
-    <state width="1291" height="206" key="GridCell.Tab.2.center" timestamp="1657624520645">
+    <state width="1291" height="167" key="GridCell.Tab.2.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
+    <state width="1291" height="167" key="GridCell.Tab.2.center" timestamp="1657632961104">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.2.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624520645" />
-    <state width="1291" height="206" key="GridCell.Tab.2.left" timestamp="1657624520645">
+    <state width="1291" height="167" key="GridCell.Tab.2.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
+    <state width="1291" height="167" key="GridCell.Tab.2.left" timestamp="1657632961104">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.2.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624520645" />
-    <state width="1291" height="206" key="GridCell.Tab.2.right" timestamp="1657624520645">
+    <state width="1291" height="167" key="GridCell.Tab.2.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
+    <state width="1291" height="167" key="GridCell.Tab.2.right" timestamp="1657632961104">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.2.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657624520645" />
+    <state width="1291" height="167" key="GridCell.Tab.2.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
     <state x="448" y="79" width="1024" height="855" key="SettingsEditor" timestamp="1657548822787">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="448" y="79" width="1024" height="855" key="SettingsEditor/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657548822787" />
-    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1657622460543">
+    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1657632030727">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657622460543" />
+    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632030727" />
     <state x="340" y="103" key="new project wizard" timestamp="1657547899426">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

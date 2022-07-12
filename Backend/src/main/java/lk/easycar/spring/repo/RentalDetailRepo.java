@@ -32,5 +32,6 @@ public interface RentalDetailRepo extends JpaRepository<RentalDetail, RentalCar_
     @Query(value = "update RentalDetail rd set rd.feeDeductedFromLDW=?3, rd.km_atReturn=?4, rd.km_travelled=?5 where rd.rental_id=?1 and rd.reg_no=?2")
     int updateDetailsAfterReturn(String rental_id, String reg_no, double feeDeductedFromLDW, double km_atReturn, double km_travelled);
 
-
+    @Query(value="select rd.rental_id from RentalRequest r inner join RentalDetail rd on r.rental_id=rd.rental_id where rd.reg_no=?1 and r.requestStatus=?2",nativeQuery=true)
+    String getRental_idOfActiveReg_no(String reg_no, String requestStatus);
 }

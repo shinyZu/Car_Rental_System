@@ -63,4 +63,9 @@ class RentalDetailRepoTest {
         }
     }
 
+    @Test
+    void getRental_idOfReg_no() {
+        String rental_id = rentalDetailRepo.getRental_idOfActiveReg_no("PB-5951", "Active");
+        System.out.println(rental_id);
+    }
 }

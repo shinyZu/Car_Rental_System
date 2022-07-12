@@ -1,5 +1,6 @@
 package lk.easycar.spring.controller;
 
+import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
 import lk.easycar.spring.service.RentalRequestService;
 import lk.easycar.spring.util.ResponseUtil;
@@ -25,8 +26,14 @@ public class RentalRequestController {
     }
 
     @GetMapping(path = "/{rental_id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchRental(@PathVariable("rental_id") String rental_id) {
+    public ResponseUtil searchRentalByID(@PathVariable("rental_id") String rental_id) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", rentalRequestService.searchRental(rental_id));
+    }
+
+    // getRentalForReturn
+    @GetMapping(params = {"return_by"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchActiveRentalByCustomer(@RequestParam("return_by") String nic_no) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Details of the Rental To Be Returned by Customer "+nic_no, rentalRequestService.searchActiveRentalByCustomer(nic_no));
     }
 
     @GetMapping(params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)

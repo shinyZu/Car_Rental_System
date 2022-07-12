@@ -1,6 +1,9 @@
 package lk.easycar.spring.repo;
 
 import lk.easycar.spring.config.JPAConfig;
+import lk.easycar.spring.dto.RentalRequestDTO;
+import lk.easycar.spring.entity.Customer;
+import lk.easycar.spring.entity.RentalDetail;
 import lk.easycar.spring.entity.RentalRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -57,5 +60,21 @@ class RentalRequestRepoTest {
     void countTotalRentalsForTheDay() {
         int i = rentalRequestRepo.countTotalRentalsForTheDay(LocalDate.parse("2022-07-12"));
         System.out.println(i);
+    }
+
+    /*@Test
+    void getRentalByRegNoAndRequestStatus() {
+        RentalRequest rental = rentalRequestRepo.getRentalByRegNoAndRequestStatus("PB-5951", "Active");
+        System.out.println(rental.getRentalDetails().get(0).getRental_id());
+        System.out.println(rental.getRentalDetails().get(1).getRental_id());
+    }*/
+
+    @Test
+    void getRentalRequestByCustomer() {
+        RentalRequest request = rentalRequestRepo.getRentalRequestByCustomer("995922121v","Active");
+        System.out.println(request.getRental_id());
+        System.out.println(request.getRequestStatus());
+        System.out.println(request.getRentalDetails().get(0).getReg_no());
+        System.out.println(request.getRentalDetails().get(1).getReg_no());
     }
 }

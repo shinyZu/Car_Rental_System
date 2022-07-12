@@ -61,6 +61,16 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public RentalRequestDTO searchActiveRentalByCustomer(String nic_no) {
+        if (customerRepo.existsById(nic_no)) {
+            RentalRequest activeRental = rentalRequestRepo.getRentalRequestByCustomer(nic_no, "Active");
+            return mapper.map(activeRental,RentalRequestDTO.class);
+        } else {
+            throw new RuntimeException("No Customer with NIC No " + nic_no + "... Please check the Customer NIC...");
+        }
+    }
+
+    @Override
     public String getRequestStatus(String rental_id) {
         return rentalRequestRepo.getRequestStatusByRental_id(rental_id);
     }

@@ -28,4 +28,8 @@ public class Customer {
 //    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    private List<RentalRequest> rentalRequestList = new ArrayList<>();
 
+
+    public Customer(String nic_no) {
+        this.nic_no = nic_no;
+    }
 }
