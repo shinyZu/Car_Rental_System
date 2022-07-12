@@ -2,6 +2,7 @@ package lk.easycar.spring.repo;
 
 import lk.easycar.spring.entity.RentalRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -16,4 +17,8 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
 
     @Query(value = "select r.requestStatus from RentalRequest r where r.rental_id=?1")
     String getRequestStatusByRental_id(String rental_id);
+
+    @Modifying
+    @Query(value = "update RentalRequest r set r.requestStatus=?2 where r.rental_id=?1")
+    void updateRequestStatus(String rental_id, String requestStatus);
 }

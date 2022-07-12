@@ -47,11 +47,27 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request Updated Successfully", rentalRequestService.updateRental(dto));
     }
 
+    // When Request is Pending/Accepted/Denied
     @PutMapping(path = "status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateRequestStatus(@RequestBody RentalRequestDTO dto) {
         rentalRequestService.updateRequestStatus(dto);
         return new ResponseUtil(HttpServletResponse.SC_OK, "Request Status Updated Successfully", null );
     }
+
+    // When Request is Accepted
+    @PutMapping(path = "accept", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil acceptRental(@RequestBody RentalRequestDTO dto) {
+        rentalRequestService.acceptRental(dto);
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request "+dto.getRental_id()+" is Accepted", null );
+    }
+
+    // When Request is Denied
+    @PutMapping(path = "deny", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil denyRental(@RequestBody RentalRequestDTO dto) {
+        rentalRequestService.denyRental(dto);
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request "+dto.getRental_id()+" is Denied", null );
+    }
+
 
     @DeleteMapping(params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteRental(@RequestParam("rental_id") String rental_id) {

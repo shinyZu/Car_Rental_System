@@ -1,10 +1,10 @@
 package lk.easycar.spring.service.impl;
 
-import lk.easycar.spring.dto.CarFleetDTO;
-import lk.easycar.spring.dto.CustomerDTO;
-import lk.easycar.spring.dto.RentalDetailDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
-import lk.easycar.spring.entity.*;
+import lk.easycar.spring.entity.Car;
+import lk.easycar.spring.entity.Driver;
+import lk.easycar.spring.entity.RentalDetail;
+import lk.easycar.spring.entity.RentalRequest;
 import lk.easycar.spring.repo.*;
 import lk.easycar.spring.service.RentalRequestService;
 import org.modelmapper.ModelMapper;
@@ -20,20 +20,15 @@ import java.util.List;
 public class RentalRequestServiceImpl implements RentalRequestService {
 
     @Autowired
+    DriverRepo driverRepo;
+    @Autowired
     private AdminRepo adminRepo;
-
     @Autowired
     private CustomerRepo customerRepo;
-
     @Autowired
     private CarRepo carRepo;
-
     @Autowired
     private CarFleetRepo carFleetRepo;
-
-    @Autowired
-    DriverRepo driverRepo;
-
     @Autowired
     private LDWPaymentRepo ldwPaymentRepo;
 
@@ -51,7 +46,8 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
     @Override
     public List<RentalRequestDTO> getAllRentals() {
-        return mapper.map(rentalRequestRepo.findAll(), new TypeToken<List<RentalRequestDTO>>(){}.getType());
+        return mapper.map(rentalRequestRepo.findAll(), new TypeToken<List<RentalRequestDTO>>() {
+        }.getType());
     }
 
     @Override
@@ -103,35 +99,52 @@ public class RentalRequestServiceImpl implements RentalRequestService {
         }
     }
 
-    /** Things to be updated in RentalRequest
-     *      - update the requestStatus - Accepted, Denied
-     *      - totalPaymentForTheRental after the Car is Returned
-     *      - amountToReturn after the Car is returned
-     *
-     *  Things to be updated in RentalDetail
-     *      - change the driver
-     *      - FeeChargedFromLDW
-     *      - km_atReturn
-     *      - km_travelled
-     *
-     *  Things to be updated in Car
-     *      - currentStatus
-     *          - if Car is rented --> Reserved
-     *          - if Car is returned --> Available
-     *          - if Car is damaged --> Unavailable (these cars need maintenance)
-     *          - if Car is under maintenance --> Under Maintenance
-     *      -
+    /**
+     * Things to be updated in RentalRequest
+     * - update the requestStatus - Accepted, Denied
+     * - totalPaymentForTheRental after the Car is Returned
+     * - amountToReturn after the Car is returned
+     * <p>
+     * Things to be updated in RentalDetail
+     * - change the driver
+     * - FeeChargedFromLDW
+     * - km_atReturn
+     * - km_travelled
+     * <p>
+     * Things to be updated in Car
+     * - currentStatus
+     * - if Car is rented --> Reserved
+     * - if Car is returned --> Available
+     * - if Car is damaged --> Unavailable (these cars need maintenance)
+     * - if Car is under maintenance --> Under Maintenance
+     * -
      */
 
     @Override
     public RentalRequestDTO updateRental(RentalRequestDTO dto) {
-        return null;
+        if (rentalRequestRepo.existsById(dto.getRental_id())) {
+            return mapper.map(rentalRequestRepo.save(mapper.map(dto, RentalRequest.class)), RentalRequestDTO.class);
+        } else {
+            throw new RuntimeException("No Such Rental..Please check the Rental ID...");
+        }
+    }
+
+    // When Request Accepted/Denied
+    @Override
+    public void updateRequestStatus(RentalRequestDTO dto) {
+//        RentalRequest request = rentalRequestRepo.getReferenceById(dto.getRental_id());
+//        request.setRequestStatus(dto.getRequestStatus());
+        rentalRequestRepo.updateRequestStatus(dto.getRental_id(), dto.getRequestStatus());
     }
 
     @Override
-    public void updateRequestStatus(RentalRequestDTO dto) {
-        RentalRequest request = rentalRequestRepo.getReferenceById(dto.getRental_id());
-        request.setRequestStatus(dto.getRequestStatus());
+    public void acceptRental(RentalRequestDTO dto) {
+        this.updateRequestStatus(dto);
+    }
+
+    @Override
+    public void denyRental(RentalRequestDTO dto) {
+        this.updateRequestStatus(dto);
     }
 
     @Override
