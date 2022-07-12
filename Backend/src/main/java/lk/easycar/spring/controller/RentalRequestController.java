@@ -34,22 +34,24 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Checked Request Status", rentalRequestService.getRequestStatus(rental_id));
     }
 
-    @GetMapping(params = {"activeForDay"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getNoOfActiveRentalsByDate(@RequestParam("activeForDay") String date) {
+    @GetMapping(params = {"active_rentals"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getNoOfActiveRentalsForTheDay(@RequestParam("active_rentals") String date) {
 //        System.out.println(date.getClass().getSimpleName()); // String
 //        LocalDate parse = LocalDate.parse(date);
 //        System.out.println(parse); // 2022-09-09
 //        System.out.println(parse.getClass().getSimpleName()); // LocalDate
-        return new ResponseUtil(HttpServletResponse.SC_OK, "No Of Active Rentals", rentalRequestService.getNoOfActiveRentalsByDate(LocalDate.parse(date)));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "No Of Active Rentals", rentalRequestService.getNoOfActiveRentalsForTheDay(LocalDate.parse(date)));
+    }
+
+    @GetMapping(params = {"total_rentals_for"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getNoOfTotalRentalsForTheDay(@RequestParam("total_rentals_for") String date) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Total No Of Rentals For The Day", rentalRequestService.getNoOfTotalRentalsForTheDay(LocalDate.parse(date)));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil placeRentalRequest(@RequestBody RentalRequestDTO dto) {
-        System.out.println(dto.toString());
-//        rentalRequestService.placeRentalRequest(dto);
         return new ResponseUtil(HttpServletResponse.SC_CREATED, "Rental Request Placed Successfully..!", rentalRequestService.placeRentalRequest(dto));
-//        return new ResponseUtil(HttpServletResponse.SC_CREATED, "Rental Request Ready To Place...", null);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

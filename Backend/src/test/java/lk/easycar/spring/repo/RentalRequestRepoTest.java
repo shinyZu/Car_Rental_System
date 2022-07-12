@@ -48,8 +48,14 @@ class RentalRequestRepoTest {
     void countActiveRentalsForTheDay() {
 //        LocalDate parse = LocalDate.parse("2022-07-09");
 //        System.out.println(parse);
-        String date = "2022-07-09";
-        int active = rentalRequestRepo.countActiveRentalsForTheDay("Active", LocalDate.parse(date));
+//        String date = "2022-07-09";
+        int active = rentalRequestRepo.countActiveRentalsForTheDay("Active",LocalDate.parse("2022-07-10"));
         System.out.println(active);
+    }
+
+    @Test
+    void countTotalRentalsForTheDay() {
+        int i = rentalRequestRepo.countTotalRentalsForTheDay(LocalDate.parse("2022-07-12"));
+        System.out.println(i);
     }
 }

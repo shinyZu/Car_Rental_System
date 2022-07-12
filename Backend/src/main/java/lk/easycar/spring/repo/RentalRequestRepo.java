@@ -23,6 +23,13 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
     @Query(value = "update RentalRequest r set r.requestStatus=?2 where r.rental_id=?1")
     void updateRequestStatus(String rental_id, String requestStatus);
 
-    @Query(value="select count(r.rental_id) from RentalRequest r where r.pickUp_date=?2 and r.requestStatus=?1")
-    int countActiveRentalsForTheDay(String status,LocalDate date);
+//    @Query(value="select count(r.rental_id) from RentalRequest r where r.pickUp_date=?2 or r.requestStatus=?1")
+//    int countActiveRentalsForTheDay(String status, LocalDate date);
+
+    // Includes the rentals that were activated today & also that were activated before & still active/ongoing
+    @Query(value = "select count(r.rental_id) from RentalRequest r where r.requestStatus=?1 and r.pickUp_date <=?2")
+    int countActiveRentalsForTheDay(String status, LocalDate date);
+
+    @Query(value = "select count(r.rental_id) from RentalRequest r where r.pickUp_date=?1")
+    int countTotalRentalsForTheDay(LocalDate date);
 }

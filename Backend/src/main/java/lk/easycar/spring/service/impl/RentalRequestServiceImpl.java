@@ -66,9 +66,14 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
-    public int getNoOfActiveRentalsByDate(LocalDate date) {
+    public int getNoOfActiveRentalsForTheDay(LocalDate date) {
 //        System.out.println(date);
-        return rentalRequestRepo.countActiveRentalsForTheDay("Active",date);
+        return rentalRequestRepo.countActiveRentalsForTheDay("Active", date);
+    }
+
+    @Override
+    public int getNoOfTotalRentalsForTheDay(LocalDate date) {
+        return rentalRequestRepo.countTotalRentalsForTheDay(date);
     }
 
     @Override

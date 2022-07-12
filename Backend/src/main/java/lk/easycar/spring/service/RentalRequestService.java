@@ -12,7 +12,9 @@ public interface RentalRequestService {
 
     String getRequestStatus(String rental_id);
 
-    int getNoOfActiveRentalsByDate(LocalDate date);
+    int getNoOfActiveRentalsForTheDay(LocalDate date);
+
+    int getNoOfTotalRentalsForTheDay(LocalDate date);
 
     boolean placeRentalRequest(RentalRequestDTO dto);
 
