@@ -95,19 +95,24 @@ public class CustomerServiceImpl implements CustomerService {
         if (customerRepo.existsById(dto.getNic_no())) {
             int ongoing_rentals = rentalRequestRepo.getCountOfActiveRentalsByCustomer(dto.getNic_no(), "Active");
 
-            if (ongoing_rentals == 0) {
-                int count = loginRepo.searchForAnyDuplicateEmail(dto.getEmail());
-
-                if (count == 0) { // if there is no any users with the same email/ if no any duplicate emails
-                    loginRepo.deleteById(customerRepo.getReferenceById(dto.getNic_no()).getEmail());
-                    loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Customer"));
+            if (ongoing_rentals == 0) { // if no any ongoing rentals
+                if (dto.getEmail().equals(customerRepo.getReferenceById(dto.getNic_no()).getEmail())) { // if Customers are NOT changing their email
                     mapper.map(customerRepo.save(mapper.map(dto, Customer.class)), CustomerDTO.class);
                     return "Customer Updated Successfully";
 
-                } else {
-                    throw new RuntimeException("A User with email " + dto.getEmail() + " already exists...");
+                } else { // if Customers are gonna change their email
+                    int count = loginRepo.searchForAnyDuplicateEmail(dto.getEmail());
+
+                    if (count == 0) { // if there are no any users with the same email/ if no any duplicate emails
+                        loginRepo.deleteById(customerRepo.getReferenceById(dto.getNic_no()).getEmail());
+                        loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Customer"));
+                        mapper.map(customerRepo.save(mapper.map(dto, Customer.class)), CustomerDTO.class);
+                        return "Customer Updated Successfully";
+
+                    } else {
+                        throw new RuntimeException("A User with email " + dto.getEmail() + " already exists...");
+                    }
                 }
-//                mapper.map(customerRepo.save(mapper.map(dto, Customer.class)), CustomerDTO.class);
             } else {
                 customerRepo.getReferenceById(dto.getNic_no()).setContact_no(dto.getContact_no());
                 return "You have " + ongoing_rentals + " ongoing Rental/s..You can only Update your Contact Number...\nTry Again once your Rentals are returned...";
