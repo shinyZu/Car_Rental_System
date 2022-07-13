@@ -1,10 +1,10 @@
 package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.CarDTO;
-import lk.easycar.spring.dto.CustomerDTO;
+import lk.easycar.spring.dto.Custom;
+import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.entity.Car;
 import lk.easycar.spring.entity.CarFleet;
-import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.repo.CarFleetRepo;
 import lk.easycar.spring.repo.CarRepo;
 import lk.easycar.spring.service.CarService;
@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -48,6 +48,50 @@ public class CarServiceImpl implements CarService {
     @Override
     public int getNoOfCarsByStatus(String status) {
         return carRepo.countCarsByCurrentStatus(status);
+    }
+
+    @Override
+    public List<CustomDTO> getCarSchedule(String reg_no) {
+        ArrayList<CustomDTO> schedule = new ArrayList<>();
+        for (Custom custom : carRepo.getCarSchedule(reg_no)) {
+            schedule.add(new CustomDTO(
+                    custom.getRental_id(),
+                    custom.getLicense_no(),
+                    custom.getCurrentStatus(),
+                    custom.getContact_no(),
+                    custom.getReg_no(),
+                    custom.getPickUp_date(),
+                    custom.getPickUp_time(),
+                    custom.getPickUp_venue(),
+                    custom.getReturn_date(),
+                    custom.getReturn_time(),
+                    custom.getReturn_venue(),
+                    custom.getRequestStatus()
+            ));
+        }
+        return schedule;
+    }
+
+    @Override
+    public List<CustomDTO> getCarsByDate(CustomDTO dto) {
+        ArrayList<CustomDTO> schedule = new ArrayList<>();
+        for (Custom custom : carRepo.getCarsByDate(dto.getPickUp_date(),dto.getCurrentStatus())) {
+            schedule.add(new CustomDTO(
+                    custom.getRental_id(),
+                    custom.getLicense_no(),
+                    custom.getCurrentStatus(),
+                    custom.getContact_no(),
+                    custom.getReg_no(),
+                    custom.getPickUp_date(),
+                    custom.getPickUp_time(),
+                    custom.getPickUp_venue(),
+                    custom.getReturn_date(),
+                    custom.getReturn_time(),
+                    custom.getReturn_venue(),
+                    custom.getRequestStatus()
+            ));
+        }
+        return schedule;
     }
 
     @Override

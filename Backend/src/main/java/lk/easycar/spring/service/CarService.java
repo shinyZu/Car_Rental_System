@@ -1,6 +1,8 @@
 package lk.easycar.spring.service;
 
 import lk.easycar.spring.dto.CarDTO;
+import lk.easycar.spring.dto.Custom;
+import lk.easycar.spring.dto.CustomDTO;
 
 import java.util.List;
 
@@ -10,6 +12,10 @@ public interface CarService {
     CarDTO searchCar(String reg_no);
 
     int getNoOfCarsByStatus(String status);
+
+    List<CustomDTO> getCarSchedule(String reg_no);
+
+    List<CustomDTO> getCarsByDate(CustomDTO dto);
 
     CarDTO saveCar(CarDTO dto);
 

@@ -14,6 +14,8 @@ public interface Custom {
 
     int getContact_no();
 
+    String getReg_no();
+
     LocalDate getPickUp_date();
 
     LocalTime getPickUp_time();

@@ -24,16 +24,18 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
 
     int countDriversByCurrentStatus(String status);
 
-    @Query(value = "select r.rental_id, d.license_no, d.currentStatus, c.contact_no, r.pickUp_date, r.pickUp_time, r.pickUp_venue, r.return_date, r.return_time, r.return_venue, r.requestStatus " +
+    @Query(value = "select r.rental_id,  cr.reg_no, d.license_no, d.currentStatus, c.contact_no, r.pickUp_date, r.pickUp_time, r.pickUp_venue, r.return_date, r.return_time, r.return_venue, r.requestStatus " +
             "from Customer c inner join RentalRequest r on c.nic_no = r.customer_nic " +
             "inner join RentalDetail rd on rd.rental_id = r.rental_id " +
+            "inner join Car cr on rd.reg_no = cr.reg_no " +
             "inner join Driver d on rd.driver_licenseNo = d.license_no " +
             "where d.license_no=?1", nativeQuery = true)
     List<Custom> getWorkSchedule(String license_no);
 
-    @Query(value = "select r.rental_id, d.license_no, d.currentStatus, c.contact_no, r.pickUp_date, r.pickUp_time, r.pickUp_venue, r.return_date, r.return_time, r.return_venue, r.requestStatus " +
+    @Query(value = "select r.rental_id, cr.reg_no, d.license_no, d.currentStatus, c.contact_no, r.pickUp_date, r.pickUp_time, r.pickUp_venue, r.return_date, r.return_time, r.return_venue, r.requestStatus " +
             "from Customer c inner join RentalRequest r on c.nic_no = r.customer_nic " +
             "inner join RentalDetail rd on rd.rental_id = r.rental_id " +
+            "inner join Car cr on rd.reg_no = cr.reg_no " +
             "inner join Driver d on rd.driver_licenseNo = d.license_no " +
             "where r.pickUp_date between ?1 and ?2", nativeQuery = true)
     List<Custom> getWorkScheduleByDuration(LocalDate date1, LocalDate date2);

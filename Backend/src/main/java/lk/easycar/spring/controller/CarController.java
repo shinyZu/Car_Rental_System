@@ -1,6 +1,8 @@
 package lk.easycar.spring.controller;
 
 import lk.easycar.spring.dto.CarDTO;
+import lk.easycar.spring.dto.Custom;
+import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.service.CarService;
 import lk.easycar.spring.util.ResponseUtil;
@@ -32,6 +34,16 @@ public class CarController {
     @GetMapping(path = "count_of", params = {"currentStatus"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getNoOfCarsByStatus(@RequestParam("currentStatus") String status) {
         return new ResponseUtil(HttpServletResponse.SC_OK, status + " Car Count of Status "+status, carService.getNoOfCarsByStatus(status));
+    }
+
+    @GetMapping(params = {"schedule_of"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCarSchedule(@RequestParam("schedule_of") String reg_no) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Schedule of Car "+reg_no, carService.getCarSchedule(reg_no));
+    }
+
+    @GetMapping(path = "cars_by_date", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCarsByDate(@RequestBody CustomDTO dto) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Car Schedule By Date "+dto.getPickUp_date(), carService.getCarsByDate(dto));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
