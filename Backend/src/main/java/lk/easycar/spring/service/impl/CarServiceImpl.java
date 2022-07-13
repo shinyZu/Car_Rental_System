@@ -110,12 +110,22 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<CarDTO> sortCarsByBrand(String brand) {
-        return mapper.map(carRepo.getCarsByBrand(brand),new TypeToken<List<CarDTO>>(){}.getType());
+        return mapper.map(carRepo.getCarsByBrandIsContaining(brand),new TypeToken<List<CarDTO>>(){}.getType());
     }
 
     @Override
     public List<CarDTO> sortCarsByCarFleet(String fleet) {
         return mapper.map(carRepo.getCarsByFleet(fleet),new TypeToken<List<CarDTO>>(){}.getType());
+    }
+
+    @Override
+    public List<CarDTO> sortCarsByPrice(double price) {
+        return null;
+    }
+
+    @Override
+    public List<CarDTO> sortCarsByFuelType(String fuel_type) {
+        return mapper.map(carRepo.getCarsByFuelTypeEquals(fuel_type),new TypeToken<List<CarDTO>>(){}.getType());
     }
 
     @Override

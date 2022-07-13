@@ -25,6 +25,10 @@ public interface CarService {
 
     List<CarDTO> sortCarsByCarFleet(String fleet);
 
+    List<CarDTO> sortCarsByPrice(double price);
+
+    List<CarDTO> sortCarsByFuelType(String fuel_type);
+
     CarDTO saveCar(CarDTO dto);
 
     CarDTO updateCar(CarDTO dto);

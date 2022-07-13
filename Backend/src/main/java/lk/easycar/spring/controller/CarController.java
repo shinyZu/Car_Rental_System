@@ -66,6 +66,16 @@ public class CarController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By Fleet", carService.sortCarsByCarFleet(fleet));
     }
 
+    @GetMapping(path = "by_price", params = {"price"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil sortCarsByPrice(@RequestParam("price") double price) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By Price", carService.sortCarsByPrice(price));
+    }
+
+    @GetMapping(path = "by_fuel_type", params = {"fuel_type"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil sortCarsByFuelType(@RequestParam("fuel_type") String fuel_type) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By Fuel Type", carService.sortCarsByFuelType(fuel_type));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO dto) {

@@ -88,7 +88,7 @@ class CarRepoTest {
 
     @Test
     void getCarsByBrandExists() {
-        List<Car> suzuki = carRepo.getCarsByBrand("Suzuki Celerio");
+        List<Car> suzuki = carRepo.getCarsByBrandIsContaining("Suzuki");
         for (Car car : suzuki) {
             System.out.println(car.getReg_no() + " : "+ car.getBrand());
         }
@@ -100,6 +100,15 @@ class CarRepoTest {
         for (Car car : carsByFleet) {
             System.out.println(car.getReg_no());
             System.out.println(car.getFleet().getFleet_id());
+        }
+    }
+
+    @Test
+    void getCarsByFuelTypeEquals() {
+        List<Car> petrol = carRepo.getCarsByFuelTypeEquals("Petrol");
+        for (Car car : petrol) {
+            System.out.println(car.getReg_no());
+            System.out.println(car.getFuelType());
         }
     }
 }
