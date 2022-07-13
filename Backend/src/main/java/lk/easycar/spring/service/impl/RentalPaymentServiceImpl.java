@@ -147,7 +147,7 @@ public class RentalPaymentServiceImpl implements RentalPaymentService {
         System.out.println("amountToReturn : " + amountToReturn);
 
         /** Calculate the Rental Payment for a given particular rental detail --> (RNTL-0001, PB-5951) */
-        double rental_payment = (rentalFeeForTheRentedDuration + priceForExtraKM_travelled + driver_charges + feeDeductedFromLDW) - amountToReturn;
+        double rental_payment = (rentalFeeForTheRentedDuration + priceForExtraKM_travelled + driver_charges + feeDeductedFromLDW)/* - amountToReturn*/;
         System.out.println("rental_payment : " + rental_payment);
 
         /** Update Rental Details after Return --> km_atReturn & feeDeductedFromLDW*/

@@ -21,6 +21,8 @@ public interface RentalRequestService {
 
     double calculateTotalPaymentForRental(String rental_id);
 
+    double calculateAmountToReturn(String rental_id);
+
     boolean placeRentalRequest(RentalRequestDTO dto);
 
     RentalRequestDTO updateRental(RentalRequestDTO dto);

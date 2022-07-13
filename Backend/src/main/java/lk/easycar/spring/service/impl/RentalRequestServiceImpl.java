@@ -1,10 +1,7 @@
 package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.RentalRequestDTO;
-import lk.easycar.spring.entity.Car;
-import lk.easycar.spring.entity.Driver;
-import lk.easycar.spring.entity.RentalDetail;
-import lk.easycar.spring.entity.RentalRequest;
+import lk.easycar.spring.entity.*;
 import lk.easycar.spring.repo.*;
 import lk.easycar.spring.service.RentalRequestService;
 import org.modelmapper.ModelMapper;
@@ -100,7 +97,29 @@ public class RentalRequestServiceImpl implements RentalRequestService {
             for (Double payment : allRentalPayments) {
                 totalPayment += payment;
             }
+            RentalRequest rentalRequest = rentalRequestRepo.getReferenceById(rental_id);
+            rentalRequest.setTotalPaymentForRental(totalPayment);
             return totalPayment;
+        } else {
+            throw new RuntimeException("No Such Rental..Please check the Rental ID...");
+        }
+    }
+
+    @Override
+    public double calculateAmountToReturn(String rental_id) {
+        if (rentalRequestRepo.existsById(rental_id)) {
+            RentalRequest rentalRequest = rentalRequestRepo.getReferenceById(rental_id);
+            double amountToReturn = 0.0;
+            for (RentalDetail detail : rentalRequest.getRentalDetails()) {
+                /** Get LDW fee of each Car */
+                CarFleet fleet =  carRepo.getReferenceById( detail.getReg_no()).getFleet();
+                double fee_LDW = ldwPaymentRepo.getLDWPaymentByFleet(fleet).getFee();
+                double fee_deducted = detail.getFeeDeductedFromLDW();
+                amountToReturn += (fee_LDW - fee_deducted);
+            }
+            rentalRequest.setAmountToReturn(amountToReturn);
+            rentalRequest.setRequestStatus("Returned");
+            return amountToReturn;
         } else {
             throw new RuntimeException("No Such Rental..Please check the Rental ID...");
         }
