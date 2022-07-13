@@ -17,6 +17,8 @@ public interface CarService {
 
     List<CustomDTO> getCarsByDate(CustomDTO dto);
 
+    List<CarDTO> sortCarsByNoOfPassengers(int noOfPassengers);
+
     CarDTO saveCar(CarDTO dto);
 
     CarDTO updateCar(CarDTO dto);

@@ -46,6 +46,11 @@ public class CarController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Car Schedule By Date "+dto.getPickUp_date(), carService.getCarsByDate(dto));
     }
 
+    @GetMapping(path = "by_passengers", params = {"passenger_count"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil sortCarsByNoOfPassengers(@RequestParam("passenger_count") int noOfPassengers) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By No Of Passengers", carService.sortCarsByNoOfPassengers(noOfPassengers));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO dto) {

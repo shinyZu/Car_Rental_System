@@ -2,6 +2,7 @@ package lk.easycar.spring.repo;
 
 import lk.easycar.spring.config.JPAConfig;
 import lk.easycar.spring.dto.Custom;
+import lk.easycar.spring.entity.Car;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,15 @@ class CarRepoTest {
             System.out.println(workSchedule.getReturn_time());
             System.out.println(workSchedule.getReturn_venue());
             System.out.println(workSchedule.getRequestStatus());
+        }
+    }
+
+    @Test
+    void getCarsByNoOfPassengersEquals() {
+        List<Car> carList = carRepo.getCarsByNoOfPassengersEquals(4);
+        for (Car car : carList) {
+            System.out.println(car.getReg_no());
+            System.out.println(car.getNoOfPassengers());
         }
     }
 }

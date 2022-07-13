@@ -27,4 +27,6 @@ public interface CarRepo extends JpaRepository<Car, String> {
             "inner join Driver d on rd.driver_licenseNo = d.license_no " +
             "where r.pickUp_date = ?1 and r.requestStatus=?2", nativeQuery = true)
     List<Custom> getCarsByDate(LocalDate date, String status);
+
+    List<Car> getCarsByNoOfPassengersEquals(int count);
 }

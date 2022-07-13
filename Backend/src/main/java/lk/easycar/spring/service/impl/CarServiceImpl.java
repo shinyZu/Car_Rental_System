@@ -52,7 +52,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<CustomDTO> getCarSchedule(String reg_no) {
-        ArrayList<CustomDTO> schedule = new ArrayList<>();
+       /* ArrayList<CustomDTO> schedule = new ArrayList<>();
         for (Custom custom : carRepo.getCarSchedule(reg_no)) {
             schedule.add(new CustomDTO(
                     custom.getRental_id(),
@@ -69,12 +69,14 @@ public class CarServiceImpl implements CarService {
                     custom.getRequestStatus()
             ));
         }
-        return schedule;
+        return schedule;*/
+        List<Custom> list = carRepo.getCarSchedule(reg_no);
+        return mapper.map(list, new TypeToken<List<CustomDTO>>(){}.getType());
     }
 
     @Override
     public List<CustomDTO> getCarsByDate(CustomDTO dto) {
-        ArrayList<CustomDTO> schedule = new ArrayList<>();
+        /*ArrayList<CustomDTO> schedule = new ArrayList<>();
         for (Custom custom : carRepo.getCarsByDate(dto.getPickUp_date(),dto.getCurrentStatus())) {
             schedule.add(new CustomDTO(
                     custom.getRental_id(),
@@ -91,7 +93,14 @@ public class CarServiceImpl implements CarService {
                     custom.getRequestStatus()
             ));
         }
-        return schedule;
+        return schedule;*/
+        List<Custom> list = carRepo.getCarsByDate(dto.getPickUp_date(), dto.getCurrentStatus());
+        return mapper.map(list, new TypeToken<List<CustomDTO>>(){}.getType());
+    }
+
+    @Override
+    public List<CarDTO> sortCarsByNoOfPassengers(int noOfPassengers) {
+        return mapper.map(carRepo.getCarsByNoOfPassengersEquals(noOfPassengers), new TypeToken<List<CarDTO>>(){}.getType());
     }
 
     @Override
