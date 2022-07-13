@@ -42,7 +42,7 @@ public class CustomerController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO dto) {
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Customer Updated Successfully", customerService.updateCustomer(dto));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "", customerService.updateCustomer(dto));
     }
 
     @DeleteMapping(params = {"nic_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
