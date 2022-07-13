@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface DriverRepo extends JpaRepository<Driver, String> {
@@ -27,8 +28,13 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
             "from Customer c inner join RentalRequest r on c.nic_no = r.customer_nic " +
             "inner join RentalDetail rd on rd.rental_id = r.rental_id " +
             "inner join Driver d on rd.driver_licenseNo = d.license_no " +
-            "where d.license_no=?1 and d.currentStatus=?2", nativeQuery = true)
+            "where d.license_no=?1", nativeQuery = true)
     List<Custom> getWorkSchedule(String license_no);
 
-
+    @Query(value = "select r.rental_id, d.license_no, d.currentStatus, c.contact_no, r.pickUp_date, r.pickUp_time, r.pickUp_venue, r.return_date, r.return_time, r.return_venue, r.requestStatus " +
+            "from Customer c inner join RentalRequest r on c.nic_no = r.customer_nic " +
+            "inner join RentalDetail rd on rd.rental_id = r.rental_id " +
+            "inner join Driver d on rd.driver_licenseNo = d.license_no " +
+            "where r.pickUp_date between ?1 and ?2", nativeQuery = true)
+    List<Custom> getWorkScheduleByDuration(LocalDate date1, LocalDate date2);
 }

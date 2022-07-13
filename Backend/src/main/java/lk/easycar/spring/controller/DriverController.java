@@ -1,5 +1,6 @@
 package lk.easycar.spring.controller;
 
+import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.dto.DriverDTO;
 import lk.easycar.spring.service.DriverService;
 import lk.easycar.spring.util.ResponseUtil;
@@ -36,6 +37,11 @@ public class DriverController {
     @GetMapping(params = {"schedule_of"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getWorkSchedule(@RequestParam("schedule_of") String license_no) {
         return new ResponseUtil(HttpServletResponse.SC_OK, " Driver Schedule", driverService.getWorkSchedule(license_no));
+    }
+
+    @GetMapping(path = "schedule_by_duration", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getWorkScheduleByDuration(@RequestBody CustomDTO dto) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, " Driver Schedule from " + dto.getPickUp_date()+" to "+dto.getReturn_date(), driverService.getWorkScheduleByDuration(dto));
     }
 
     @ResponseStatus(HttpStatus.CREATED)

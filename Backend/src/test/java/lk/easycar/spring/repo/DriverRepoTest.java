@@ -16,6 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @WebAppConfiguration
@@ -88,4 +89,21 @@ class DriverRepoTest {
         System.out.println(workSchedule.getRequestStatus());;*/
     }
 
+    @Test
+    void getWorkScheduleByDuration() {
+        List<Custom> list = driverRepo.getWorkScheduleByDuration(LocalDate.parse("2022-07-08"), LocalDate.parse("2022-07-18"));
+        for (Custom workSchedule : list) {
+            System.out.println(workSchedule.getRental_id());
+            System.out.println(workSchedule.getLicense_no());
+            System.out.println(workSchedule.getCurrentStatus());
+            System.out.println(workSchedule.getContact_no());
+            System.out.println(workSchedule.getPickUp_date());
+            System.out.println(workSchedule.getPickUp_time());
+            System.out.println(workSchedule.getPickUp_venue());
+            System.out.println(workSchedule.getReturn_date());
+            System.out.println(workSchedule.getReturn_time());
+            System.out.println(workSchedule.getReturn_venue());
+            System.out.println(workSchedule.getRequestStatus());
+        }
+    }
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +55,27 @@ public class DriverServiceImpl implements DriverService {
     public List<CustomDTO> getWorkSchedule(String license_no) {
         ArrayList<CustomDTO> schedule = new ArrayList<>();
         for (Custom custom : driverRepo.getWorkSchedule(license_no)) {
+            schedule.add(new CustomDTO(
+                    custom.getRental_id(),
+                    custom.getLicense_no(),
+                    custom.getCurrentStatus(),
+                    custom.getContact_no(),
+                    custom.getPickUp_date(),
+                    custom.getPickUp_time(),
+                    custom.getPickUp_venue(),
+                    custom.getReturn_date(),
+                    custom.getReturn_time(),
+                    custom.getReturn_venue(),
+                    custom.getRequestStatus()
+            ));
+        }
+        return schedule;
+    }
+
+    @Override
+    public List<CustomDTO> getWorkScheduleByDuration(CustomDTO dto) {
+        ArrayList<CustomDTO> schedule = new ArrayList<>();
+        for (Custom custom : driverRepo.getWorkScheduleByDuration(dto.getPickUp_date(),dto.getReturn_date())) {
             schedule.add(new CustomDTO(
                     custom.getRental_id(),
                     custom.getLicense_no(),
