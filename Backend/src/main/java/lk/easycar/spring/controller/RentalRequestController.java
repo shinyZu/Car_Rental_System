@@ -11,7 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.Month;
 
 @RestController
 @CrossOrigin
@@ -66,6 +68,23 @@ public class RentalRequestController {
     @GetMapping(path = "daily_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateDailyIncome(@RequestParam("date") String date) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome(LocalDate.parse(date)));
+    }
+
+    @GetMapping(path = "monthly_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil calculateMonthlyIncome(@RequestParam("date") String date) {
+        /*Month month = LocalDate.parse(date).getMonth();
+        System.out.println("month : "+month); // July
+        System.out.println(month.getClass().getSimpleName()); // Month
+        System.out.println("month : "+month.getValue()); // 7*/
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Monthly Income for Month "+LocalDate.parse(date).getMonth(), rentalRequestService.calculateMonthlyIncome(LocalDate.parse(date).getMonth().getValue()));
+    }
+
+    @GetMapping(path = "weekly_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil calculateWeeklyIncome(@RequestParam("date") String end_date) {
+        /*LocalDate date1 = LocalDate.parse(date).minusDays(7); // 2022-07-10 - 7 days
+        System.out.println("7 days before is : "+date1);// 2022-07-03*/
+//        return null;
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+end_date, rentalRequestService.calculateWeeklyIncome(end_date));
     }
 
     @ResponseStatus(HttpStatus.CREATED)

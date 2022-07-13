@@ -34,8 +34,6 @@ public class RentalPaymentController {
 
     @GetMapping(path = "calculate_rental", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculatePaymentForEachCar(@RequestBody RentalDetailDTO dto) {
-        System.out.println("-----------inside controller-----------------");
-        System.out.println(dto.toString());
         return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Payment", rentalPaymentService.calculatePaymentForEachCar(dto));
     }
 

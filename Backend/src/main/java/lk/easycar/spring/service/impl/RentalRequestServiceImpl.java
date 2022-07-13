@@ -141,6 +141,27 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public double calculateMonthlyIncome(int month) {
+        List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsByMonth(month);
+        double monthly_income = 0.0;
+        for (RentalRequest request : allPaymentsByDate) {
+            monthly_income += request.getTotalPaymentForRental();
+        }
+        return monthly_income;
+    }
+
+    @Override
+    public double calculateWeeklyIncome(String date) {
+        LocalDate start_date = LocalDate.parse(date).minusDays(7);
+        List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsForWeek(start_date, LocalDate.parse(date));
+        double monthly_income = 0.0;
+        for (RentalRequest request : allPaymentsByDate) {
+            monthly_income += request.getTotalPaymentForRental();
+        }
+        return monthly_income;
+    }
+
+    @Override
     public boolean placeRentalRequest(RentalRequestDTO dto) {
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
         List<RentalDetail> rentalDetails = rentalRequest.getRentalDetails();

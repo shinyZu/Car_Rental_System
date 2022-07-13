@@ -14,6 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @WebAppConfiguration
@@ -92,4 +93,19 @@ class RentalRequestRepoTest {
         }
     }
 
+    @Test
+    void getMonthlyIncome() {
+        List<RentalRequest> monthlyIncome = rentalRequestRepo.getAllPaymentsByMonth(7);
+        for (RentalRequest request : monthlyIncome) {
+            System.out.println(request.getTotalPaymentForRental());
+        }
+    }
+
+    @Test
+    void getAllPaymentsForWeek() {
+        List<RentalRequest> allPaymentsForWeek = rentalRequestRepo.getAllPaymentsForWeek(LocalDate.parse("2022-07-10"), LocalDate.parse("2022-07-17"));
+        for (RentalRequest request : allPaymentsForWeek) {
+            System.out.println(request.getTotalPaymentForRental());
+        }
+    }
 }

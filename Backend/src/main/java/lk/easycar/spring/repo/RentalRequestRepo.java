@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> {
@@ -49,4 +50,9 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
     @Query(value="select * from RentalRequest r where r.return_date=?1",  nativeQuery = true)
     List<RentalRequest> getAllPaymentsByDate(LocalDate date);
 
+    @Query(value="select * from RentalRequest r where month(r.return_date)=?1",  nativeQuery = true)
+    List<RentalRequest> getAllPaymentsByMonth(int month);
+
+    @Query(value="select * from RentalRequest r where r.return_date between ?1 and ?2",  nativeQuery = true)
+    List<RentalRequest> getAllPaymentsForWeek(LocalDate date1, LocalDate date2);
 }
