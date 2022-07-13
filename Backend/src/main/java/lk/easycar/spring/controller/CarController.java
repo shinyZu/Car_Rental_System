@@ -41,6 +41,13 @@ public class CarController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Car Details Updated Successfully",  carService.updateCar(dto));
     }
 
+    // Available, Unavailable, Under Maintenance, Reserved, Returned
+    @PutMapping(path = "status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateCarStatus(@RequestBody CarDTO dto) {
+        carService.updateCarStatus(dto);
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Car Status Updated Successfully",null);
+    }
+
     @DeleteMapping(params = {"reg_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCar(@RequestParam("reg_no") String reg_no) {
         carService.deleteCar(reg_no);

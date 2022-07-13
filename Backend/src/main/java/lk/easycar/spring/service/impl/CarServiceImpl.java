@@ -77,6 +77,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public void updateCarStatus(CarDTO dto) {
+        carRepo.getReferenceById(dto.getReg_no()).setCurrentStatus(dto.getCurrentStatus());
+    }
+
+    @Override
     public void deleteCar(String reg_no) {
         if (carRepo.existsById(reg_no)) {
             CarFleet carFleet = carRepo.getReferenceById(reg_no).getFleet();
