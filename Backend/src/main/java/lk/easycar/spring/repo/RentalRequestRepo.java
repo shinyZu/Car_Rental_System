@@ -46,5 +46,7 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
     @Query(value = "select count(r.rental_id) from RentalRequest r where r.customer_nic=?1 and r.requestStatus=?2", nativeQuery = true)
     int getCountOfActiveRentalsByCustomer(String nic_no, String status);
 
+    @Query(value="select * from RentalRequest r where r.return_date=?1",  nativeQuery = true)
+    List<RentalRequest> getAllPaymentsByDate(LocalDate date);
 
 }

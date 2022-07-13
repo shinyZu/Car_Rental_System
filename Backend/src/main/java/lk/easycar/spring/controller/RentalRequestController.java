@@ -55,16 +55,17 @@ public class RentalRequestController {
 
     @GetMapping(path = "calculate_total_rental_of", params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateTotalPaymentForRental(@RequestParam("rental_id") String rental_id) {
-        System.out.println("-----------inside controller 1-----------------");
-        System.out.println("rental_id 1 : "+rental_id);
         return new ResponseUtil(HttpServletResponse.SC_OK, "Total Rental Payment", rentalRequestService.calculateTotalPaymentForRental(rental_id));
     }
 
     @GetMapping(path = "amount_to_return", params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateAmountToReturn(@RequestParam("rental_id") String rental_id) {
-        System.out.println("-----------inside controller 2-----------------");
-        System.out.println("rental_id 2 : "+rental_id);
         return new ResponseUtil(HttpServletResponse.SC_OK, "Amount To Return", rentalRequestService.calculateAmountToReturn(rental_id));
+    }
+
+    @GetMapping(path = "daily_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil calculateDailyIncome(@RequestParam("date") String date) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome(LocalDate.parse(date)));
     }
 
     @ResponseStatus(HttpStatus.CREATED)

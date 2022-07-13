@@ -83,4 +83,13 @@ class RentalRequestRepoTest {
         int count = rentalRequestRepo.getCountOfActiveRentalsByCustomer("995922121v", "Active");
         System.out.println(count);
     }
+
+    @Test
+    void getAllPaymentsByDate() {
+        List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsByDate(LocalDate.parse("2022-07-10"));
+        for (RentalRequest request : allPaymentsByDate) {
+            System.out.println(request.getTotalPaymentForRental());
+        }
+    }
+
 }

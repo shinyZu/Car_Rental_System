@@ -54,6 +54,11 @@ public class RentalRequest {
         this.requestStatus = requestStatus;
     }
 
+    public RentalRequest(String rental_id, double totalPaymentForRental) {
+        this.rental_id = rental_id;
+        this.totalPaymentForRental = totalPaymentForRental;
+    }
+
     public RentalRequest(String rental_id, LocalDate pickUp_date, LocalDate return_date) {
         this.rental_id = rental_id;
         this.pickUp_date = pickUp_date;
