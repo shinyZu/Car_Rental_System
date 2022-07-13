@@ -109,17 +109,22 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     public double calculateAmountToReturn(String rental_id) {
         if (rentalRequestRepo.existsById(rental_id)) {
             RentalRequest rentalRequest = rentalRequestRepo.getReferenceById(rental_id);
-            double amountToReturn = 0.0;
-            for (RentalDetail detail : rentalRequest.getRentalDetails()) {
-                /** Get LDW fee of each Car */
-                CarFleet fleet =  carRepo.getReferenceById( detail.getReg_no()).getFleet();
-                double fee_LDW = ldwPaymentRepo.getLDWPaymentByFleet(fleet).getFee();
-                double fee_deducted = detail.getFeeDeductedFromLDW();
-                amountToReturn += (fee_LDW - fee_deducted);
+            if (rentalRequest.getTotalPaymentForRental() != 0) { // if only payment has been calculated calculate the amount to return
+                double amountToReturn = 0.0;
+                for (RentalDetail detail : rentalRequest.getRentalDetails()) {
+                    /** Get LDW fee of each Car */
+                    CarFleet fleet = carRepo.getReferenceById(detail.getReg_no()).getFleet();
+                    double fee_LDW = ldwPaymentRepo.getLDWPaymentByFleet(fleet).getFee();
+                    double fee_deducted = detail.getFeeDeductedFromLDW();
+                    amountToReturn += (fee_LDW - fee_deducted);
+                }
+                rentalRequest.setAmountToReturn(amountToReturn);
+                rentalRequest.setRequestStatus("Returned");
+                return amountToReturn;
+            } else {
+                throw new RuntimeException("Total Payment haven't done yet...Please process the Payment");
             }
-            rentalRequest.setAmountToReturn(amountToReturn);
-            rentalRequest.setRequestStatus("Returned");
-            return amountToReturn;
+
         } else {
             throw new RuntimeException("No Such Rental..Please check the Rental ID...");
         }
