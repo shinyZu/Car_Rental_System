@@ -85,4 +85,21 @@ class CarRepoTest {
             System.out.println(car.getTransmissionType());
         }
     }
+
+    @Test
+    void getCarsByBrandExists() {
+        List<Car> suzuki = carRepo.getCarsByBrand("Suzuki Celerio");
+        for (Car car : suzuki) {
+            System.out.println(car.getReg_no() + " : "+ car.getBrand());
+        }
+    }
+
+    @Test
+    void getCarsByFleet() {
+        List<Car> carsByFleet = carRepo.getCarsByFleet("FLT-001");
+        for (Car car : carsByFleet) {
+            System.out.println(car.getReg_no());
+            System.out.println(car.getFleet().getFleet_id());
+        }
+    }
 }

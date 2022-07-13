@@ -56,6 +56,16 @@ public class CarController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By Transmission Type", carService.sortCarsByTransmissionType(type));
     }
 
+    @GetMapping(path = "by_brand", params = {"brand"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil sortCarsByBrand(@RequestParam("brand") String brand) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By Brand", carService.sortCarsByBrand(brand));
+    }
+
+    @GetMapping(path = "by_type", params = {"fleet_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil sortCarsByCarFleet(@RequestParam("fleet_id") String fleet) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By Fleet", carService.sortCarsByCarFleet(fleet));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO dto) {

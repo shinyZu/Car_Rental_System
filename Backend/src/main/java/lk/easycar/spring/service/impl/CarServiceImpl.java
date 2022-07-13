@@ -109,6 +109,16 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public List<CarDTO> sortCarsByBrand(String brand) {
+        return mapper.map(carRepo.getCarsByBrand(brand),new TypeToken<List<CarDTO>>(){}.getType());
+    }
+
+    @Override
+    public List<CarDTO> sortCarsByCarFleet(String fleet) {
+        return mapper.map(carRepo.getCarsByFleet(fleet),new TypeToken<List<CarDTO>>(){}.getType());
+    }
+
+    @Override
     public CarDTO saveCar(CarDTO dto) {
         if (!carRepo.existsById(dto.getReg_no())) {
             String fleet_id = dto.getFleet().getFleet_id(); // fleet_id of the Car to be added

@@ -4,6 +4,7 @@ import lk.easycar.spring.dto.Custom;
 import lk.easycar.spring.entity.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -31,5 +32,11 @@ public interface CarRepo extends JpaRepository<Car, String> {
     List<Car> getCarsByNoOfPassengersEquals(int count);
 
     List<Car> getCarsByTransmissionTypeEquals(String type);
+
+    @Query(value = "select c from Car c where c.brand like '%:brand%'"/*, nativeQuery=true*/)
+    List<Car> getCarsByBrand(@Param("brand") String brand);
+
+    @Query(value = "select * from Car c where fleet_id =?1", nativeQuery=true)
+    List<Car> getCarsByFleet(String fleet_id);
 
 }
