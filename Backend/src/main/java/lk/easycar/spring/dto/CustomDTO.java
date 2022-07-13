@@ -1,5 +1,6 @@
 package lk.easycar.spring.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,20 +17,24 @@ public class CustomDTO {
 
     private String rental_id;
     private String license_no;
-    private String customer_nic;
-    private String reg_no;
-    //    private RentalRequestDTO requestDTO;
+    private String currentStatus;
+    private int contact_no;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUp_date;
+
+    @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime pickUp_time;
+
     private String pickUp_venue;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate return_date;
+
+    @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime return_time;
+
     private String return_venue;
     private String requestStatus;
 
-
-    public CustomDTO(String reg_no, String requestStatus) {
-        this.reg_no = reg_no;
-        this.requestStatus = requestStatus;
-    }
 }

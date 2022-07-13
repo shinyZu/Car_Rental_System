@@ -3,6 +3,7 @@ package lk.easycar.spring.repo;
 import lk.easycar.spring.config.JPAConfig;
 import lk.easycar.spring.dto.Custom;
 import lk.easycar.spring.dto.CustomDTO;
+import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.entity.RentalRequest;
 import org.junit.jupiter.api.Test;
@@ -55,9 +56,36 @@ class DriverRepoTest {
         System.out.println(occupied);
     }
 
-//    @Test
-//    void getWorkSchedule() {
-//        List<CustomDTO> workSchedule = driverRepo.getWorkSchedule("DL-1000001");
-//    }
+
+
+
+    @Test
+    void getWorkSchedule() {
+        List<Custom> list = driverRepo.getWorkSchedule("DL-1000001");
+        for (Custom workSchedule : list) {
+            System.out.println(workSchedule.getRental_id());
+            System.out.println(workSchedule.getLicense_no());
+            System.out.println(workSchedule.getCurrentStatus());
+            System.out.println(workSchedule.getContact_no());
+            System.out.println(workSchedule.getPickUp_date());
+            System.out.println(workSchedule.getPickUp_time());
+            System.out.println(workSchedule.getPickUp_venue());
+            System.out.println(workSchedule.getReturn_date());
+            System.out.println(workSchedule.getReturn_time());
+            System.out.println(workSchedule.getReturn_venue());
+            System.out.println(workSchedule.getRequestStatus());
+        }
+        /*System.out.println(workSchedule.getRental_id());
+        System.out.println(workSchedule.getLicense_no());;
+        System.out.println(workSchedule.getCurrentStatus());;
+        System.out.println(workSchedule.getContact_no());;
+        System.out.println(workSchedule.getPickUp_date());;
+        System.out.println(workSchedule.getPickUp_time());
+        System.out.println(workSchedule.getPickUp_venue());;
+        System.out.println(workSchedule.getReturn_date());;
+        System.out.println(workSchedule.getReturn_time());;
+        System.out.println(workSchedule.getReturn_venue());;
+        System.out.println(workSchedule.getRequestStatus());;*/
+    }
 
 }

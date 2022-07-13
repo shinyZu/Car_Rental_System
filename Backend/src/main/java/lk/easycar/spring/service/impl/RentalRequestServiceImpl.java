@@ -117,6 +117,10 @@ public class RentalRequestServiceImpl implements RentalRequestService {
                     double fee_LDW = ldwPaymentRepo.getLDWPaymentByFleet(fleet).getFee();
                     double fee_deducted = detail.getFeeDeductedFromLDW();
                     amountToReturn += (fee_LDW - fee_deducted);
+
+                    if(detail.getDriverStatus().equals("Required")) {
+                        detail.getDriver().setCurrentStatus("Available");
+                    }
                 }
                 rentalRequest.setAmountToReturn(amountToReturn);
                 rentalRequest.setRequestStatus("Returned");

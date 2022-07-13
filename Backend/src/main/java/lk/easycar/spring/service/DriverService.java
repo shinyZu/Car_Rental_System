@@ -13,7 +13,7 @@ public interface DriverService {
 
     int getNoOfDriversByStatus(String status);
 
-    List<CustomDTO> getDriverSchedule(String license_no);
+    List<CustomDTO> getWorkSchedule(String license_no);
 
     DriverDTO saveDriver(DriverDTO dto);
 

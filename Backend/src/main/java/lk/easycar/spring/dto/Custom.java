@@ -6,11 +6,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public interface Custom {
-    String getRentalID();
+    String getRental_id();
 
-    String getLicenseNo();
+    String getLicense_no();
 
-    String getCustomerNIC();
+    String getCurrentStatus();
+
+    int getContact_no();
 
     LocalDate getPickUp_date();
 
