@@ -77,4 +77,12 @@ class CarRepoTest {
             System.out.println(car.getNoOfPassengers());
         }
     }
+
+    @Test
+    void getCarsByTransmissionTypeEquals() {
+        List<Car> manual = carRepo.getCarsByTransmissionTypeEquals("Auto");
+        for (Car car : manual) {
+            System.out.println(car.getTransmissionType());
+        }
+    }
 }

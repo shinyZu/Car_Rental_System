@@ -29,4 +29,7 @@ public interface CarRepo extends JpaRepository<Car, String> {
     List<Custom> getCarsByDate(LocalDate date, String status);
 
     List<Car> getCarsByNoOfPassengersEquals(int count);
+
+    List<Car> getCarsByTransmissionTypeEquals(String type);
+
 }

@@ -51,6 +51,11 @@ public class CarController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By No Of Passengers", carService.sortCarsByNoOfPassengers(noOfPassengers));
     }
 
+    @GetMapping(path = "by_transmission_type", params = {"transmission_type"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil sortCarsByTransmissionType(@RequestParam("transmission_type") String type) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By Transmission Type", carService.sortCarsByTransmissionType(type));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO dto) {
