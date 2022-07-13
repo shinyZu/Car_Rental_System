@@ -12,4 +12,7 @@ public interface RentalPaymentRepo extends JpaRepository<RentalPayment,String> {
 
     @Query(value = "select rp.fee_id from RentalPayment rp order by rp.fee_id desc LIMIT 1", nativeQuery=true)
     String getLastPaymentID();
+
+    @Query(value = "select rp.fee from RentalPayment rp where rp.rental_id =?1",nativeQuery=true)
+    List<Double> getAllRentalPayments(String rental_id);
 }

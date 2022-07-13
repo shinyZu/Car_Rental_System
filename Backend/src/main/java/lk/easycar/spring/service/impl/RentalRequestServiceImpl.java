@@ -93,6 +93,20 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public double calculateTotalPaymentForRental(String rental_id) {
+        if (rentalRequestRepo.existsById(rental_id)) {
+            List<Double> allRentalPayments = rentalPaymentRepo.getAllRentalPayments(rental_id);
+            double totalPayment=0.0;
+            for (Double payment : allRentalPayments) {
+                totalPayment += payment;
+            }
+            return totalPayment;
+        } else {
+            throw new RuntimeException("No Such Rental..Please check the Rental ID...");
+        }
+    }
+
+    @Override
     public boolean placeRentalRequest(RentalRequestDTO dto) {
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
         List<RentalDetail> rentalDetails = rentalRequest.getRentalDetails();

@@ -23,14 +23,23 @@ class RentalPaymentRepoTest {
     @Autowired
     RentalPaymentRepo rentalPaymentRepo;
 
+    /*@Test
+    void findByOrOrderByFee_idDesc() {
+        List<RentalPayment> order = rentalPaymentRepo.findByOrderByFee_idDesc("RF-0001");
+    }*/
+
     @Test
     void getLastPaymentID() {
         String lastPaymentID = rentalPaymentRepo.getLastPaymentID();
         System.out.println(lastPaymentID);
     }
 
-    /*@Test
-    void findByOrOrderByFee_idDesc() {
-        List<RentalPayment> order = rentalPaymentRepo.findByOrderByFee_idDesc("RF-0001");
-    }*/
+    @Test
+    void getAllRentalPayments() {
+        List<Double> allRentalPayments = rentalPaymentRepo.getAllRentalPayments("RNTL-0001");
+        System.out.println(allRentalPayments.get(0));
+        System.out.println(allRentalPayments.get(1));
+    }
+
+
 }

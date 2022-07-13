@@ -19,6 +19,8 @@ public interface RentalRequestService {
 
     int getNoOfTotalRentalsForTheDay(LocalDate date);
 
+    double calculateTotalPaymentForRental(String rental_id);
+
     boolean placeRentalRequest(RentalRequestDTO dto);
 
     RentalRequestDTO updateRental(RentalRequestDTO dto);

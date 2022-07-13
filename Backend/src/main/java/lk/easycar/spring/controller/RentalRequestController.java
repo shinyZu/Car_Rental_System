@@ -1,6 +1,7 @@
 package lk.easycar.spring.controller;
 
 import lk.easycar.spring.dto.CustomDTO;
+import lk.easycar.spring.dto.RentalDetailDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
 import lk.easycar.spring.service.RentalRequestService;
 import lk.easycar.spring.util.ResponseUtil;
@@ -50,6 +51,13 @@ public class RentalRequestController {
     @GetMapping(params = {"total_rentals_for"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getNoOfTotalRentalsForTheDay(@RequestParam("total_rentals_for") String date) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Total No Of Rentals For The Day", rentalRequestService.getNoOfTotalRentalsForTheDay(LocalDate.parse(date)));
+    }
+
+    @GetMapping(path = "calculate_total_rental_of", params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil calculateTotalPaymentForRental(@RequestParam("rental_id") String rental_id) {
+        System.out.println("-----------inside controller-----------------");
+        System.out.println(rental_id);
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Payment", rentalRequestService.calculateTotalPaymentForRental(rental_id));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
