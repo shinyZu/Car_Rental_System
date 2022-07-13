@@ -17,8 +17,8 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean login(LoginDTO dto) {
         if ((int) loginRepo.count() != 0) {
-            if (loginRepo.existsById(dto.getEmail())) {
-                if (loginRepo.getReferenceById(dto.getEmail()).getPassword().equals(dto.getPassword())) {
+            if (loginRepo.existsById(dto.getEmail())) { // if already a User have logged in with a given email
+                if (loginRepo.getReferenceById(dto.getEmail()).getPassword().equals(dto.getPassword())) { // if it is provided with the correct password for that email
                     return true;
 
                 } else {
@@ -26,7 +26,7 @@ public class LoginServiceImpl implements LoginService {
                 }
 
             } else {
-                throw new RuntimeException("Invalid Email...Please check your Email...");
+                throw new RuntimeException("Invalid Email...Please check your Email..."); // User with this email have not yet Logged in/Registered..Have to first Sign In
             }
 
         } else {
