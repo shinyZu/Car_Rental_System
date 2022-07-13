@@ -29,6 +29,11 @@ public class CarController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", carService.searchCar(reg_no));
     }
 
+    @GetMapping(path = "count_of", params = {"currentStatus"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getNoOfCarsByStatus(@RequestParam("currentStatus") String status) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, status + " Car Count of Status "+status, carService.getNoOfCarsByStatus(status));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO dto) {

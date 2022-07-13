@@ -28,8 +28,8 @@ public class DriverController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", driverService.searchDriver(license_no));
     }
 
-    @GetMapping(params = {"countOf"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getNoOfDriversByStatus(@RequestParam("countOf") String status) {
+    @GetMapping(path = "count_of", params = {"currentStatus"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getNoOfDriversByStatus(@RequestParam("currentStatus") String status) {
         return new ResponseUtil(HttpServletResponse.SC_OK, status + " Driver Count", driverService.getNoOfDriversByStatus(status));
     }
 

@@ -46,6 +46,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public int getNoOfCarsByStatus(String status) {
+        return carRepo.countCarsByCurrentStatus(status);
+    }
+
+    @Override
     public CarDTO saveCar(CarDTO dto) {
         if (!carRepo.existsById(dto.getReg_no())) {
             String fleet_id = dto.getFleet().getFleet_id(); // fleet_id of the Car to be added

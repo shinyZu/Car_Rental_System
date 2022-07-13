@@ -9,6 +9,8 @@ public interface CarService {
 
     CarDTO searchCar(String reg_no);
 
+    int getNoOfCarsByStatus(String status);
+
     CarDTO saveCar(CarDTO dto);
 
     CarDTO updateCar(CarDTO dto);
