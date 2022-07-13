@@ -28,6 +28,8 @@ public interface RentalRequestService {
 
     double calculateWeeklyIncome(String date);
 
+    double calculateAnnualIncome(String date);
+
     boolean placeRentalRequest(RentalRequestDTO dto);
 
     RentalRequestDTO updateRental(RentalRequestDTO dto);

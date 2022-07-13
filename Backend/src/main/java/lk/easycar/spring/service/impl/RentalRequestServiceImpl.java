@@ -162,6 +162,16 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public double calculateAnnualIncome(String date) {
+        List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsForYear( LocalDate.parse(date).getYear());
+        double annual_income = 0.0;
+        for (RentalRequest request : allPaymentsByDate) {
+            annual_income += request.getTotalPaymentForRental();
+        }
+        return annual_income;
+    }
+
+    @Override
     public boolean placeRentalRequest(RentalRequestDTO dto) {
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
         List<RentalDetail> rentalDetails = rentalRequest.getRentalDetails();

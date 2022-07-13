@@ -108,4 +108,12 @@ class RentalRequestRepoTest {
             System.out.println(request.getTotalPaymentForRental());
         }
     }
+
+    @Test
+    void getAllPaymentsForYear() {
+        List<RentalRequest> allPaymentsForYear = rentalRequestRepo.getAllPaymentsForYear(2021);
+        for (RentalRequest request : allPaymentsForYear) {
+            System.out.println(request.getTotalPaymentForRental());
+        }
+    }
 }
