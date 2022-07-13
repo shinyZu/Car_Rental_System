@@ -77,4 +77,10 @@ class RentalRequestRepoTest {
         String duration = rentalRequestRepo.getRentalDuration("RNTL-0001");
         System.out.println(duration);
     }
+
+    @Test
+    void getCountOfActiveRentalsByCustomer() {
+        int count = rentalRequestRepo.getCountOfActiveRentalsByCustomer("995922121v", "Active");
+        System.out.println(count);
+    }
 }

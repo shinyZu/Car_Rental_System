@@ -3,6 +3,7 @@ package lk.easycar.spring.service.impl;
 import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.repo.CustomerRepo;
+import lk.easycar.spring.repo.RentalRequestRepo;
 import lk.easycar.spring.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -18,6 +19,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerRepo customerRepo;
+
+    @Autowired
+    private RentalRequestRepo rentalRequestRepo;
 
     @Autowired
     private ModelMapper mapper;
@@ -51,11 +55,20 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO updateCustomer(CustomerDTO dto) {
+    public String updateCustomer(CustomerDTO dto) {
         if (customerRepo.existsById(dto.getNic_no())) {
-            return mapper.map(customerRepo.save(mapper.map(dto, Customer.class)),CustomerDTO.class);
+            int ongoing_rentals = rentalRequestRepo.getCountOfActiveRentalsByCustomer(dto.getNic_no(), "Active");
+            if (ongoing_rentals == 0) {
+                mapper.map(customerRepo.save(mapper.map(dto, Customer.class)), CustomerDTO.class);
+                return "Updated";
+            }  else {
+                customerRepo.getReferenceById(dto.getNic_no()).setContact_no(dto.getContact_no());
+//                throw new RuntimeException("You have "+ongoing_rentals+" ongoing Rental/s..You can only Update your Contact Number...\nTry Again once your Rentals are returned...");
+                return "You have "+ongoing_rentals+" ongoing Rental/s..You can only Update your Contact Number...\nTry Again once your Rentals are returned...";
+            }
+
         } else {
-            throw new RuntimeException("No Such Customer..Please check the NIC...");
+            throw new RuntimeException("Invalid Customer NIC..Please check the NIC...");
         }
     }
 

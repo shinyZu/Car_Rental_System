@@ -1,13 +1,11 @@
 package lk.easycar.spring.repo;
 
-import lk.easycar.spring.dto.RentalRequestDTO;
 import lk.easycar.spring.entity.RentalRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> {
@@ -42,9 +40,11 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
     @Query(value = "select r from RentalRequest r inner join Customer c on r.customer = c.nic_no where c.nic_no=?1 and r.requestStatus=?2"/*,nativeQuery=true*/)
     RentalRequest getRentalRequestByCustomer(String nic_no, String status);
 
-    @Query(value = "select (r.return_date- r.pickUp_date) from RentalRequest r where r.rental_id=?1",nativeQuery=true)
+    @Query(value = "select (r.return_date- r.pickUp_date) from RentalRequest r where r.rental_id=?1", nativeQuery = true)
     String getRentalDuration(String rental_id);
 
+    @Query(value = "select count(r.rental_id) from RentalRequest r where r.customer_nic=?1 and r.requestStatus=?2", nativeQuery = true)
+    int getCountOfActiveRentalsByCustomer(String nic_no, String status);
 
 
 }
