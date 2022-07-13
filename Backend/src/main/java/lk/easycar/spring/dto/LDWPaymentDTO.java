@@ -17,8 +17,8 @@ public class LDWPaymentDTO {
     private String fee_id;
     private double fee;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateOfPayment;
+//    @JsonFormat(pattern = "yyyy-MM-dd")
+//    private LocalDate dateOfPayment;
 
     private CarFleet fleet;
 

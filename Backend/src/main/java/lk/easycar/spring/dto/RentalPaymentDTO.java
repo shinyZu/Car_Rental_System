@@ -18,9 +18,15 @@ public class RentalPaymentDTO {
     private String fee_id;
     private double fee;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateOfPayment;
+//    @JsonFormat(pattern = "yyyy-MM-dd")
+//    private LocalDate dateOfPayment;
 
     private RentalRequest rental;
     private Car cars;
+
+    public RentalPaymentDTO(double fee, RentalRequest rental, Car cars) {
+        this.fee = fee;
+        this.rental = rental;
+        this.cars = cars;
+    }
 }

@@ -26,35 +26,221 @@
   <component name="ChangeListManager">
     <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalPaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalPaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CustomDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CustomDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/RentalRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/RentalRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/LDWPaymentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/LDWPaymentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/RentalDetailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/RentalDetailDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/RentalPaymentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/RentalPaymentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/CarFleet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/CarFleet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/LDWPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/LDWPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/RentalPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/RentalPayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/RentalRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/entity/RentalRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalDetailRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalDetailRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/LDWPaymentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/LDWPaymentRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalPaymentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalPaymentRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalPaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalPaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/CarFleetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/CarFleetServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/CarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalPaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalPaymentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalDetailRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalDetailRepoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/DriverRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/DriverRepoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/RentalRequestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/RentalRequestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/CustomDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/CustomDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/RentalRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/RentalRequestDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalDetailRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalDetailRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalRequestRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalRequestRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/RentalRequestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/RentalRequestService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/RentalRequestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/RentalRequestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/CustomDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/CustomDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/RentalRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/RentalRequestDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalDetailRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalDetailRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalRequestRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalRequestRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/RentalRequestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/RentalRequestService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalDetailRepoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalDetailRepoTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalRequestRepoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalRequestRepoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/META-INF/context.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/WebAppInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/config/JPAConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/config/WebAppConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/config/WebRootConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/CarController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/CarFleetController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/CustomerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/DriverController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/LDWPaymentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/RentalDetailController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/RentalPaymentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/RentalRequestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/AdminDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/CarDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/CarFleetDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/Custom.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/CustomDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/CustomerDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/DriverDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/LDWPaymentDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/RentalDetailDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/RentalPaymentDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/dto/RentalRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/CarFleet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/Driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/LDWPayment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/RentalCar_PK.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/RentalDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/RentalPayment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/entity/RentalRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/AdminRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/CarFleetRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/CarRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/CustomerRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/DriverRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/LDWPaymentRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalDetailRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalPaymentRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/repo/RentalRequestRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/CarFleetService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/CarService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/CustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/DriverService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/LDWPaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/RentalDetailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/RentalPaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/RentalRequestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/AdminServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/AdminServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/CarFleetServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/CarFleetServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/CarServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/CarServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/CustomerServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/CustomerServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/DriverServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/DriverServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/LDWPaymentServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/LDWPaymentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalDetailServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalDetailServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalPaymentServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalPaymentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/util/ResponseUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/FastInfoset-1.2.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/antlr-2.7.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/byte-buddy-1.12.9.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/classmate-1.5.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/hibernate-commons-annotations-5.1.2.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/hibernate-core-5.6.9.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jackson-annotations-2.13.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jackson-core-2.13.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jackson-databind-2.13.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jackson-datatype-jsr310-2.13.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jandex-2.4.2.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/javax.activation-api-1.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/javax.persistence-api-2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jaxb-api-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jaxb-runtime-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jboss-logging-3.4.3.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/modelmapper-3.1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/mysql-connector-java-8.0.29.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/protobuf-java-3.19.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/slf4j-api-1.7.32.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-aop-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-beans-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-context-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-core-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-data-commons-2.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-data-jpa-2.7.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-expression-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-jcl-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-jdbc-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-orm-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-tx-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-web-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/spring-webmvc-5.3.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/stax-ex-1.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/lib/txw2-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/WebAppInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/config/JPAConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/config/WebAppConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/config/WebRootConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/CarController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/CarFleetController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/CustomerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/DriverController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/LDWPaymentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/RentalDetailController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/RentalPaymentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/RentalRequestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/AdminDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/CarDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/CarFleetDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/Custom.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/CustomDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/CustomerDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/DriverDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/LDWPaymentDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/RentalDetailDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/RentalPaymentDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/dto/RentalRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/CarFleet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/LDWPayment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/RentalCar_PK.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/RentalDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/RentalPayment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/entity/RentalRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/AdminRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/CarFleetRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/CarRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/CustomerRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/DriverRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/LDWPaymentRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalDetailRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalPaymentRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/repo/RentalRequestRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/CarFleetService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/CarService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/CustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/DriverService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/LDWPaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/RentalDetailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/RentalPaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/RentalRequestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/AdminServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/AdminServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/CarFleetServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/CarFleetServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/CarServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/CarServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/CustomerServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/CustomerServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/DriverServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/DriverServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/LDWPaymentServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/LDWPaymentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalDetailServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalDetailServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalPaymentServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalPaymentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/RentalRequestServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/util/ResponseUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/CustomerRepoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/DriverRepoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalDetailRepoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/RentalRequestRepoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/service/impl/DriverServiceImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/service/impl/RentalRequestServiceImplTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +299,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.78">
-    <configuration name="RentalDetailRepoTest.getRental_idOfReg_no" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LDWPaymentRepoTest.getLDWPaymentByFleet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -122,14 +308,62 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalDetailRepoTest" />
-      <option name="METHOD_NAME" value="getRental_idOfReg_no" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.LDWPaymentRepoTest" />
+      <option name="METHOD_NAME" value="getLDWPaymentByFleet" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RentalRequestRepoTest.countActiveRentalsForTheDay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LDWPaymentRepoTest.getLDWPaymentByFleet_id" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.LDWPaymentRepoTest" />
+      <option name="METHOD_NAME" value="getLDWPaymentByFleet_id" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RentalPaymentRepoTest.findByOrOrderByFee_idDesc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalPaymentRepoTest" />
+      <option name="METHOD_NAME" value="findByOrOrderByFee_idDesc" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RentalPaymentRepoTest.getLastPaymentID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalPaymentRepoTest" />
+      <option name="METHOD_NAME" value="getLastPaymentID" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RentalRequestRepoTest.getRentalDuration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -139,55 +373,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
       <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
-      <option name="METHOD_NAME" value="countActiveRentalsForTheDay" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RentalRequestRepoTest.countTotalRentalsForTheDay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
-      <option name="METHOD_NAME" value="countTotalRentalsForTheDay" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RentalRequestRepoTest.getRentalByRegNoAndRequestStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
-      <option name="METHOD_NAME" value="getRentalByRegNoAndRequestStatus" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RentalRequestRepoTest.getRentalRequestByCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
-      <option name="METHOD_NAME" value="getRentalRequestByCustomer" />
+      <option name="METHOD_NAME" value="getRentalDuration" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -267,11 +453,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RentalRequestRepoTest.getRentalRequestByCustomer" />
-        <item itemvalue="JUnit.RentalDetailRepoTest.getRental_idOfReg_no" />
-        <item itemvalue="JUnit.RentalRequestRepoTest.getRentalByRegNoAndRequestStatus" />
-        <item itemvalue="JUnit.RentalRequestRepoTest.countActiveRentalsForTheDay" />
-        <item itemvalue="JUnit.RentalRequestRepoTest.countTotalRentalsForTheDay" />
+        <item itemvalue="JUnit.RentalPaymentRepoTest.getLastPaymentID" />
+        <item itemvalue="JUnit.RentalPaymentRepoTest.findByOrOrderByFee_idDesc" />
+        <item itemvalue="JUnit.RentalRequestRepoTest.getRentalDuration" />
+        <item itemvalue="JUnit.LDWPaymentRepoTest.getLDWPaymentByFleet" />
+        <item itemvalue="JUnit.LDWPaymentRepoTest.getLDWPaymentByFleet_id" />
       </list>
     </recent_temporary>
   </component>
@@ -297,7 +483,7 @@
       <workItem from="1657548018617" duration="722000" />
       <workItem from="1657548759660" duration="15976000" />
       <workItem from="1657598026559" duration="144000" />
-      <workItem from="1657610746484" duration="19897000" />
+      <workItem from="1657610746484" duration="44779000" />
     </task>
     <servers />
   </component>
@@ -325,10 +511,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="424" y="159" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657548829140" />
-    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1657632103559">
+    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1657690297975">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632103559" />
+    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657690297975" />
     <state x="553" y="426" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1657569414895">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -337,62 +523,94 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="747" y="259" key="FileChooserDialogImpl/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657548202925" />
-    <state width="1874" height="280" key="GridCell.Tab.0.bottom" timestamp="1657633108549">
+    <state width="1874" height="290" key="GridCell.Tab.0.bottom" timestamp="1657699092100">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657633108549" />
-    <state width="1874" height="280" key="GridCell.Tab.0.center" timestamp="1657633108549">
+    <state width="1874" height="290" key="GridCell.Tab.0.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657699092100" />
+    <state width="1874" height="290" key="GridCell.Tab.0.center" timestamp="1657699092100">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="280" key="GridCell.Tab.0.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657633108549" />
-    <state width="1874" height="280" key="GridCell.Tab.0.left" timestamp="1657633108549">
+    <state width="1874" height="290" key="GridCell.Tab.0.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657699092100" />
+    <state width="1874" height="290" key="GridCell.Tab.0.left" timestamp="1657699092100">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="280" key="GridCell.Tab.0.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657633108549" />
-    <state width="1874" height="280" key="GridCell.Tab.0.right" timestamp="1657633108549">
+    <state width="1874" height="290" key="GridCell.Tab.0.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657699092100" />
+    <state width="1874" height="290" key="GridCell.Tab.0.right" timestamp="1657699092100">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="280" key="GridCell.Tab.0.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657633108549" />
-    <state width="1291" height="167" key="GridCell.Tab.1.bottom" timestamp="1657632961104">
+    <state width="1874" height="290" key="GridCell.Tab.0.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657699092100" />
+    <state width="1291" height="333" key="GridCell.Tab.1.bottom" timestamp="1657698935899">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="167" key="GridCell.Tab.1.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
-    <state width="1291" height="167" key="GridCell.Tab.1.center" timestamp="1657632961104">
+    <state width="1291" height="333" key="GridCell.Tab.1.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657698935899" />
+    <state width="1291" height="333" key="GridCell.Tab.1.center" timestamp="1657698935899">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="167" key="GridCell.Tab.1.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
-    <state width="1291" height="167" key="GridCell.Tab.1.left" timestamp="1657632961104">
+    <state width="1291" height="333" key="GridCell.Tab.1.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657698935899" />
+    <state width="1291" height="333" key="GridCell.Tab.1.left" timestamp="1657698935899">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="167" key="GridCell.Tab.1.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
-    <state width="1291" height="167" key="GridCell.Tab.1.right" timestamp="1657632961104">
+    <state width="1291" height="333" key="GridCell.Tab.1.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657698935899" />
+    <state width="1291" height="333" key="GridCell.Tab.1.right" timestamp="1657698935899">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="167" key="GridCell.Tab.1.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
-    <state width="1291" height="167" key="GridCell.Tab.2.bottom" timestamp="1657632961104">
+    <state width="1291" height="333" key="GridCell.Tab.1.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657698935899" />
+    <state width="1291" height="333" key="GridCell.Tab.2.bottom" timestamp="1657698935899">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="167" key="GridCell.Tab.2.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
-    <state width="1291" height="167" key="GridCell.Tab.2.center" timestamp="1657632961104">
+    <state width="1291" height="333" key="GridCell.Tab.2.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657698935899" />
+    <state width="1291" height="333" key="GridCell.Tab.2.center" timestamp="1657698935899">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="167" key="GridCell.Tab.2.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
-    <state width="1291" height="167" key="GridCell.Tab.2.left" timestamp="1657632961104">
+    <state width="1291" height="333" key="GridCell.Tab.2.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657698935899" />
+    <state width="1291" height="333" key="GridCell.Tab.2.left" timestamp="1657698935899">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="167" key="GridCell.Tab.2.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
-    <state width="1291" height="167" key="GridCell.Tab.2.right" timestamp="1657632961104">
+    <state width="1291" height="333" key="GridCell.Tab.2.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657698935899" />
+    <state width="1291" height="333" key="GridCell.Tab.2.right" timestamp="1657698935899">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="167" key="GridCell.Tab.2.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632961104" />
+    <state width="1291" height="333" key="GridCell.Tab.2.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657698935899" />
+    <state width="1291" height="612" key="GridCell.Tab.3.bottom" timestamp="1657688941294">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1291" height="612" key="GridCell.Tab.3.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657688941294" />
+    <state width="1291" height="612" key="GridCell.Tab.3.center" timestamp="1657688941294">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1291" height="612" key="GridCell.Tab.3.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657688941294" />
+    <state width="1291" height="612" key="GridCell.Tab.3.left" timestamp="1657688941294">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1291" height="612" key="GridCell.Tab.3.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657688941294" />
+    <state width="1291" height="612" key="GridCell.Tab.3.right" timestamp="1657688941294">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1291" height="612" key="GridCell.Tab.3.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657688941294" />
+    <state width="1291" height="612" key="GridCell.Tab.4.bottom" timestamp="1657688938390">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1291" height="612" key="GridCell.Tab.4.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657688938390" />
+    <state width="1291" height="612" key="GridCell.Tab.4.center" timestamp="1657688938390">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1291" height="612" key="GridCell.Tab.4.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657688938390" />
+    <state width="1291" height="612" key="GridCell.Tab.4.left" timestamp="1657688938390">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1291" height="612" key="GridCell.Tab.4.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657688938390" />
+    <state width="1291" height="612" key="GridCell.Tab.4.right" timestamp="1657688938390">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1291" height="612" key="GridCell.Tab.4.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657688938390" />
     <state x="448" y="79" width="1024" height="855" key="SettingsEditor" timestamp="1657548822787">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="448" y="79" width="1024" height="855" key="SettingsEditor/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657548822787" />
-    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1657632030727">
+    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1657699382208">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657632030727" />
+    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657699382208" />
     <state x="340" y="103" key="new project wizard" timestamp="1657547899426">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

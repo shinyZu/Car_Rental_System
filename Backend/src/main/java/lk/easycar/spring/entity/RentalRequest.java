@@ -42,8 +42,12 @@ public class RentalRequest {
     @JoinColumn(name = "admin_id", referencedColumnName = "admin_id")
     private Admin admin;
 
-    @OneToMany(mappedBy = "rental", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rental", cascade = CascadeType.ALL/*, fetch=FetchType.EAGER*/)
     private List<RentalDetail> rentalDetails = new ArrayList<>();
+
+    public RentalRequest(String rental_id) {
+        this.rental_id = rental_id;
+    }
 
     public RentalRequest(String rental_id, String requestStatus) {
         this.rental_id = rental_id;

@@ -24,6 +24,11 @@ public class CarFleet {
 //    @OneToMany(mappedBy = "fleet", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    private List<Car> carList = new ArrayList<>();
 
+
+    public CarFleet(String fleet_id) {
+        this.fleet_id = fleet_id;
+    }
+
     public CarFleet(String fleet_id, String description) {
         this.fleet_id = fleet_id;
         this.description = description;

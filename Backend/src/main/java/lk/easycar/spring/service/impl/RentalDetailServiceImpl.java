@@ -78,4 +78,9 @@ public class RentalDetailServiceImpl implements RentalDetailService {
         double km_travelled = dto.getKm_atReturn() - dto.getKm_atPickUp();
         return rentalDetailRepo.updateDetailsAfterReturn(dto.getRental_id(),dto.getReg_no(),dto.getFeeDeductedFromLDW(),dto.getKm_atReturn(),km_travelled);
     }
+
+    @Override
+    public int deleteRentalDetail(RentalDetailDTO dto) {
+        return 0;
+    }
 }

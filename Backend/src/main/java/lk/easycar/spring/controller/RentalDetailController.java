@@ -32,4 +32,10 @@ public class RentalDetailController {
     public ResponseUtil updateDetailsAfterReturn(@RequestBody RentalDetailDTO dto) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Details Updated Successfully", rentalDetailService.updateDetailsAfterReturn(dto)==1 ? "Success" : "Fail");
     }
+
+    @DeleteMapping(path = "delete_detail", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteRental(@RequestBody RentalDetailDTO dto) {
+        rentalDetailService.deleteRentalDetail(dto);
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Detail Deleted Successfully", null);
+    }
 }

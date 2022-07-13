@@ -55,9 +55,9 @@ class DriverRepoTest {
         System.out.println(occupied);
     }
 
-    @Test
-    void getWorkSchedule() {
-        List<CustomDTO> workSchedule = driverRepo.getWorkSchedule("DL-1000001");
-    }
+//    @Test
+//    void getWorkSchedule() {
+//        List<CustomDTO> workSchedule = driverRepo.getWorkSchedule("DL-1000001");
+//    }
 
 }

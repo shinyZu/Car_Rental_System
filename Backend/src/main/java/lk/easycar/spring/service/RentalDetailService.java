@@ -12,4 +12,6 @@ public interface RentalDetailService {
     boolean changeAssignedDriver(RentalDetailDTO dto, String license_no);
 
     int updateDetailsAfterReturn(RentalDetailDTO dto);
+
+    int deleteRentalDetail(RentalDetailDTO dto);
 }

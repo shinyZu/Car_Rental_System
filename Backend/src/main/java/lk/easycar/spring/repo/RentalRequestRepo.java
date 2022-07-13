@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> {
@@ -14,8 +15,8 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
     @Query(value = "select r from RentalRequest r")
     List<RentalRequest> getAllRequests();
 
-    @Query(value = "select r.rental_id, r.pickUp_date, r.return_date from RentalRequest r where r.rental_id=?1")
-    RentalRequest getRentalDuration(String rental_id);
+//    @Query(value = "select r.rental_id, r.pickUp_date, r.return_date from RentalRequest r where r.rental_id=?1")
+//    RentalRequest getRentalDuration(String rental_id);
 
     @Query(value = "select r.requestStatus from RentalRequest r where r.rental_id=?1")
     String getRequestStatusByRental_id(String rental_id);
@@ -40,4 +41,10 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
 
     @Query(value = "select r from RentalRequest r inner join Customer c on r.customer = c.nic_no where c.nic_no=?1 and r.requestStatus=?2"/*,nativeQuery=true*/)
     RentalRequest getRentalRequestByCustomer(String nic_no, String status);
+
+    @Query(value = "select (r.return_date- r.pickUp_date) from RentalRequest r where r.rental_id=?1",nativeQuery=true)
+    String getRentalDuration(String rental_id);
+
+
+
 }

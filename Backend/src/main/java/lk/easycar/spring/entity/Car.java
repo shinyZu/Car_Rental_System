@@ -35,4 +35,7 @@ public class Car {
     private double freeKM_month;
     private String currentStatus; // Available(if not requested), Unavailable(if Damaged), Reserved(if requested), Under Maintenance
 
+    public Car(String reg_no) {
+        this.reg_no = reg_no;
+    }
 }

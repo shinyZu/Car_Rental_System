@@ -36,12 +36,6 @@ class RentalRequestRepoTest {
     }
 
     @Test
-    void getRentalDuration() {
-        RentalRequest duration = rentalRequestRepo.getRentalDuration("RNTL-0001");
-    }
-
-
-    @Test
     void getRequestStatusByRental_id() {
         String status = rentalRequestRepo.getRequestStatusByRental_id("RNTL-0001");
         System.out.println(status);
@@ -76,5 +70,11 @@ class RentalRequestRepoTest {
         System.out.println(request.getRequestStatus());
         System.out.println(request.getRentalDetails().get(0).getReg_no());
         System.out.println(request.getRentalDetails().get(1).getReg_no());
+    }
+
+    @Test
+    void getRentalDuration() {
+        String duration = rentalRequestRepo.getRentalDuration("RNTL-0001");
+        System.out.println(duration);
     }
 }

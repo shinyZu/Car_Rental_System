@@ -21,4 +21,16 @@ public class RentalDetailDTO {
     private double km_atPickUp;
     private double km_atReturn;
     private double km_travelled;
+
+    public RentalDetailDTO(String rental_id, String reg_no) {
+        this.rental_id = rental_id;
+        this.reg_no = reg_no;
+    }
+
+    public RentalDetailDTO(String rental_id, String reg_no, double feeDeductedFromLDW, double km_atReturn) {
+        this.rental_id = rental_id;
+        this.reg_no = reg_no;
+        this.feeDeductedFromLDW = feeDeductedFromLDW;
+        this.km_atReturn = km_atReturn;
+    }
 }

@@ -19,7 +19,7 @@ public class RentalPayment {
     @Id
     private String fee_id;
     private double fee;
-    private LocalDate dateOfPayment;
+//    private LocalDate dateOfPayment;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rental_id", referencedColumnName = "rental_id")
@@ -32,4 +32,6 @@ public class RentalPayment {
     /*@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reg_no", referencedColumnName = "reg_no")
     private RentalDetail rentalDetail;*/
+
+
 }

@@ -20,7 +20,7 @@ public class LDWPayment {
     private String fee_id;
     private double fee;
 
-    private LocalDate dateOfPayment;
+//    private LocalDate dateOfPayment;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fleet_id", referencedColumnName = "fleet_id")

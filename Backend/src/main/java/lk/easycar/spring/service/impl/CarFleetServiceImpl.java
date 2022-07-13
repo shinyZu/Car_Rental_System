@@ -46,7 +46,7 @@ public class CarFleetServiceImpl implements CarFleetService {
         if (!carFleetRepo.existsById(dto.getFleet_id())) {
             return mapper.map(carFleetRepo.save(mapper.map(dto, CarFleet.class)), CarFleetDTO.class);
         } else {
-            throw new RuntimeException("Car Fleet "+ dto.getDescription() +" Already Exists...");
+            throw new RuntimeException("Car Fleet with "+ dto.getFleet_id() +" Already Exists...");
         }
     }
 

@@ -43,10 +43,7 @@ public class RentalRequestController {
 
     @GetMapping(params = {"active_rentals"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getNoOfActiveRentalsForTheDay(@RequestParam("active_rentals") String date) {
-//        System.out.println(date.getClass().getSimpleName()); // String
-//        LocalDate parse = LocalDate.parse(date);
-//        System.out.println(parse); // 2022-09-09
-//        System.out.println(parse.getClass().getSimpleName()); // LocalDate
+//        System.out.println(LocalDate.parse(date).getClass().getSimpleName()); // LocalDate
         return new ResponseUtil(HttpServletResponse.SC_OK, "No Of Active Rentals", rentalRequestService.getNoOfActiveRentalsForTheDay(LocalDate.parse(date)));
     }
 
