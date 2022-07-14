@@ -12,4 +12,7 @@ public interface LDWPaymentRepo extends JpaRepository<LDWPayment, String> {
     double getLDWPaymentByFleet_id(CarFleet fleet);*/
 
     LDWPayment getLDWPaymentByFleet(CarFleet fleet);
+
+    @Query(value = "select l.fee_id from LDWPayment l order by l.fee_id desc LIMIT 1", nativeQuery=true)
+    String getLastID();
 }

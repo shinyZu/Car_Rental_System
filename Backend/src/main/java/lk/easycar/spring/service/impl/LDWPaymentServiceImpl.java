@@ -31,6 +31,31 @@ public class LDWPaymentServiceImpl implements LDWPaymentService {
     }
 
     @Override
+    public String generateNextID() {
+        long count = ldwPaymentRepo.count();
+        System.out.println("count : " + count);
+        if (count == 0) {
+            return "LDW-001";
+        }
+
+        String last_id = ldwPaymentRepo.getLastID();
+        System.out.println("last_id : " + last_id);
+
+        int tempId = Integer.parseInt(last_id.split("-")[1]);
+        System.out.println("tempId : " + tempId);
+        tempId = tempId + 1;
+
+        if (tempId <= 9) {
+            System.out.println("LDW-00" + tempId);
+            return "LDW-00" + tempId;
+        } else if (tempId <= 99) {
+            return "LDW-0" + tempId;
+        }else {
+            return "LDW-" + tempId;
+        }
+    }
+
+    @Override
     public LDWPaymentDTO searchLDWPayment(String fee_id) {
         if (ldwPaymentRepo.existsById(fee_id)) {
             return mapper.map(ldwPaymentRepo.findById(fee_id), LDWPaymentDTO.class);

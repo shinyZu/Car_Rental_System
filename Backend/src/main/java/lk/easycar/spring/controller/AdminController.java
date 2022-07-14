@@ -24,6 +24,11 @@ public class AdminController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", adminService.getAllAdmins());
     }
 
+    @GetMapping(path = "next_id", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil generateNextID (){
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Next ID", adminService.generateNextID());
+    }
+
     @GetMapping(path = "/{admin_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchAdmin (@PathVariable("admin_id") String admin_id){
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", adminService.searchAdmin(admin_id));

@@ -33,6 +33,31 @@ public class CarFleetServiceImpl implements CarFleetService {
     }
 
     @Override
+    public String generateNextID() {
+        long count = carFleetRepo.count();
+        System.out.println("count : " + count);
+        if (count == 0) {
+            return "FLT-001";
+        }
+
+        String last_id = carFleetRepo.getLastID();
+        System.out.println("last_id : " + last_id);
+
+        int tempId = Integer.parseInt(last_id.split("-")[1]);
+        System.out.println("tempId : " + tempId);
+        tempId = tempId + 1;
+
+        if (tempId <= 9) {
+            System.out.println("ADM-00" + tempId);
+            return "FLT-00" + tempId;
+        } else if (tempId <= 99) {
+            return "FLT-0" + tempId;
+        }else {
+            return "FLT-" + tempId;
+        }
+    }
+
+    @Override
     public CarFleetDTO searchCarFleet(String fleet_id) {
         if (carFleetRepo.existsById(fleet_id)) {
             return mapper.map(carFleetRepo.findById(fleet_id), CarFleetDTO.class);

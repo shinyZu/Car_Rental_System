@@ -19,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class RentalRequestServiceImplTest {
 
-//    @Autowired
-//    RentalRequestService rentalRequestService;
+    /*@Autowired
+    RentalRequestService rentalRequestService;*/
 
     @Test
     void updateRequestStatus() {

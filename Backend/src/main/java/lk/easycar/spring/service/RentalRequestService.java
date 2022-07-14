@@ -8,6 +8,8 @@ import java.util.List;
 public interface RentalRequestService {
     List<RentalRequestDTO> getAllRentals();
 
+    String generateNextID();
+
     RentalRequestDTO searchRental(String rental_id);
 
     RentalRequestDTO searchActiveRentalByCustomer(String nic_no);

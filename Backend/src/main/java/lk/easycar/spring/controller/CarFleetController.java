@@ -25,6 +25,11 @@ public class CarFleetController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", carFleetService.getAllFleets());
     }
 
+    @GetMapping(path = "next_id", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil generateNextID (){
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Next ID", carFleetService.generateNextID());
+    }
+
     @GetMapping(path = "{fleet_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchCarFleet(@PathVariable("fleet_id") String fleet_id){
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", carFleetService.searchCarFleet(fleet_id));

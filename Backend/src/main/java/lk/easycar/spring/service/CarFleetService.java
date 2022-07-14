@@ -7,6 +7,8 @@ import java.util.List;
 public interface CarFleetService {
     List<CarFleetDTO> getAllFleets();
 
+    String generateNextID();
+
     CarFleetDTO searchCarFleet(String fleet_id);
 
     CarFleetDTO saveCarFleet(CarFleetDTO dto);

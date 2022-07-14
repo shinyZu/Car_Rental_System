@@ -13,6 +13,7 @@ import lk.easycar.spring.service.AdminService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +35,33 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<AdminDTO> getAllAdmins() {
         return mapper.map(adminRepo.findAll(), new TypeToken<List<AdminDTO>>(){}.getType());
+    }
+
+    @Override
+    public String generateNextID() {
+        long count = adminRepo.count();
+        System.out.println("count : " + count);
+        if (count == 0) {
+            return "ADM-001";
+        }
+
+        String last_id = adminRepo.getLastID();
+//        List<Admin> admins = adminRepo.findAll(Sort.by(Sort.Direction.DESC, "admin_id"));
+//        String last_id = admins.get(0).getAdmin_id();
+        System.out.println("last_id : " + last_id);
+
+        int tempId = Integer.parseInt(last_id.split("-")[1]);
+        System.out.println("tempId : " + tempId);
+        tempId = tempId + 1;
+
+        if (tempId <= 9) {
+            System.out.println("ADM-00" + tempId);
+            return "ADM-00" + tempId;
+        } else if (tempId <= 99) {
+            return "ADM-0" + tempId;
+        } else {
+            return "ADM-" + tempId;
+        }
     }
 
     @Override

@@ -25,6 +25,11 @@ public class LDWPaymentController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", ldwPaymentService.getAllLDWPayments());
     }
 
+    @GetMapping(path = "next_id", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil generateNextID (){
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Next ID", ldwPaymentService.generateNextID());
+    }
+
     @GetMapping(path = "{fee_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchLDWPayment(@PathVariable("fee_id") String fee_id) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", ldwPaymentService.searchLDWPayment(fee_id));

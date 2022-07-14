@@ -19,14 +19,19 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 
     @Autowired
     DriverRepo driverRepo;
+
     @Autowired
     private AdminRepo adminRepo;
+
     @Autowired
     private CustomerRepo customerRepo;
+
     @Autowired
     private CarRepo carRepo;
+
     @Autowired
     private CarFleetRepo carFleetRepo;
+
     @Autowired
     private LDWPaymentRepo ldwPaymentRepo;
 
@@ -46,6 +51,33 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     public List<RentalRequestDTO> getAllRentals() {
         return mapper.map(rentalRequestRepo.findAll(), new TypeToken<List<RentalRequestDTO>>() {
         }.getType());
+    }
+
+    @Override
+    public String generateNextID() {
+        long count = rentalRequestRepo.count();
+        System.out.println("count : " + count);
+        if (count == 0) {
+            return "RNTL-0001";
+        }
+
+        String last_id = rentalRequestRepo.getLastID();
+        System.out.println("last_id : " + last_id);
+
+        int tempId = Integer.parseInt(last_id.split("-")[1]);
+        System.out.println("tempId : " + tempId);
+        tempId = tempId + 1;
+
+        if (tempId <= 9) {
+            System.out.println("RNTL-000" + tempId);
+            return "RNTL-000" + tempId;
+        } else if (tempId <= 99) {
+            return "RNTL-00" + tempId;
+        } else if (tempId <= 999) {
+            return "RNTL-0" + tempId;
+        } else {
+            return "RNTL-" + tempId;
+        }
     }
 
     @Override

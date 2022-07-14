@@ -96,11 +96,4 @@ public class FileUploadController {
             return new ResponseUtil(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage(), null );
         }
     }
-
-    @DeleteMapping
-    public ResponseUtil deleteImage () {
-        for (String image : allImages) {
-        }
-        return null;
-    }
 }

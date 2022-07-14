@@ -7,6 +7,8 @@ import java.util.List;
 public interface LDWPaymentService {
     List<LDWPaymentDTO> getAllLDWPayments();
 
+    String generateNextID();
+
     LDWPaymentDTO searchLDWPayment(String fee_id);
 
     LDWPaymentDTO saveLDWPayment(LDWPaymentDTO dto);

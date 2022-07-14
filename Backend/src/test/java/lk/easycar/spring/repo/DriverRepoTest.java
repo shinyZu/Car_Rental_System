@@ -41,7 +41,7 @@ class DriverRepoTest {
 
     @Test
     void updateDriverStatus() {
-        driverRepo.updateDriverStatus("DL-1000001", "Available");
+        driverRepo.updateDriverStatus("B5123451", "Available");
         getAllAvailableDrivers();
     }
 
@@ -62,7 +62,7 @@ class DriverRepoTest {
 
     @Test
     void getWorkSchedule() {
-        List<Custom> list = driverRepo.getWorkSchedule("DL-1000001");
+        List<Custom> list = driverRepo.getWorkSchedule("B5123451");
         for (Custom workSchedule : list) {
             System.out.println(workSchedule.getRental_id());
             System.out.println(workSchedule.getLicense_no());
@@ -76,17 +76,6 @@ class DriverRepoTest {
             System.out.println(workSchedule.getReturn_venue());
             System.out.println(workSchedule.getRequestStatus());
         }
-        /*System.out.println(workSchedule.getRental_id());
-        System.out.println(workSchedule.getLicense_no());;
-        System.out.println(workSchedule.getCurrentStatus());;
-        System.out.println(workSchedule.getContact_no());;
-        System.out.println(workSchedule.getPickUp_date());;
-        System.out.println(workSchedule.getPickUp_time());
-        System.out.println(workSchedule.getPickUp_venue());;
-        System.out.println(workSchedule.getReturn_date());;
-        System.out.println(workSchedule.getReturn_time());;
-        System.out.println(workSchedule.getReturn_venue());;
-        System.out.println(workSchedule.getRequestStatus());;*/
     }
 
     @Test

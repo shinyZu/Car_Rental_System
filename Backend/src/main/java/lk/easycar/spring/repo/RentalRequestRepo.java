@@ -58,4 +58,7 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
 
     @Query(value="select * from RentalRequest r where year(r.return_date)= ?1",  nativeQuery = true)
     List<RentalRequest> getAllPaymentsForYear(int year);
+
+    @Query(value = "select r.rental_id from RentalRequest r order by r.rental_id desc LIMIT 1", nativeQuery=true)
+    String getLastID();
 }

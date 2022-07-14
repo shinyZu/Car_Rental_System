@@ -28,6 +28,11 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", rentalRequestService.getAllRentals());
     }
 
+    @GetMapping(path = "next_id", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil generateNextID (){
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Next ID", rentalRequestService.generateNextID());
+    }
+
     @GetMapping(path = "/{rental_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchRentalByID(@PathVariable("rental_id") String rental_id) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", rentalRequestService.searchRental(rental_id));

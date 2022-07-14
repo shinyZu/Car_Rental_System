@@ -53,11 +53,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO saveCustomer(CustomerDTO dto) {
-//        if (!customerRepo.existsById(dto.getNic_no())) {
-//            return mapper.map(customerRepo.save(mapper.map(dto, Customer.class)),CustomerDTO.class);
-//        } else {
-//            throw new RuntimeException("Customer Already Exists...");
-//        }
+        /*if (!customerRepo.existsById(dto.getNic_no())) {
+            return mapper.map(customerRepo.save(mapper.map(dto, Customer.class)),CustomerDTO.class);
+        } else {
+            throw new RuntimeException("Customer Already Exists...");
+        }*/
 
         if (!customerRepo.existsById(dto.getNic_no())) {
             int count = loginRepo.searchForAnyDuplicateEmail(dto.getEmail());

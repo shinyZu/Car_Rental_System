@@ -8,6 +8,8 @@ import java.util.List;
 public interface AdminService {
     List<AdminDTO> getAllAdmins();
 
+    String generateNextID();
+
     AdminDTO searchAdmin(String admin_id);
 
     AdminDTO saveAdmin(AdminDTO dto);
