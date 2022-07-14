@@ -1,11 +1,7 @@
 package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.AdminDTO;
-import lk.easycar.spring.dto.CustomerDTO;
-import lk.easycar.spring.dto.DriverDTO;
 import lk.easycar.spring.entity.Admin;
-import lk.easycar.spring.entity.Customer;
-import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.entity.Login;
 import lk.easycar.spring.repo.AdminRepo;
 import lk.easycar.spring.repo.LoginRepo;
@@ -13,7 +9,6 @@ import lk.easycar.spring.service.AdminService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +29,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<AdminDTO> getAllAdmins() {
-        return mapper.map(adminRepo.findAll(), new TypeToken<List<AdminDTO>>(){}.getType());
+        return mapper.map(adminRepo.findAll(), new TypeToken<List<AdminDTO>>() {
+        }.getType());
     }
 
     @Override
@@ -78,12 +74,19 @@ public class AdminServiceImpl implements AdminService {
         if (!adminRepo.existsById(dto.getAdmin_id())) {
             int count = loginRepo.searchForAnyDuplicateEmail(dto.getEmail());
 
-            if(count == 0 ) { // if there is no any users with the same email/ if no any duplicate emails
-                loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Admin"));
-                return mapper.map(adminRepo.save(mapper.map(dto, Admin.class)), AdminDTO.class);
+            if (count == 0) { // if there is no any users with the same email/ if no any duplicate emails
+
+//                if (!this.isDuplicateContact(dto.getAdmin_id(), dto.getContact_no()).equals("Duplicate")) {
+
+                    loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Admin"));
+                    return mapper.map(adminRepo.save(mapper.map(dto, Admin.class)), AdminDTO.class);
+
+//                } else {
+//                    throw new RuntimeException("Duplicate Contact No...");
+//                }
 
             } else {
-                throw new RuntimeException("A User with email "+dto.getEmail()+" already exists...");
+                throw new RuntimeException("A User with email " + dto.getEmail() + " already exists...");
             }
 
         } else {
@@ -105,13 +108,21 @@ public class AdminServiceImpl implements AdminService {
 
             } else { // if Admins are gonna change their email
                 int count = loginRepo.searchForAnyDuplicateEmail(dto.getEmail());
-                if(count == 0 ) { // if there is no any users with the same email/ if no any duplicate emails
-                    loginRepo.deleteById(adminRepo.getReferenceById(dto.getAdmin_id()).getEmail());
-                    loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Admin"));
-                    return mapper.map(adminRepo.save(mapper.map(dto, Admin.class)), AdminDTO.class);
+
+                if (count == 0) { // if there is no any users with the same email/ if no any duplicate emails
+
+//                    if (!this.isDuplicateContact(dto.getAdmin_id(), dto.getContact_no()).equals("Duplicate")) {
+
+                        loginRepo.deleteById(adminRepo.getReferenceById(dto.getAdmin_id()).getEmail());
+                        loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Admin"));
+                        return mapper.map(adminRepo.save(mapper.map(dto, Admin.class)), AdminDTO.class);
+
+//                    } else {
+//                        throw new RuntimeException("Duplicate Contact No...");
+//                    }
 
                 } else {
-                    throw new RuntimeException("A User with email "+dto.getEmail()+" already exists...");
+                    throw new RuntimeException("A User with email " + dto.getEmail() + " already exists...");
                 }
             }
         } else {
@@ -127,5 +138,20 @@ public class AdminServiceImpl implements AdminService {
         } else {
             throw new RuntimeException("No Such Admin..Please check the Admin ID...");
         }
+    }
+
+    private String isDuplicateContact(String id, int contact) {
+        System.out.println("contact : " + contact);
+        List<Admin> all = adminRepo.findAll();
+        for (Admin admin : all) {
+            if (admin.getContact_no() == contact) {
+                if (admin.getAdmin_id().equals(id)) {
+                    return "Match";
+                } else {
+                    return "Duplicate";
+                }
+            }
+        }
+        return "Unique";
     }
 }
