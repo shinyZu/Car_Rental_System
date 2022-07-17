@@ -11,13 +11,13 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #205a76;
-}
-
-::-webkit-scrollbar-track {
   background-color: #63a4c5;
 }
 
+::-webkit-scrollbar-track {
+  background-color: #205a76;
+}
+
 ::-webkit-scrollbar-corner {
-  background-color: #111821;
+  background-color: #205a76;
 }
