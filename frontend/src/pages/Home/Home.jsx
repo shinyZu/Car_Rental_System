@@ -2,27 +2,14 @@ import React from "react";
 import bg__img from "../../assets/images/bg2.jpg";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
-import Garage from "../Garage/Garage";
+import Header from "../../components/Header/Header";
 
 function Home(props) {
   const { classes } = props;
   return (
     <div>
-      <h1>Hello Home</h1>
-      <h1>Hello Home</h1>
-      <h1>Hello Home</h1>
-      <h1>Hello Home</h1>
-      <h1>Hello Home</h1>
-      <h1>Hello Home</h1>
-      <h1>Hello Home</h1>
-      <h1>Hello Home</h1>
+      <Header />
     </div>
-    // <div
-    //   style={{ backgroundImage: `url(${bg__img})` }}
-    //   className={classes.home__bg}
-    // >
-    //   <Garage />
-    // </div>
   );
 }
 

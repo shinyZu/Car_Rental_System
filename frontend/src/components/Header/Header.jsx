@@ -11,55 +11,32 @@ function Header(props) {
       <nav>
         <ul className="horizontal-list text-center">
           <li>
-            <a href="#body-header">Home</a>
+            <a href="home">Home</a>
           </li>
           <li>
-            <a href="#about">About</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <a href="#cars">Cars</a>
+            <a href="/cars">Cars</a>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
           <li>
-            <a href="#contact">Login</a>
+            <a href="/login">Login</a>
           </li>
           <li>
-            <a href="#contact">Register</a>
+            <a href="/register">Register</a>
           </li>
         </ul>
       </nav>
 
-      <div className="my-name text-center">
+      {/* <Navbar /> */}
+
+      <div className="title text-center">
         <h1>Easy Car Rental</h1>
-        <h2>Drive of Your Life....</h2>
+        <h3>Drive of Your Life....</h3>
       </div>
-
-      <nav id="social-links">
-        <ul className="horizontal-list text-center">
-          <li>
-            <a href="#">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fab fa-github"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fab fa-whatsapp"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 }

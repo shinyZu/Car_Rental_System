@@ -38,8 +38,8 @@ function Navbar(props) {
           <Tab
             icon={<EmojiTransportationIcon />}
             className={classes.nav__text}
-            label="About Us"
-            href="/aboutUs"
+            label="About"
+            href="/about"
           />
           <Tab
             icon={<DirectionsCarIcon />}
@@ -50,8 +50,8 @@ function Navbar(props) {
           <Tab
             icon={<CallIcon />}
             className={classes.nav__text}
-            label="Contact Us"
-            href="/contactUs"
+            label="Contact"
+            href="/contact"
           />
         </div>
         <div className={classes.nav__right}>

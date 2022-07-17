@@ -43,22 +43,9 @@ header > nav:first-child > ul.horizontal-list li a:hover {
   text-align: center;
 }
 
-.my-name {
+.title {
   color: black;
   margin-top: 150px;
   font-size: 50px;
   font-weight: 800;
 }
-
-/* #social-links {
-  margin-top: 100px;
-}
-
-#social-links li a i {
-  padding: 10px;
-  border-radius: 50%;
-}
-
-#social-links li a i:hover {
-  box-shadow: 0px 0px 5px 4px rgba(230, 196, 196, 0.3);
-} */
