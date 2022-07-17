@@ -2,8 +2,12 @@ package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.AdminDTO;
 import lk.easycar.spring.entity.Admin;
+import lk.easycar.spring.entity.Customer;
+import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.entity.Login;
 import lk.easycar.spring.repo.AdminRepo;
+import lk.easycar.spring.repo.CustomerRepo;
+import lk.easycar.spring.repo.DriverRepo;
 import lk.easycar.spring.repo.LoginRepo;
 import lk.easycar.spring.service.AdminService;
 import org.modelmapper.ModelMapper;
@@ -20,6 +24,12 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private AdminRepo adminRepo;
+
+    @Autowired
+    private CustomerRepo customerRepo;
+
+    @Autowired
+    private DriverRepo driverRepo;
 
     @Autowired
     private LoginRepo loginRepo;
@@ -76,7 +86,7 @@ public class AdminServiceImpl implements AdminService {
 
             if (count == 0) { // if there is no any users with the same email/ if no any duplicate emails
 
-//                if (!this.isDuplicateContact(dto.getAdmin_id(), dto.getContact_no()).equals("Duplicate")) {
+//                if (!(this.isDuplicateContact(dto.getAdmin_id(), dto.getContact_no()).equals("Duplicate"))) {
 
                     loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Admin"));
                     return mapper.map(adminRepo.save(mapper.map(dto, Admin.class)), AdminDTO.class);
@@ -111,11 +121,11 @@ public class AdminServiceImpl implements AdminService {
 
                 if (count == 0) { // if there is no any users with the same email/ if no any duplicate emails
 
-//                    if (!this.isDuplicateContact(dto.getAdmin_id(), dto.getContact_no()).equals("Duplicate")) {
+//                    if (!(this.isDuplicateContact(dto.getAdmin_id(), dto.getContact_no()).equals("Duplicate"))) {
 
-                        loginRepo.deleteById(adminRepo.getReferenceById(dto.getAdmin_id()).getEmail());
-                        loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Admin"));
-                        return mapper.map(adminRepo.save(mapper.map(dto, Admin.class)), AdminDTO.class);
+                    loginRepo.deleteById(adminRepo.getReferenceById(dto.getAdmin_id()).getEmail());
+                    loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Admin"));
+                    return mapper.map(adminRepo.save(mapper.map(dto, Admin.class)), AdminDTO.class);
 
 //                    } else {
 //                        throw new RuntimeException("Duplicate Contact No...");
@@ -140,18 +150,55 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
-    private String isDuplicateContact(String id, int contact) {
+    /*private String isDuplicateContact(String id, int contact) {
         System.out.println("contact : " + contact);
         List<Admin> all = adminRepo.findAll();
         for (Admin admin : all) {
             if (admin.getContact_no() == contact) {
                 if (admin.getAdmin_id().equals(id)) {
+                    System.out.println("Contact is of the same user");
                     return "Match";
                 } else {
+                    System.out.println("Duplicate Contact");
                     return "Duplicate";
                 }
             }
         }
+        System.out.println("Unique Contact");
         return "Unique";
-    }
+    }*/
+
+    /*private String isDuplicateContact(String id, int contact) {
+        System.out.println("contact : " + contact);
+        List<Admin> all_admins = adminRepo.findAll();
+        List<Customer> all_customers = customerRepo.findAll();
+        List<Driver> all_drivers = driverRepo.findAll();
+
+        for (Admin a : all_admins) {
+            System.out.println(a.getContact_no());
+            System.out.println(contact);
+            if (a.getContact_no() == contact) {
+                if (a.getAdmin_id().equals(id)) {
+                    System.out.println("Contact is of the same user");
+                    return "Match";
+                } else {
+                    System.out.println("Duplicate Contact");
+                    return "Duplicate";
+                }
+            }
+        }
+
+        for (Customer c : all_customers) {
+            if (c.getContact_no() == contact) {
+                return "Duplicate";
+            }
+        }
+
+        for (Driver d : all_drivers) {
+            if (d.getContact_no() == contact) {
+                return "Duplicate";
+            }
+        }
+        return "Unique";
+    }*/
 }
