@@ -24,15 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/AdminServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/AdminServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/AdminServiceImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/service/impl/AdminServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/AdminServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/AdminServiceImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/AdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/service/impl/AdminServiceImpl.class" afterDir="false" />
-    </list>
+    <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -280,6 +272,7 @@
       <workItem from="1657598026559" duration="144000" />
       <workItem from="1657610746484" duration="107552000" />
       <workItem from="1657801255750" duration="37000" />
+      <workItem from="1658049061649" duration="105000" />
     </task>
     <servers />
   </component>
