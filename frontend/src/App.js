@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/NavBar/Navbar";
 // import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
+import Navbar from "./components/NavBar/Navbar";
 import About from "./pages/About/About";
 import Garage from "./pages/Garage/Garage";
+import Main from "./pages/Main";
 
 function App() {
   return (
@@ -16,17 +17,13 @@ function App() {
         exact
         element={
           <div>
-            {/* <Header /> */}
             <Home />
-            <div>
-              <Navbar />
-              <About />
-              <Garage />
-            </div>
+            {/* <Navbar /> */}
+            <Main />
           </div>
         }
       ></Route>
-      <Route path="/about" element={<About />}></Route>
+      {/* <Route path="/about" element={<About />}></Route> */}
     </Routes>
   );
 }

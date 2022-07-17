@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
 import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
 import sample_img from "../../assets/images/car.png";
@@ -21,7 +20,6 @@ function MyCard(props) {
               height="240"
               image={sample_img}
               alt="green iguana"
-              icon={<PersonIcon />}
             />
           </div>
 
@@ -29,14 +27,23 @@ function MyCard(props) {
           <CardContent className={classes.card__content}>
             <Typography
               className={classes.card__text}
-              // gutterBottom
               variant="h6"
               component="div"
             >
-              {/* {this.props.title} */}
+              {props.brand}
             </Typography>
-            <Typography className={classes.card__text} variant="h2">
-              {/* {props.count} */}
+            <Typography
+              className={(classes.card__text, classes.price__extraKM)}
+              variant="h5"
+            >
+              LKR {props.extra_KM}
+              <sup style={{ fontSize: "15px" }}> per extra KM</sup>
+            </Typography>
+            <Typography className={classes.card__text} variant="h7">
+              Passengers : {props.passengers}
+            </Typography>
+            <Typography className={classes.card__text} variant="h7">
+              {props.transmission}
             </Typography>
           </CardContent>
         </CardActionArea>

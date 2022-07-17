@@ -1,20 +1,8 @@
 import { hover } from "@testing-library/user-event/dist/hover";
 
 export const styleSheet = {
-  // container: {
-  //   border: "2px solid blue",
-  //   // backgroundColor: "#95afc0",
-  //   margin: "6% 30px",
-  //   padding: "30px 0",
-  //   height: "95.5%",
-  //   width: "95.5%",
-  //   display: "flex",
-  //   flexDirection: "row",
-  //   justifyContent: "space-around",
-  // },
-
   card: {
-    border: "2px solid deeppink",
+    // border: "2px solid deeppink",
     // border: "2px blur",
     // backgroundColor: "#17878f !important",
     backgroundImage:
@@ -31,7 +19,7 @@ export const styleSheet = {
   },
 
   card__action__area: {
-    border: "2px solid green",
+    // border: "2px solid green",
     // backgroundColor: "#95afc0",
     display: "flex",
     flexDirection: "column",
@@ -40,7 +28,7 @@ export const styleSheet = {
   },
 
   card__img: {
-    border: "2px solid orange",
+    // border: "2px solid orange",
     // width: "100%",
     // height: "30vh",
     // display: "flex",
@@ -51,19 +39,23 @@ export const styleSheet = {
   },
 
   card__content: {
-    border: "2px solid lightgreen",
+    // border: "2px solid lightgreen",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0px 0px 30px 0px !important",
+    padding: "10px 0px 30px 0px !important",
     // fontFamily: "Acme !important",
     // lineHeight: "10px !important",
   },
 
   card__text: {
-    // fontFamily: "sans-serif",
-    color: "white",
+    // fontWeight: "700 !important",
+    fontFamily: '"Acme", sans-serif !important',
+  },
+
+  price__extraKM: {
+    color: "red",
     fontWeight: "700 !important",
     fontFamily: '"Acme", sans-serif !important',
   },

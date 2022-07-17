@@ -7,7 +7,7 @@ import Header from "../../components/Header/Header";
 function Home(props) {
   const { classes } = props;
   return (
-    <div>
+    <div id="home">
       <Header />
     </div>
   );

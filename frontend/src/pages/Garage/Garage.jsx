@@ -6,34 +6,93 @@ import { withStyles } from "@mui/styles";
 function Garage(props) {
   const { classes } = props;
   return (
-    <div>
+    <div id="garage" className={classes.garage__container}>
       <div className={classes.fleet__title}>
         <h1>General Cars</h1>
       </div>
       <div className={classes.container}>
-        <MyCard />
-        <MyCard />
-        <MyCard />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
       </div>
       <div className={classes.fleet__title}>
         <h1>Premium Cars</h1>
       </div>
       <div className={classes.container}>
-        <MyCard />
-        <MyCard />
-        <MyCard />
-        <MyCard />
-        <MyCard />
-        <MyCard />
-        <MyCard />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
       </div>
       <div className={classes.fleet__title}>
         <h1>Luxury Cars</h1>
       </div>
       <div className={classes.container}>
-        <MyCard />
-        <MyCard />
-        <MyCard />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
+        <MyCard
+          brand="Suzuki Alto - Premium"
+          passengers={4}
+          extra_KM="30.00"
+          transmission="Auto"
+        />
       </div>
     </div>
   );

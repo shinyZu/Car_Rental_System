@@ -33,25 +33,25 @@ function Navbar(props) {
             icon={<HomeIcon />}
             className={classes.nav__text}
             label="Home"
-            href="/"
+            href="#home"
           />
           <Tab
             icon={<EmojiTransportationIcon />}
             className={classes.nav__text}
             label="About"
-            href="/about"
+            href="#about"
           />
           <Tab
             icon={<DirectionsCarIcon />}
             className={classes.nav__text}
             label="Cars"
-            href="/cars"
+            href="#garage"
           />
           <Tab
             icon={<CallIcon />}
             className={classes.nav__text}
             label="Contact"
-            href="/contact"
+            href="#contact"
           />
         </div>
         <div className={classes.nav__right}>
@@ -59,13 +59,13 @@ function Navbar(props) {
             icon={<LoginIcon />}
             className={classes.nav__text}
             label="Login"
-            href="/login"
+            href="#login"
           />
           <Tab
             icon={<HowToRegIcon />}
             className={classes.nav__text}
             label="Register"
-            href="/register"
+            href="#register"
           />
         </div>
       </Tabs>
