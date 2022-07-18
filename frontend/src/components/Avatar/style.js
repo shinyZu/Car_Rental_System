@@ -5,10 +5,9 @@ export const styleSheet = {
     height: "12rem",
     margin: "auto",
     marginBottom: "30px",
-    // background: "linear-gradient(25deg,red,blue)",
     background: "linear-gradient(25deg,#0071bd,#2babe4)",
     borderRadius: "50%",
-    marginTop: "-35vh",
+    marginTop: "-40vh",
     position: "absolute",
     right: "0px",
     left: "0px",
@@ -16,6 +15,7 @@ export const styleSheet = {
     // position: "sticky",
     // top: "0",
   },
+
   avatar__img: {
     // border: "2px solid red",
     // border: "2px blur",

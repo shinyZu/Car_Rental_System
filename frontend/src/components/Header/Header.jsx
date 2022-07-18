@@ -56,19 +56,18 @@ function Header(props) {
               <Link to="#register" onClick={popupRegister}>
                 Register
               </Link>
-              {/* <a href="#register">Register</a> */}
             </li>
           </ul>
         </nav>
-
-        {/* <Navbar /> */}
 
         <div className="title text-center">
           <h1>Easy Car Rental</h1>
           <h3>Drive of Your Life....</h3>
         </div>
       </header>
+
       <Login open={openLogin} onClose={closeLogin} onSwitch={popupRegister} />
+
       <Register
         open={openRegister}
         onClose={closeRegister}

@@ -5,14 +5,15 @@ import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import Stack from "@mui/material/Stack";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { Box } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
+import FileChooser from "../../components/FileChooser/FileChooser";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import Stack from "@mui/material/Stack";
+import IconButton from "@mui/material/IconButton";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 function Register(props) {
   const { classes } = props;
@@ -27,6 +28,7 @@ function Register(props) {
   if (!props.open) return null;
 
   function handleNICFrontUpload(e) {
+    console.log("uploaded");
     if (!e.target.files) {
       return;
     }
@@ -65,29 +67,33 @@ function Register(props) {
           <p className={classes.register__closeBtn} onClick={props.onClose}>
             X
           </p>
+
           <div className={classes.register__title}>
             <Typography className={classes.font__family} variant="h4">
               Register
             </Typography>
             <PersonIcon className={classes.register__icon} />
           </div>
+
           <div className={classes.register__content}>
             <TextField
               //   autoFocus
+              required={true}
               margin="dense"
-              id="name"
+              id="email"
               label="Email"
               type="email"
               fullWidth
               variant="outlined"
               size="small"
-              //   style={{ marginBottom: "15px" }}
             />
+
             <div className={classes.content__sub_container}>
               <TextField
                 //   autoFocus
+                required={true}
                 margin="dense"
-                id="name"
+                id="new_pwd"
                 label="New Password"
                 type="password"
                 fullWidth
@@ -97,8 +103,9 @@ function Register(props) {
               />
               <TextField
                 //   autoFocus
+                required={true}
                 margin="dense"
-                id="name"
+                id="confirm_pwd"
                 label="Confirm Password"
                 type="password"
                 fullWidth
@@ -106,11 +113,13 @@ function Register(props) {
                 size="small"
               />
             </div>
+
             <div className={classes.content__sub_container}>
               <TextField
                 //   autoFocus
+                required={true}
                 margin="dense"
-                id="name"
+                id="address"
                 label="Address"
                 type="text"
                 fullWidth
@@ -120,8 +129,9 @@ function Register(props) {
               />
               <TextField
                 //   autoFocus
+                required={true}
                 margin="dense"
-                id="name"
+                id="contact"
                 label="Contact No"
                 type="text"
                 fullWidth
@@ -129,12 +139,13 @@ function Register(props) {
                 size="small"
               />
             </div>
+
             <div className={classes.content__sub_container}>
               <TextField
                 //   autoFocus
-                required="true"
+                required={true}
                 margin="dense"
-                id="name"
+                id="nic_no"
                 label="NIC No"
                 type="text"
                 fullWidth
@@ -144,8 +155,9 @@ function Register(props) {
               />
               <TextField
                 //   autoFocus
+                required={true}
                 margin="dense"
-                id="name"
+                id="license_no"
                 label="License No"
                 type="text"
                 fullWidth
@@ -154,71 +166,29 @@ function Register(props) {
                 style={{ marginBottom: "15px" }}
               />
             </div>
+
             {/* <input accept="image/*" multiple type="file" /> */}
-
-            <div className={classes.upload__section}>
-              <Button
-                component="label"
-                variant="outlined"
-                startIcon={<UploadFileIcon />}
-                sx={{ marginRight: "1rem" }}
-                className={classes.upload__btn}
-              >
-                Upload NIC (Front)
-                <input
-                  type="file"
-                  accept="*"
-                  hidden
-                  onChange={handleNICFrontUpload}
-                />
-              </Button>
-              <Box className={classes.uploaded__file}>{file_nicFront}</Box>
-              {/* <input type="text" className={classes.uploaded__file}>
-                {file_nicFront}
-              </input> */}
-            </div>
-
-            <div className={classes.upload__section}>
-              <Button
-                component="label"
-                variant="outlined"
-                startIcon={<UploadFileIcon />}
-                sx={{ marginRight: "1rem" }}
-                className={classes.upload__btn}
-              >
-                Upload NIC (Back)
-                <input
-                  type="file"
-                  accept="*"
-                  hidden
-                  onChange={handleNICBackUpload}
-                />
-              </Button>
-              <Box className={classes.uploaded__file}>{file_nicBack}</Box>
-            </div>
-
-            <div className={classes.upload__section}>
-              <Button
-                component="label"
-                variant="standard"
-                startIcon={<UploadFileIcon />}
-                sx={{ marginRight: "1rem" }}
-                className={classes.upload__btn}
-              >
-                Upload License
-                <input
-                  type="file"
-                  accept="*"
-                  hidden
-                  onChange={handleLicenseUpload}
-                />
-              </Button>
-              <Box className={classes.uploaded__file}>{file_license}</Box>
-            </div>
+            <FileChooser
+              text=" Upload NIC (Front)"
+              file={file_nicFront}
+              onUpload={handleNICFrontUpload}
+            />
+            <FileChooser
+              text=" Upload NIC (Back)"
+              file={file_nicBack}
+              onUpload={handleNICBackUpload}
+            />
+            <FileChooser
+              text=" Upload License"
+              file={file_license}
+              onUpload={handleLicenseUpload}
+            />
           </div>
+
           <div className={classes.register_btn_container}>
             <button className={classes.btn__register}>Register</button>
           </div>
+
           <div className={classes.register__footer}>
             <p>
               Already a Member?{" "}

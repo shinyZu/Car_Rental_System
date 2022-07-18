@@ -6,6 +6,7 @@ import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";
 import PersonIcon from "@mui/icons-material/Person";
+import MyTextField from "../../components/TextField/TextField";
 
 function Login(props) {
   const { classes } = props;
@@ -20,19 +21,28 @@ function Login(props) {
     <div className={classes.login__overlay}>
       <div className={classes.login__container}>
         <img src={login__img} className={classes.login__left} width="400px" />
+
         <div className={classes.login__right}>
           <p className={classes.login__closeBtn} onClick={props.onClose}>
             X
           </p>
+
           <div className={classes.login__title}>
             <Typography className={classes.font__family} variant="h4">
               Login
             </Typography>
             <PersonIcon className={classes.login__icon} />
           </div>
+
           <div className={classes.login__content}>
-            <TextField
-              //   autoFocus
+            <MyTextField
+              id="name"
+              label="Email"
+              type="email"
+              style={{ marginBottom: "15px" }}
+            />
+            {/* <TextField
+              required={true}
               margin="dense"
               id="name"
               label="Email Address"
@@ -41,9 +51,10 @@ function Login(props) {
               variant="outlined"
               size="small"
               style={{ marginBottom: "15px" }}
-            />
+            /> */}
             <TextField
               //   autoFocus
+              required={true}
               margin="dense"
               id="name"
               label="Password"
@@ -53,9 +64,11 @@ function Login(props) {
               size="small"
             />
           </div>
+
           <div className={classes.login_btn_container}>
             <button className={classes.btn__login}>Login</button>
           </div>
+
           <div className={classes.login__footer}>
             <p>
               Not a Member?{" "}
