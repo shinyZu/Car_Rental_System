@@ -1,45 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import bg__img from "../../assets/images/bg2.jpg";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.css";
 import Navbar from "../NavBar/Navbar";
+import Login from "../../pages/Login/Login";
 
 function Header(props) {
+  const [openModal, setOpenModal] = useState(false);
   const { classes } = props;
   return (
-    <header className="body-header">
-      <nav>
-        <ul className="horizontal-list text-center">
-          <li>
-            <Link to="#home">Home</Link>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#garage">Cars</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-          <li>
-            <Link to="#login">Login</Link>
-          </li>
-          <li>
-            <a href="#register">Register</a>
-          </li>
-        </ul>
-      </nav>
+    <div>
+      <header className="body-header">
+        <nav>
+          <ul className="horizontal-list text-center">
+            <li>
+              <Link to="#home">Home</Link>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#garage">Cars</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+            <li>
+              <Link to="#login" onClick={() => setOpenModal(true)}>
+                Login
+              </Link>
+            </li>
+            <li>
+              <a href="#register">Register</a>
+            </li>
+          </ul>
+        </nav>
 
-      {/* <Navbar /> */}
+        {/* <Navbar /> */}
 
-      <div className="title text-center">
-        <h1>Easy Car Rental</h1>
-        <h3>Drive of Your Life....</h3>
-      </div>
-    </header>
+        <div className="title text-center">
+          <h1>Easy Car Rental</h1>
+          <h3>Drive of Your Life....</h3>
+        </div>
+      </header>
+      <Login open={openModal} onClose={() => setOpenModal(false)} />
+    </div>
   );
 }
 
-export default Header;
+export default withStyles()(Header);

@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
-import logo from "../../assets/images/logo1.jpg";
+import logo from "../../assets/images/logo2.jpg";
 
 function Avatar(props) {
   const { classes } = props;

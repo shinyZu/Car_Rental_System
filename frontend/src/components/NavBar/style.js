@@ -1,7 +1,8 @@
 export const styleSheet = {
   nav__bar: {
     // border: "2px solid red",
-    backgroundColor: "#205a76",
+    // backgroundColor: "#205a76",
+    background: "linear-gradient(280deg,#205a76,#2980b9)",
     padding: "10px 0px",
     // boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.3)",
     boxShadow: "9px 6px 14px 4px rgb(7 12 8 / 49%) !important",

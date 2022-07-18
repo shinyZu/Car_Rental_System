@@ -8,6 +8,7 @@ import Navbar from "./components/NavBar/Navbar";
 import About from "./pages/About/About";
 import Garage from "./pages/Garage/Garage";
 import Main from "./pages/Main";
+import MyDialog from "./components/Dialog/Dialog";
 
 function App() {
   return (
@@ -18,7 +19,6 @@ function App() {
         element={
           <div>
             <Home />
-            {/* <Navbar /> */}
             <Main />
           </div>
         }

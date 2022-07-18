@@ -21,3 +21,7 @@ html {
 ::-webkit-scrollbar-corner {
   background-color: #205a76;
 }
+
+font__family {
+  font-family: "Acme", sans-serif !important;
+}

@@ -24,7 +24,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="" />
+    <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Avatar/Avatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Avatar/Avatar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Avatar/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Avatar/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/About/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/About/style.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -273,6 +278,7 @@
       <workItem from="1657610746484" duration="107552000" />
       <workItem from="1657801255750" duration="37000" />
       <workItem from="1658049061649" duration="105000" />
+      <workItem from="1658111418721" duration="26000" />
     </task>
     <servers />
   </component>

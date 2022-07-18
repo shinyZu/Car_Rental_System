@@ -6,7 +6,8 @@ export const styleSheet = {
     margin: "auto",
     // marginTop: "-3vh",
     marginBottom: "30px",
-    background: "linear-gradient(25deg,red,blue)",
+    // background: "linear-gradient(25deg,red,blue)",
+    background: "linear-gradient(25deg,#0071bd,#2babe4)",
     borderRadius: "50%",
   },
   avatar__img: {
