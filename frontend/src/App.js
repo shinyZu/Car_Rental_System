@@ -19,7 +19,7 @@ function App() {
         element={
           <div>
             <Home />
-            <Main />
+            {/* <Main /> */}
           </div>
         }
       ></Route>

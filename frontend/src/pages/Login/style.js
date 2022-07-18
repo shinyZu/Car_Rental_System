@@ -46,13 +46,21 @@ export const styleSheet = {
   login__title: {
     // border: "2px solid red",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
+    color: "#95a5a6",
+  },
+
+  login__icon: {
+    fontSize: "80px !important",
+    color: "#95a5a6 !important",
   },
 
   login__content: {
     // border: "2px solid orange",
     padding: "10px 25px",
-    marginTop: "10%",
+    // marginTop: "10%",
   },
 
   login_btn_container: {
@@ -63,7 +71,7 @@ export const styleSheet = {
   },
 
   btn__login: {
-    backgroundColor: "#079992",
+    backgroundColor: "#1abc9c",
     color: "white",
     padding: "15px",
     width: "87%",
@@ -71,7 +79,7 @@ export const styleSheet = {
     border: "none",
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: "#38ada9",
+      backgroundColor: "#16a085",
     },
   },
 

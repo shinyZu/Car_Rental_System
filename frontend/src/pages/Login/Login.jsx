@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import login__img from "../../assets/images/bg1.jpg";
 import TextField from "@mui/material/TextField";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";
+import PersonIcon from "@mui/icons-material/Person";
 
 function Login(props) {
   const { classes } = props;
@@ -26,6 +28,7 @@ function Login(props) {
             <Typography className={classes.font__family} variant="h4">
               Login
             </Typography>
+            <PersonIcon className={classes.login__icon} />
           </div>
           <div className={classes.login__content}>
             <TextField
@@ -55,7 +58,15 @@ function Login(props) {
           </div>
           <div className={classes.login__footer}>
             <p>
-              Not a Member? <a href="">Register</a>
+              Not a Member?{" "}
+              <Link
+                to="#register"
+                onClick={() => {
+                  props.onSwitch();
+                }}
+              >
+                Register
+              </Link>
             </p>
           </div>
         </div>
