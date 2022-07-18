@@ -36,33 +36,12 @@ function Login(props) {
 
           <div className={classes.login__content}>
             <MyTextField
-              id="name"
+              id="email"
               label="Email"
               type="email"
               style={{ marginBottom: "15px" }}
             />
-            {/* <TextField
-              required={true}
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-              variant="outlined"
-              size="small"
-              style={{ marginBottom: "15px" }}
-            /> */}
-            <TextField
-              //   autoFocus
-              required={true}
-              margin="dense"
-              id="name"
-              label="Password"
-              type="password"
-              fullWidth
-              variant="outlined"
-              size="small"
-            />
+            <MyTextField id="pwd" label="Password" type="password" />
           </div>
 
           <div className={classes.login_btn_container}>

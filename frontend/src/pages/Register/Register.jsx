@@ -10,6 +10,7 @@ import { Box } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 import FileChooser from "../../components/FileChooser/FileChooser";
+import MyTextField from "../../components/TextField/TextField";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
@@ -76,93 +77,43 @@ function Register(props) {
           </div>
 
           <div className={classes.register__content}>
-            <TextField
-              //   autoFocus
-              required={true}
-              margin="dense"
-              id="email"
-              label="Email"
-              type="email"
-              fullWidth
-              variant="outlined"
-              size="small"
-            />
+            <MyTextField id="email" label="Email" type="email" />
 
             <div className={classes.content__sub_container}>
-              <TextField
-                //   autoFocus
-                required={true}
-                margin="dense"
+              <MyTextField
                 id="new_pwd"
                 label="New Password"
                 type="password"
-                fullWidth
-                variant="outlined"
-                size="small"
                 style={{ marginRight: "5px" }}
               />
-              <TextField
-                //   autoFocus
-                required={true}
-                margin="dense"
+              <MyTextField
                 id="confirm_pwd"
                 label="Confirm Password"
                 type="password"
-                fullWidth
-                variant="outlined"
-                size="small"
               />
             </div>
 
             <div className={classes.content__sub_container}>
-              <TextField
-                //   autoFocus
-                required={true}
-                margin="dense"
+              <MyTextField
                 id="address"
                 label="Address"
                 type="text"
-                fullWidth
-                variant="outlined"
-                size="small"
                 style={{ marginRight: "5px" }}
               />
-              <TextField
-                //   autoFocus
-                required={true}
-                margin="dense"
-                id="contact"
-                label="Contact No"
-                type="text"
-                fullWidth
-                variant="outlined"
-                size="small"
-              />
+              <MyTextField id="contact" label="Contact No" type="text" />
             </div>
 
             <div className={classes.content__sub_container}>
-              <TextField
-                //   autoFocus
-                required={true}
-                margin="dense"
+              <MyTextField
                 id="nic_no"
                 label="NIC No"
                 type="text"
-                fullWidth
-                variant="outlined"
-                size="small"
                 style={{ marginRight: "5px" }}
               />
-              <TextField
-                //   autoFocus
-                required={true}
-                margin="dense"
+              <MyTextField
                 id="license_no"
                 label="License No"
                 type="text"
-                fullWidth
-                variant="outlined"
-                size="small"
                 style={{ marginBottom: "15px" }}
               />
             </div>
