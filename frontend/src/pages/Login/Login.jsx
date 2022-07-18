@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import login__img from "../../assets/images/bg1.jpg";
 import TextField from "@mui/material/TextField";
 import { withStyles } from "@mui/styles";
@@ -6,8 +6,14 @@ import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";
 
 function Login(props) {
-  if (!props.open) return null;
   const { classes } = props;
+
+  useEffect(() => {
+    // console.log("I re-rendered");
+    window.scrollTo(0, 0);
+  });
+  if (!props.open) return null;
+
   return (
     <div className={classes.login__overlay}>
       <div className={classes.login__container}>

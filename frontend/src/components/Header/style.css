@@ -5,12 +5,14 @@
 
 .body-header {
   height: 100vh;
+  /* height: 86vh; */
   opacity: 0.8;
   background-image: url("../../assets/images/bg2.jpg");
   padding-top: 1px;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  /* background-position-y: bottom; */
 }
 
 /* Horizontal Lists */

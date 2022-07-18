@@ -11,9 +11,11 @@ import CallIcon from "@mui/icons-material/Call";
 import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
 import { Link, NavLink } from "react-router-dom";
+import Login from "../../pages/Login/Login";
 
 function Navbar(props) {
   const [value, setValue] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   function changePage(e) {
     console.log(e);
@@ -22,6 +24,7 @@ function Navbar(props) {
 
   const { classes } = props;
   return (
+    // <div>
     <Box className={classes.nav__bar}>
       <Tabs
         // value={value}
@@ -60,6 +63,7 @@ function Navbar(props) {
             className={classes.nav__text}
             label="Login"
             href="#login"
+            onClick={() => setOpenModal(true)}
           />
           <Tab
             icon={<HowToRegIcon />}
@@ -69,7 +73,9 @@ function Navbar(props) {
           />
         </div>
       </Tabs>
+      <Login open={openModal} onClose={() => setOpenModal(false)} />
     </Box>
+    // </div>
   );
 }
 export default withStyles(styleSheet)(Navbar);

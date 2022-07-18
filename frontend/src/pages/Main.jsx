@@ -7,7 +7,7 @@ import Garage from "../pages/Garage/Garage";
 function Main() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <About />
       <Garage />
       <Footer />
