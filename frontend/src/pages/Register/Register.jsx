@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
 import login__img from "../../assets/images/bg1.jpg";
-import TextField from "@mui/material/TextField";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import UploadFileIcon from "@mui/icons-material/UploadFile";
-import { Box } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
-import FileChooser from "../../components/FileChooser/FileChooser";
-import MyTextField from "../../components/TextField/TextField";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FileChooser from "../../components/common/FileChooser/FileChooser";
+import MyTextField from "../../components/common/TextField/TextField";
 
 function Register(props) {
   const { classes } = props;

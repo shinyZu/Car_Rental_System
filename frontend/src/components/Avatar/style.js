@@ -7,7 +7,7 @@ export const styleSheet = {
     marginBottom: "30px",
     background: "linear-gradient(25deg,#0071bd,#2babe4)",
     borderRadius: "50%",
-    marginTop: "-40vh",
+    marginTop: "-380px",
     position: "absolute",
     right: "0px",
     left: "0px",

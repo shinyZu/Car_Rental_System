@@ -10,8 +10,8 @@ import LoginIcon from "@mui/icons-material/Login";
 import CallIcon from "@mui/icons-material/Call";
 import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
-import { Link, NavLink } from "react-router-dom";
 import Login from "../../pages/Login/Login";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar(props) {
   const [value, setValue] = useState("");
