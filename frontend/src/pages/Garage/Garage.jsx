@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import MyCard from "../../components/Card/MyCard";
 import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
-import { Link } from "react-router-dom";
-import Car from "../Car/Car";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import generalCarList from "../../db/general/generalCars";
+import premiumCarList from "../../db/premium/premiumCars";
+import luxuryCarList from "../../db/luxury/luxuryCars";
 
 function Garage(props) {
   const { classes } = props;
@@ -14,105 +14,56 @@ function Garage(props) {
       <div className={classes.fleet__title}>
         <h1>General Cars</h1>
       </div>
+
       <div className={classes.container}>
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-          onCardClick={() => {
-            console.log("swictheddddddddddd...........");
-            props.onSwitch("img");
-          }}
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-          onCardClick={() => {
-            props.onSwitch("img");
-          }}
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-          onCardClick={() => {
-            props.onSwitch("img");
-          }}
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-          onCardClick={() => {
-            props.onSwitch("img");
-          }}
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-          onCardClick={() => {
-            props.onSwitch("img");
-          }}
-        />
+        {generalCarList.map((car) => (
+          <MyCard
+            brand={car.brand}
+            passengers={car.passengers}
+            extra_KM={car.price_perExtraKM}
+            transmission={car.transmission}
+            onCardClick={() => {
+              console.log("swictheddddddddddd...........");
+              props.onSwitch("img");
+            }}
+          />
+        ))}
       </div>
+
       <div className={classes.fleet__title}>
         <h1>Premium Cars</h1>
       </div>
+
       <div className={classes.container}>
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-        />
+        {premiumCarList.map((car) => (
+          <MyCard
+            brand={car.brand}
+            passengers={car.passengers}
+            extra_KM={car.price_perExtraKM}
+            transmission={car.transmission}
+            onCardClick={() => {
+              props.onSwitch("img");
+            }}
+          />
+        ))}
       </div>
+
       <div className={classes.fleet__title}>
         <h1>Luxury Cars</h1>
       </div>
+
       <div className={classes.container}>
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-        />
-        <MyCard
-          brand="Suzuki Alto - Premium"
-          passengers={4}
-          extra_KM="30.00"
-          transmission="Auto"
-        />
+        {luxuryCarList.map((car) => (
+          <MyCard
+            brand={car.brand}
+            passengers={car.passengers}
+            extra_KM={car.price_perExtraKM}
+            transmission={car.transmission}
+            onCardClick={() => {
+              props.onSwitch("img");
+            }}
+          />
+        ))}
       </div>
     </div>
     // {
