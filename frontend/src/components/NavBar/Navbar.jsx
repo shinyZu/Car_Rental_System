@@ -6,6 +6,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
+import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import CallIcon from "@mui/icons-material/Call";
 import { styleSheet } from "./style";
@@ -58,7 +59,7 @@ function Navbar(props) {
           />
         </div>
         <div className={classes.nav__right}>
-          <Tab
+          {/* <Tab
             icon={<LoginIcon />}
             className={classes.nav__text}
             label="Login"
@@ -70,6 +71,12 @@ function Navbar(props) {
             className={classes.nav__text}
             label="Register"
             href="#register"
+          /> */}
+          <Tab
+            icon={<LogoutIcon />}
+            className={classes.nav__text}
+            label="Logout"
+            href="#logout"
           />
         </div>
       </Tabs>

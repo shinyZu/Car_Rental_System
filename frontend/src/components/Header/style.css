@@ -51,3 +51,13 @@ header > nav:first-child > ul.horizontal-list li a:hover {
   font-size: 50px;
   font-weight: 800;
 }
+
+h1 {
+  /* border: 2px solid red; */
+}
+
+h6 {
+  /* border: 2px solid red; */
+  margin-top: -70px;
+  margin-left: 350px;
+}

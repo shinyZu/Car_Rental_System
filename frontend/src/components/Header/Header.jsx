@@ -61,8 +61,8 @@ function Header(props) {
         </nav>
 
         <div className="title text-center">
-          <h1>Easy Car Rental</h1>
-          <h3>Drive of Your Life....</h3>
+          <h1>Easy &nbsp; Car &nbsp; Rental</h1>
+          <h6>the drive of your life....</h6>
         </div>
       </header>
 

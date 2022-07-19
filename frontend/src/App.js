@@ -9,6 +9,8 @@ import About from "./pages/About/About";
 import Garage from "./pages/Garage/Garage";
 import Main from "./pages/Main";
 import MyDialog from "./components/Dialog/Dialog";
+import CarInfo from "./pages/Car/CarInfo";
+import Car from "./pages/Car/Car";
 
 function App() {
   return (
@@ -18,8 +20,10 @@ function App() {
         exact
         element={
           <div>
-            <Home />
-            <Main />
+            {/* <Home /> */}
+            {/* <Main /> */}
+            <Car />
+            {/* <CarInfo /> */}
           </div>
         }
       ></Route>
