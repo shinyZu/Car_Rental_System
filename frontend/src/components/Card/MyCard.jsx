@@ -10,6 +10,12 @@ import sample_img from "../../assets/images/car.png";
 
 function MyCard(props) {
   const { classes } = props;
+
+  // function handleCardOnClick() {
+  //   console.log("clicked on a car");
+  //   // setCarInfoVisible(true);
+  // }
+
   return (
     <div>
       <Card sx={{ maxWidth: 350 }} className={classes.card}>
@@ -20,6 +26,9 @@ function MyCard(props) {
               height="240"
               image={sample_img}
               alt="green iguana"
+              onClick={(e) => {
+                props.onCardClick(e);
+              }}
             />
           </div>
 

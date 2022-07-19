@@ -4,12 +4,12 @@ import Navbar from "../components/NavBar/Navbar";
 import About from "../pages/About/About";
 import Garage from "../pages/Garage/Garage";
 
-function Main() {
+function Main(props) {
   return (
     <div>
       {/* <Navbar /> */}
       <About />
-      <Garage />
+      <Garage onSwitch={props.onSwitch} />
       <Footer />
     </div>
   );

@@ -1,13 +1,13 @@
 export const styleSheet = {
   container__1: {
-    border: "2px solid red",
+    // border: "2px solid red",
     // backgroundColor: "red",
     marginTop: "20px !important",
     padding: "30px 80px",
   },
 
   container__left: {
-    border: "2px solid green",
+    // border: "2px solid green",
     // backgroundColor: "green",
     // display: "grid",
     // flexDirection: "column",
@@ -16,41 +16,29 @@ export const styleSheet = {
     padding: "0px !important",
   },
 
-  container__right: {
-    border: "2px solid deeppink",
-    // backgroundColor: "deeppink",
-    width: "50vw",
-  },
-
   container__main__img: {
-    border: "2px solid blue !important",
+    // border: "2px solid blue !important",
     // backgroundColor: "blue",
-    width: "100%",
-    height: "400px",
+    width: "99%",
+    height: "500px",
     backgroundSize: "cover",
     backgroundPosition: "center",
+    margin: "5px !important",
   },
 
-  //   main__img: {
-  //     border: "2px solid blue",
-  //     width: "80%",
-  //     height: "400px",
-  //     backgroundSize: "cover",
-  //     backgroundPosition: "center",
-  //   },
-
   container__sub__imgs: {
-    border: "2px solid blue",
+    // border: "2px solid blue",
     width: "100%",
     height: "200px",
     display: "flex",
   },
 
   car__views: {
-    border: "2px solid orange !important",
+    // border: "2px solid orange !important",
     width: "25%",
     backgroundSize: "cover",
     backgroundPosition: "bottom",
+    margin: "5px !important",
   },
 
   arrow__icons: {
@@ -61,8 +49,32 @@ export const styleSheet = {
     margin: "auto",
   },
 
+  container__right: {
+    // border: "2px solid deeppink",
+    // backgroundColor: "deeppink",
+    width: "50vw",
+  },
+
+  container__right_content: {
+    // border: "2px solid blue",
+    // backgroundColor: "blue",
+    display: "grid",
+    height: "100%",
+    paddingTop: "15px !important",
+  },
+
+  description_key: {
+    fontFamily: '"Acme", sans-serif !important',
+    fontWeight: "700 !important",
+  },
+
+  description_value: {
+    fontFamily: '"Acme", sans-serif !important',
+    fontWeight: "400 !important",
+  },
+
   container__2: {
-    border: "2px solid blue",
+    // border: "2px solid blue",
     // backgroundColor: "yellow",
     width: "100%",
     height: "300px",

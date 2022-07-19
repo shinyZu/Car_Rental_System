@@ -47,6 +47,9 @@ export const styleSheet = {
     padding: "10px 0px 30px 0px !important",
     // fontFamily: "Acme !important",
     // lineHeight: "10px !important",
+    "&:hover": {
+      cursor: "default",
+    },
   },
 
   card__text: {

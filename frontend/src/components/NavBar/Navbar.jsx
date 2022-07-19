@@ -37,7 +37,11 @@ function Navbar(props) {
             icon={<HomeIcon />}
             className={classes.nav__text}
             label="Home"
-            href="#home"
+            // href="#home"
+            onClick={() => {
+              console.log("to homeeeeeeeee...........");
+              props.onSwitch("main");
+            }}
           />
           <Tab
             icon={<EmojiTransportationIcon />}

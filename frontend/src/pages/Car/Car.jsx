@@ -10,6 +10,7 @@ import sub__img3 from "../../assets/images/Luxury/BMW/side2.jpg";
 import sub__img4 from "../../assets/images/Luxury/BMW/back.jpg";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Typography from "@mui/material/Typography";
 
 function Car(props) {
   const [mainImgURL, setMainImgURL] = useState(sub__img1);
@@ -32,8 +33,8 @@ function Car(props) {
   }
 
   return (
-    <div>
-      <Navbar />
+    <div id="carInfo">
+      <Navbar onSwitch={props.onSwitch} />
       <Grid
         container
         spacing={5}
@@ -43,7 +44,7 @@ function Car(props) {
         <Grid
           item
           //   container
-          xl={5}
+          xl={7}
           lg={6}
           md={6}
           sm={6}
@@ -96,17 +97,121 @@ function Car(props) {
 
         <Grid
           item
-          xl={7}
+          xl={5}
           lg={6}
           md={6}
           sm={6}
           xs={6}
           className={classes.container__right}
         >
-          {/* -------------------- */}
+          <Grid
+            item
+            xl={6}
+            lg={6}
+            md={6}
+            sm={6}
+            xs={6}
+            className={classes.container__right_content}
+            // direction="column"
+          >
+            <Typography variant="h3" className={classes.description_key}>
+              BMW -i8
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Reg No &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;PB-5951
+              </Typography>
+            </Typography>
+
+            {/* <Typography variant="h6" className={classes.description_key}>
+              Brand &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;Suzuki
+              </Typography>
+            </Typography> */}
+
+            <Typography variant="h6" className={classes.description_key}>
+              Fleet &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;Luxury
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Passengers &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;02
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Transmission Type &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;Auto
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Fuel Type &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;Gasoline
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Color &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;Black
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Mileage &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;5000 KM
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Daily Rate(Rs) &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;18,000
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Free KM per Day &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;100
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Monthly Rate(Rs) &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;300,000
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Free KM per Month &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;2400
+              </Typography>
+            </Typography>
+
+            <Typography variant="h6" className={classes.description_key}>
+              Price per Extra KM(Rs) &nbsp; &nbsp;:
+              <Typography variant="h7" className={classes.description_value}>
+                &nbsp;&nbsp;&nbsp;100
+              </Typography>
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
-      <Grid
+      {/* <Grid
         // container
         xl={12}
         lg={12}
@@ -114,7 +219,7 @@ function Car(props) {
         sm={12}
         xs={12}
         className={classes.container__2}
-      ></Grid>
+      ></Grid> */}
     </div>
   );
 }
