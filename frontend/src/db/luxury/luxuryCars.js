@@ -13,6 +13,10 @@ const luxuryCarList = [
     monthly_rate: "227150",
     freeKM_perMonth: "2400",
     price_perExtraKM: "85.00",
+    img1: "../../assets/images/Luxury/ToyotaPremio/front.jpeg",
+    img2: "../../assets/images/Luxury/ToyotaPremio/side.jpeg",
+    img3: "../../assets/images/Luxury/ToyotaPremio/side2.jpeg",
+    img4: "../../assets/images/Luxury/ToyotaPremio/dashboard.png",
   },
   {
     reg_no: "LC-5952",
@@ -28,6 +32,10 @@ const luxuryCarList = [
     monthly_rate: "300000",
     freeKM_perMonth: "2400",
     price_perExtraKM: "100.00",
+    img1: "../../assets/images/Luxury/Mercedes/front.jpg",
+    img2: "../../assets/images/Luxury/Mercedes/side.jpg",
+    img4: "../../assets/images/Luxury/Mercedes/dashboard.jpg",
+    img3: "../../assets/images/Luxury/Mercedes/back.jpg",
   },
   {
     reg_no: "LC-5953",
@@ -43,6 +51,10 @@ const luxuryCarList = [
     monthly_rate: "300000",
     freeKM_perMonth: "2400",
     price_perExtraKM: "100.00",
+    img1: "../../assets/images/Luxury/BMW/front.jpg",
+    img2: "../../assets/images/Luxury/BMW/back.jpg",
+    img3: "../../assets/images/Luxury/BMW/side1.jpg",
+    img4: "../../assets/images/Luxury/BMW/side2.jpg",
   },
 ];
 

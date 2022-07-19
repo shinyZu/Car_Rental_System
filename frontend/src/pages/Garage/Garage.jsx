@@ -16,15 +16,20 @@ function Garage(props) {
       </div>
 
       <div className={classes.container}>
-        {generalCarList.map((car) => (
+        {generalCarList.map((car, index) => (
           <MyCard
+            key={index}
+            id={index}
             brand={car.brand}
             passengers={car.passengers}
             extra_KM={car.price_perExtraKM}
             transmission={car.transmission}
-            onCardClick={() => {
+            onCardClick={(e) => {
               console.log("swictheddddddddddd...........");
-              props.onSwitch("img");
+              // console.log(e.target.parentNode);
+              console.log(index);
+              // console.log(e.target.parentElement.parentElement.children[1]);
+              props.onSwitch("img", generalCarList, index);
             }}
           />
         ))}
@@ -35,14 +40,16 @@ function Garage(props) {
       </div>
 
       <div className={classes.container}>
-        {premiumCarList.map((car) => (
+        {premiumCarList.map((car, index) => (
           <MyCard
+            key={index}
+            id={index}
             brand={car.brand}
             passengers={car.passengers}
             extra_KM={car.price_perExtraKM}
             transmission={car.transmission}
             onCardClick={() => {
-              props.onSwitch("img");
+              props.onSwitch("img", premiumCarList, index);
             }}
           />
         ))}
@@ -53,39 +60,22 @@ function Garage(props) {
       </div>
 
       <div className={classes.container}>
-        {luxuryCarList.map((car) => (
+        {luxuryCarList.map((car, index) => (
           <MyCard
+            key={index}
+            id={index}
             brand={car.brand}
             passengers={car.passengers}
             extra_KM={car.price_perExtraKM}
             transmission={car.transmission}
+            image={car.img1}
             onCardClick={() => {
-              props.onSwitch("img");
+              props.onSwitch("img", luxuryCarList, index);
             }}
           />
         ))}
       </div>
     </div>
-    // {
-    //   switch (renderView) {
-    //     case "main":
-    //       return(
-    //         <div>
-    //           <Home />
-    //           <Main />
-    //         </div>
-    //       );
-    //       break;
-    //     case "img":
-    //       return <Car />;
-    //       break;
-    //     case 2:
-    //       break;
-
-    //     default:
-    //       break;
-    //   }
-    // }
   );
 }
 

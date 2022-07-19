@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 
 function Car(props) {
   const [mainImgURL, setMainImgURL] = useState(sub__img1);
-  const { classes } = props;
+  const { classes, carInfo } = props;
 
   function handleImageClick(e) {
     // console.log(e.target.id);
@@ -115,97 +115,90 @@ function Car(props) {
             // direction="column"
           >
             <Typography variant="h3" className={classes.description_key}>
-              BMW -i8
+              {carInfo[props.selectedCar].brand}
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Reg No &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;PB-5951
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].reg_no}
               </Typography>
             </Typography>
-
-            {/* <Typography variant="h6" className={classes.description_key}>
-              Brand &nbsp; &nbsp;:
-              <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;Suzuki
-              </Typography>
-            </Typography> */}
 
             <Typography variant="h6" className={classes.description_key}>
               Fleet &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;Luxury
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].fleet}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Passengers &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;02
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].passengers}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Transmission Type &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;Auto
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].transmission}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Fuel Type &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;Gasoline
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].fuel}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Color &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;Black
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].color}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Mileage &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;5000 KM
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].mileage}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Daily Rate(Rs) &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;18,000
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].daily_rate}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Free KM per Day &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;100
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].freeKM_perDay}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Monthly Rate(Rs) &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;300,000
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].monthly_rate}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Free KM per Month &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;2400
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].freeKM_perMonth}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Price per Extra KM(Rs) &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;100
+                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].price_perExtraKM}
               </Typography>
             </Typography>
           </Grid>

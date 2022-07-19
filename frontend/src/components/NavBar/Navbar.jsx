@@ -48,12 +48,20 @@ function Navbar(props) {
             className={classes.nav__text}
             label="About"
             href="#about"
+            onClick={() => {
+              console.log("to About...........");
+              props.onSwitch("about");
+            }}
           />
           <Tab
             icon={<DirectionsCarIcon />}
             className={classes.nav__text}
             label="Cars"
             href="#garage"
+            onClick={() => {
+              console.log("to Garage...........");
+              props.onSwitch("garage");
+            }}
           />
           <Tab
             icon={<CallIcon />}
@@ -81,6 +89,10 @@ function Navbar(props) {
             className={classes.nav__text}
             label="Logout"
             href="#logout"
+            onClick={() => {
+              console.log("to homeeeeeeeee...........");
+              props.onSwitch("main");
+            }}
           />
         </div>
       </Tabs>

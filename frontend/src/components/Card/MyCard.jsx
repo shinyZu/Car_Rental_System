@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,6 +10,7 @@ import sample_img from "../../assets/images/car.png";
 
 function MyCard(props) {
   const { classes } = props;
+  const [cardImg, setCardImg] = useState(sample_img);
 
   // function handleCardOnClick() {
   //   console.log("clicked on a car");
@@ -24,8 +25,9 @@ function MyCard(props) {
             <CardMedia
               component="img"
               height="240"
-              image={sample_img}
-              alt="green iguana"
+              image={cardImg}
+              // image={props.image}
+              alt="car"
               onClick={(e) => {
                 props.onCardClick(e);
               }}
@@ -41,6 +43,7 @@ function MyCard(props) {
             >
               {props.brand}
             </Typography>
+
             <Typography
               className={(classes.card__text, classes.price__extraKM)}
               variant="h5"
@@ -48,9 +51,11 @@ function MyCard(props) {
               LKR {props.extra_KM}
               <sup style={{ fontSize: "15px" }}> per extra KM</sup>
             </Typography>
+
             <Typography className={classes.card__text} variant="h7">
               Passengers : {props.passengers}
             </Typography>
+
             <Typography className={classes.card__text} variant="h7">
               {props.transmission}
             </Typography>

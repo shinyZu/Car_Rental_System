@@ -15,10 +15,14 @@ import Car from "./pages/Car/Car";
 
 function App() {
   const [renderView, setRenderView] = useState("main");
+  const [carDetails, setCarDetails] = useState(null);
+  const [indexOfArray, setIndexOfArray] = useState();
 
-  function switchRenderView(view) {
+  function switchRenderView(view, data, index) {
     console.log("switched view");
     setRenderView(view);
+    setCarDetails(data);
+    setIndexOfArray(index);
   }
 
   {
@@ -42,12 +46,37 @@ function App() {
             <Route
               path="/"
               exact
-              element={<Car onSwitch={switchRenderView} />}
+              element={
+                <Car
+                  carInfo={carDetails}
+                  selectedCar={indexOfArray}
+                  onSwitch={switchRenderView}
+                />
+              }
             ></Route>
           </Routes>
         );
-      case 2:
-        break;
+      case "about":
+        return (
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={<Home onSwitch={switchRenderView} />}
+            ></Route>
+          </Routes>
+        );
+
+      case "garage":
+        return (
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={<Home onSwitch={switchRenderView} />}
+            ></Route>
+          </Routes>
+        );
 
       default:
         break;

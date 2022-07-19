@@ -2,8 +2,10 @@ export const styleSheet = {
   container__1: {
     // border: "2px solid red",
     // backgroundColor: "red",
-    marginTop: "20px !important",
-    padding: "30px 80px",
+    marginTop: "10px !important",
+    // padding: "30px 80px",
+    padding: "0px 80px",
+    // height: "100vh",
   },
 
   container__left: {
@@ -14,13 +16,15 @@ export const styleSheet = {
     // justifyContent: "center",
     // alignItems: "center",
     padding: "0px !important",
+    height: "83vh",
   },
 
   container__main__img: {
     // border: "2px solid blue !important",
     // backgroundColor: "blue",
     width: "99%",
-    height: "500px",
+    // height: "500px",
+    height: "65%",
     backgroundSize: "cover",
     backgroundPosition: "center",
     margin: "5px !important",
@@ -42,7 +46,7 @@ export const styleSheet = {
   },
 
   arrow__icons: {
-    border: "2px solid blue",
+    // border: "2px solid blue",
     position: "relative",
     top: "0px",
     bottom: "0px",
@@ -53,6 +57,7 @@ export const styleSheet = {
     // border: "2px solid deeppink",
     // backgroundColor: "deeppink",
     width: "50vw",
+    padding: "0px 80px !important",
   },
 
   container__right_content: {
@@ -60,7 +65,7 @@ export const styleSheet = {
     // backgroundColor: "blue",
     display: "grid",
     height: "100%",
-    paddingTop: "15px !important",
+    // paddingTop: "15px !important",
   },
 
   description_key: {
