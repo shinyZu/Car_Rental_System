@@ -3,17 +3,21 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Car from "./pages/Car/Car";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 
 function App() {
   const [renderView, setRenderView] = useState("main");
   const [carDetails, setCarDetails] = useState(null);
   const [indexOfArray, setIndexOfArray] = useState();
+  const [openModal, setOpenModal] = useState(false);
 
   function switchRenderView(view, data, index) {
     console.log("switched view");
     setRenderView(view);
     setCarDetails(data);
     setIndexOfArray(index);
+    setOpenModal(true);
   }
 
   {
@@ -31,7 +35,6 @@ function App() {
         );
 
       case "img":
-        // return <Car />;
         return (
           <Routes>
             <Route
@@ -69,25 +72,29 @@ function App() {
           </Routes>
         );
 
+      case "register":
+        return (
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={
+                <div>
+                  <Home onSwitch={switchRenderView} />
+                  <Register
+                    open={openModal}
+                    onClose={() => setOpenModal(false)}
+                  />
+                </div>
+              }
+            ></Route>
+          </Routes>
+        );
+
       default:
         break;
     }
   }
-
-  // return (
-  // <Routes>
-  //   <Route path="/" exact element={<Home />}></Route>
-  // </Routes>
-
-  // <Router>
-  //   <Navbar />
-  //   <Switch>
-  //     <Route path="/" component={Home} />
-  //     <Route path="/about" component={About} />
-  //     {/* <Route path="*" component={NotFound} /> */}
-  //   </Switch>
-  // </Router>
-  // );
 }
 
 export default App;

@@ -13,10 +13,10 @@ import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
 import Login from "../../pages/Login/Login";
 import { Link, NavLink } from "react-router-dom";
+import Register from "../../pages/Register/Register";
 
 function NavbarGuest(props) {
   const [value, setValue] = useState("");
-  const [openModal, setOpenModal] = useState(false);
 
   function changePage(e) {
     console.log(e);
@@ -25,7 +25,6 @@ function NavbarGuest(props) {
 
   const { classes } = props;
   return (
-    // <div>
     <Box className={classes.nav__bar}>
       <Tabs
         // value={value}
@@ -71,34 +70,22 @@ function NavbarGuest(props) {
           />
         </div>
         <div className={classes.nav__right}>
-          {/* <Tab
-            icon={<LoginIcon />}
-            className={classes.nav__text}
-            label="Login"
-            href="#login"
-            onClick={() => setOpenModal(true)}
-          />
           <Tab
             icon={<HowToRegIcon />}
             className={classes.nav__text}
             label="Register"
             href="#register"
-          /> */}
-          <Tab
-            icon={<LogoutIcon />}
-            className={classes.nav__text}
-            label="Register"
-            href="#register"
             onClick={() => {
               console.log("to homeeeeeeeee...........");
-              props.onSwitch("main");
+              // setOpenModal(true);
+              props.onSwitch("register");
+              // props.onSwitch("main");
             }}
           />
         </div>
       </Tabs>
-      <Login open={openModal} onClose={() => setOpenModal(false)} />
+      {/* <Register open={openModal} onClose={() => setOpenModal(false)} /> */}
     </Box>
-    // </div>
   );
 }
 export default withStyles(styleSheet)(NavbarGuest);

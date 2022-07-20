@@ -16,7 +16,7 @@ function Register(props) {
 
   useEffect(() => {
     // console.log("I re-rendered");
-    window.scrollTo(0, 0);
+    if (props.open) window.scrollTo(0, 0);
   });
   if (!props.open) return null;
 
@@ -49,7 +49,7 @@ function Register(props) {
   }
 
   return (
-    <div className={classes.register__overlay}>
+    <div id="#register" className={classes.register__overlay}>
       <div className={classes.register__container}>
         <img
           src={login__img}

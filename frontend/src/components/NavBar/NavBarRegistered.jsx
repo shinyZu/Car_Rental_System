@@ -4,19 +4,16 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import HomeIcon from "@mui/icons-material/Home";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
+import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import LogoutIcon from "@mui/icons-material/Logout";
-import LoginIcon from "@mui/icons-material/Login";
-import CallIcon from "@mui/icons-material/Call";
 import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
 import Login from "../../pages/Login/Login";
-import { Link, NavLink } from "react-router-dom";
 
 function NavBarRegistered(props) {
-  const [value, setValue] = useState("");
-  const [openModal, setOpenModal] = useState(false);
+  //   const [value, setValue] = useState("");
+  //   const [openModal, setOpenModal] = useState(false);
 
   function changePage(e) {
     console.log(e);
@@ -54,7 +51,7 @@ function NavBarRegistered(props) {
             }}
           />
           <Tab
-            icon={<EmojiTransportationIcon />}
+            icon={<FactCheckIcon />}
             className={classes.nav__text}
             label="My Bookings"
             href="#my_bookings"
@@ -64,7 +61,7 @@ function NavBarRegistered(props) {
             }}
           />
           <Tab
-            icon={<CallIcon />}
+            icon={<CreditScoreIcon />}
             className={classes.nav__text}
             label="Payments"
             href="#payments"
@@ -83,9 +80,9 @@ function NavBarRegistered(props) {
           />
         </div>
       </Tabs>
-      <Login open={openModal} onClose={() => setOpenModal(false)} />
+      {/* <Login open={openModal} onClose={() => setOpenModal(false)} /> */}
     </Box>
   );
 }
 
-export default NavBarRegistered;
+export default withStyles(styleSheet)(NavBarRegistered);

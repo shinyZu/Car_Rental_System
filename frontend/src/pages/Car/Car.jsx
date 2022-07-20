@@ -12,11 +12,14 @@ import sub__img3 from "../../assets/images/Luxury/BMW/side2.jpg";
 import sub__img4 from "../../assets/images/Luxury/BMW/back.jpg";
 import Typography from "@mui/material/Typography";
 import CarReservePane from "../../components/Car/CarReservePane";
+import Dialog from "../../components/Dialog/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 
 function Car(props) {
   const [mainImgURL, setMainImgURL] = useState(sub__img1);
   const [openReservePane, setOpenReservePane] = useState(false);
+  const [openDailog, setOpenDialog] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(true);
 
   const { classes, carInfo } = props;
 
@@ -45,18 +48,30 @@ function Car(props) {
   }
 
   function popupReservePane() {
-    console.log("open");
+    console.log("open Reserve Pane");
     setOpenReservePane(true);
+  }
+
+  function popupDialog() {
+    console.log("open Dialog");
+    setOpenDialog(true);
   }
 
   function closeReservePane() {
     setOpenReservePane(false);
   }
 
+  function closeDialog() {
+    setOpenDialog(false);
+  }
+
   return (
     <div id="carInfo">
-      <NavbarGuest onSwitch={props.onSwitch} />
-      {/* <NavbarRegistered /> */}
+      {isRegistered ? (
+        <NavbarRegistered onSwitch={props.onSwitch} />
+      ) : (
+        <NavbarGuest onSwitch={props.onSwitch} />
+      )}
       <Grid
         container
         spacing={5}
@@ -230,163 +245,24 @@ function Car(props) {
               variant="outlined"
               type="button"
               className={classes.reserve__btn}
-              onClick={popupReservePane}
-              // style={{ backgroundColor: "red" }}
+              onClick={isRegistered ? popupReservePane : popupDialog}
             />
           </Grid>
-          {/* <Grid
-            item
-            xl={12}
-            lg={12}
-            md={12}
-            sm={12}
-            xs={12}
-            // spacing={3}
-            className={classes.reserve__btn__cell}
-          >
-          <MyButton
-            label="Reserve Car"
-            size="small"
-            variant="outlined"
-            type="button"
-            className={classes.reserve__btn}
-            onClick={popupReservePane}
-            // style={{ backgroundColor: "red" }}
-          />
-          </Grid> */}
         </Grid>
-        {/* <Grid
-          item
-          xl={12}
-          lg={12}
-          md={12}
-          sm={12}
-          xs={12}
-          className={classes.reserve__btn__cell}
-        >
-          <MyButton
-            label="Reserve Car"
-            size="small"
-            variant="outlined"
-            type="button"
-            className={classes.reserve__btn}
-            onClick={popupReservePane}
-            // style={{ backgroundColor: "red" }}
-          />
-        </Grid> */}
       </Grid>
 
-      <CarReservePane open={openReservePane} onClose={closeReservePane} />
-
-      {/* <Grid
-        container
-        spacing={4}
-        columnSpacing={5}
-        className={classes.container__2}
-      >
-        <Grid item xl={3} lg={6} md={6} sm={6} xs={6}>
-          <MyTextField
-            id="pickUp_date"
-            label="Pick Up Date"
-            focus={true}
-            type="date"
-            className={classes.container__2__txtfield}
-            // color="red"
-            inputProps={{ className: d.input }}
-          />
-        </Grid>
-        <Grid item xl={3} lg={6} md={6} sm={6} xs={6}>
-          <MyTextField
-            id="pickUp_time"
-            type="time"
-            label="Pick Up Time"
-            focus={true}
-          />
-        </Grid>
-        <Grid item xl={3} lg={6} md={6} sm={6} xs={6}>
-          <MyTextField
-            id="return_date"
-            type="date"
-            label="Return Date"
-            focus={true}
-          />
-        </Grid>
-        <Grid item xl={3} lg={6} md={6} sm={6} xs={6}>
-          <MyTextField
-            id="return_time"
-            type="time"
-            label="Return Time"
-            focus={true}
-          />
-        </Grid>
-        <Grid item xl={3} lg={3} md={3} sm={3} xs={3}>
-          <Autocomplete
-            disablePortal
-            id="pickUp_venue"
-            options={venueList}
-            xl={{ width: 300 }}
-            renderInput={(params) => (
-              <TextField {...params} label="Pick Up Venue" />
-            )}
-            size="small"
-          />
-        </Grid>
-        <Grid item xl={3} lg={3} md={3} sm={3} xs={3}>
-          <Autocomplete
-            disablePortal
-            id="return_venue"
-            options={venueList}
-            xl={{ width: 300 }}
-            renderInput={(params) => (
-              <TextField {...params} label="Return Venue" />
-            )}
-            size="small"
-          />
-        </Grid>
-        <Grid item xl={3} lg={3} md={3} sm={3} xs={3}>
-          <Autocomplete
-            disablePortal
-            id="return_venue"
-            options={driverStatus}
-            xl={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Driver" />}
-            size="small"
-          />
-        </Grid>
-        <Grid item xl={3} lg={6} md={6} sm={6} xs={6}>
-          <MyTextField
-            id="ldw"
-            type="text"
-            label="Loss damage Waiver(Rs)"
-            focus={true}
-          />
-        </Grid>
-        <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
-          <FileChooser
-            text=" Upload Reciept"
-            file={reciept}
-            onUpload={handleRecieptUpload}
-          />
-        </Grid>
-        <Grid
-          item
-          xl={12}
-          lg={6}
-          md={6}
-          sm={6}
-          xs={6}
-          className={classes.reserve__btn__cell}
-        >
-          <MyButton
-            label="Reserve Car"
-            size="small"
-            variant="outlined"
-            type="button"
-            className={classes.reserve__btn}
-            // style={{ backgroundColor: "red" }}
-          />
-        </Grid>
-      </Grid> */}
+      {isRegistered ? (
+        <CarReservePane open={openReservePane} onClose={closeReservePane} />
+      ) : (
+        <Dialog
+          open={openDailog}
+          onClose={closeDialog}
+          title={"Want To Reserve a Car?"}
+          content={
+            "To Reserve a Car you have to first Register as a Member of Easy Car Rental"
+          }
+        />
+      )}
     </div>
   );
 }
