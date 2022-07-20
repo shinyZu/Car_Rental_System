@@ -14,7 +14,7 @@ import { withStyles } from "@mui/styles";
 import Login from "../../pages/Login/Login";
 import { Link, NavLink } from "react-router-dom";
 
-function Navbar(props) {
+function NavBarRegistered(props) {
   const [value, setValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
@@ -22,10 +22,9 @@ function Navbar(props) {
     console.log(e);
     console.log("Page Changed...");
   }
-
   const { classes } = props;
+
   return (
-    // <div>
     <Box className={classes.nav__bar}>
       <Tabs
         // value={value}
@@ -43,16 +42,7 @@ function Navbar(props) {
               props.onSwitch("main");
             }}
           />
-          <Tab
-            icon={<EmojiTransportationIcon />}
-            className={classes.nav__text}
-            label="About"
-            href="#about"
-            onClick={() => {
-              console.log("to About...........");
-              props.onSwitch("about");
-            }}
-          />
+
           <Tab
             icon={<DirectionsCarIcon />}
             className={classes.nav__text}
@@ -64,26 +54,23 @@ function Navbar(props) {
             }}
           />
           <Tab
+            icon={<EmojiTransportationIcon />}
+            className={classes.nav__text}
+            label="My Bookings"
+            href="#my_bookings"
+            onClick={() => {
+              console.log("to My Bookings...........");
+              props.onSwitch("my_bookings");
+            }}
+          />
+          <Tab
             icon={<CallIcon />}
             className={classes.nav__text}
-            label="Contact"
-            href="#contact"
+            label="Payments"
+            href="#payments"
           />
         </div>
         <div className={classes.nav__right}>
-          {/* <Tab
-            icon={<LoginIcon />}
-            className={classes.nav__text}
-            label="Login"
-            href="#login"
-            onClick={() => setOpenModal(true)}
-          />
-          <Tab
-            icon={<HowToRegIcon />}
-            className={classes.nav__text}
-            label="Register"
-            href="#register"
-          /> */}
           <Tab
             icon={<LogoutIcon />}
             className={classes.nav__text}
@@ -98,7 +85,7 @@ function Navbar(props) {
       </Tabs>
       <Login open={openModal} onClose={() => setOpenModal(false)} />
     </Box>
-    // </div>
   );
 }
-export default withStyles(styleSheet)(Navbar);
+
+export default NavBarRegistered;

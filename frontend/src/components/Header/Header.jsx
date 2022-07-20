@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import bg__img from "../../assets/images/bg2.jpg";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.css";
-import Navbar from "../NavBar/Navbar";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 

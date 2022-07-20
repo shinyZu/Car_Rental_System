@@ -5,7 +5,7 @@ function MyTextField(props) {
   return (
     <TextField
       //   autoFocus
-      required={true}
+      required={props.required}
       margin="dense"
       id={props.id}
       label={props.label}
@@ -14,6 +14,8 @@ function MyTextField(props) {
       variant="outlined"
       size="small"
       style={props.style}
+      focused={props.focus}
+      color={props.color}
     />
   );
 }

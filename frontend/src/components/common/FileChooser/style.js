@@ -5,12 +5,13 @@ export const styleSheet = {
   },
 
   upload__btn: {
-    // border: "2px solid red !important",
-    backgroundColor: "#95a5a6 !important",
+    border: "1px solid #ccc !important",
+    width: "100%",
+    backgroundColor: "#cbcbcb !important",
     color: "black !important",
     fontFamily: '"Acme", sans-serif !important',
     margin: "5px 0px !important",
-    border: "none !important",
+    // border: "none !important",
     "&:hover": {
       backgroundColor: "#7f8c8d !important",
     },

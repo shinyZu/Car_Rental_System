@@ -12,7 +12,7 @@ export const styleSheet = {
     justifyContent: "center",
     alignItems: "center",
     width: "300px",
-    height: "40vh",
+    height: "50vh",
     boxShadow: "9px 6px 14px 4px rgb(7 12 8 / 49%) !important",
     borderRadius: "15px !important",
     margin: "30px 30px",

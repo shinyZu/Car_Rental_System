@@ -38,9 +38,15 @@ function Login(props) {
               id="email"
               label="Email"
               type="email"
+              required={true}
               style={{ marginBottom: "15px" }}
             />
-            <MyTextField id="pwd" label="Password" type="password" />
+            <MyTextField
+              id="pwd"
+              label="Password"
+              type="password"
+              required={true}
+            />
           </div>
 
           <div className={classes.login_btn_container}>

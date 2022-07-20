@@ -69,7 +69,12 @@ function Register(props) {
           </div>
 
           <div className={classes.register__content}>
-            <MyTextField id="email" label="Email" type="email" />
+            <MyTextField
+              id="email"
+              label="Email"
+              type="email"
+              required={true}
+            />
 
             <div className={classes.content__sub_container}>
               <MyTextField
@@ -77,11 +82,13 @@ function Register(props) {
                 label="New Password"
                 type="password"
                 style={{ marginRight: "5px" }}
+                required={true}
               />
               <MyTextField
                 id="confirm_pwd"
                 label="Confirm Password"
                 type="password"
+                required={true}
               />
             </div>
 
@@ -91,8 +98,14 @@ function Register(props) {
                 label="Address"
                 type="text"
                 style={{ marginRight: "5px" }}
+                required={true}
               />
-              <MyTextField id="contact" label="Contact No" type="text" />
+              <MyTextField
+                id="contact"
+                label="Contact No"
+                type="text"
+                required={true}
+              />
             </div>
 
             <div className={classes.content__sub_container}>
@@ -101,12 +114,14 @@ function Register(props) {
                 label="NIC No"
                 type="text"
                 style={{ marginRight: "5px" }}
+                required={true}
               />
               <MyTextField
                 id="license_no"
                 label="License No"
                 type="text"
                 style={{ marginBottom: "15px" }}
+                required={true}
               />
             </div>
 

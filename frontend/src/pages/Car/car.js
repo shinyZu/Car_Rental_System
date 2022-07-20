@@ -56,7 +56,8 @@ export const styleSheet = {
   container__right: {
     // border: "2px solid deeppink",
     // backgroundColor: "deeppink",
-    width: "50vw",
+    width: "100vw",
+    display: "grid",
     padding: "0px 80px !important",
   },
 
@@ -65,6 +66,7 @@ export const styleSheet = {
     // backgroundColor: "blue",
     display: "grid",
     height: "100%",
+    width: "100%",
     // paddingTop: "15px !important",
   },
 
@@ -79,9 +81,43 @@ export const styleSheet = {
   },
 
   container__2: {
+    border: "2px solid blue",
+    backgroundColor: "#ccc",
+    padding: "40px 80px",
+    // width: "100%",
+    // height: "300px",
+  },
+
+  container__2__txtfield: {
+    border: "2px solid red !important",
+    "&:focused": {
+      cursor: "pointer",
+      backgroundColor: "#16a085 !important",
+      color: "black !important",
+    },
+  },
+
+  reserve__btn__cell: {
     // border: "2px solid blue",
-    // backgroundColor: "yellow",
-    width: "100%",
-    height: "300px",
+    display: "flex",
+    // justifyContent: "space-between",
+    // alignItems: "center",
+    // marginTop: "0px !important",
+    // marginBottom: "10px !important",
+    // height: "55px",
+  },
+
+  reserve__btn: {
+    border: "1px #1abc9c !important",
+    backgroundColor: "#1abc9c !important",
+    color: "white !important",
+    "&:hover": {
+      cursor: "pointer",
+      backgroundColor: "#16a085 !important",
+    },
+    fontFamily: '"Acme", sans-serif !important',
+    // fontSize: "1.5em !important",
+    padding: "10px 60px !important",
+    // margin: "auto !important",
   },
 };

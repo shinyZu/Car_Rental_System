@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/NavBar/Navbar";
+import NavbarGuest from "../../components/NavBar/NavbarGuest";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
 // import main__img from "../../assets/images/Luxury/BMW/front.jpg";
@@ -15,7 +15,7 @@ function CarInfo(props) {
   const { classes } = props;
   return (
     <div>
-      <Navbar />
+      <NavbarGuest />
       <div className={classes.container__1}>
         <div className={classes.container__left}>
           <Button
