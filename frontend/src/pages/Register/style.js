@@ -33,6 +33,8 @@ export const styleSheet = {
   register__right: {
     // border: "2px solid green",
     width: "100%",
+    backgroundImage: `url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");`,
+    backgroundColor: "#ffffff",
   },
 
   register__closeBtn: {

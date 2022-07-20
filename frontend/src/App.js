@@ -129,20 +129,6 @@ function App() {
   //   }
   // }
 
-  // return (
-  //   <Routes>
-  //     <Route
-  //       path="/"
-  //       exact
-  //       element={<Home onSwitch={switchRenderView} />}
-  //     ></Route>
-  //     <Route
-  //       path="my_bookings"
-  //       element={<MyBooking onSwitch={switchRenderView} />}
-  //     ></Route>
-  //   </Routes>
-  // );
-
   return (
     <Routes>
       <Route path="/" exact element={<Home />}></Route>

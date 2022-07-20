@@ -2,7 +2,7 @@ export const styleSheet = {
   reserve__container: {
     // border: "2px solid green",
     maxWidth: "50vw",
-    maxHeight: "70vh",
+    maxHeight: "75vh",
     width: "100%",
     height: "100%",
     position: "absolute",
@@ -15,13 +15,20 @@ export const styleSheet = {
     display: "flex",
     boxShadow: "0px 0px 18px 0px rgba(0, 0, 0, 0.75)",
     borderRadius: "20px",
-    // backgroundImage: `url("https://www.transparenttextures.com/patterns/dark-geometric.png");`,
-    // backgroundColor: "#4169a9",
+    // backgroundImage: `url("https://www.transparenttextures.com/patterns/diagmonds-light.png");`,
+    // backgroundImage: `url("https://www.transparenttextures.com/patterns/diamond-eyes.png");`,
+    backgroundImage: `url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");`,
+    backgroundColor: "#ffffff",
   },
 
   container__2: {
     // border: "2px solid blue",
-    backgroundColor: "white",
+    // backgroundColor: "white",
+    // backgroundImage: `url("https://img.myloview.de/bilder/car-or-vehicle-secure-protection-alarm-signal-system-on-mobile-phone-with-padlock-or-automobile-smartphone-security-anti-theft-technology-vector-flat-cartoon-concept-of-auto-protective-safety-design-400-200903081.jpg");`,
+    // backgroundImage: `url("https://carproinspections.com/carpro/img/vehicle-bg.jpg");`,
+    // backgroundImage: `url("https://png.pngtree.com/png-vector/20200618/ourmid/pngtree-searching-buy-and-rent-car-flat-illustration-png-image_2257832.jpg");`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
     padding: "18px 30px",
     borderRadius: "10px",
   },
@@ -50,6 +57,7 @@ export const styleSheet = {
       backgroundColor: "#16a085 !important",
     },
     fontFamily: '"Acme", sans-serif !important',
+    width: "100%",
   },
 
   reserve__closeBtn: {
@@ -60,5 +68,10 @@ export const styleSheet = {
     "&:hover": {
       cursor: "pointer",
     },
+  },
+
+  text_style: {
+    fontFamily: '"Acme", sans-serif !important',
+    color: "#1abc9c",
   },
 };

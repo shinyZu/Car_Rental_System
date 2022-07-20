@@ -10,11 +10,16 @@ import MyTextField from "../../components/common/TextField/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { makeStyles } from "@material-ui/core/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function CarReservePane(props) {
   const [reciept, setReciept] = useState("");
   // const [value, setValue] = React.useState(null);
   const { classes } = props;
+  const [value, setValue] = useState(null);
 
   let venueList = ["Rental Premises", "Galle", "Colombo", "Panadura"];
   let driverStatus = ["Required", "Not Required"];
@@ -36,6 +41,7 @@ function CarReservePane(props) {
       {/* <Grid container>
       <p onClick={props.onClose}>X</p> 
       </Grid> */}
+
       <Grid
         container
         spacing={1}
@@ -56,16 +62,42 @@ function CarReservePane(props) {
             X
           </p>
         </Grid>
+        <Grid
+          container
+          xl={12}
+          lg={12}
+          md={12}
+          sm={12}
+          xs={12}
+          className={classes.title__container}
+          direction="column"
+          alignItems="center"
+        >
+          <Typography className={classes.text_style} variant="h4">
+            Reservation Details
+          </Typography>
+        </Grid>
         <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
-          <MyTextField
+          {/* <MyTextField
             id="pickUp_date"
             label="Pick Up Date"
-            focus={true}
+            // focus={true}
             type="date"
+            defaultValue="2017-05-24"
             className={classes.container__2__txtfield}
             // color="red"
             // inputProps={{ className: d.input }}
-          />
+          /> */}
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DatePicker
+              label="Basic example"
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
         </Grid>
         <Grid item xl={6} lg={6} md={12} sm={12} xs={12}>
           <MyTextField
@@ -133,7 +165,7 @@ function CarReservePane(props) {
             focus={true}
           />
         </Grid>
-        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+        <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
           <FileChooser
             text=" Upload Reciept"
             file={reciept}
@@ -150,7 +182,7 @@ function CarReservePane(props) {
           className={classes.reserve__btn__cell}
         >
           <MyButton
-            label="Send Request"
+            label="Reserve"
             size="small"
             variant="outlined"
             type="button"

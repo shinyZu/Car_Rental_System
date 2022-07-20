@@ -20,7 +20,7 @@ function CarDetail(props) {
   const [mainImgURL, setMainImgURL] = useState(sub__img1);
   const [openReservePane, setOpenReservePane] = useState(false);
   const [openDailog, setOpenDialog] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(true);
 
   const { classes } = props;
 
@@ -240,7 +240,7 @@ function CarDetail(props) {
               </Typography>
             </Typography>
             <MyButton
-              label="Reserve Car"
+              label="Rent Now"
               size="small"
               variant="outlined"
               type="button"

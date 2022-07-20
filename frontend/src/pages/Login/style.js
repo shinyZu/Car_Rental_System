@@ -31,6 +31,8 @@ export const styleSheet = {
   login__right: {
     // border: "2px solid blue",
     width: "100%",
+    backgroundImage: `url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");`,
+    backgroundColor: "#ffffff",
   },
 
   login__closeBtn: {

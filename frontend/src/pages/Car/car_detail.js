@@ -109,11 +109,11 @@ export const styleSheet = {
 
   reserve__btn: {
     border: "1px #1abc9c !important",
-    backgroundColor: "#1abc9c !important",
+    backgroundColor: "#4169a9 !important",
     color: "white !important",
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: "#16a085 !important",
+      backgroundColor: "#37527e !important",
     },
     fontFamily: '"Acme", sans-serif !important',
     // fontSize: "1.5em !important",
