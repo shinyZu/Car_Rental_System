@@ -5,9 +5,14 @@ import { withStyles } from "@mui/styles";
 import generalCarList from "../../db/general/generalCars";
 import premiumCarList from "../../db/premium/premiumCars";
 import luxuryCarList from "../../db/luxury/luxuryCars";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function Garage(props) {
   const { classes } = props;
+
+  // console.log(generalCarList);
+  // const navigate = useNavigate();
+  // console.log(navigate);
 
   return (
     <div id="garage" className={classes.garage__container}>
@@ -17,21 +22,26 @@ function Garage(props) {
 
       <div className={classes.container}>
         {generalCarList.map((car, index) => (
-          <MyCard
+          <Link
+            // to={{ pathname: "/car_details", state: { generalCarList } }}
             key={index}
-            id={index}
-            brand={car.brand}
-            passengers={car.passengers}
-            extra_KM={car.price_perExtraKM}
-            transmission={car.transmission}
-            onCardClick={(e) => {
-              console.log("swictheddddddddddd...........");
-              // console.log(e.target.parentNode);
-              console.log(index);
-              // console.log(e.target.parentElement.parentElement.children[1]);
-              props.onSwitch("img", generalCarList, index);
+            to="/car_details"
+            state={{
+              fleet: "General",
+              data: { generalCarList },
+              selectedCar: { index },
             }}
-          />
+            className={classes.card__text}
+          >
+            <MyCard
+              key={index}
+              id={index}
+              brand={car.brand}
+              passengers={car.passengers}
+              extra_KM={car.price_perExtraKM}
+              transmission={car.transmission}
+            />
+          </Link>
         ))}
       </div>
 
@@ -41,17 +51,25 @@ function Garage(props) {
 
       <div className={classes.container}>
         {premiumCarList.map((car, index) => (
-          <MyCard
+          <Link
             key={index}
-            id={index}
-            brand={car.brand}
-            passengers={car.passengers}
-            extra_KM={car.price_perExtraKM}
-            transmission={car.transmission}
-            onCardClick={() => {
-              props.onSwitch("img", premiumCarList, index);
+            to="/car_details"
+            state={{
+              fleet: "Premium",
+              data: { premiumCarList },
+              selectedCar: { index },
             }}
-          />
+            className={classes.card__text}
+          >
+            <MyCard
+              key={index}
+              id={index}
+              brand={car.brand}
+              passengers={car.passengers}
+              extra_KM={car.price_perExtraKM}
+              transmission={car.transmission}
+            />
+          </Link>
         ))}
       </div>
 
@@ -61,18 +79,26 @@ function Garage(props) {
 
       <div className={classes.container}>
         {luxuryCarList.map((car, index) => (
-          <MyCard
+          <Link
             key={index}
-            id={index}
-            brand={car.brand}
-            passengers={car.passengers}
-            extra_KM={car.price_perExtraKM}
-            transmission={car.transmission}
-            image={car.img1}
-            onCardClick={() => {
-              props.onSwitch("img", luxuryCarList, index);
+            to="/car_details"
+            state={{
+              fleet: "Luxury",
+              data: { luxuryCarList },
+              selectedCar: { index },
             }}
-          />
+            className={classes.card__text}
+          >
+            <MyCard
+              key={index}
+              id={index}
+              brand={car.brand}
+              passengers={car.passengers}
+              extra_KM={car.price_perExtraKM}
+              transmission={car.transmission}
+              image={car.img1}
+            />
+          </Link>
         ))}
       </div>
     </div>

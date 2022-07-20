@@ -12,11 +12,6 @@ function MyCard(props) {
   const { classes } = props;
   const [cardImg, setCardImg] = useState(sample_img);
 
-  // function handleCardOnClick() {
-  //   console.log("clicked on a car");
-  //   // setCarInfoVisible(true);
-  // }
-
   return (
     <div>
       <Card sx={{ maxWidth: 350 }} className={classes.card}>
@@ -28,13 +23,13 @@ function MyCard(props) {
               image={cardImg}
               // image={props.image}
               alt="car"
-              onClick={(e) => {
-                props.onCardClick(e);
-              }}
+              // onClick={(e) => {
+              //   console.log("inside Card Component");
+              //   props.onCardClick(e);
+              // }}
             />
           </div>
 
-          {/* <CardMedia icon={<PersonIcon />} /> */}
           <CardContent className={classes.card__content}>
             <Typography
               className={classes.card__text}

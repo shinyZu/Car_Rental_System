@@ -9,78 +9,69 @@ import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
-import Login from "../../pages/Login/Login";
+import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import MyBooking from "../../pages/Customer/MyBookings/MyBooking";
+import Home from "../../pages/Home/Home";
+import { HashLink } from "react-router-hash-link";
 
 function NavBarRegistered(props) {
-  //   const [value, setValue] = useState("");
+  const [value, setValue] = useState("");
   //   const [openModal, setOpenModal] = useState(false);
 
   function changePage(e) {
-    console.log(e);
-    console.log("Page Changed...");
+    // console.log(e);
+    // console.log("Page Changed...");
+    setValue(e.target.innerText);
   }
+
   const { classes } = props;
 
   return (
     <Box className={classes.nav__bar}>
-      <Tabs
-        // value={value}
-        onChange={changePage}
-        className={classes.nav__tabs}
-      >
+      <Tabs value={value} onChange={changePage} className={classes.nav__tabs}>
         <div className={classes.nav_left}>
-          <Tab
-            icon={<HomeIcon />}
-            className={classes.nav__text}
-            label="Home"
-            // href="#home"
-            onClick={() => {
-              console.log("to homeeeeeeeee...........");
-              props.onSwitch("main");
-            }}
-          />
+          <Link to="/" className={classes.nav__text}>
+            <Tab
+              icon={<HomeIcon />}
+              className={classes.nav__text}
+              label="Home"
+            />
+          </Link>
 
-          <Tab
-            icon={<DirectionsCarIcon />}
-            className={classes.nav__text}
-            label="Cars"
-            href="#garage"
-            onClick={() => {
-              console.log("to Garage...........");
-              props.onSwitch("garage");
-            }}
-          />
-          <Tab
-            icon={<FactCheckIcon />}
-            className={classes.nav__text}
-            label="My Bookings"
-            href="#my_bookings"
-            onClick={() => {
-              console.log("to My Bookings...........");
-              props.onSwitch("my_bookings");
-            }}
-          />
-          <Tab
-            icon={<CreditScoreIcon />}
-            className={classes.nav__text}
-            label="Payments"
-            href="#payments"
-          />
+          <HashLink smooth to="/#garage" className={classes.nav__text}>
+            <Tab
+              icon={<DirectionsCarIcon />}
+              className={classes.nav__text}
+              label="Cars"
+            />
+          </HashLink>
+
+          <HashLink smooth to="/my_bookings" className={classes.nav__text}>
+            <Tab
+              icon={<FactCheckIcon />}
+              className={classes.nav__text}
+              label="My Bookings"
+            />
+          </HashLink>
+
+          <HashLink smooth to="/payments" className={classes.nav__text}>
+            <Tab
+              icon={<CreditScoreIcon />}
+              className={classes.nav__text}
+              label="Payments"
+            />
+          </HashLink>
         </div>
         <div className={classes.nav__right}>
-          <Tab
-            icon={<LogoutIcon />}
-            className={classes.nav__text}
-            label="Logout"
-            href="#logout"
-            onClick={() => {
-              console.log("to homeeeeeeeee...........");
-              props.onSwitch("main");
-            }}
-          />
+          <Link to="/" className={classes.nav__text}>
+            <Tab
+              icon={<LogoutIcon />}
+              className={classes.nav__text}
+              label="Logout"
+            />
+          </Link>
         </div>
       </Tabs>
-      {/* <Login open={openModal} onClose={() => setOpenModal(false)} /> */}
     </Box>
   );
 }

@@ -3,7 +3,7 @@ export const styleSheet = {
     // border: "2px solid red",
     // paddingTop: "100px",
     padding: "10px",
-    width: "70%",
+    width: "95%",
     height: "100%",
     margin: "auto",
   },
@@ -26,5 +26,9 @@ export const styleSheet = {
     flexWrap: "wrap",
     // margin: "4rem auto",
     // maxWidth: "90%",
+  },
+
+  card__text: {
+    textDecoration: "none",
   },
 };

@@ -11,7 +11,7 @@ export const styleSheet = {
   container__left: {
     // border: "2px solid green",
     // backgroundColor: "green",
-    // display: "grid",
+    // display: "flex",
     // flexDirection: "column",
     // justifyContent: "center",
     // alignItems: "center",

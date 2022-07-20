@@ -14,22 +14,33 @@ import Typography from "@mui/material/Typography";
 import CarReservePane from "../../components/Car/CarReservePane";
 import Dialog from "../../components/Dialog/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
+import { useLocation, useParams } from "react-router-dom";
 
-function Car(props) {
+function CarDetail(props) {
   const [mainImgURL, setMainImgURL] = useState(sub__img1);
   const [openReservePane, setOpenReservePane] = useState(false);
   const [openDailog, setOpenDialog] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(true);
+  const [isRegistered, setIsRegistered] = useState(false);
 
-  const { classes, carInfo } = props;
+  const { classes } = props;
 
-  // const useStyles = makeStyles({
-  //   input: {
-  //     color: "red",
-  //   },
-  // });
+  const { state } = useLocation();
+  let fleet = state.fleet;
+  let carInfo = state.data.generalCarList;
+  let selectedCar = state.selectedCar.index;
+  // console.log(useLocation());
+  // console.log(carInfo);
+  // console.log(selectedCar);
+  // console.log(fleet);
+  // console.log(carInfo[selectedCar]);
 
-  // const d = useStyles();
+  if (fleet == "General") {
+    carInfo = state.data.generalCarList;
+  } else if (fleet == "Premium") {
+    carInfo = state.data.premiumCarList;
+  } else if (fleet == "Luxury") {
+    carInfo = state.data.luxuryCarList;
+  }
 
   function handleImageClick(e) {
     // console.log(e.target.id);
@@ -67,20 +78,11 @@ function Car(props) {
 
   return (
     <div id="carInfo">
-      {isRegistered ? (
-        <NavbarRegistered onSwitch={props.onSwitch} />
-      ) : (
-        <NavbarGuest onSwitch={props.onSwitch} />
-      )}
-      <Grid
-        container
-        spacing={5}
-        className={classes.container__1}
-        // direction="row"
-      >
+      {isRegistered ? <NavbarRegistered /> : <NavbarGuest />}
+      <Grid container spacing={5} className={classes.container__1}>
         <Grid
           item
-          //   container
+          // container
           xl={7}
           lg={6}
           md={6}
@@ -103,7 +105,6 @@ function Car(props) {
             xs={6}
             className={classes.container__sub__imgs}
           >
-            {/* <KeyboardArrowLeftIcon className={classes.arrow__icons} /> */}
             <Button
               id={1}
               style={{ backgroundImage: `url(${sub__img1})` }}
@@ -128,7 +129,6 @@ function Car(props) {
               className={classes.car__views}
               onClick={handleImageClick}
             />
-            {/* <KeyboardArrowRightIcon className={classes.arrow__icons} /> */}
           </Grid>
         </Grid>
 
@@ -153,90 +153,90 @@ function Car(props) {
             // direction="column"
           >
             <Typography variant="h3" className={classes.description_key}>
-              {carInfo[props.selectedCar].brand}
+              {carInfo[selectedCar].brand}
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Reg No &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].reg_no}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].reg_no}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Fleet &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].fleet}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fleet}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Passengers &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].passengers}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].passengers}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Transmission Type &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].transmission}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].transmission}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Fuel Type &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].fuel}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fuel}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Color &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].color}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].color}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Mileage &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].mileage}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].mileage}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Daily Rate(Rs) &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].daily_rate}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].daily_rate}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Free KM per Day &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].freeKM_perDay}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_perDay}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Monthly Rate(Rs) &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].monthly_rate}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].monthly_rate}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Free KM per Month &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].freeKM_perMonth}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_perMonth}
               </Typography>
             </Typography>
 
             <Typography variant="h6" className={classes.description_key}>
               Price per Extra KM(Rs) &nbsp; &nbsp;:
               <Typography variant="h7" className={classes.description_value}>
-                &nbsp;&nbsp;&nbsp;{carInfo[props.selectedCar].price_perExtraKM}
+                &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].price_perExtraKM}
               </Typography>
             </Typography>
             <MyButton
@@ -268,4 +268,4 @@ function Car(props) {
 }
 
 // export default Car;
-export default withStyles(styleSheet)(Car);
+export default withStyles(styleSheet)(CarDetail);

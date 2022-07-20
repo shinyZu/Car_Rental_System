@@ -37,5 +37,6 @@ export const styleSheet = {
     fontWeight: "700 !important",
     fontFamily: '"Acme", sans-serif !important',
     fontSize: "0.975rem !important",
+    textDecoration: "none",
   },
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import bg__img from "../../assets/images/bg2.jpg";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
@@ -7,10 +7,15 @@ import Main from "../Main";
 
 function Home(props) {
   const { classes } = props;
+
+  // useEffect(() => {
+  //   window.scrollTo(0.0);
+  // }, []);
+
   return (
     <div id="home">
-      <Header onSwitch={props.onSwitch} />
-      <Main onSwitch={props.onSwitch} />
+      <Header />
+      <Main />
     </div>
   );
 }

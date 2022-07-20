@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import login__img from "../../assets/images/bg6.png";
+import login__img from "../../assets/images/bg11.jpg";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";
@@ -7,12 +7,23 @@ import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 import FileChooser from "../../components/common/FileChooser/FileChooser";
 import MyTextField from "../../components/common/TextField/TextField";
+import Dialog from "@mui/material/Dialog";
+import { useLocation } from "react-router-dom";
 
 function Register(props) {
   const { classes } = props;
   const [file_nicFront, setFile_NICFront] = useState("");
   const [file_nicBack, setFile_NICBack] = useState("");
   const [file_license, setFile_License] = useState("");
+
+  const { state } = useLocation();
+  // const { data } = state;
+  // console.log(useLocation());
+  // let isOpen = state.open;
+  // console.log(props);
+  // console.log(state.data.d);
+  // console.log(data);
+  // console.log(isOpen);
 
   useEffect(() => {
     // console.log("I re-rendered");
@@ -148,17 +159,19 @@ function Register(props) {
           </div>
 
           <div className={classes.register__footer}>
-            <p>
-              Already a Member?{" "}
-              <Link
-                to="#login"
-                onClick={() => {
-                  props.onSwitch();
-                }}
-              >
-                Login
-              </Link>
-            </p>
+            {props.disableLogin ? null : (
+              <p>
+                Already a Member?{" "}
+                <Link
+                  to="#login"
+                  onClick={() => {
+                    props.onSwitch();
+                  }}
+                >
+                  Login
+                </Link>
+              </p>
+            )}
           </div>
         </div>
       </div>
