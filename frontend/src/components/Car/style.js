@@ -6,7 +6,7 @@ export const styleSheet = {
     width: "100%",
     height: "100%",
     position: "absolute",
-    top: "10px",
+    top: "55px",
     right: "0",
     bottom: "0",
     left: "0",
@@ -15,12 +15,15 @@ export const styleSheet = {
     display: "flex",
     boxShadow: "0px 0px 18px 0px rgba(0, 0, 0, 0.75)",
     borderRadius: "20px",
+    // backgroundImage: `url("https://www.transparenttextures.com/patterns/dark-geometric.png");`,
+    // backgroundColor: "#4169a9",
   },
 
   container__2: {
     // border: "2px solid blue",
     backgroundColor: "white",
     padding: "18px 30px",
+    borderRadius: "10px",
   },
 
   container__2__txtfield: {

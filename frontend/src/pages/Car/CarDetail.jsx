@@ -3,7 +3,7 @@ import NavbarGuest from "../../components/NavBar/NavbarGuest";
 import NavbarRegistered from "../../components/NavBar/NavBarRegistered";
 import Grid from "@mui/material/Grid";
 import { withStyles } from "@mui/styles";
-import { styleSheet } from "./car.js";
+import { styleSheet } from "./car_detail";
 import { Button } from "@mui/material";
 import MyButton from "../../components/common/Button/Button";
 import sub__img1 from "../../assets/images/Luxury/BMW/front.jpg";

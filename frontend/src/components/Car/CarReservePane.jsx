@@ -150,7 +150,7 @@ function CarReservePane(props) {
           className={classes.reserve__btn__cell}
         >
           <MyButton
-            label="Reserve Car"
+            label="Send Request"
             size="small"
             variant="outlined"
             type="button"

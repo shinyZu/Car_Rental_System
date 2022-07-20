@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Car from "./pages/Car/Car";
+import Car from "./pages/Car/CarDetail";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 
