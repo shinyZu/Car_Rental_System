@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import login__img from "../../assets/images/bg1.jpg";
+import login__img from "../../assets/images/bg6.png";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";

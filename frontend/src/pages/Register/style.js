@@ -21,11 +21,12 @@ export const styleSheet = {
     backgroundColor: "#ffffff",
     boxShadow: "0px 0px 18px 0px rgba(0, 0, 0, 0.75)",
     borderRadius: "8px",
+    zIndex: "7",
   },
 
   register__left: {
     // border: "2px solid pink",
-    opacity: "0.8",
+    opacity: "0.9",
     // backgroundImage: 'url("../../assets/images/bg1.jpg")',
   },
 
@@ -50,12 +51,12 @@ export const styleSheet = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    color: "#95a5a6",
+    color: "#4169a9",
   },
 
   register__icon: {
     fontSize: "80px !important",
-    color: "#95a5a6 !important",
+    color: "#4169a9 !important",
   },
 
   register__content: {
@@ -78,7 +79,7 @@ export const styleSheet = {
   },
 
   btn__register: {
-    backgroundColor: "#1abc9c",
+    backgroundColor: "#4169a9",
     color: "white",
     padding: "15px",
     width: "87%",
@@ -86,7 +87,7 @@ export const styleSheet = {
     border: "none",
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: "#16a085",
+      backgroundColor: "#37527e",
     },
   },
 
