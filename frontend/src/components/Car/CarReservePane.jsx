@@ -106,6 +106,7 @@ function CarReservePane(props) {
               }}
               renderInput={(params) => <TextField {...params} fullWidth />}
               disablePast
+              inputFormat="dd/MM/yyyy"
             />
           </LocalizationProvider>
           {/* <LocalizationProvider
@@ -142,6 +143,7 @@ function CarReservePane(props) {
                 setReturn_date(newValue);
               }}
               renderInput={(params) => <TextField {...params} fullWidth />}
+              inputFormat="dd/MM/yyyy"
             />
           </LocalizationProvider>
         </Grid>

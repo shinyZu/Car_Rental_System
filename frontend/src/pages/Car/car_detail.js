@@ -56,18 +56,28 @@ export const styleSheet = {
   container__right: {
     // border: "2px solid deeppink",
     // backgroundColor: "deeppink",
-    width: "100vw",
-    display: "grid",
+    // width: "100vw",
+    // display: "grid",
     padding: "0px 80px !important",
   },
 
-  container__right_content: {
+  container__right_content_keys: {
     // border: "2px solid blue",
     // backgroundColor: "blue",
-    display: "grid",
-    height: "100%",
-    width: "100%",
-    // paddingTop: "15px !important",
+    display: "grid  !important",
+    // height: "100%",
+    // width: "50% !important",
+    paddingTop: "15px !important",
+  },
+
+  container__right_content_values: {
+    // border: "2px solid green",
+    // backgroundColor: "green",
+    display: "grid  !important",
+    // height: "100%",
+    // width: "80%",
+    paddingTop: "15px !important",
+    paddingLeft: "0px !important",
   },
 
   description_key: {
@@ -81,9 +91,9 @@ export const styleSheet = {
   },
 
   container__2: {
-    border: "2px solid blue",
+    // border: "2px solid blue",
     backgroundColor: "#ccc",
-    padding: "40px 80px",
+    // padding: "40px 80px",
     // width: "100%",
     // height: "300px",
   },
@@ -111,6 +121,9 @@ export const styleSheet = {
     border: "1px #1abc9c !important",
     backgroundColor: "#4169a9 !important",
     color: "white !important",
+    width: "55%",
+    height: "50%",
+    marginTop: "10px",
     "&:hover": {
       cursor: "pointer",
       backgroundColor: "#37527e !important",
