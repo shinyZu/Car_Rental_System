@@ -58,6 +58,7 @@ export const styleSheet = {
     },
     fontFamily: '"Acme", sans-serif !important',
     width: "100%",
+    height: "50px",
   },
 
   reserve__closeBtn: {
