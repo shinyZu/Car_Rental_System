@@ -181,11 +181,11 @@ function CarDetail(props) {
               direction="column"
             >
               <Typography variant="h6" className={classes.description_key}>
-                Reg No
+                Registration No
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
-                Fleet
+                Car Fleet
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>

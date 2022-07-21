@@ -6,12 +6,13 @@ export const styleSheet = {
 
   upload__btn: {
     border: "1px solid #ccc !important",
+    // border: "2px solid red !important",
     width: "100%",
-    height: "50px",
+    height: "40px",
     backgroundColor: "#cbcbcb !important",
     color: "black !important",
-    fontFamily: '"Acme", sans-serif !important',
-    // margin: "5px 0px !important",
+    // fontFamily: '"Acme", sans-serif !important',
+    margin: "5px 0px !important",
     // border: "none !important",
     "&:hover": {
       backgroundColor: "#7f8c8d !important",

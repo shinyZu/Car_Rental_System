@@ -18,6 +18,6 @@ export const styleSheet = {
   },
 
   text_style: {
-    fontFamily: '"Acme", sans-serif !important',
+    // fontFamily: '"Acme", sans-serif !important',
   },
 };

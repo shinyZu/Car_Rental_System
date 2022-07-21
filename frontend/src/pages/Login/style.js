@@ -97,6 +97,6 @@ export const styleSheet = {
   },
 
   font__family: {
-    fontFamily: '"Acme", sans-serif !important',
+    // fontFamily: '"Acme", sans-serif !important',
   },
 };

@@ -7,6 +7,7 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import MyBooking from "./pages/Customer/MyBookings/MyBooking";
 import MyPayments from "./pages/Customer/MyPayments/MyPayments";
+import Confirmation from "./pages/Customer/Confirmation/Confirmation";
 
 function App() {
   // const [renderView, setRenderView] = useState("main");
@@ -136,6 +137,7 @@ function App() {
       <Route path="/car_details" element={<CarDetail />}></Route>
       <Route path="/my_bookings" element={<MyBooking />}></Route>
       <Route path="/my_payments" element={<MyPayments />}></Route>
+      <Route path="/confirmation_details" element={<Confirmation />}></Route>
     </Routes>
   );
 }

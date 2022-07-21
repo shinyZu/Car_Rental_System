@@ -54,12 +54,12 @@ export const styleSheet = {
 
   card__text: {
     // fontWeight: "700 !important",
-    fontFamily: '"Acme", sans-serif !important',
+    // fontFamily: '"Acme", sans-serif !important',
   },
 
   price__extraKM: {
     color: "red",
     fontWeight: "700 !important",
-    fontFamily: '"Acme", sans-serif !important',
+    // fontFamily: '"Acme", sans-serif !important',
   },
 };

@@ -3,13 +3,10 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
-import { Button } from "@mui/material";
 import MyButton from "../../components/common/Button/Button";
 import FileChooser from "../../components/common/FileChooser/FileChooser";
-import MyTextField from "../../components/common/TextField/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import { makeStyles } from "@material-ui/core/styles";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -18,6 +15,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 // import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 // import { AdapterDateFns } from "@mui/x-date-pickers-pro/AdapterDateFns";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function CarReservePane(props) {
   const [reciept, setReciept] = useState("");
@@ -253,6 +251,7 @@ function CarReservePane(props) {
             Reciept
           </Typography>
         </Grid>
+
         <Grid
           item
           xl={12}
@@ -262,14 +261,25 @@ function CarReservePane(props) {
           xs={12}
           className={classes.reserve__btn__cell}
         >
-          <MyButton
-            label="Reserve"
-            size="small"
-            variant="outlined"
-            type="button"
-            className={classes.reserve__btn}
-            // style={{ backgroundColor: "red" }}
-          />
+          <Link
+            // key={index}
+            to="/confirmation_details"
+            // state={{
+            //   fleet: "General",
+            //   data: { generalCarList },
+            //   selectedCar: { index },
+            // }}
+            className={classes.card__text}
+          >
+            <MyButton
+              label="Reserve"
+              size="small"
+              variant="outlined"
+              type="button"
+              className={classes.reserve__btn}
+              style={{ backgroundColor: "red" }}
+            />
+          </Link>
         </Grid>
       </Grid>
     </div>

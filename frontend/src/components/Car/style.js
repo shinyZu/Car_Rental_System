@@ -56,8 +56,8 @@ export const styleSheet = {
       cursor: "pointer",
       backgroundColor: "#16a085 !important",
     },
-    fontFamily: '"Acme", sans-serif !important',
-    width: "100%",
+    // fontFamily: '"Acme", sans-serif !important',
+    width: "46vw",
     height: "50px",
   },
 
@@ -72,7 +72,10 @@ export const styleSheet = {
   },
 
   text_style: {
-    fontFamily: '"Acme", sans-serif !important',
+    // fontFamily: '"Acme", sans-serif !important',
     color: "#1abc9c",
+  },
+  card__text: {
+    textDecoration: "none",
   },
 };

@@ -1,6 +1,6 @@
 /* Body Header */
 * {
-  font-family: "Acme", sans-serif;
+  font-family: "Acme", sans-serif !important;
 }
 
 .body-header {

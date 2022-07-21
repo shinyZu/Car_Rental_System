@@ -81,12 +81,12 @@ export const styleSheet = {
   },
 
   description_key: {
-    fontFamily: '"Acme", sans-serif !important',
+    // fontFamily: '"Acme", sans-serif !important',
     fontWeight: "700 !important",
   },
 
   description_value: {
-    fontFamily: '"Acme", sans-serif !important',
+    // fontFamily: '"Acme", sans-serif !important',
     fontWeight: "400 !important",
   },
 
@@ -128,7 +128,7 @@ export const styleSheet = {
       cursor: "pointer",
       backgroundColor: "#37527e !important",
     },
-    fontFamily: '"Acme", sans-serif !important',
+    // fontFamily: '"Acme", sans-serif !important',
     // fontSize: "1.5em !important",
     padding: "10px 60px !important",
     // margin: "auto !important",
