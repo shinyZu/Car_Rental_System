@@ -4,7 +4,7 @@ import NavbarRegistered from "../../components/NavBar/NavBarRegistered";
 import Grid from "@mui/material/Grid";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./car_detail";
-import { Button } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 import MyButton from "../../components/common/Button/Button";
 import sub__img1 from "../../assets/images/Luxury/BMW/front.jpg";
 import sub__img2 from "../../assets/images/Luxury/BMW/side1.jpg";
@@ -15,6 +15,7 @@ import CarReservePane from "../../components/Car/CarReservePane";
 import Dialog from "../../components/Dialog/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 import { useLocation, useParams } from "react-router-dom";
+import Box from "@mui/material/Box";
 
 function CarDetail(props) {
   const [mainImgURL, setMainImgURL] = useState(sub__img1);
@@ -141,13 +142,10 @@ function CarDetail(props) {
           sm={6}
           xs={6}
           className={classes.container__right}
-          // direction="row"
-          // justifyContent="center"
           alignItems="center"
         >
           <Grid
             item
-            // container
             xl={12}
             lg={12}
             md={12}
@@ -169,11 +167,7 @@ function CarDetail(props) {
             sm={12}
             xs={12}
             spacing={4}
-            // columnSpacing={4}
             style={{ height: "60vh" }}
-            // direction="row"
-            // justifyContent="center"
-            // alignItems="center"
           >
             <Grid
               item
@@ -183,108 +177,56 @@ function CarDetail(props) {
               md={6}
               sm={6}
               xs={6}
-              // rowSpacing={5}
-              // whiteSpace={3}
-              // spacing={3}
-              // columnSpacing={4}
               className={classes.container__right_content_keys}
               direction="column"
             >
-              {/* <Typography variant="h3" className={classes.description_key}>
-              {carInfo[selectedCar].brand}
-            </Typography> */}
-
               <Typography variant="h6" className={classes.description_key}>
                 Reg No
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].reg_no}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Fleet
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fleet}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Passengers
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].passengers}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Transmission Type
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].transmission}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Fuel Type
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fuel}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Color
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].color}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Mileage
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].mileage}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Daily Rate(Rs)
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].daily_rate}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Free KM per Day
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_perDay}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Monthly Rate(Rs)
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].monthly_rate}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Free KM per Month
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_perMonth}
-                </Typography> */}
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
                 Price per Extra KM(Rs)
-                {/* <Typography variant="h7" className={classes.description_value}>
-                  &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].price_perExtraKM}
-                </Typography> */}
               </Typography>
-              {/* <MyButton
-                label="Rent Now"
-                size="small"
-                variant="outlined"
-                type="button"
-                className={classes.reserve__btn}
-                onClick={isRegistered ? popupReservePane : popupDialog}
-              /> */}
             </Grid>
 
             <Grid
@@ -295,110 +237,59 @@ function CarDetail(props) {
               md={6}
               sm={4}
               xs={6}
-              // columnSpacing={4}
-              // spacing={4}
               className={classes.container__right_content_values}
               direction="column"
             >
-              {/* <Typography variant="h3" className={classes.description_key}>
-              {carInfo[selectedCar].brand}
-            </Typography> */}
-
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Reg No &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp; {carInfo[selectedCar].reg_no}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Fleet &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fleet}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Passengers &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].passengers}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Transmission Type &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].transmission}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Fuel Type &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fuel}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Color &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].color}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Mileage &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].mileage}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Daily Rate(Rs) &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].daily_rate}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Free KM per Day &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_perDay}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Monthly Rate(Rs) &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].monthly_rate}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Free KM per Month &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_perMonth}
               </Typography>
-              {/* </Typography> */}
 
-              {/* <Typography variant="h6" className={classes.description_key}>
-                Price per Extra KM(Rs) &nbsp; &nbsp;: */}
               <Typography variant="h6" className={classes.description_value}>
                 : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].price_perExtraKM}
               </Typography>
-              {/* </Typography> */}
             </Grid>
           </Grid>
-          <Grid
-            container
-            xl={12}
-            lg={12}
-            md={6}
-            sm={6}
-            xs={6}
-            // columnSpacing={4}
-            // justifyContent="center"
-          >
+          <Grid container xl={12} lg={12} md={6} sm={6} xs={6}>
             <MyButton
               label="Rent Now"
               size="small"
@@ -427,5 +318,4 @@ function CarDetail(props) {
   );
 }
 
-// export default Car;
 export default withStyles(styleSheet)(CarDetail);

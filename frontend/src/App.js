@@ -6,6 +6,7 @@ import CarDetail from "./pages/Car/CarDetail";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import MyBooking from "./pages/Customer/MyBookings/MyBooking";
+import MyPayments from "./pages/Customer/MyPayments/MyPayments";
 
 function App() {
   // const [renderView, setRenderView] = useState("main");
@@ -134,6 +135,7 @@ function App() {
       <Route path="/" exact element={<Home />}></Route>
       <Route path="/car_details" element={<CarDetail />}></Route>
       <Route path="/my_bookings" element={<MyBooking />}></Route>
+      <Route path="/my_payments" element={<MyPayments />}></Route>
     </Routes>
   );
 }

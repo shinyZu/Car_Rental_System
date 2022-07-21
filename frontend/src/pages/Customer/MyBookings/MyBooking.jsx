@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Grid } from "@mui/material";
-import { withStyles } from "@mui/styles";
-import { styleSheet } from "./style";
 import NavBarRegistered from "../../../components/NavBar/NavBarRegistered";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
-import MyTable from "../../../components/common/Table/Table";
-import { DataGrid } from "@mui/x-data-grid";
-import Box from "@mui/material/Box";
+import MyBookingDetails from "../../../components/BookingDetails/BookingDetails";
+// import { Grid } from "@mui/material";
+// import { withStyles } from "@mui/styles";
+// import { styleSheet } from "./style";
+// import Typography from "@mui/material/Typography";
+// import Paper from "@mui/material/Paper";
+// import InputBase from "@mui/material/InputBase";
+// import IconButton from "@mui/material/IconButton";
+// import SearchIcon from "@mui/icons-material/Search";
+// import MyTable from "../../../components/common/Table/Table";
+// import { DataGrid } from "@mui/x-data-grid";
+// import Box from "@mui/material/Box";
 
 const columns = [
   {
@@ -145,108 +146,21 @@ function MyBooking(props) {
   const { classes } = props;
 
   return (
-    <div>
+    <>
       <NavBarRegistered />
-      <Grid
-        container
-        xl={12}
-        lg={12}
-        md={12}
-        sm={12}
-        xs={12}
-        className={classes.title__container}
-        direction="column"
-        alignItems="center"
-      >
-        <Paper
-          sx={{
-            p: "20px 0px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "90%",
-          }}
-          elevation={0}
-        >
-          <Typography className={classes.text_style} variant="h3">
-            My Bookings
-          </Typography>
-          <Typography
-            className={classes.text_style}
-            variant="h6"
-            style={{ color: "rgb(157 157 157)" }}
-          >
-            Hope you enjoyed our service.......You can Search and View all your
-            Bookings here.......
-          </Typography>
-        </Paper>
-      </Grid>
-      <Grid
-        container
-        xl={6}
-        lg={6}
-        md={6}
-        sm={6}
-        xs={6}
-        className={classes.search__bar}
-        direction="column"
-        alignItems="center"
-      >
-        {/* <MyTextField label="Search Order" /> */}
-        <Paper
-          sx={{
-            p: "2px 4px",
-            display: "flex",
-            alignItems: "center",
-            width: 400,
-          }}
-          elevation={12}
-        >
-          <InputBase
-            sx={{ ml: 1, flex: 1 }}
-            placeholder="Search Bookings"
-            // inputProps={{ "aria-label": "search google maps" }}
-          />
-          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-            <SearchIcon />
-          </IconButton>
-        </Paper>
-      </Grid>
-      <Grid
-        container
-        xl={10}
-        lg={10}
-        md={10}
-        sm={10}
-        xs={10}
-        className={classes.table__container}
-        // direction="column"
-        // alignItems="center"
-      >
-        <Box
-          sx={{
-            // height: 300,
-            width: "100%",
-            boxShadow: 1,
-            // border: 2,
-            "& .header_color": {
-              backgroundColor: "#287eb5",
-              color: "white",
-            },
-          }}
-        >
-          <MyTable
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            // checkboxSelection
-          />
-        </Box>
-      </Grid>
-    </div>
+      <MyBookingDetails
+        page="B"
+        pageTitle="My Bookings"
+        pageSubtitle="Hope you enjoyed our service.......You can Search and View all your Bookings here......."
+        searchbarPlaceholder="Search My Bookings"
+        // tableWidth_xl={10}
+        // tableWidth_lg={10}
+        tableColumns={columns}
+        tableData={rows}
+      />
+    </>
   );
 }
 
-export default withStyles(styleSheet)(MyBooking);
+export default MyBooking;
+// export default withStyles(styleSheet)(MyBooking);

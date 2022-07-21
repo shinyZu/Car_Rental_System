@@ -54,7 +54,7 @@ function NavBarRegistered(props) {
             />
           </HashLink>
 
-          <HashLink smooth to="/payments" className={classes.nav__text}>
+          <HashLink smooth to="/my_payments" className={classes.nav__text}>
             <Tab
               icon={<CreditScoreIcon />}
               className={classes.nav__text}

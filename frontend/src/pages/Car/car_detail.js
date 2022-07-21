@@ -58,7 +58,7 @@ export const styleSheet = {
     // backgroundColor: "deeppink",
     // width: "100vw",
     // display: "grid",
-    padding: "0px 80px !important",
+    padding: "0px 45px !important",
   },
 
   container__right_content_keys: {
@@ -121,7 +121,7 @@ export const styleSheet = {
     border: "1px #1abc9c !important",
     backgroundColor: "#4169a9 !important",
     color: "white !important",
-    width: "55%",
+    width: "100%",
     height: "50%",
     marginTop: "10px",
     "&:hover": {
