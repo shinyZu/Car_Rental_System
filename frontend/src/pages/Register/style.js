@@ -20,14 +20,17 @@ export const styleSheet = {
     display: "flex",
     backgroundColor: "#ffffff",
     boxShadow: "0px 0px 18px 0px rgba(0, 0, 0, 0.75)",
-    borderRadius: "8px",
+    borderRadius: "30px",
     zIndex: "7",
+    borderBottomLeftRadius: "140px",
   },
 
   register__left: {
     // border: "2px solid pink",
     opacity: "0.9",
     // backgroundImage: 'url("../../assets/images/bg1.jpg")',
+    borderTopRightRadius: "140px",
+    borderBottomLeftRadius: "140px",
   },
 
   register__right: {
@@ -35,13 +38,15 @@ export const styleSheet = {
     width: "100%",
     backgroundImage: `url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");`,
     backgroundColor: "#ffffff",
+    borderTopRightRadius: "5%",
+    borderBottomRightRadius: "5%",
   },
 
   register__closeBtn: {
     // border: "2px solid black",
     display: "flex",
     justifyContent: "end",
-    paddingRight: "10px",
+    paddingRight: "20px",
     "&:hover": {
       cursor: "pointer",
     },
@@ -63,7 +68,7 @@ export const styleSheet = {
 
   register__content: {
     // border: "2px solid orange",
-    padding: "10px 32px",
+    padding: "5px 10px",
     // marginTop: "10%",
   },
 
@@ -99,12 +104,18 @@ export const styleSheet = {
     justifyContent: "center",
     padding: "0px",
     fontSize: "14px",
+    marginTop: "-10px",
   },
 
-  // upload__section: {
-  //   // border: "2px solid red",
-  //   display: "flex",
-  // },
+  upload__section: {
+    // border: "2px solid red",
+    marginTop: "0px",
+    marginLeft: "15px",
+    // display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "center",
+    // alignItems: "center",
+  },
 
   // upload__btn: {
   //   border: "2px solid red !important",

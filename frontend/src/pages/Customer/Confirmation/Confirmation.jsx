@@ -47,14 +47,14 @@ function Confirmation(props) {
         <Paper
           sx={{
             m: "20px auto",
-            p: "20px 10px",
+            p: "25px 10px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             width: "80%",
           }}
-          elevation={12}
+          elevation={7}
         >
           <Typography variant="h2" color="#16a085">
             <CheckCircleIcon
@@ -68,7 +68,7 @@ function Confirmation(props) {
       <Grid container xl={12} lg={12} md={12} sm={12} xs={12}>
         <Paper
           sx={{
-            m: "10px auto",
+            m: "0px auto",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -130,7 +130,7 @@ function Confirmation(props) {
         >
           <Grid
             container
-            // item
+            item
             xl={4}
             lg={4}
             md={4}
@@ -149,6 +149,7 @@ function Confirmation(props) {
           </Grid>
           <Grid
             container
+            item
             xl={8}
             lg={8}
             md={8}
@@ -199,6 +200,7 @@ function Confirmation(props) {
           </Grid>
           <Grid
             container
+            item
             xl={8}
             lg={8}
             md={8}

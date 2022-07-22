@@ -16,6 +16,7 @@ function FileChooser(props) {
         startIcon={<UploadFileIcon />}
         // sx={{ marginRight: "1rem" }}
         className={classes.upload__btn}
+        style={props.style}
       >
         {props.text}
         <input

@@ -20,12 +20,15 @@ export const styleSheet = {
     display: "flex",
     backgroundColor: "#ffffff",
     boxShadow: "0px 0px 18px 0px rgba(0, 0, 0, 0.75)",
-    borderRadius: "8px",
+    borderRadius: "30px",
+    borderBottomLeftRadius: "140px",
   },
 
   login__left: {
     // border: "2px solid pink",
     opacity: "0.9",
+    borderTopRightRadius: "140px",
+    borderBottomLeftRadius: "140px",
   },
 
   login__right: {
@@ -33,13 +36,15 @@ export const styleSheet = {
     width: "100%",
     backgroundImage: `url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");`,
     backgroundColor: "#ffffff",
+    borderTopRightRadius: "5%",
+    borderBottomRightRadius: "5%",
   },
 
   login__closeBtn: {
     // border: "2px solid black",
     display: "flex",
-    justifyContent: "end",
-    paddingRight: "10px",
+    justifyContent: "flex-end",
+    paddingRight: "20px",
     "&:hover": {
       cursor: "pointer",
     },
@@ -70,7 +75,7 @@ export const styleSheet = {
     // border: "2px solid blue",
     display: "flex",
     justifyContent: "center",
-    marginTop: "40px",
+    marginTop: "30px",
   },
 
   btn__login: {
@@ -94,6 +99,7 @@ export const styleSheet = {
     justifyContent: "center",
     padding: "0px",
     fontSize: "14px",
+    marginTop: "-15px",
   },
 
   font__family: {

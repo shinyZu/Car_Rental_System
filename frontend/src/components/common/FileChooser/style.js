@@ -1,18 +1,19 @@
 export const styleSheet = {
   upload__section: {
-    // border: "2px solid red",
+    // border: "2px solid green",
     display: "flex",
+    // flexDirection: "column",
   },
 
   upload__btn: {
     border: "1px solid #ccc !important",
     // border: "2px solid red !important",
-    width: "100%",
+    width: "20vw",
     height: "40px",
     backgroundColor: "#cbcbcb !important",
     color: "black !important",
     // fontFamily: '"Acme", sans-serif !important',
-    margin: "5px 0px !important",
+    // margin: "5px 0px !important",
     // border: "none !important",
     "&:hover": {
       backgroundColor: "#7f8c8d !important",
@@ -21,9 +22,9 @@ export const styleSheet = {
 
   uploaded__file: {
     // border: "2px solid blue !important",
-    width: "50%",
+    width: "100%",
     height: "30px",
-    marginTop: "15px",
-    marginLeft: "5px",
+    marginTop: "10px",
+    marginLeft: "15px",
   },
 };

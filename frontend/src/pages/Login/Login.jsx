@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import login__img from "../../assets/images/bg11.jpg";
 import { withStyles } from "@mui/styles";
@@ -6,15 +6,25 @@ import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";
 import PersonIcon from "@mui/icons-material/Person";
 import MyTextField from "../../components/common/TextField/TextField";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { Grid } from "@mui/material";
 
 function Login(props) {
   const { classes } = props;
+  const [loginFormData, setLoginFormData] = useState({
+    email: "",
+    pwd: "",
+  });
 
   useEffect(() => {
     // console.log("I re-rendered");
     window.scrollTo(0, 0);
   });
   if (!props.open) return null;
+
+  function logCustomer() {
+    console.log("Customer Logged Successfully");
+  }
 
   return (
     <div className={classes.login__overlay}>
@@ -33,7 +43,94 @@ function Login(props) {
             <PersonIcon className={classes.login__icon} />
           </div>
 
-          <div className={classes.login__content}>
+          <ValidatorForm className="pt-2" onSubmit={logCustomer}>
+            <Grid
+              container
+              lg={12}
+              md={12}
+              xs={12}
+              sm={12}
+              // style={{ border: "2px solid red" }}
+              rowGap={2}
+              className={classes.login__content}
+            >
+              <Grid
+                item
+                lg={12}
+                md={12}
+                xs={12}
+                sm={12}
+                // style={{ border: "2px solid red" }}
+                // className={classes.register__content}
+              >
+                <TextValidator
+                  // id="outlined-basic"
+                  placeholder="Email"
+                  type="email"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  required={true}
+                  // style={{ marginBottom: "5px" }}
+                  // style={{ marginLeft: "10px" }}
+                  validators={["matchRegexp:^[A-z|0-9]{4,}@(gmail)(.com|.lk)$"]}
+                  errorMessages={["invalid email address"]}
+                  value={loginFormData.email}
+                  onChange={(e) => {
+                    setLoginFormData({
+                      ...loginFormData,
+                      email: e.target.value,
+                    });
+                  }}
+                />
+              </Grid>
+              <Grid
+                // container
+                item
+                lg={12}
+                md={12}
+                xs={12}
+                sm={12}
+                // style={{ border: "2px solid red" }}
+                // className={classes.login__content}
+              >
+                <TextValidator
+                  // id="outlined-basic"
+                  placeholder="Password"
+                  type="password"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  required={true}
+                  style={{ marginBottom: "5px" }}
+                  // style={{ marginLeft: "10px" }}
+                  validators={["matchRegexp:^[A-z|0-9|@]{8,}$"]}
+                  errorMessages={["must have atleast 8 characters"]}
+                  value={loginFormData.pwd}
+                  onChange={(e) => {
+                    setLoginFormData({
+                      ...loginFormData,
+                      pwd: e.target.value,
+                    });
+                  }}
+                />
+              </Grid>
+              <Grid
+                container
+                lg={12}
+                md={12}
+                xs={12}
+                sm={12}
+                // style={{ border: "2px solid red" }}
+                // className={classes.register__content}
+                className={classes.login_btn_container}
+              >
+                <button className={classes.btn__login}>Login</button>
+              </Grid>
+            </Grid>
+          </ValidatorForm>
+
+          {/* <div className={classes.login__content}>
             <MyTextField
               id="email"
               label="Email"
@@ -51,7 +148,7 @@ function Login(props) {
 
           <div className={classes.login_btn_container}>
             <button className={classes.btn__login}>Login</button>
-          </div>
+          </div> */}
 
           <div className={classes.login__footer}>
             <p>
