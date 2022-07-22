@@ -6,8 +6,8 @@ export const styleSheet = {
 
   login__container: {
     // border: "2px solid green",
-    maxWidth: "750px",
-    maxHeight: "450px",
+    maxWidth: "770px",
+    maxHeight: "500px",
     width: "100%",
     height: "100%",
     position: "absolute",
@@ -75,7 +75,7 @@ export const styleSheet = {
     // border: "2px solid blue",
     display: "flex",
     justifyContent: "center",
-    marginTop: "30px",
+    marginTop: "10px",
   },
 
   btn__login: {

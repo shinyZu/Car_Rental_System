@@ -25,10 +25,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Avatar/Avatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Avatar/Avatar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Avatar/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Avatar/style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar/style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/About/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/About/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/Custom.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/Custom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CustomDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CustomDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Car/CarReservePane.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Car/CarReservePane.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Register/Register.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +51,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -91,39 +104,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.78">
-    <configuration name="AdminRepoTest.getLastID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.AdminRepoTest" />
-      <option name="METHOD_NAME" value="getLastID" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminRepoTest.getTopByAdmin_id" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.AdminRepoTest" />
-      <option name="METHOD_NAME" value="getTopByAdmin_id" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CarRepoTest.getCarsByBrandExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CarRepoTest.getCarSchedule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -133,13 +114,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
       <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.CarRepoTest" />
-      <option name="METHOD_NAME" value="getCarsByBrandExists" />
+      <option name="METHOD_NAME" value="getCarSchedule" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarRepoTest.getCarsByFleet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RentalRequestRepoTest.calculateAnnualIncome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -148,14 +129,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.CarRepoTest" />
-      <option name="METHOD_NAME" value="getCarsByFleet" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
+      <option name="METHOD_NAME" value="calculateAnnualIncome" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarRepoTest.getCarsByFuelTypeEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RentalRequestRepoTest.calculateDailyIncome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -164,8 +145,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.CarRepoTest" />
-      <option name="METHOD_NAME" value="getCarsByFuelTypeEquals" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
+      <option name="METHOD_NAME" value="calculateDailyIncome" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RentalRequestRepoTest.calculateMonthlyIncome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
+      <option name="METHOD_NAME" value="calculateMonthlyIncome" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RentalRequestRepoTest.calculateWeeklyIncome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
+      <option name="METHOD_NAME" value="calculateWeeklyIncome" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -245,11 +258,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AdminRepoTest.getLastID" />
-        <item itemvalue="JUnit.AdminRepoTest.getTopByAdmin_id" />
-        <item itemvalue="JUnit.CarRepoTest.getCarsByBrandExists" />
-        <item itemvalue="JUnit.CarRepoTest.getCarsByFuelTypeEquals" />
-        <item itemvalue="JUnit.CarRepoTest.getCarsByFleet" />
+        <item itemvalue="JUnit.RentalRequestRepoTest.calculateAnnualIncome" />
+        <item itemvalue="JUnit.RentalRequestRepoTest.calculateWeeklyIncome" />
+        <item itemvalue="JUnit.RentalRequestRepoTest.calculateMonthlyIncome" />
+        <item itemvalue="JUnit.RentalRequestRepoTest.calculateDailyIncome" />
+        <item itemvalue="JUnit.CarRepoTest.getCarSchedule" />
       </list>
     </recent_temporary>
   </component>
@@ -279,6 +292,7 @@
       <workItem from="1657801255750" duration="37000" />
       <workItem from="1658049061649" duration="105000" />
       <workItem from="1658111418721" duration="26000" />
+      <workItem from="1658495172998" duration="8975000" />
     </task>
     <servers />
   </component>
@@ -306,10 +320,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="424" y="159" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657548829140" />
-    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1657760492431">
+    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1658505016141">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657760492431" />
+    <state x="773" y="220" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505016141" />
     <state x="553" y="426" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1657569414895">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -318,54 +332,54 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="747" y="259" width="424" height="494" key="FileChooserDialogImpl/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657801290411" />
-    <state width="1291" height="61" key="GridCell.Tab.0.bottom" timestamp="1657764743044">
+    <state width="1874" height="201" key="GridCell.Tab.0.bottom" timestamp="1658505277324">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.0.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764743044" />
-    <state width="1291" height="61" key="GridCell.Tab.0.center" timestamp="1657764743044">
+    <state width="1874" height="201" key="GridCell.Tab.0.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277324" />
+    <state width="1874" height="201" key="GridCell.Tab.0.center" timestamp="1658505277324">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.0.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764743044" />
-    <state width="1291" height="61" key="GridCell.Tab.0.left" timestamp="1657764743044">
+    <state width="1874" height="201" key="GridCell.Tab.0.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277324" />
+    <state width="1874" height="201" key="GridCell.Tab.0.left" timestamp="1658505277324">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.0.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764743044" />
-    <state width="1291" height="61" key="GridCell.Tab.0.right" timestamp="1657764743044">
+    <state width="1874" height="201" key="GridCell.Tab.0.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277324" />
+    <state width="1874" height="201" key="GridCell.Tab.0.right" timestamp="1658505277324">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.0.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764743044" />
-    <state width="1291" height="61" key="GridCell.Tab.1.bottom" timestamp="1657764742903">
+    <state width="1874" height="201" key="GridCell.Tab.0.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277324" />
+    <state width="1291" height="126" key="GridCell.Tab.1.bottom" timestamp="1658505277321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.1.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764742903" />
-    <state width="1291" height="61" key="GridCell.Tab.1.center" timestamp="1657764742903">
+    <state width="1291" height="126" key="GridCell.Tab.1.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
+    <state width="1291" height="126" key="GridCell.Tab.1.center" timestamp="1658505277321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.1.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764742903" />
-    <state width="1291" height="61" key="GridCell.Tab.1.left" timestamp="1657764742903">
+    <state width="1291" height="126" key="GridCell.Tab.1.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
+    <state width="1291" height="126" key="GridCell.Tab.1.left" timestamp="1658505277321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.1.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764742903" />
-    <state width="1291" height="61" key="GridCell.Tab.1.right" timestamp="1657764742903">
+    <state width="1291" height="126" key="GridCell.Tab.1.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
+    <state width="1291" height="126" key="GridCell.Tab.1.right" timestamp="1658505277321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.1.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764742903" />
-    <state width="1291" height="61" key="GridCell.Tab.2.bottom" timestamp="1657764742903">
+    <state width="1291" height="126" key="GridCell.Tab.1.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
+    <state width="1291" height="126" key="GridCell.Tab.2.bottom" timestamp="1658505277321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.2.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764742903" />
-    <state width="1291" height="61" key="GridCell.Tab.2.center" timestamp="1657764742903">
+    <state width="1291" height="126" key="GridCell.Tab.2.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
+    <state width="1291" height="126" key="GridCell.Tab.2.center" timestamp="1658505277321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.2.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764742903" />
-    <state width="1291" height="61" key="GridCell.Tab.2.left" timestamp="1657764742903">
+    <state width="1291" height="126" key="GridCell.Tab.2.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
+    <state width="1291" height="126" key="GridCell.Tab.2.left" timestamp="1658505277321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.2.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764742903" />
-    <state width="1291" height="61" key="GridCell.Tab.2.right" timestamp="1657764742903">
+    <state width="1291" height="126" key="GridCell.Tab.2.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
+    <state width="1291" height="126" key="GridCell.Tab.2.right" timestamp="1658505277321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="61" key="GridCell.Tab.2.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657764742903" />
+    <state width="1291" height="126" key="GridCell.Tab.2.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
     <state width="1291" height="612" key="GridCell.Tab.3.bottom" timestamp="1657688941294">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -402,10 +416,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="448" y="79" width="1024" height="855" key="SettingsEditor/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657548822787" />
-    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1657759813559">
+    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1658504218204">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657759813559" />
+    <state x="739" y="269" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658504218204" />
     <state x="340" y="103" key="new project wizard" timestamp="1657547899426">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -414,6 +428,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="744" y="258" key="refactoring.ChangeSignatureDialog/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657741626928" />
+    <state x="624" y="228" key="run.anything.popup" timestamp="1658497025393">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="624" y="228" key="run.anything.popup/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658497025393" />
     <state x="623" y="222" width="672" height="678" key="search.everywhere.popup" timestamp="1657729781628">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

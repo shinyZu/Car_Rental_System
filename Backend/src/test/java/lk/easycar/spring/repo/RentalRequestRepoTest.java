@@ -1,6 +1,7 @@
 package lk.easycar.spring.repo;
 
 import lk.easycar.spring.config.JPAConfig;
+import lk.easycar.spring.dto.Custom;
 import lk.easycar.spring.dto.RentalRequestDTO;
 import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.entity.RentalDetail;
@@ -114,6 +115,49 @@ class RentalRequestRepoTest {
         List<RentalRequest> allPaymentsForYear = rentalRequestRepo.getAllPaymentsForYear(2021);
         for (RentalRequest request : allPaymentsForYear) {
             System.out.println(request.getTotalPaymentForRental());
+        }
+    }
+
+    @Test
+    void calculateDailyIncome() {
+        List<Custom> dailyIncome = rentalRequestRepo.calculateDailyIncome();
+        for (Custom custom : dailyIncome) {
+            System.out.println(custom.getYear());
+            System.out.println(custom.getMonth());
+            System.out.println(custom.getWeek());
+            System.out.println(custom.getDay());
+            System.out.println(custom.getIncome());
+
+        }
+    }
+
+    @Test
+    void calculateWeeklyIncome() {
+        List<Custom> weeklyIncome = rentalRequestRepo.calculateWeeklyIncome();
+        for (Custom custom : weeklyIncome) {
+            System.out.println(custom.getYear());
+            System.out.println(custom.getMonth());
+            System.out.println(custom.getWeek());
+            System.out.println(custom.getIncome());
+        }
+    }
+
+    @Test
+    void calculateMonthlyIncome() {
+        List<Custom> monthlyIncome = rentalRequestRepo.calculateMonthlyIncome();
+        for (Custom custom : monthlyIncome) {
+            System.out.println(custom.getYear());
+            System.out.println(custom.getMonth());
+            System.out.println(custom.getIncome());
+        }
+    }
+
+    @Test
+    void calculateAnnualIncome() {
+        List<Custom> annualIncome = rentalRequestRepo.calculateAnnualIncome();
+        for (Custom custom : annualIncome) {
+            System.out.println(custom.getYear());
+            System.out.println(custom.getIncome());
         }
     }
 }

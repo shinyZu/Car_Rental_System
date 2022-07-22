@@ -228,6 +228,8 @@ function CarReservePane(props) {
             label="Loss Damage Waiver (Rs)"
             fullWidth
             value={ldw}
+            disabled
+            focused
             // multiline
             // maxRows={4}
             // onChange={() => setLDW(ldw)}

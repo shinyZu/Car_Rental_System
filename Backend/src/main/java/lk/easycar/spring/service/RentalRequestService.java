@@ -1,5 +1,6 @@
 package lk.easycar.spring.service;
 
+import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
 
 import java.time.LocalDate;
@@ -24,13 +25,17 @@ public interface RentalRequestService {
 
     double calculateAmountToReturn(String rental_id);
 
-    double calculateDailyIncome(LocalDate date);
+    //    double calculateDailyIncome(LocalDate date);
+    List<CustomDTO> calculateDailyIncome();
 
-    double calculateMonthlyIncome(int month);
+    //    double calculateMonthlyIncome(int month);
+    List<CustomDTO> calculateMonthlyIncome();
 
-    double calculateWeeklyIncome(String date);
+    //    double calculateWeeklyIncome(String date);
+    List<CustomDTO> calculateWeeklyIncome();
 
-    double calculateAnnualIncome(String date);
+    //    double calculateAnnualIncome(String date);
+    List<CustomDTO> calculateAnnualIncome();
 
     boolean placeRentalRequest(RentalRequestDTO dto);
 

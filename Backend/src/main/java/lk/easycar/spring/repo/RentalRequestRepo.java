@@ -1,5 +1,6 @@
 package lk.easycar.spring.repo;
 
+import lk.easycar.spring.dto.Custom;
 import lk.easycar.spring.entity.RentalRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -49,6 +50,35 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
 
     @Query(value="select * from RentalRequest r where r.return_date=?1",  nativeQuery = true)
     List<RentalRequest> getAllPaymentsByDate(LocalDate date);
+
+    @Query(value="SELECT DAYNAME(return_date) AS Day ,\n" +
+            "CAST((((day(return_date)-1) / 7) + 1) as Integer) AS Week,\n" +
+            "MONTHNAME(return_date) AS Month,\n" +
+            "YEAR(return_date) AS Year,\n" +
+            "    SUM(r.totalPaymentForRental) as Income\n" +
+            "FROM RentalRequest r\n" +
+            "GROUP BY Week",  nativeQuery = true)
+    List<Custom> calculateDailyIncome();
+
+    @Query(value="SELECT CAST((((day(return_date)-1) / 7) + 1) as Integer) AS Week,\n" +
+            "MONTHNAME(return_date) AS Month,\n" +
+            "YEAR(return_date) AS Year,\n" +
+            "SUM(r.totalPaymentForRental) as Income\n" +
+            "FROM RentalRequest r",  nativeQuery = true)
+    List<Custom> calculateWeeklyIncome();
+
+    @Query(value="SELECT MONTHNAME(return_date) AS Month,\n" +
+            "YEAR(return_date) AS Year,\n" +
+            "SUM(totalPaymentForRental) AS Income\n" +
+            "FROM RentalRequest r\n" +
+            "GROUP BY MONTHNAME(return_date)",  nativeQuery = true)
+    List<Custom> calculateMonthlyIncome();
+
+    @Query(value="SELECT YEAR(return_date) AS Year,\n" +
+            "SUM(r.totalPaymentForRental) as Income\n" +
+            "FROM RentalRequest r\n" +
+            "GROUP BY YEAR(return_date)",  nativeQuery = true)
+    List<Custom> calculateAnnualIncome();
 
     @Query(value="select * from RentalRequest r where month(r.return_date)=?1",  nativeQuery = true)
     List<RentalRequest> getAllPaymentsByMonth(int month);

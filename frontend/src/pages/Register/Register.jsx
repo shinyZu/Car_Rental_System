@@ -215,7 +215,7 @@ function Register(props) {
                 >
                   <TextValidator
                     // id="outlined-basic"
-                    placeholder="Email"
+                    label="Email"
                     type="email"
                     variant="outlined"
                     size="small"
@@ -223,10 +223,11 @@ function Register(props) {
                     required={true}
                     style={{ marginBottom: "5px" }}
                     // style={{ marginLeft: "10px" }}
+                    // validators={["isEmail"]}
                     validators={[
                       "matchRegexp:^[A-z|0-9]{4,}@(gmail)(.com|.lk)$",
                     ]}
-                    errorMessages={["invalid email address"]}
+                    errorMessages={["Invalid email address"]}
                     value={regFormData.email}
                     onChange={(e) => {
                       setRegFormData({ ...regFormData, email: e.target.value });
@@ -244,16 +245,17 @@ function Register(props) {
                 >
                   <TextValidator
                     // id="outlined-basic"
-                    placeholder="New Password"
+                    label="New Password"
                     type="password"
                     variant="outlined"
                     size="small"
                     fullWidth
                     required={true}
+                    // helperText="Minimum 8 characters"
                     style={{ marginBottom: "5px" }}
                     // style={{ marginLeft: "10px" }}
                     validators={["matchRegexp:^[A-z|0-9|@]{8,}$"]}
-                    errorMessages={["must have atleast 8 characters"]}
+                    errorMessages={["Must have atleast 8 characters"]}
                     value={regFormData.new_pwd}
                     onChange={(e) => {
                       setRegFormData({
@@ -274,7 +276,7 @@ function Register(props) {
                 >
                   <TextValidator
                     // id="outlined-basic"
-                    placeholder="Confirm Password"
+                    label="Confirm Password"
                     type="password"
                     variant="outlined"
                     size="small"
@@ -312,7 +314,7 @@ function Register(props) {
                 >
                   <TextValidator
                     // id="outlined-basic"
-                    placeholder="Address"
+                    label="Address"
                     type="text"
                     variant="outlined"
                     size="small"
@@ -341,7 +343,7 @@ function Register(props) {
                 >
                   <TextValidator
                     // id="outlined-basic"
-                    placeholder="Contact No"
+                    label="Contact No"
                     type="number"
                     variant="outlined"
                     size="small"
@@ -371,7 +373,7 @@ function Register(props) {
                 >
                   <TextValidator
                     // id="outlined-basic"
-                    placeholder="NIC No"
+                    label="NIC No"
                     type="text"
                     variant="outlined"
                     size="small"
@@ -401,7 +403,7 @@ function Register(props) {
                 >
                   <TextValidator
                     // id="outlined-basic"
-                    placeholder="License No"
+                    label="License No"
                     type="text"
                     variant="outlined"
                     size="small"

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -72,7 +73,8 @@ public class RentalRequestController {
 
     @GetMapping(path = "daily_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateDailyIncome(@RequestParam("date") String date) {
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome(LocalDate.parse(date)));
+//        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome(LocalDate.parse(date)));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome());
     }
 
     @GetMapping(path = "monthly_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -81,21 +83,24 @@ public class RentalRequestController {
         System.out.println("month : "+month); // July
         System.out.println(month.getClass().getSimpleName()); // Month
         System.out.println("month : "+month.getValue()); // 7*/
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Monthly Income for Month "+ LocalDate.parse(date).getMonth(), rentalRequestService.calculateMonthlyIncome(LocalDate.parse(date).getMonth().getValue()));
+//        return new ResponseUtil(HttpServletResponse.SC_OK, "Monthly Income for Month "+ LocalDate.parse(date).getMonth(), rentalRequestService.calculateMonthlyIncome(LocalDate.parse(date).getMonth().getValue()));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Monthly Income for Month "+ LocalDate.parse(date).getMonth(), rentalRequestService.calculateMonthlyIncome());
     }
 
     @GetMapping(path = "weekly_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateWeeklyIncome(@RequestParam("date") String end_date) {
         /*LocalDate date1 = LocalDate.parse(date).minusDays(7); // 2022-07-10 - 7 days
         System.out.println("7 days before is : "+date1);// 2022-07-03*/
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+ end_date, rentalRequestService.calculateWeeklyIncome(end_date));
+//        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+ end_date, rentalRequestService.calculateWeeklyIncome(end_date));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+ end_date, rentalRequestService.calculateWeeklyIncome());
     }
 
     @GetMapping(path = "annual_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateAnnualIncome(@RequestParam("date") String date) {
         /*int year = LocalDate.parse(date).getYear();
         System.out.println("year : "+ year); // 2022*/
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Annual Income for Year "+ LocalDate.parse(date).getYear(), rentalRequestService.calculateAnnualIncome(date));
+//        return new ResponseUtil(HttpServletResponse.SC_OK, "Annual Income for Year "+ LocalDate.parse(date).getYear(), rentalRequestService.calculateAnnualIncome(date));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Annual Income for Year "+ LocalDate.parse(date).getYear(), rentalRequestService.calculateAnnualIncome());
     }
 
     @ResponseStatus(HttpStatus.CREATED)

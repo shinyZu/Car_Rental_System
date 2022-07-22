@@ -72,7 +72,7 @@ function Header(props) {
           </ul>
         </nav>
 
-        <div
+        {/* <div
           style={{
             // border: "2px solid red",
             position: "absolute",
@@ -80,8 +80,8 @@ function Header(props) {
             right: "30px",
           }}
         >
-          <Link to="#register" onClick={popupRegister}>
-            <Tooltip title="Admin/Driver">
+          <Link to="#login" onClick={popupLogin}>
+            <Tooltip title="Staff Login">
               <IconButton>
                 <AccountCircleIcon
                   style={{ color: "#ffffff", fontSize: "50px" }}
@@ -89,7 +89,8 @@ function Header(props) {
               </IconButton>
             </Tooltip>
           </Link>
-        </div>
+        </div> */}
+
         <div className="title text-center">
           <h1>Easy &nbsp; Car &nbsp; Rental</h1>
           <h6>the drive of your life....</h6>

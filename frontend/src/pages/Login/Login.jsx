@@ -8,6 +8,8 @@ import PersonIcon from "@mui/icons-material/Person";
 import MyTextField from "../../components/common/TextField/TextField";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Grid } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
 function Login(props) {
   const { classes } = props;
@@ -15,6 +17,8 @@ function Login(props) {
     email: "",
     pwd: "",
   });
+
+  let userRoles = ["Customer", "Admin", "Driver"];
 
   useEffect(() => {
     // console.log("I re-rendered");
@@ -65,7 +69,7 @@ function Login(props) {
               >
                 <TextValidator
                   // id="outlined-basic"
-                  placeholder="Email"
+                  label="Email"
                   type="email"
                   variant="outlined"
                   size="small"
@@ -96,7 +100,7 @@ function Login(props) {
               >
                 <TextValidator
                   // id="outlined-basic"
-                  placeholder="Password"
+                  label="Password"
                   type="password"
                   variant="outlined"
                   size="small"
@@ -113,6 +117,19 @@ function Login(props) {
                       pwd: e.target.value,
                     });
                   }}
+                />
+              </Grid>
+              <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                <Autocomplete
+                  disablePortal
+                  id="role"
+                  options={userRoles}
+                  // xl={{ width: 300 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Login As" />
+                  )}
+                  size="small"
+                  disabledItemsFocusable
                 />
               </Grid>
               <Grid

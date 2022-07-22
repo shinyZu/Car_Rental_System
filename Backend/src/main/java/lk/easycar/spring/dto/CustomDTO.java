@@ -38,6 +38,37 @@ public class CustomDTO {
     private String return_venue;
     private String requestStatus;
 
+    private String year;
+    private String month;
+    private String week;
+    private String day;
+    private String income;
+
+    public CustomDTO(String year, String income) {
+        this.year = year;
+        this.income = income;
+    }
+
+    public CustomDTO(String year, String month, String income) {
+        this.year = year;
+        this.month = month;
+        this.income = income;
+    }
+
+    public CustomDTO(String year, String month, String week, String income) {
+        this.year = year;
+        this.month = month;
+        this.week = week;
+        this.income = income;
+    }
+
+    public CustomDTO(String year, String month, String week, String day, String income) {
+        this.year = year;
+        this.month = month;
+        this.week = week;
+        this.day = day;
+        this.income = income;
+    }
 
     public CustomDTO(String rental_id, String license_no, String currentStatus, int contact_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus) {
         this.rental_id = rental_id;
@@ -52,4 +83,6 @@ public class CustomDTO {
         this.return_venue = return_venue;
         this.requestStatus = requestStatus;
     }
+
+
 }

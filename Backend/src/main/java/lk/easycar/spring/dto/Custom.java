@@ -30,5 +30,14 @@ public interface Custom {
 
     String getRequestStatus();
 
+    String getYear();
+
+    String getMonth();
+
+    String getWeek();
+
+    String getDay();
+
+    String getIncome();
 
 }

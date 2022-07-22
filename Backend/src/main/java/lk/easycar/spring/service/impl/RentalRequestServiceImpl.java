@@ -1,5 +1,7 @@
 package lk.easycar.spring.service.impl;
 
+import lk.easycar.spring.dto.Custom;
+import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
 import lk.easycar.spring.entity.*;
 import lk.easycar.spring.repo.*;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -93,10 +96,10 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     public RentalRequestDTO searchActiveRentalByCustomer(String nic_no) {
         if (customerRepo.existsById(nic_no)) {
             RentalRequest activeRental = rentalRequestRepo.getRentalRequestByCustomer(nic_no, "Active");
-            if (activeRental!=null) {
+            if (activeRental != null) {
                 return mapper.map(activeRental, RentalRequestDTO.class);
 
-            }else {
+            } else {
                 throw new RuntimeException("Customer with NIC " + nic_no + " have no any active Rentals currently... Please check the Customer NIC...");
             }
 
@@ -125,7 +128,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     public double calculateTotalPaymentForRental(String rental_id) {
         if (rentalRequestRepo.existsById(rental_id)) {
             List<Double> allRentalPayments = rentalPaymentRepo.getAllRentalPayments(rental_id);
-            double totalPayment=0.0;
+            double totalPayment = 0.0;
             for (Double payment : allRentalPayments) {
                 totalPayment += payment;
             }
@@ -150,7 +153,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
                     double fee_deducted = detail.getFeeDeductedFromLDW();
                     amountToReturn += (fee_LDW - fee_deducted);
 
-                    if(detail.getDriverStatus().equals("Required")) {
+                    if (detail.getDriverStatus().equals("Required")) {
                         detail.getDriver().setCurrentStatus("Available");
                     }
                 }
@@ -166,17 +169,41 @@ public class RentalRequestServiceImpl implements RentalRequestService {
         }
     }
 
-    @Override
-    public double calculateDailyIncome(LocalDate date) {
-        List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsByDate(date);
-        double daily_income = 0.0;
-        for (RentalRequest request : allPaymentsByDate) {
-            daily_income += request.getTotalPaymentForRental();
-        }
-        return daily_income;
-    }
+    /* @Override
+     public double calculateDailyIncome(LocalDate date) {
+             List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsByDate(date);
+             double daily_income = 0.0;
+             for (RentalRequest request : allPaymentsByDate) {
+                 daily_income += request.getTotalPaymentForRental();
+             }
+             return double;
+         }*/
 
     @Override
+    public List<CustomDTO> calculateDailyIncome() {
+        ArrayList<CustomDTO> dailyIncome = new ArrayList<>();
+
+        List<Custom> dailyIncomeList = rentalRequestRepo.calculateDailyIncome();
+        for (Custom custom : dailyIncomeList) {
+            dailyIncome.add(new CustomDTO(
+                    custom.getYear(),
+                    custom.getMonth(),
+                    custom.getWeek(),
+                    custom.getDay(),
+                    custom.getIncome()
+            ));
+            System.out.println(custom.getYear());
+            System.out.println(custom.getMonth());
+            System.out.println(custom.getWeek());
+            System.out.println(custom.getDay());
+            System.out.println(custom.getIncome());
+
+        }
+        return dailyIncome;
+//        return mapper.map(dailyIncomeList,new TypeToken<Collection<CustomDTO>>(){}.getType());
+    }
+
+    /*@Override
     public double calculateMonthlyIncome(int month) {
         List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsByMonth(month);
         double monthly_income = 0.0;
@@ -184,9 +211,22 @@ public class RentalRequestServiceImpl implements RentalRequestService {
             monthly_income += request.getTotalPaymentForRental();
         }
         return monthly_income;
-    }
+    }*/
 
     @Override
+    public List<CustomDTO> calculateMonthlyIncome() {
+        ArrayList<CustomDTO> monthlyIncome = new ArrayList<>();
+        for (Custom custom : rentalRequestRepo.calculateMonthlyIncome()) {
+            monthlyIncome.add(new CustomDTO(
+                    custom.getYear(),
+                    custom.getMonth(),
+                    custom.getIncome()
+            ));
+        }
+        return monthlyIncome;
+    }
+
+    /*@Override
     public double calculateWeeklyIncome(String date) {
         LocalDate start_date = LocalDate.parse(date).minusDays(7);
         List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsForWeek(start_date, LocalDate.parse(date));
@@ -195,16 +235,46 @@ public class RentalRequestServiceImpl implements RentalRequestService {
             monthly_income += request.getTotalPaymentForRental();
         }
         return monthly_income;
-    }
+    }*/
 
     @Override
+    public List<CustomDTO> calculateWeeklyIncome() {
+        ArrayList<CustomDTO> weeklyIncome = new ArrayList<>();
+
+        List<Custom> weeklyIncomeList = rentalRequestRepo.calculateWeeklyIncome();
+        for (Custom custom : weeklyIncomeList) {
+            weeklyIncome.add(new CustomDTO(
+                    custom.getYear(),
+                    custom.getMonth(),
+                    custom.getWeek(),
+                    custom.getIncome()
+            ));
+        }
+        return weeklyIncome;
+    }
+
+    /*@Override
     public double calculateAnnualIncome(String date) {
-        List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsForYear( LocalDate.parse(date).getYear());
+        List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsForYear(LocalDate.parse(date).getYear());
         double annual_income = 0.0;
         for (RentalRequest request : allPaymentsByDate) {
             annual_income += request.getTotalPaymentForRental();
         }
         return annual_income;
+    }*/
+
+    @Override
+    public List<CustomDTO> calculateAnnualIncome() {
+        ArrayList<CustomDTO> annualIncome = new ArrayList<>();
+
+        List<Custom> annualIncomeList = rentalRequestRepo.calculateWeeklyIncome();
+        for (Custom custom : annualIncomeList) {
+            annualIncome.add(new CustomDTO(
+                    custom.getYear(),
+                    custom.getIncome()
+            ));
+        }
+        return annualIncome;
     }
 
     @Override
