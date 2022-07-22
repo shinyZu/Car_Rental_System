@@ -11,8 +11,9 @@ import {
   Connector,
   Size,
 } from "devextreme-react/chart";
+import { propsToClassKey } from "@mui/styles";
 
-function DailyIncomeChart() {
+function DailyIncomeChart(props) {
   const [year, setYear] = useState("2022");
   const [month, setMonth] = useState("July");
   const [week, setWeek] = useState("01");
@@ -36,7 +37,12 @@ function DailyIncomeChart() {
       dataSource={dataSource}
       //   size={{ width: "100", height: "400px" }}
     >
-      <Size height={300} width={600} />
+      {props.for == "dashboard" ? (
+        <Size height={300} width={400} />
+      ) : (
+        <Size height={300} width={600} />
+      )}
+
       <CommonSeriesSettings
         argumentField="day"
         valueField="income"

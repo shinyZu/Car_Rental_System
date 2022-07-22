@@ -9,6 +9,7 @@ import MonthlyIncomeChart from "../components/Charts/MonthyInomeChart/MonthlyInc
 import AnnualIncomeChart from "../components/Charts/AnnualIncomeChart/AnnualIncomeChart";
 import WeeklyIncomeChart from "../components/Charts/WeeklyIncomeChart/WeeklyIncomeChart";
 import DailyIncomeChart from "../components/Charts/DailyIncomeChart/DailyIncomeChart";
+import AdminNavbar from "../components/NavBar/AdminNavbar";
 
 function Main(props) {
   // useEffect(() => {
@@ -20,12 +21,13 @@ function Main(props) {
       <About />
       <Garage />
       <Footer />
-      <CarStatusChart />
-      <DriverStatusChart />
-      <MonthlyIncomeChart />
-      <AnnualIncomeChart />
-      <WeeklyIncomeChart />
-      <DailyIncomeChart />
+      {/* <CarStatusChart /> */}
+      {/* <DriverStatusChart /> */}
+      {/* <MonthlyIncomeChart /> */}
+      {/* <AnnualIncomeChart /> */}
+      {/* <WeeklyIncomeChart /> */}
+      {/* <DailyIncomeChart /> */}
+      {/* <AdminNavbar /> */}
     </div>
   );
 }

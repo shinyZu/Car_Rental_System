@@ -4,6 +4,7 @@ import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
 import Header from "../../components/Header/Header";
 import Main from "../Main";
+import AdminDashboard from "../../pages/Admin/Dashboard/Dashboard";
 
 function Home(props) {
   const { classes } = props;
@@ -14,8 +15,9 @@ function Home(props) {
 
   return (
     <div id="home">
-      <Header />
-      <Main />
+      {/* <Header /> */}
+      {/* <Main /> */}
+      <AdminDashboard />
     </div>
   );
 }

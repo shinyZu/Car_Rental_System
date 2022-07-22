@@ -34,7 +34,7 @@ function DriverStatusChart(props) {
       //   palette="Violet"
       dataSource={driverData}
     >
-      <Size height={400} width={700} />
+      <Size height={300} width={300} />
       <Series argumentField="region">
         <Label visible={true}>
           <Connector visible={true} />
