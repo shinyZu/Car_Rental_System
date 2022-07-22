@@ -55,7 +55,9 @@ function AdminDashboard(props) {
                 width: "100%",
               }}
               elevation={12}
-              style={{ borderRadius: "20px" }}
+              style={{
+                borderRadius: "20px",
+              }}
             >
               <Typography variant="h1" color="#f1c40f">
                 {card1}
@@ -143,6 +145,8 @@ function AdminDashboard(props) {
             sm={4}
             xs={4}
             className={classes.dashboard_container_1_2_0}
+            justifyContent="center"
+            alignItems="center"
           >
             <CarStatusChart />
           </Grid>
@@ -154,6 +158,8 @@ function AdminDashboard(props) {
             sm={4}
             xs={4}
             className={classes.dashboard_container_1_2_0}
+            justifyContent="center"
+            alignItems="center"
           >
             <DailyIncomeChart for="dashboard" />
           </Grid>
@@ -165,6 +171,8 @@ function AdminDashboard(props) {
             sm={4}
             xs={4}
             className={classes.dashboard_container_1_2_0}
+            justifyContent="center"
+            alignItems="center"
           >
             <DriverStatusChart />
           </Grid>

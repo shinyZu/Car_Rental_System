@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import MyBooking from "./pages/Customer/MyBookings/MyBooking";
 import MyPayments from "./pages/Customer/MyPayments/MyPayments";
 import Confirmation from "./pages/Customer/Confirmation/Confirmation";
+import Dashboard from "./pages/Admin/Dashboard/Dashboard";
 
 function App() {
   // const [renderView, setRenderView] = useState("main");
@@ -138,6 +139,14 @@ function App() {
       <Route path="/my_bookings" element={<MyBooking />}></Route>
       <Route path="/my_payments" element={<MyPayments />}></Route>
       <Route path="/confirmation_details" element={<Confirmation />}></Route>
+      <Route path="/dashboard" element={<Dashboard />}></Route>
+      <Route path="/manage_car" element={<Confirmation />}></Route>
+      <Route path="/manage_customer" element={<Confirmation />}></Route>
+      <Route path="/manage_driver" element={<Confirmation />}></Route>
+      <Route path="/rental_requests" element={<Confirmation />}></Route>
+      <Route path="/return_details" element={<Confirmation />}></Route>
+      <Route path="/maintenance" element={<Confirmation />}></Route>
+      <Route path="/income" element={<Confirmation />}></Route>
     </Routes>
   );
 }
