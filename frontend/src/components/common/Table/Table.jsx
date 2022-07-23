@@ -10,8 +10,10 @@ function MyTable(props) {
       pageSize={props.pageSize}
       rowsPerPageOptions={[props.rowsPerPageOptions]}
       checkboxSelection={props.checkboxSelection}
+      onCellClick={props.handleCellClick}
+      onRowClick={props.handleRowClick}
+      stickyHeader={props.stickyHeader}
     />
-    // <h1>Table</h1>
   );
 }
 

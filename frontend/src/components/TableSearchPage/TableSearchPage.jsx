@@ -167,7 +167,7 @@ function TableSearchPage(props) {
           }}
           elevation={0}
         >
-          {props.page == "C" || props.page == "R" ? (
+          {props.page == "C" || props.page == "R" || props.page == "RR" ? (
             <Typography
               className={classes.text_style}
               variant="h3"
@@ -192,8 +192,9 @@ function TableSearchPage(props) {
             variant="h6"
             style={{ color: "rgb(157 157 157)" }}
           >
-            {/* Hope you enjoyed our service.......You can Search and View all your
-            Bookings here....... */}
+            {/* {props.page == "RR"
+              ? "You can Search,View, Accept Rental Returns and Calculate Rental Payments here...."
+              : props.pageSubtitle} */}
             {props.pageSubtitle}
           </Typography>
           <Typography
@@ -208,6 +209,8 @@ function TableSearchPage(props) {
               ? "customer details"
               : props.page == "R"
               ? "rental details"
+              : props.page == "RR"
+              ? "return details"
               : "payments"}
             )
           </Typography>
@@ -327,7 +330,7 @@ function TableSearchPage(props) {
         </Grid>
       )} */}
 
-      {props.page == "C" || props.page == "R" ? (
+      {props.page == "C" || props.page == "R" || props.page == "RR" ? (
         <Grid
           container
           xl={props.page == "B" ? 10.3 : props.page == "C" ? 7.58 : 7.53}

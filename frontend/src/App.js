@@ -13,6 +13,7 @@ import ViewCustomerPage from "./pages/Admin/ViewCustomers/ViewCustomer";
 import Income from "./pages/Admin/Income/Income";
 import ManageDrivers from "./pages/Admin/Drivers/Driver";
 import RentalRequests from "./pages/Admin/Rentals/Rentals";
+import RentalReturns from "./pages/Admin/Returns/Returns";
 
 function App() {
   // const [renderView, setRenderView] = useState("main");
@@ -148,7 +149,7 @@ function App() {
       <Route path="/manage_customer" element={<ViewCustomerPage />}></Route>
       <Route path="/manage_driver" element={<ManageDrivers />}></Route>
       <Route path="/rental_requests" element={<RentalRequests />}></Route>
-      <Route path="/return_details" element={<Confirmation />}></Route>
+      <Route path="/return_details" element={<RentalReturns />}></Route>
       <Route path="/maintenance" element={<Confirmation />}></Route>
       <Route path="/income" element={<Income />}></Route>
     </Routes>

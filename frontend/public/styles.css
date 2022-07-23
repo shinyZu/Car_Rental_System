@@ -1,5 +1,9 @@
-html {
+/* html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
 }
 
 ::-webkit-scrollbar {
@@ -22,6 +26,11 @@ html {
   background-color: #205a76;
 }
 
-font__family {
+.font__family {
   font-family: "Acme", sans-serif !important;
 }
+
+.MuiDataGrid-root .MuiDataGrid-columnHeader:focus,
+.MuiDataGrid-root .MuiDataGrid-cell:focus {
+  outline: none !important;
+} */
