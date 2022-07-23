@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../../../components/Footer/Footer";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
 import Rentals from "../../../components/TableSearchPage/TableSearchPage";
 
@@ -22,6 +23,14 @@ const columns = [
   {
     field: "customer_nic",
     headerName: "Customer NIC",
+    width: 140,
+    headerClassName: "header_color",
+    headerAlign: "center",
+  },
+
+  {
+    field: "request_status",
+    headerName: "Request Status",
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
@@ -84,16 +93,32 @@ const columns = [
   },
 
   {
-    field: "request_status",
-    headerName: "Request Status",
+    field: "km_atPickUp",
+    headerName: "KM At PickUp",
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
   },
 
   {
-    field: "km_atPickUp",
-    headerName: "Mileage",
+    field: "km_atReturn", // null at first after returned updated
+    headerName: "KM At Return",
+    width: 140,
+    headerClassName: "header_color",
+    headerAlign: "center",
+  },
+
+  {
+    field: "driver_fee", // null at first after returned updated
+    headerName: "Driver Fee(Rs)",
+    width: 140,
+    headerClassName: "header_color",
+    headerAlign: "center",
+  },
+
+  {
+    field: "total_rental", // null at first after returned updated
+    headerName: "Rental Payment(Rs)",
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",

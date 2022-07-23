@@ -4,6 +4,7 @@ import { styleSheet } from "./style";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
 import Grid from "@mui/material/Grid";
 import CustomerView from "../../../components/TableSearchPage/TableSearchPage";
+import Footer from "../../../components/Footer/Footer";
 
 const columns = [
   {

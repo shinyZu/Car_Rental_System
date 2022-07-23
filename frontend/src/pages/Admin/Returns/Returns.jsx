@@ -27,124 +27,166 @@ import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import RestoreIcon from "@mui/icons-material/Restore";
 import { getRowIdFromRowModel } from "@mui/x-data-grid/hooks/features/rows/gridRowsUtils";
 
-const columns = [
-  {
-    field: "id",
-    headerName: "-",
-    width: 10,
-    headerClassName: "header_color",
-    headerAlign: "center",
-  },
+import TextField from "@mui/material/TextField";
 
-  {
-    field: "rental_id",
-    headerName: "Rental ID",
-    width: 150,
-    headerClassName: "header_color",
-    headerAlign: "center",
-  },
-
-  {
-    field: "reg_no",
-    headerName: "Registration No",
-    width: 150,
-    headerClassName: "header_color",
-    headerAlign: "center",
-  },
-
-  {
-    field: "customer_nic",
-    headerName: "Customer NIC",
-    width: 200,
-    headerClassName: "header_color",
-    headerAlign: "center",
-  },
-
-  {
-    field: "license_no",
-    headerName: "Driver License No",
-    width: 150,
-    headerClassName: "header_color",
-    headerAlign: "center",
-  },
-
-  {
-    field: "km_atPickUp",
-    headerName: "Initial Mileage (KM)",
-    width: 200,
-    headerClassName: "header_color",
-    headerAlign: "center",
-  },
-
-  {
-    field: "km_atReturn",
-    headerName: "Final Mileage (KM)",
-    width: 200,
-    headerClassName: "header_color",
-    headerAlign: "center",
-  },
-
-  {
-    field: "action",
-    headerName: "Action",
-    renderCell: (cellValues) => {
-      //   console.log(cellValues);
-      return (
-        <Tooltip title="Return">
-          <IconButton>
-            <RestoreIcon
-              fontSize="large"
-              onClick={() => {
-                console.log(cellValues.row);
-              }}
-            />
-          </IconButton>
-        </Tooltip>
-      );
-    },
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-  },
-];
-
-const rows = [
-  {
-    id: "1",
-    rental_id: "RNTL-0001",
-    reg_no: "GC-5951",
-    customer_nic: "995922121v",
-    license_no: "B1234567",
-    km_atPickUp: "8000",
-    km_atReturn: "8500",
-  },
-  {
-    id: "2",
-    rental_id: "RNTL-0002",
-    reg_no: "GC-5951",
-    customer_nic: "995922121v",
-    license_no: "B1234567",
-    km_atPickUp: "8000",
-    km_atReturn: "8500",
-  },
-  {
-    id: "3",
-    rental_id: "RNTL-0003",
-    reg_no: "GC-5951",
-    customer_nic: "995922121v",
-    license_no: "B1234567",
-    km_atPickUp: "8000",
-    km_atReturn: "8500",
-  },
-];
+import MyButton from "../../../components/common/Button/Button";
+import Footer from "../../../components/Footer/Footer";
 
 function RentalReturns(props) {
   const { classes } = props;
-  const [data, setData] = useState("");
+  const columns = [
+    {
+      field: "id",
+      headerName: "-",
+      width: 10,
+      headerClassName: "header_color",
+      headerAlign: "center",
+    },
 
-  function getRentalDetails(row) {
-    console.log(row);
+    {
+      field: "rental_id",
+      headerName: "Rental ID",
+      width: 150,
+      headerClassName: "header_color",
+      headerAlign: "center",
+    },
+
+    {
+      field: "reg_no",
+      headerName: "Registration No",
+      width: 150,
+      headerClassName: "header_color",
+      headerAlign: "center",
+    },
+
+    {
+      field: "customer_nic",
+      headerName: "Customer NIC",
+      width: 200,
+      headerClassName: "header_color",
+      headerAlign: "center",
+    },
+
+    {
+      field: "license_no",
+      headerName: "Driver License No",
+      width: 150,
+      headerClassName: "header_color",
+      headerAlign: "center",
+    },
+
+    {
+      field: "km_atPickUp",
+      headerName: "Initial Mileage (KM)",
+      width: 200,
+      headerClassName: "header_color",
+      headerAlign: "center",
+    },
+
+    {
+      field: "km_atReturn",
+      headerName: "Final Mileage (KM)",
+      width: 200,
+      headerClassName: "header_color",
+      headerAlign: "center",
+    },
+
+    {
+      field: "action",
+      headerName: "Action",
+      renderCell: (cellValues) => {
+        //   console.log(cellValues);
+        return (
+          <Tooltip title="Return">
+            <IconButton>
+              <RestoreIcon
+                fontSize="large"
+                onClick={() => {
+                  console.log(cellValues.row);
+                  setInvoiceDetails(cellValues.row);
+                  setInvoiceIsShown("block");
+                }}
+              />
+            </IconButton>
+          </Tooltip>
+        );
+      },
+      width: 98,
+      headerClassName: "header_color",
+      // headerAlign: "center",
+    },
+  ];
+
+  const rows = [
+    {
+      id: "1",
+      rental_id: "RNTL-0001",
+      reg_no: "GC-5951",
+      customer_nic: "995922121v",
+      license_no: "B1234561",
+      km_atPickUp: "8000",
+      km_atReturn: "-",
+    },
+    {
+      id: "2",
+      rental_id: "RNTL-0002",
+      reg_no: "GC-5952",
+      customer_nic: "995922122v",
+      license_no: "null",
+      km_atPickUp: "5000",
+      km_atReturn: "-",
+    },
+    {
+      id: "3",
+      rental_id: "RNTL-0003",
+      reg_no: "GC-5953",
+      customer_nic: "995922123v",
+      license_no: "B1234562",
+      km_atPickUp: "7500",
+      km_atReturn: "-",
+    },
+  ];
+
+  const [rentalID, setRentalID] = useState("RNTL-0001");
+  const [regNo, setRegNo] = useState("GC-5951");
+  const [custNIC, setCustNIC] = useState("995922121v");
+  const [datePick, setDatePick] = useState("2022-07-23");
+  const [timePick, setTimePick] = useState("10:22");
+  const [venuePick, setVenuePick] = useState("Rental Premises");
+  const [dateReturn, setDateReturn] = useState("2022-07-25");
+  const [timeReturn, setTimeReturn] = useState("13:30");
+  const [venueReturn, setVenueReturn] = useState("Rental Premises");
+
+  const [kmAtPick, setKmAtPick] = useState(8000);
+  const [kmAtReturn, setKmAtReturn] = useState(0);
+  const [kmTravelled, setKmTravelled] = useState(0);
+  const [driverStatus, setDriverStatus] = useState("Required");
+  const [licenseNo, setLicenseNo] = useState("B1234567");
+  const [driverFee, setDriverFee] = useState(0);
+  const [ldwFee, setLDWFee] = useState("10000.0");
+  const [feeDeducted, setFeeDeducted] = useState(0);
+  const [duration, setDuration] = useState(2);
+
+  const [amountReturn, setAmountReturn] = useState(0);
+  const [totalRental, setTotalRental] = useState(0);
+
+  const [invoiceIsShown, setInvoiceIsShown] = useState("none");
+
+  function setInvoiceDetails(row) {
+    //   getInvoiceDetailsFromDB(row.rental_id, row.reg_no);
+    setRentalID(row.rental_id);
+    setRegNo(row.reg_no);
+    setCustNIC(row.customer_nic);
+    setKmAtPick(row.km_atPickUp);
+    if (row.license_no == "null") {
+      setLicenseNo("-");
+      setDriverStatus("Not Required");
+    } else {
+      setLicenseNo(row.license_no);
+      setDriverStatus("Required");
+    }
   }
+
   return (
     <>
       <AdminNavbar />
@@ -158,68 +200,528 @@ function RentalReturns(props) {
         // handleCellClick={(param, event) => {
         //   event.stopPropagation();
         // }}
-        handleRowClick={(param, event) => {
-          event.stopPropagation();
-        }}
-        // getRowId={(rows) => rows.rental_id}
+        // handleRowClick={(param, event) => {
+        //   event.stopPropagation();
+        // }}
       />
+
+      <div style={{ /*  border: "2px solid red", */ display: invoiceIsShown }}>
+        <Grid
+          container
+          xl={12}
+          lg={12}
+          md={12}
+          sm={12}
+          xs={12}
+          //   style={{ border: "2px solid red" }}
+          justifyContent="center"
+        >
+          <Typography
+            variant="h6"
+            style={{
+              // border: "2px solid red",
+              color: "rgb(55 80 141 / 88%)",
+              margin: "50px 0px 0px 0px",
+              fontSize: "3vw",
+            }}
+            borderBottom="2px solid rgb(55 80 141 / 88%)"
+          >
+            INVOICE
+          </Typography>
+        </Grid>
+
+        <Grid
+          container
+          xl={12}
+          lg={12}
+          md={12}
+          sm={12}
+          xs={12}
+          style={
+            {
+              //   border: "2px solid lightgreen",
+            }
+          }
+        >
+          <Grid
+            container
+            xl={12}
+            lg={12}
+            md={12}
+            sm={12}
+            xs={12}
+            style={{
+              // border: "2px solid red",
+              margin: "40px 0px 0px 0px",
+            }}
+          >
+            <Grid
+              container
+              xl={12}
+              lg={12}
+              md={12}
+              sm={12}
+              xs={12}
+              style={{
+                //   border: "2px solid green",
+                marginBottom: "16px",
+                height: "fit-content",
+              }}
+              justifyContent="space-between"
+            >
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                alignItems="end"
+                rowGap={2}
+              >
+                <Typography variant="h7">Rental ID</Typography>
+                <Typography variant="h7">Registration No</Typography>
+                <Typography variant="h7">Customer NIC</Typography>
+              </Grid>
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                rowGap={2}
+              >
+                <Typography variant="h7"> : &nbsp; {rentalID}</Typography>
+                <Typography variant="h7"> : &nbsp; {regNo}</Typography>
+                <Typography variant="h7"> : &nbsp; {custNIC}</Typography>
+              </Grid>
+            </Grid>
+
+            <Grid
+              container
+              xl={12}
+              lg={12}
+              md={12}
+              sm={12}
+              xs={12}
+              style={{
+                //   border: "2px solid green",
+                marginBottom: "16px",
+                height: "fit-content",
+              }}
+              justifyContent="space-between"
+            >
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                alignItems="end"
+                rowGap={2}
+              >
+                <Typography variant="h7">Pick-up Date</Typography>
+                <Typography variant="h7">Pick-up Time</Typography>
+                <Typography variant="h7">Pick-up Venue</Typography>
+              </Grid>
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                rowGap={2}
+              >
+                <Typography variant="h7"> : &nbsp; {datePick}</Typography>
+                <Typography variant="h7"> : &nbsp; {timePick}</Typography>
+                <Typography variant="h7"> : &nbsp; {venuePick}</Typography>
+              </Grid>
+            </Grid>
+
+            <Grid
+              container
+              xl={12}
+              lg={12}
+              md={12}
+              sm={12}
+              xs={12}
+              style={{
+                //   border: "2px solid green",
+                marginBottom: "16px",
+                height: "fit-content",
+              }}
+              justifyContent="space-between"
+            >
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                alignItems="end"
+                rowGap={2}
+              >
+                <Typography variant="h7">Return Date</Typography>
+                <Typography variant="h7">Return Time</Typography>
+                <Typography variant="h7">Return Venue</Typography>
+              </Grid>
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                rowGap={2}
+              >
+                <Typography variant="h7"> : &nbsp; {dateReturn}</Typography>
+                <Typography variant="h7"> : &nbsp; {timeReturn}</Typography>
+                <Typography variant="h7"> : &nbsp; {venueReturn}</Typography>
+              </Grid>
+            </Grid>
+
+            <Grid
+              container
+              xl={12}
+              lg={12}
+              md={12}
+              sm={12}
+              xs={12}
+              style={{
+                //   border: "2px solid green",
+                marginBottom: "16px",
+                height: "fit-content",
+              }}
+              justifyContent="space-between"
+            >
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                alignItems="end"
+                rowGap={2}
+              >
+                <Typography variant="h7">Driver Status</Typography>
+                <Typography variant="h7">Driver License No</Typography>
+                <Typography variant="h7">Driver Fee(Rs)</Typography>
+              </Grid>
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                rowGap={2}
+              >
+                <Typography variant="h7"> : &nbsp; {driverStatus}</Typography>
+                <Typography variant="h7"> : &nbsp; {licenseNo}</Typography>
+                <Typography variant="h7">
+                  {" "}
+                  : &nbsp;
+                  <input
+                    value={driverFee}
+                    type="number"
+                    onChange={(e) => {
+                      setDriverFee(e.target.value);
+                    }}
+                  />
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <Grid
+              container
+              xl={12}
+              lg={12}
+              md={12}
+              sm={12}
+              xs={12}
+              style={{
+                //   border: "2px solid green",
+                marginBottom: "16px",
+                height: "fit-content",
+              }}
+              justifyContent="space-between"
+            >
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                alignItems="end"
+                rowGap={2}
+              >
+                <Typography variant="h7">KM At Pick-up</Typography>
+                <Typography variant="h7">KM At Return</Typography>
+                <Typography variant="h7">KM Travelled</Typography>
+              </Grid>
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                rowGap={2}
+              >
+                <Typography variant="h7"> : &nbsp; {kmAtPick}</Typography>
+                <Typography variant="h7">
+                  : &nbsp;
+                  <input
+                    value={kmAtReturn}
+                    type="number"
+                    onChange={(e) => {
+                      setKmAtReturn(e.target.value);
+                      setKmTravelled(e.target.value - kmAtPick);
+                    }}
+                  />
+                </Typography>
+                <Typography variant="h7"> : &nbsp; {kmTravelled}</Typography>
+              </Grid>
+            </Grid>
+
+            <Grid
+              container
+              xl={12}
+              lg={12}
+              md={12}
+              sm={12}
+              xs={12}
+              style={{
+                //   border: "2px solid green",
+                marginBottom: "16px",
+                height: "fit-content",
+              }}
+              justifyContent="space-between"
+            >
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                alignItems="end"
+                rowGap={2}
+              >
+                <Typography variant="h7">Loss Damage Waiver(Rs)</Typography>
+                <Typography variant="h7">Fee Deducted (Rs)</Typography>
+                <Typography variant="h7">Rental Duration</Typography>
+              </Grid>
+              <Grid
+                container
+                xl={5.8}
+                lg={5.8}
+                md={5.8}
+                sm={5.8}
+                xs={5.8}
+                style={
+                  {
+                    // border: "2px solid blue",
+                  }
+                }
+                direction="column"
+                rowGap={2}
+              >
+                <Typography variant="h7"> : &nbsp; {ldwFee}</Typography>
+                <Typography variant="h7">
+                  : &nbsp;
+                  <input
+                    value={feeDeducted}
+                    type="number"
+                    onChange={(e) => {
+                      setFeeDeducted(e.target.value);
+                    }}
+                  />
+                </Typography>
+                <Typography variant="h7">
+                  {" "}
+                  : &nbsp;
+                  {duration < 30
+                    ? duration + " Day/s"
+                    : duration / 30 >= 1
+                    ? (duration / 30) % 1 == 0
+                      ? +(duration / 30) + " Month/s"
+                      : (duration / 30).toFixed(1) + " Month/s"
+                    : ""}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          {/* //---------Calculate Button-------------*/}
+
+          <Grid
+            container
+            xl={12}
+            lg={12}
+            md={12}
+            sm={12}
+            xs={12}
+            // style={{ border: "2px solid blue" }}
+            justifyContent="center"
+          >
+            <MyButton
+              label="Calculate Payment"
+              variant="outlined"
+              type="button"
+              className={classes.calculate_btn}
+            />
+          </Grid>
+
+          {/* //---------Payment Details------------ */}
+
+          <Grid
+            container
+            xl={12}
+            lg={12}
+            md={12}
+            sm={12}
+            xs={12}
+            style={{
+              //   border: "2px solid green",
+              margin: "30px 16px",
+              height: "fit-content",
+            }}
+            justifyContent="space-between"
+          >
+            <Grid
+              container
+              xl={5.8}
+              lg={5.8}
+              md={5.8}
+              sm={5.8}
+              xs={5.8}
+              style={
+                {
+                  // border: "2px solid blue",
+                }
+              }
+              direction="column"
+              alignItems="end"
+              rowGap={2}
+            >
+              <Typography variant="h7">Amount To Return Back (Rs)</Typography>
+              <Typography variant="h7">Total Payment (Rs)</Typography>
+            </Grid>
+            <Grid
+              container
+              xl={5.8}
+              lg={5.8}
+              md={5.8}
+              sm={5.8}
+              xs={5.8}
+              style={
+                {
+                  // border: "2px solid blue",
+                }
+              }
+              direction="column"
+              rowGap={2}
+            >
+              <Typography variant="h7"> : &nbsp; {amountReturn}</Typography>
+              <Typography variant="h7"> : &nbsp; {totalRental}</Typography>
+            </Grid>
+          </Grid>
+
+          {/* //---------Confirm Return Button-------------should update km-AtPickUp = km_AtReturn in DB  */}
+
+          <Grid
+            container
+            xl={12}
+            lg={12}
+            md={12}
+            sm={12}
+            xs={12}
+            style={{ /* border: "2px solid blue",  */ marginBottom: "20px" }}
+            justifyContent="center"
+          >
+            <MyButton
+              label="Confirm Return"
+              variant="outlined"
+              type="button"
+              className={classes.confirm_return_btn}
+            />
+          </Grid>
+        </Grid>
+      </div>
     </>
-
-    // <MaterialTable
-    //   title="Basic Validation Preview"
-    //   columns={[
-    //     {
-    //       title: "Name",
-    //       field: "name",
-    //       validate: (rowData) => rowData.name !== "",
-    //     },
-    //     {
-    //       title: "Surname",
-    //       field: "surname",
-    //       validate: (rowData) => rowData.surname.length > 3,
-    //     },
-    //     {
-    //       title: "Birth Year",
-    //       field: "birthYear",
-    //       type: "numeric",
-    //       validate: (rowData) => rowData.birthYear > 1900,
-    //     },
-    //     {
-    //       title: "Birth Place",
-    //       field: "birthCity",
-    //       lookup: { 34: "İstanbul", 63: "Şanlıurfa" },
-    //     },
-    //   ]}
-    //   data={[
-    //     { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 },
-    //     {
-    //       name: "Zerya Betül",
-    //       surname: "Baran",
-    //       birthYear: 2017,
-    //       birthCity: 34,
-    //     },
-    //   ]}
-    //   editable={{
-    //     onRowAdd: (newData) =>
-    //       new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //           setData([...data, newData]);
-    //           resolve();
-    //         }, 1000);
-    //       }),
-    //     onRowUpdate: (newData, oldData) =>
-    //       new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //           const dataUpdate = [...data];
-    //           const index = oldData.tableData.id;
-    //           dataUpdate[index] = newData;
-    //           setData(dataUpdate);
-
-    //           resolve();
-    //         }, 1000);
-    //       }),
-    //   }}
-    // />
   );
 }
 

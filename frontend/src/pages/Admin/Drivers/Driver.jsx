@@ -19,6 +19,7 @@ import Box from "@mui/material/Box";
 
 import Autocomplete from "@mui/material/Autocomplete";
 import MyButton from "../../../components/common/Button/Button";
+import Footer from "../../../components/Footer/Footer";
 // import MyTextField from "../../../components/common/TextField/TextField";
 
 const columns = [

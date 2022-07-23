@@ -8,6 +8,7 @@ import DriverStatusChart from "../../../components/Charts/DriverStatusChart/Driv
 import DailyIncomeChart from "../../../components/Charts/DailyIncomeChart/DailyIncomeChart";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import Footer from "../../../components/Footer/Footer";
 
 function AdminDashboard(props) {
   const { classes } = props;

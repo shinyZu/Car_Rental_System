@@ -72,10 +72,16 @@ body {
 } */
 
 .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
-  background-color: rgb(50 205 92 / 64%) !important;
+  background-color: rgb(225 218 17 / 72%) !important;
   color: #205a76 !important;
   height: 45px;
   width: 45px;
   margin-left: 10px;
   /* font-size: 50px !important; */
+}
+
+.css-1l14upw-MuiButtonBase-root-MuiTab-root:hover {
+  /* color: gold; */
+  font-size: 1em !important;
+  border-bottom: 2px solid white;
 }
