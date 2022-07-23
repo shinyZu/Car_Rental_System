@@ -157,11 +157,11 @@ function AdminDashboard(props) {
           </Grid>
           <Grid
             container
-            xl={4}
-            lg={4}
-            md={4}
-            sm={4}
-            xs={4}
+            xl={4.5}
+            lg={4.5}
+            md={4.5}
+            sm={4.5}
+            xs={4.5}
             className={classes.dashboard_container_1_2_0}
             justifyContent="center"
             alignItems="center"
@@ -170,11 +170,11 @@ function AdminDashboard(props) {
           </Grid>
           <Grid
             container
-            xl={4}
-            lg={4}
-            md={4}
-            sm={4}
-            xs={4}
+            xl={3}
+            lg={3}
+            md={3}
+            sm={3}
+            xs={3}
             className={classes.dashboard_container_1_2_0}
             justifyContent="center"
             alignItems="center"
