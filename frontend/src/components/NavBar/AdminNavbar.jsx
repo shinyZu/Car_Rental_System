@@ -34,7 +34,10 @@ function AdminNavbar(props) {
   const { classes } = props;
   return (
     <>
-      <Box className={classes.nav__bar}>
+      <Box
+        className={classes.nav__bar}
+        style={{ backgroundColor: "rgb(28 48 98)" }}
+      >
         <Tabs onChange={changePage} className={classes.nav__tabs}>
           <div className={classes.nav_left}>
             <Link to="/dashboard" className={classes.nav__text}>

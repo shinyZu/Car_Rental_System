@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavBarRegistered from "../../../components/NavBar/NavBarRegistered";
-import MyBookingDetails from "../../../components/BookingDetails/BookingDetails";
+import MyBookingDetails from "../../../components/TableSearchPage/TableSearchPage";
 // import { Grid } from "@mui/material";
 // import { withStyles } from "@mui/styles";
 // import { styleSheet } from "./style";

@@ -24,7 +24,7 @@ export const styleSheet = {
 
   dashboard_container_1_1_0: {
     // border: "2px solid deeppink",
-    // backgroundImage: `url("https://www.transparenttextures.com/patterns/low-contrast-linen.png"); !important`,
+    // backgroundImage: `url("https://www.transparenttextures.com/patterns/wall-4-light.png"); !important`,
     // backgroundColor: "#ffffff",
   },
 

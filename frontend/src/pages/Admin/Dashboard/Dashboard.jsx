@@ -53,6 +53,7 @@ function AdminDashboard(props) {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
+                backgroundImage: `url("https://www.transparenttextures.com/patterns/wall-4-light.png"); !important`,
               }}
               elevation={12}
               style={{
@@ -84,6 +85,8 @@ function AdminDashboard(props) {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
+                // background: "#11558a",
+                backgroundImage: `url("https://www.transparenttextures.com/patterns/wall-4-light.png"); !important`,
               }}
               elevation={12}
               style={{ borderRadius: "20px" }}
@@ -113,6 +116,8 @@ function AdminDashboard(props) {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
+                // background: "#11558a",
+                backgroundImage: `url("https://www.transparenttextures.com/patterns/wall-4-light.png"); !important`,
               }}
               elevation={12}
               style={{ borderRadius: "20px" }}

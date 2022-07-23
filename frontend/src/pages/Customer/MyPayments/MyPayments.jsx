@@ -1,6 +1,6 @@
 import React from "react";
 import NavBarRegistered from "../../../components/NavBar/NavBarRegistered";
-import MyBookingDetails from "../../../components/BookingDetails/BookingDetails";
+import MyPaymentDetails from "../../../components/TableSearchPage/TableSearchPage";
 
 const columns = [
   {
@@ -95,7 +95,7 @@ function MyPayments() {
   return (
     <>
       <NavBarRegistered />
-      <MyBookingDetails
+      <MyPaymentDetails
         page="P"
         pageTitle="My Payments"
         pageSubtitle="Hope you enjoyed our service.......You can Search and View all your Payments here......."

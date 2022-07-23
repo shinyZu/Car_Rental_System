@@ -27,7 +27,7 @@ function WeeklyIncomeChart() {
 
   return (
     <>
-      <Chart id="chart" palette="Soft" dataSource={dataSource} width="50vw">
+      <Chart id="chart" palette="Soft" dataSource={dataSource}>
         <Size height={300} width={600} />
         <CommonSeriesSettings
           argumentField="week"

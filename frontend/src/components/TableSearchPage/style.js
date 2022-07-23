@@ -5,9 +5,9 @@ export const styleSheet = {
   },
 
   search__bar: {
-    // border: "2px solid red",
+    // border: "2px solid blue",
     margin: " 20px auto",
-    borderRadius: "50%",
+    // borderRadius: "50%",
   },
 
   table__container: {

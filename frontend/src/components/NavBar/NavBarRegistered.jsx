@@ -27,7 +27,7 @@ function NavBarRegistered(props) {
   const { classes } = props;
 
   return (
-    <Box className={classes.nav__bar}>
+    <Box className={classes.nav__bar} style={{ backgroundColor: "#0c5199" }}>
       <Tabs value={value} onChange={changePage} className={classes.nav__tabs}>
         <div className={classes.nav_left}>
           <Link to="/" className={classes.nav__text}>
