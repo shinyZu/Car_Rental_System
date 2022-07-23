@@ -167,7 +167,7 @@ function TableSearchPage(props) {
           }}
           elevation={0}
         >
-          {props.page == "C" ? (
+          {props.page == "C" || props.page == "R" ? (
             <Typography
               className={classes.text_style}
               variant="h3"
@@ -206,8 +206,10 @@ function TableSearchPage(props) {
               ? "bookings"
               : props.page == "C"
               ? "customer details"
+              : props.page == "R"
+              ? "rental details"
               : "payments"}
-            ...)
+            )
           </Typography>
         </Paper>
       </Grid>
@@ -325,7 +327,7 @@ function TableSearchPage(props) {
         </Grid>
       )} */}
 
-      {props.page == "C" ? (
+      {props.page == "C" || props.page == "R" ? (
         <Grid
           container
           xl={props.page == "B" ? 10.3 : props.page == "C" ? 7.58 : 7.53}

@@ -117,6 +117,7 @@ function ManageDrivers(props) {
         // style={{ border: "2px solid red" }}
         direction="column"
         alignItems="center"
+        // className={classes.container}
       >
         <Paper
           sx={{
@@ -352,7 +353,7 @@ function ManageDrivers(props) {
           style={{
             // border: "2px solid red",
             color: "rgb(55 80 141 / 88%)",
-            margin: "100px 0px 50px 0px",
+            margin: "90px 0px 0px 0px",
           }}
           borderBottom="2px solid rgb(55 80 141 / 88%)"
         >
@@ -367,105 +368,111 @@ function ManageDrivers(props) {
         md={12}
         sm={12}
         xs={12}
-        style={{ /* border: "2px solid deeppink", */ height: "200px" }}
-        // direction="column"
+        style={{ /* border: "2px solid deeppink", */ height: "150px" }}
         justifyContent="center"
+        alignItems="center"
       >
-        <Grid
-          container
-          xl={7.56}
-          lg={9.9}
-          md={12}
-          sm={12}
-          xs={12}
-          style={{
-            // border: "2px solid red",
-            height: "60px",
-            margin: "10px auto",
+        <Paper
+          sx={{
+            p: "20px 0px",
+            width: "90%",
+            borderRadius: "10px",
           }}
-          // direction="column"
-          justifyContent="space-around"
+          elevation={12}
         >
           <Grid
             container
-            xl={2.8}
-            lg={2.8}
-            md={2.8}
-            sm={2.8}
-            xs={2.8}
-            // style={{ border: "2px solid blue" }}
-            justifyContent="center"
+            xl={7.56}
+            lg={9.9}
+            md={12}
+            sm={12}
+            xs={12}
+            style={{
+              // border: "2px solid red",
+              height: "60px",
+              margin: "10px auto",
+            }}
+            justifyContent="space-around"
           >
-            {/* <MyTextField label="Rental ID" defaultValue="sdsd  " /> */}
-            <TextField
-              disabled
-              id="outlined-disabled"
-              label="Rental ID"
-              defaultValue="    "
-              variant="outlined"
-              fullWidth
-            />
+            <Grid
+              container
+              xl={2.8}
+              lg={2.8}
+              md={2.8}
+              sm={2.8}
+              xs={2.8}
+              // style={{ border: "2px solid blue" }}
+              justifyContent="center"
+            >
+              <TextField
+                disabled
+                id="outlined-disabled"
+                label="Rental ID"
+                defaultValue="    "
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid
+              container
+              xl={2.8}
+              lg={2.8}
+              md={2.8}
+              sm={2.8}
+              xs={2.8}
+              // style={{ border: "2px solid blue" }}
+              justifyContent="center"
+            >
+              <TextField
+                disabled
+                id="outlined-disabled"
+                label="Current Driver"
+                defaultValue="    "
+                variant="outlined"
+                fullWidth
+              />
+            </Grid>
+            <Grid
+              container
+              xl={2.8}
+              lg={2.8}
+              md={2.8}
+              sm={2.8}
+              xs={2.8}
+              // style={{ border: "2px solid blue" }}
+              justifyContent="center"
+            >
+              <Autocomplete
+                disablePortal
+                id="drivers"
+                options={driverList}
+                fullWidth
+                xl={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Change Driver To" fullWidth />
+                )}
+              />
+            </Grid>
+            <Grid
+              container
+              xl={2.8}
+              lg={2.8}
+              md={2.8}
+              sm={2.8}
+              xs={2.8}
+              // style={{ border: "2px solid blue" }}
+              justifyContent="flex-end"
+            >
+              <MyButton
+                label="Change Driver"
+                variant="outlined"
+                type="button"
+                className={classes.change_btn}
+                style={{ backgroundColor: "red" }}
+              />
+            </Grid>
           </Grid>
-          <Grid
-            container
-            xl={2.8}
-            lg={2.8}
-            md={2.8}
-            sm={2.8}
-            xs={2.8}
-            // style={{ border: "2px solid blue" }}
-            justifyContent="center"
-          >
-            <TextField
-              disabled
-              id="outlined-disabled"
-              label="Current Driver"
-              defaultValue="    "
-              variant="outlined"
-              fullWidth
-            />
-          </Grid>
-          <Grid
-            container
-            xl={2.8}
-            lg={2.8}
-            md={2.8}
-            sm={2.8}
-            xs={2.8}
-            // style={{ border: "2px solid blue" }}
-            justifyContent="center"
-          >
-            <Autocomplete
-              disablePortal
-              id="drivers"
-              options={driverList}
-              fullWidth
-              xl={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField {...params} label="Change Driver To" fullWidth />
-              )}
-            />
-          </Grid>
-          <Grid
-            container
-            xl={2.8}
-            lg={2.8}
-            md={2.8}
-            sm={2.8}
-            xs={2.8}
-            // style={{ border: "2px solid blue" }}
-            justifyContent="flex-end"
-          >
-            <MyButton
-              label="Change Driver"
-              //   size="small"
-              variant="outlined"
-              type="button"
-              className={classes.change_btn}
-              style={{ backgroundColor: "red" }}
-            />
-          </Grid>
-        </Grid>
+        </Paper>
       </Grid>
     </>
   );
