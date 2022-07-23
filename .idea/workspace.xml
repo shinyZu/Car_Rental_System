@@ -27,21 +27,17 @@
     <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/Custom.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/Custom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CustomDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CustomDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/DriverRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/DriverRepoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/DriverRepoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/DriverRepoTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Car/CarReservePane.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Car/CarReservePane.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login/style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Register/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Charts/DailyIncomeChart/DailyIncomeChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Charts/DailyIncomeChart/DailyIncomeChart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Admin/Income/Income.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Admin/Income/Income.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +100,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.78">
-    <configuration name="CarRepoTest.getCarSchedule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DriverRepoTest.getWorkSchedule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Backend" />
       <extension name="coverage">
         <pattern>
@@ -113,8 +109,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.CarRepoTest" />
-      <option name="METHOD_NAME" value="getCarSchedule" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.DriverRepoTest" />
+      <option name="METHOD_NAME" value="getWorkSchedule" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DriverRepoTest.getWorkScheduleByDuration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
+      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.DriverRepoTest" />
+      <option name="METHOD_NAME" value="getWorkScheduleByDuration" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,22 +159,6 @@
       <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
       <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
       <option name="METHOD_NAME" value="calculateDailyIncome" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RentalRequestRepoTest.calculateMonthlyIncome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lk.easycar.spring.repo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lk.easycar.spring.repo" />
-      <option name="MAIN_CLASS_NAME" value="lk.easycar.spring.repo.RentalRequestRepoTest" />
-      <option name="METHOD_NAME" value="calculateMonthlyIncome" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -258,11 +254,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RentalRequestRepoTest.calculateDailyIncome" />
+        <item itemvalue="JUnit.DriverRepoTest.getWorkScheduleByDuration" />
+        <item itemvalue="JUnit.DriverRepoTest.getWorkSchedule" />
         <item itemvalue="JUnit.RentalRequestRepoTest.calculateAnnualIncome" />
         <item itemvalue="JUnit.RentalRequestRepoTest.calculateWeeklyIncome" />
-        <item itemvalue="JUnit.RentalRequestRepoTest.calculateMonthlyIncome" />
-        <item itemvalue="JUnit.RentalRequestRepoTest.calculateDailyIncome" />
-        <item itemvalue="JUnit.CarRepoTest.getCarSchedule" />
       </list>
     </recent_temporary>
   </component>
@@ -293,6 +289,7 @@
       <workItem from="1658049061649" duration="105000" />
       <workItem from="1658111418721" duration="26000" />
       <workItem from="1658495172998" duration="8975000" />
+      <workItem from="1658552566455" duration="4380000" />
     </task>
     <servers />
   </component>
@@ -332,54 +329,54 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="747" y="259" width="424" height="494" key="FileChooserDialogImpl/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1657801290411" />
-    <state width="1874" height="201" key="GridCell.Tab.0.bottom" timestamp="1658505277324">
+    <state width="1291" height="532" key="GridCell.Tab.0.bottom" timestamp="1658561654081">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="201" key="GridCell.Tab.0.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277324" />
-    <state width="1874" height="201" key="GridCell.Tab.0.center" timestamp="1658505277324">
+    <state width="1291" height="532" key="GridCell.Tab.0.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654081" />
+    <state width="1291" height="532" key="GridCell.Tab.0.center" timestamp="1658561654081">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="201" key="GridCell.Tab.0.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277324" />
-    <state width="1874" height="201" key="GridCell.Tab.0.left" timestamp="1658505277324">
+    <state width="1291" height="532" key="GridCell.Tab.0.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654081" />
+    <state width="1291" height="532" key="GridCell.Tab.0.left" timestamp="1658561654081">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="201" key="GridCell.Tab.0.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277324" />
-    <state width="1874" height="201" key="GridCell.Tab.0.right" timestamp="1658505277324">
+    <state width="1291" height="532" key="GridCell.Tab.0.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654081" />
+    <state width="1291" height="532" key="GridCell.Tab.0.right" timestamp="1658561654081">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="201" key="GridCell.Tab.0.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277324" />
-    <state width="1291" height="126" key="GridCell.Tab.1.bottom" timestamp="1658505277321">
+    <state width="1291" height="532" key="GridCell.Tab.0.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654081" />
+    <state width="1291" height="532" key="GridCell.Tab.1.bottom" timestamp="1658561654082">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="126" key="GridCell.Tab.1.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
-    <state width="1291" height="126" key="GridCell.Tab.1.center" timestamp="1658505277321">
+    <state width="1291" height="532" key="GridCell.Tab.1.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654082" />
+    <state width="1291" height="532" key="GridCell.Tab.1.center" timestamp="1658561654081">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="126" key="GridCell.Tab.1.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
-    <state width="1291" height="126" key="GridCell.Tab.1.left" timestamp="1658505277321">
+    <state width="1291" height="532" key="GridCell.Tab.1.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654081" />
+    <state width="1291" height="532" key="GridCell.Tab.1.left" timestamp="1658561654081">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="126" key="GridCell.Tab.1.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
-    <state width="1291" height="126" key="GridCell.Tab.1.right" timestamp="1658505277321">
+    <state width="1291" height="532" key="GridCell.Tab.1.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654081" />
+    <state width="1291" height="532" key="GridCell.Tab.1.right" timestamp="1658561654082">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="126" key="GridCell.Tab.1.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
-    <state width="1291" height="126" key="GridCell.Tab.2.bottom" timestamp="1658505277321">
+    <state width="1291" height="532" key="GridCell.Tab.1.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654082" />
+    <state width="1291" height="532" key="GridCell.Tab.2.bottom" timestamp="1658561654082">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="126" key="GridCell.Tab.2.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
-    <state width="1291" height="126" key="GridCell.Tab.2.center" timestamp="1658505277321">
+    <state width="1291" height="532" key="GridCell.Tab.2.bottom/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654082" />
+    <state width="1291" height="532" key="GridCell.Tab.2.center" timestamp="1658561654082">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="126" key="GridCell.Tab.2.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
-    <state width="1291" height="126" key="GridCell.Tab.2.left" timestamp="1658505277321">
+    <state width="1291" height="532" key="GridCell.Tab.2.center/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654082" />
+    <state width="1291" height="532" key="GridCell.Tab.2.left" timestamp="1658561654082">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="126" key="GridCell.Tab.2.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
-    <state width="1291" height="126" key="GridCell.Tab.2.right" timestamp="1658505277321">
+    <state width="1291" height="532" key="GridCell.Tab.2.left/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654082" />
+    <state width="1291" height="532" key="GridCell.Tab.2.right" timestamp="1658561654082">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1291" height="126" key="GridCell.Tab.2.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658505277321" />
+    <state width="1291" height="532" key="GridCell.Tab.2.right/0.0.1920.1080/212.1080.1440.810@0.0.1920.1080" timestamp="1658561654082" />
     <state width="1291" height="612" key="GridCell.Tab.3.bottom" timestamp="1657688941294">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

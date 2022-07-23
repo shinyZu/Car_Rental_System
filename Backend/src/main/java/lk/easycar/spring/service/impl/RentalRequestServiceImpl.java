@@ -180,10 +180,10 @@ public class RentalRequestServiceImpl implements RentalRequestService {
          }*/
 
     @Override
-    public List<CustomDTO> calculateDailyIncome() {
+    public List<CustomDTO> calculateDailyIncome(LocalDate date) {
         ArrayList<CustomDTO> dailyIncome = new ArrayList<>();
 
-        List<Custom> dailyIncomeList = rentalRequestRepo.calculateDailyIncome();
+        List<Custom> dailyIncomeList = rentalRequestRepo.calculateDailyIncome(date);
         for (Custom custom : dailyIncomeList) {
             dailyIncome.add(new CustomDTO(
                     custom.getYear(),
@@ -267,7 +267,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     public List<CustomDTO> calculateAnnualIncome() {
         ArrayList<CustomDTO> annualIncome = new ArrayList<>();
 
-        List<Custom> annualIncomeList = rentalRequestRepo.calculateWeeklyIncome();
+        List<Custom> annualIncomeList = rentalRequestRepo.calculateAnnualIncome();
         for (Custom custom : annualIncomeList) {
             annualIncome.add(new CustomDTO(
                     custom.getYear(),

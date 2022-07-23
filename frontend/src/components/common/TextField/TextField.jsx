@@ -16,6 +16,7 @@ function MyTextField(props) {
       style={props.style}
       focused={props.focus}
       color={props.color}
+      disabled={props.disabled}
     />
   );
 }

@@ -62,7 +62,7 @@ class DriverRepoTest {
 
     @Test
     void getWorkSchedule() {
-        List<Custom> list = driverRepo.getWorkSchedule("B5123451");
+        List<Custom> list = driverRepo.getWorkSchedule("DL-1000002");
         for (Custom workSchedule : list) {
             System.out.println(workSchedule.getRental_id());
             System.out.println(workSchedule.getLicense_no());

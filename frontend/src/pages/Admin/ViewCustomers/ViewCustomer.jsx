@@ -64,7 +64,7 @@ function ViewCustomerPage() {
       <CustomerView
         page="C"
         pageTitle="Customer Details"
-        pageSubtitle=""
+        pageSubtitle="You can Search and View Customer Details here...."
         searchbarPlaceholder="Search by NIC No"
         searchbarPlaceholder2="Search by License No"
         // tableWidth_xl={10}

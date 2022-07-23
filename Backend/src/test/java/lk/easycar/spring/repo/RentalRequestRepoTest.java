@@ -120,7 +120,7 @@ class RentalRequestRepoTest {
 
     @Test
     void calculateDailyIncome() {
-        List<Custom> dailyIncome = rentalRequestRepo.calculateDailyIncome();
+        List<Custom> dailyIncome = rentalRequestRepo.calculateDailyIncome(LocalDate.parse("2021-06-27"));
         for (Custom custom : dailyIncome) {
             System.out.println(custom.getYear());
             System.out.println(custom.getMonth());

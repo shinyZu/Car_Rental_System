@@ -26,7 +26,7 @@ public interface RentalRequestService {
     double calculateAmountToReturn(String rental_id);
 
     //    double calculateDailyIncome(LocalDate date);
-    List<CustomDTO> calculateDailyIncome();
+    List<CustomDTO> calculateDailyIncome(LocalDate date);
 
     //    double calculateMonthlyIncome(int month);
     List<CustomDTO> calculateMonthlyIncome();

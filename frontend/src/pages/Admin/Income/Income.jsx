@@ -15,6 +15,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
+import IncomeService from "../../../services/IncomeService";
 
 function Income() {
   const [dateValue, setDateValue] = React.useState("");
@@ -49,6 +50,18 @@ function Income() {
     // console.log(dateValue);
   }
 
+  const [dailyIncome, setDailyIncome] = useState([]);
+  async function getDailyIncome(date) {
+    let res = await IncomeService.getDailyIncome(date);
+    if (res.status === 200) {
+      console.log(res.data.data);
+      setDailyIncome(res.data.data);
+      console.log(dailyIncome);
+    } else {
+      console.log(res);
+    }
+  }
+
   return (
     <>
       <AdminNavbar />
@@ -58,7 +71,7 @@ function Income() {
           aria-describedby={id}
           variant="contained"
           onClick={handleClick}
-          style={{ backgroundColor: "#1e3799", padding: "10px" }}
+          style={{ backgroundColor: "rgb(65 85 167)", padding: "10px" }}
         >
           <CalendarMonthIcon />
         </Button>
@@ -89,6 +102,7 @@ function Income() {
               onAccept={() => {
                 console.log("Accepted");
                 // handleClose();
+                getDailyIncome(dateValue);
                 //should send the request to get all 4 types of income
               }}
               onClose={() => {
@@ -133,7 +147,7 @@ function Income() {
             alignItems="center"
             // style={{ border: "2px solid pink" }}
           >
-            <DailyIncomeChart />
+            <DailyIncomeChart data={dailyIncome} />
           </Grid>
           <Grid
             container

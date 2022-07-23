@@ -55,10 +55,11 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
             "CAST((((day(return_date)-1) / 7) + 1) as Integer) AS Week,\n" +
             "MONTHNAME(return_date) AS Month,\n" +
             "YEAR(return_date) AS Year,\n" +
-            "    SUM(r.totalPaymentForRental) as Income\n" +
-            "FROM RentalRequest r\n" +
+            "SUM(r.totalPaymentForRental) as Income\n" +
+            "FROM RentalRequest r " +
+            "WHERE r.return_date=?1\n" +
             "GROUP BY Week",  nativeQuery = true)
-    List<Custom> calculateDailyIncome();
+    List<Custom> calculateDailyIncome(LocalDate date);
 
     @Query(value="SELECT CAST((((day(return_date)-1) / 7) + 1) as Integer) AS Week,\n" +
             "MONTHNAME(return_date) AS Month,\n" +
@@ -91,4 +92,5 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
 
     @Query(value = "select r.rental_id from RentalRequest r order by r.rental_id desc LIMIT 1", nativeQuery=true)
     String getLastID();
+
 }

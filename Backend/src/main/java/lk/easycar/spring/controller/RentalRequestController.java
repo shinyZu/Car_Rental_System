@@ -14,7 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Calendar;
 import java.util.List;
+
+import static javax.swing.UIManager.get;
 
 @RestController
 @CrossOrigin
@@ -74,7 +77,7 @@ public class RentalRequestController {
     @GetMapping(path = "daily_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateDailyIncome(@RequestParam("date") String date) {
 //        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome(LocalDate.parse(date)));
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome());
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome((LocalDate.parse(date))));
     }
 
     @GetMapping(path = "monthly_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
