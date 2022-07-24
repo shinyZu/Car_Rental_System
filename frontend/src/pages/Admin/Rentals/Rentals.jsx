@@ -10,6 +10,7 @@ const columns = [
     width: 130,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -18,6 +19,7 @@ const columns = [
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -26,6 +28,7 @@ const columns = [
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -34,6 +37,7 @@ const columns = [
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -42,6 +46,7 @@ const columns = [
     width: 130,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -50,6 +55,7 @@ const columns = [
     width: 130,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -58,6 +64,7 @@ const columns = [
     width: 130,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -66,6 +73,7 @@ const columns = [
     width: 130,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -74,6 +82,7 @@ const columns = [
     width: 130,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -82,6 +91,7 @@ const columns = [
     width: 130,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -90,6 +100,7 @@ const columns = [
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -98,6 +109,7 @@ const columns = [
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -106,6 +118,7 @@ const columns = [
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -114,6 +127,7 @@ const columns = [
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -122,6 +136,7 @@ const columns = [
     width: 140,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 ];
 

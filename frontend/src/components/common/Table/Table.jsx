@@ -2,7 +2,7 @@ import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
 function MyTable(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <DataGrid
       rows={props.rows}

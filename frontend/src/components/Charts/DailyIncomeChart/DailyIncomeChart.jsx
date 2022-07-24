@@ -75,7 +75,7 @@ function DailyIncomeChart(props) {
         ignoreEmptyPoints={true}
         barPadding={0.4}
       >
-        <Format type="thousands" />
+        <Format type="hundreds" />
       </CommonSeriesSettings>
       <SeriesTemplate nameField="day" forma />
       <Title

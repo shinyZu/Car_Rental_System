@@ -35,64 +35,16 @@ import Footer from "../../../components/Footer/Footer";
 function RentalReturns(props) {
   const { classes } = props;
   const columns = [
+    // {
+    //   field: "id",
+    //   headerName: "-",
+    //   width: 10,
+    //   headerClassName: "header_color",
+    //   headerAlign: "center",
+    // },
+
     {
       field: "id",
-      headerName: "-",
-      width: 10,
-      headerClassName: "header_color",
-      headerAlign: "center",
-    },
-
-    {
-      field: "rental_id",
-      headerName: "Rental ID",
-      width: 150,
-      headerClassName: "header_color",
-      headerAlign: "center",
-    },
-
-    {
-      field: "reg_no",
-      headerName: "Registration No",
-      width: 150,
-      headerClassName: "header_color",
-      headerAlign: "center",
-    },
-
-    {
-      field: "customer_nic",
-      headerName: "Customer NIC",
-      width: 200,
-      headerClassName: "header_color",
-      headerAlign: "center",
-    },
-
-    {
-      field: "license_no",
-      headerName: "Driver License No",
-      width: 150,
-      headerClassName: "header_color",
-      headerAlign: "center",
-    },
-
-    {
-      field: "km_atPickUp",
-      headerName: "Initial Mileage (KM)",
-      width: 200,
-      headerClassName: "header_color",
-      headerAlign: "center",
-    },
-
-    {
-      field: "km_atReturn",
-      headerName: "Final Mileage (KM)",
-      width: 200,
-      headerClassName: "header_color",
-      headerAlign: "center",
-    },
-
-    {
-      field: "action",
       headerName: "Action",
       renderCell: (cellValues) => {
         //   console.log(cellValues);
@@ -111,9 +63,64 @@ function RentalReturns(props) {
           </Tooltip>
         );
       },
-      width: 98,
+      width: 100,
       headerClassName: "header_color",
-      // headerAlign: "center",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "rental_id",
+      headerName: "Rental ID",
+      width: 170,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "reg_no",
+      headerName: "Registration No",
+      width: 170,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "customer_nic",
+      headerName: "Customer NIC",
+      width: 200,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "license_no",
+      headerName: "Driver License No",
+      width: 150,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "km_atPickUp",
+      headerName: "Initial Mileage (KM)",
+      width: 200,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "km_atReturn",
+      headerName: "Final Mileage (KM)",
+      width: 200,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
     },
   ];
 
@@ -190,6 +197,9 @@ function RentalReturns(props) {
   return (
     <>
       <AdminNavbar />
+
+      {/* //-------------------Return Tables--------------- */}
+
       <Returns
         page="RR"
         pageTitle="Rental Returns"
@@ -197,13 +207,9 @@ function RentalReturns(props) {
         tableColumns={columns}
         tableData={rows}
         stickyHeader={true}
-        // handleCellClick={(param, event) => {
-        //   event.stopPropagation();
-        // }}
-        // handleRowClick={(param, event) => {
-        //   event.stopPropagation();
-        // }}
       />
+
+      {/* //---------------Invoice Details displayed on Button clicked--------- */}
 
       <div style={{ /*  border: "2px solid red", */ display: invoiceIsShown }}>
         <Grid
@@ -239,7 +245,7 @@ function RentalReturns(props) {
           xs={12}
           style={
             {
-              //   border: "2px solid lightgreen",
+              // border: "2px solid lightgreen",
             }
           }
         >
@@ -700,7 +706,7 @@ function RentalReturns(props) {
             </Grid>
           </Grid>
 
-          {/* //---------Confirm Return Button-------------should update km-AtPickUp = km_AtReturn in DB  */}
+          {/* //---------Confirm Return, AddTo Maintenanc, Mark Defective Buttons-------------should update km-AtPickUp = km_AtReturn in DB  */}
 
           <Grid
             container
@@ -709,15 +715,73 @@ function RentalReturns(props) {
             md={12}
             sm={12}
             xs={12}
-            style={{ /* border: "2px solid blue",  */ marginBottom: "20px" }}
+            style={{ /* border: "2px solid red", */ marginBottom: "25px" }}
             justifyContent="center"
+            // alignItems="center"
           >
-            <MyButton
-              label="Confirm Return"
-              variant="outlined"
-              type="button"
-              className={classes.confirm_return_btn}
-            />
+            <Grid
+              container
+              xl={4}
+              lg={4}
+              md={4}
+              sm={4}
+              xs={4}
+              style={
+                {
+                  // border: "2px solid blue" /* ,  marginBottom: "20px"  */,
+                }
+              }
+              justifyContent="center"
+            >
+              <MyButton
+                label="Mark Defective"
+                variant="outlined"
+                type="button"
+                className={classes.mark_defective_btn}
+              />
+            </Grid>
+            <Grid
+              container
+              xl={4}
+              lg={4}
+              md={4}
+              sm={4}
+              xs={4}
+              style={
+                {
+                  // border: "2px solid blue" /* ,  marginBottom: "20px"  */,
+                }
+              }
+              justifyContent="center"
+            >
+              <MyButton
+                label="Add To Maintenance"
+                variant="outlined"
+                type="button"
+                className={classes.add_to_maintenance_btn}
+              />
+            </Grid>
+            <Grid
+              container
+              xl={4}
+              lg={4}
+              md={4}
+              sm={4}
+              xs={4}
+              style={
+                {
+                  // border: "2px solid blue" /* ,  marginBottom: "20px"  */,
+                }
+              }
+              justifyContent="center"
+            >
+              <MyButton
+                label="Confirm Return"
+                variant="outlined"
+                type="button"
+                className={classes.confirm_return_btn}
+              />
+            </Grid>
           </Grid>
         </Grid>
       </div>
@@ -726,3 +790,27 @@ function RentalReturns(props) {
 }
 
 export default withStyles(styleSheet)(RentalReturns);
+
+// On Add To Maintenace --> should add details to "Under Maintanace Table" with date
+// On Mark defective --> should add details to "Need Maintanace Table" with date
+
+/* let date = new Date();
+//   const getDate = () => {
+//     return date.toLocaleString("en-US", {
+//       day: "2-digit",
+//       month: "2-digit",
+//       year: "numeric",
+//     });
+//   };
+//   console.log(getDate());
+
+let day = date.getDate();
+let month = date.getMonth();
+let year = date.getFullYear();
+
+if (month < 10) {
+  month = "0" + month;
+} else {
+  month = month;
+}
+console.log(day + "-" + month + "-" + year); */

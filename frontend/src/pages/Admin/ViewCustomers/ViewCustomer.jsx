@@ -13,6 +13,7 @@ const columns = [
     width: 180,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -21,6 +22,7 @@ const columns = [
     width: 180,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -29,6 +31,7 @@ const columns = [
     width: 280,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -37,6 +40,7 @@ const columns = [
     width: 250,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {
@@ -45,6 +49,7 @@ const columns = [
     width: 180,
     headerClassName: "header_color",
     headerAlign: "center",
+    align: "Center",
   },
 
   {

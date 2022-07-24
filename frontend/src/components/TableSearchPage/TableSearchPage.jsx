@@ -143,8 +143,11 @@ import Box from "@mui/material/Box";
 function TableSearchPage(props) {
   const { classes } = props;
 
+  const [isTitleShown, setIsTitleShown] = useState("block");
+
   return (
     <>
+      {/* {props.page == "UM" ? setIsTitleShown("none") : setIsTitleShown("block")} */}
       <Grid
         container
         xl={12}
@@ -167,11 +170,24 @@ function TableSearchPage(props) {
           }}
           elevation={0}
         >
-          {props.page == "C" || props.page == "R" || props.page == "RR" ? (
+          {props.page == "UM" ? (
             <Typography
               className={classes.text_style}
               variant="h3"
               color="rgb(55 80 141 / 88%)"
+              style={{ display: "none" }}
+            >
+              {props.pageTitle}
+            </Typography>
+          ) : props.page == "C" ||
+            props.page == "R" ||
+            props.page == "RR" ||
+            props.page == "NM" ? (
+            <Typography
+              className={classes.text_style}
+              variant="h3"
+              color="rgb(55 80 141 / 88%)"
+              style={{ display: isTitleShown }}
             >
               {/* My Bookings */}
               {props.pageTitle}
@@ -187,35 +203,95 @@ function TableSearchPage(props) {
             </Typography>
           )}
 
+          {props.page == "UM" ? null : (
+            <>
+              <Typography
+                className={classes.text_style}
+                variant="h6"
+                style={{ color: "rgb(157 157 157)" }}
+              >
+                {props.pageSubtitle}
+              </Typography>
+              <Typography
+                className={classes.text_style}
+                variant="h7"
+                style={{ color: "rgb(157 157 157)" }}
+              >
+                (Click on the relevant column to search/filter your{" "}
+                {props.page == "B"
+                  ? "bookings"
+                  : props.page == "C"
+                  ? "customer details"
+                  : props.page == "R"
+                  ? "rental details"
+                  : props.page == "RR"
+                  ? "return details"
+                  : props.page == "NM"
+                  ? "maintenace details"
+                  : "payments"}
+                )
+              </Typography>
+            </>
+          )}
+        </Paper>
+      </Grid>
+
+      {props.page == "NM" ? (
+        <Grid
+          container
+          xl={12}
+          lg={12}
+          md={12}
+          sm={12}
+          xs={12}
+          justifyContent="center"
+          direction="column"
+          alignItems="center"
+        >
           <Typography
-            className={classes.text_style}
             variant="h6"
-            style={{ color: "rgb(157 157 157)" }}
+            style={{
+              // border: "2px solid red",
+              color: "rgb(55 80 141 / 88%)",
+              // margin: "10px 0px 0px 0px",
+            }}
+            borderBottom="2px solid rgb(55 80 141 / 88%)"
           >
-            {/* {props.page == "RR"
-              ? "You can Search,View, Accept Rental Returns and Calculate Rental Payments here...."
-              : props.pageSubtitle} */}
-            {props.pageSubtitle}
+            Defective Cars (Need Maintenance)
           </Typography>
-          <Typography
+          {/* <Typography
             className={classes.text_style}
             variant="h7"
             style={{ color: "rgb(157 157 157)" }}
           >
-            (Click on the relevant column to search/filter your{" "}
-            {props.page == "B"
-              ? "bookings"
-              : props.page == "C"
-              ? "customer details"
-              : props.page == "R"
-              ? "rental details"
-              : props.page == "RR"
-              ? "return details"
-              : "payments"}
-            )
+            Add these Cars to Maintenance before Returning back to Service
+          </Typography> */}
+        </Grid>
+      ) : props.page == "UM" ? (
+        <Grid
+          container
+          xl={12}
+          lg={12}
+          md={12}
+          sm={12}
+          xs={12}
+          // style={{ border: "2px solid red" }}
+          // direction="column"
+          justifyContent="center"
+        >
+          <Typography
+            variant="h6"
+            style={{
+              // border: "2px solid red",
+              color: "rgb(55 80 141 / 88%)",
+              // margin: "10px 0px 0px 0px",
+            }}
+            borderBottom="2px solid rgb(55 80 141 / 88%)"
+          >
+            Cars Under Maintenance
           </Typography>
-        </Paper>
-      </Grid>
+        </Grid>
+      ) : null}
 
       {/* {props.page == "C" ? (
         <Grid
@@ -330,7 +406,11 @@ function TableSearchPage(props) {
         </Grid>
       )} */}
 
-      {props.page == "C" || props.page == "R" || props.page == "RR" ? (
+      {props.page == "C" ||
+      props.page == "R" ||
+      props.page == "RR" ||
+      props.page == "NM" ||
+      props.page == "UM" ? (
         <Grid
           container
           xl={props.page == "B" ? 10.3 : props.page == "C" ? 7.58 : 7.53}
