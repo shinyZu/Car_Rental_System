@@ -25,12 +25,32 @@ import ConstructionIcon from "@mui/icons-material/Construction";
 import PriceChangeIcon from "@mui/icons-material/PriceChange";
 
 function AdminNavbar(props) {
-  const [value, setValue] = useState("");
+  const [navTabBorder, setNavTabBorder] = useState("");
+  const [navTabDashBaord, setNavTabDashBaord] = useState("");
+  const [navTabCars, setNavTabCars] = useState("");
+  const [navTabCustomer, setNavTabCustomer] = useState("");
+  const [navTaDrivers, setNavTabDrivers] = useState("");
+  const [navTabRentals, setNavTabRentals] = useState("");
+  const [navTabReturns, setNavTabReturns] = useState("");
+  const [navTabMaintenance, setNavTabMaintenance] = useState("");
+  const [navTabIncome, setNavTabIcome] = useState("");
+  const [isSelected, setIsSelected] = useState(false);
+
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    console.log(event);
+    console.log(newValue);
+    setValue(newValue);
+  };
 
   function changePage(e) {
     setValue(e.target.innerText);
   }
 
+  function handleSelect(e) {
+    console.log(e);
+  }
   const { classes } = props;
   return (
     <>
@@ -38,7 +58,12 @@ function AdminNavbar(props) {
         className={classes.nav__bar}
         style={{ backgroundColor: "rgb(28 48 98)" }}
       >
-        <Tabs onChange={changePage} className={classes.nav__tabs}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          className={classes.nav__tabs}
+          indicatorColor="#fff !important"
+        >
           <div className={classes.nav_left}>
             <Link to="/dashboard" className={classes.nav__text}>
               <Tab
@@ -46,6 +71,17 @@ function AdminNavbar(props) {
                 icon={<GridViewIcon />}
                 className={classes.nav__text}
                 label="Dashboard"
+                // onClickCapture={(e) => {
+                //   console.log(e);
+                //   setNavTabDashBaord("2px solid white");
+                // }}
+                // style={{ borderBottom: navTabDashBaord }}
+                // selected={isSelected}
+                // onClick={(e) => {
+                //   // e.preventDefault();
+                //   setIsSelected(true);
+                //   handleSelect(e);
+                // }}
               />
             </Link>
 
@@ -55,6 +91,10 @@ function AdminNavbar(props) {
                 icon={<DirectionsCarIcon />}
                 className={classes.nav__text}
                 label="Cars"
+                onSelect={() => {
+                  setNavTabCars("2px solid white");
+                }}
+                style={{ borderBottom: navTabCars }}
               />
             </Link>
 
@@ -78,7 +118,7 @@ function AdminNavbar(props) {
 
             <Link smooth to="/rental_requests" className={classes.nav__text}>
               <Tab
-                value={3}
+                value={4}
                 icon={<ListAltIcon />}
                 className={classes.nav__text}
                 label="Rentals"
@@ -87,7 +127,7 @@ function AdminNavbar(props) {
 
             <Link smooth to="/return_details" className={classes.nav__text}>
               <Tab
-                value={3}
+                value={5}
                 icon={<KeyboardReturnIcon />}
                 className={classes.nav__text}
                 label="Returns"
@@ -96,7 +136,7 @@ function AdminNavbar(props) {
 
             <Link smooth to="/maintenance" className={classes.nav__text}>
               <Tab
-                value={3}
+                value={6}
                 icon={<ConstructionIcon />}
                 className={classes.nav__text}
                 label="Maintenance"
@@ -105,7 +145,7 @@ function AdminNavbar(props) {
 
             <Link smooth to="/income" className={classes.nav__text}>
               <Tab
-                value={3}
+                value={7}
                 icon={<PriceChangeIcon />}
                 className={classes.nav__text}
                 label="Income"

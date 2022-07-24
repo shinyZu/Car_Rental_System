@@ -3,6 +3,27 @@ import Footer from "../../../components/Footer/Footer";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
 import Rentals from "../../../components/TableSearchPage/TableSearchPage";
 
+function RentalRequests() {
+  return (
+    <>
+      <AdminNavbar />
+      <Rentals
+        page="R"
+        pageTitle="Rental Requests"
+        pageSubtitle="You can Search and View all Rentals here...."
+        // searchbarPlaceholder="Search by NIC No"
+        // searchbarPlaceholder2="Search by License No"
+        // tableWidth_xl={10}
+        // tableWidth_lg={10}
+        tableColumns={columns}
+        tableData={rows}
+      />
+    </>
+  );
+}
+
+export default RentalRequests;
+
 const columns = [
   {
     field: "rental_id",
@@ -141,24 +162,3 @@ const columns = [
 ];
 
 const rows = [];
-
-function RentalRequests() {
-  return (
-    <>
-      <AdminNavbar />
-      <Rentals
-        page="R"
-        pageTitle="Rental Requests"
-        pageSubtitle="You can Search and View all Rentals here...."
-        // searchbarPlaceholder="Search by NIC No"
-        // searchbarPlaceholder2="Search by License No"
-        // tableWidth_xl={10}
-        // tableWidth_lg={10}
-        tableColumns={columns}
-        tableData={rows}
-      />
-    </>
-  );
-}
-
-export default RentalRequests;

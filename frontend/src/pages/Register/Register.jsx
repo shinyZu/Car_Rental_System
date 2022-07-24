@@ -446,6 +446,7 @@ function Register(props) {
                     text="NIC(Front)"
                     file={file_nicFront}
                     onUpload={handleNICFrontUpload}
+                    displayFileName={true}
                   />
                 </Grid>
 
@@ -462,6 +463,7 @@ function Register(props) {
                     text="NIC(Back)"
                     file={file_nicBack}
                     onUpload={handleNICBackUpload}
+                    displayFileName={true}
                   />
                 </Grid>
 
@@ -478,6 +480,7 @@ function Register(props) {
                     text="License"
                     file={file_license}
                     onUpload={handleLicenseUpload}
+                    displayFileName={true}
                   />
                 </Grid>
                 {/* </Grid> */}

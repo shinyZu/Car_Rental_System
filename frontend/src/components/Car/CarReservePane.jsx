@@ -241,6 +241,7 @@ function CarReservePane(props) {
             file={reciept}
             onUpload={handleRecieptUpload}
             style={{ width: "500px" }}
+            displayFileName={true}
           />
         </Grid>
         <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>

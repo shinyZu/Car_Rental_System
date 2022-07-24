@@ -30,7 +30,7 @@ function Maintenance(props) {
             <Tooltip title="Add To Maintenance">
               <IconButton>
                 <ConstructionIcon
-                  fontSize="large"
+                  // fontSize="large"
                   onClick={() => {
                     console.log("clicked row : " + cellValues.id);
                     handleAddRow(cellValues.row);
@@ -132,7 +132,7 @@ function Maintenance(props) {
             <Tooltip title="Back To Service">
               <IconButton>
                 <RestoreIcon
-                  fontSize="large"
+                  // fontSize="large"
                   onClick={() => {
                     console.log("clicked row : " + row.id);
                     console.log(row.row);
@@ -252,50 +252,39 @@ function Maintenance(props) {
     ]);
 
     setTable2Rows([
-      // {
-      //   id: "3",
-      //   reg_no: "GC-5951",
-      //   brand: "GC-5951",
-      //   mileage: "GC-5951",
-      //   fleet: "GC-5951",
-      //   transmission: "GC-5951",
-      //   fuel: "GC-5951",
-      //   color: "GC-5951",
-      //   date_added: "GC-5951",
-      // },
-      // {
-      //   id: "4",
-      //   reg_no: "GC-5951",
-      //   brand: "GC-5951",
-      //   mileage: "GC-5951",
-      //   fleet: "GC-5951",
-      //   transmission: "GC-5951",
-      //   fuel: "GC-5951",
-      //   color: "GC-5951",
-      //   date_added: "GC-5951",
-      // },
-      // {
-      //   id: "5",
-      //   reg_no: "GC-5951",
-      //   brand: "GC-5951",
-      //   mileage: "GC-5951",
-      //   fleet: "GC-5951",
-      //   transmission: "GC-5951",
-      //   fuel: "GC-5951",
-      //   color: "GC-5951",
-      //   date_added: "GC-5951",
-      // },
-      // {
-      //   id: "6",
-      //   reg_no: "GC-5951",
-      //   brand: "GC-5951",
-      //   mileage: "GC-5951",
-      //   fleet: "GC-5951",
-      //   transmission: "GC-5951",
-      //   fuel: "GC-5951",
-      //   color: "GC-5951",
-      //   date_added: "GC-5951",
-      // },
+      {
+        id: "3",
+        reg_no: "PC-5957",
+        brand: "Toyota",
+        mileage: "7600",
+        fleet: "Premium",
+        transmission: "Auto",
+        fuel: "Petrol",
+        color: "Blue",
+        date_added: "2022-07-23",
+      },
+      {
+        id: "4",
+        reg_no: "PC-5954",
+        brand: "Toyota",
+        mileage: "7600",
+        fleet: "Premium",
+        transmission: "Auto",
+        fuel: "Petrol",
+        color: "Blue",
+        date_added: "2022-07-23",
+      },
+      {
+        id: "5",
+        reg_no: "PC-5953",
+        brand: "Toyota",
+        mileage: "7600",
+        fleet: "Premium",
+        transmission: "Auto",
+        fuel: "Petrol",
+        color: "Blue",
+        date_added: "2022-07-23",
+      },
     ]);
   }, []);
 

@@ -86,3 +86,14 @@ body {
   font-size: 1em !important;
   border-bottom: 2px solid white;
 }
+
+.css-1l14upw-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  border-bottom: 2px solid white;
+}
+
+.css-uym98a-MuiImageList-root {
+  width: 500px !important;
+  height: 400px !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 5px !important;
+}

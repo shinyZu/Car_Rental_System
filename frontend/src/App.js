@@ -15,6 +15,7 @@ import ManageDrivers from "./pages/Admin/Drivers/Driver";
 import RentalRequests from "./pages/Admin/Rentals/Rentals";
 import RentalReturns from "./pages/Admin/Returns/Returns";
 import Maintenance from "./pages/Admin/Maintenance/Maintenance";
+import ManageCar from "./pages/Admin/ManageCars/ManageCar";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
       <Route path="/my_payments" element={<MyPayments />}></Route>
       <Route path="/confirmation_details" element={<Confirmation />}></Route>
       <Route path="/dashboard" element={<Dashboard />}></Route>
-      <Route path="/manage_car" element={<Confirmation />}></Route>
+      <Route path="/manage_car" element={<ManageCar />}></Route>
       <Route path="/manage_customer" element={<ViewCustomerPage />}></Route>
       <Route path="/manage_driver" element={<ManageDrivers />}></Route>
       <Route path="/rental_requests" element={<RentalRequests />}></Route>
@@ -37,3 +38,124 @@ function App() {
 }
 
 export default App;
+
+// const [renderView, setRenderView] = useState("main");
+// const [carDetails, setCarDetails] = useState(null);
+// const [myBookings, setMyBookings] = useState(null);
+// const [indexOfArray, setIndexOfArray] = useState();
+// const [openModal, setOpenModal] = useState(false);
+
+// function switchRenderView(view, data, index) {
+//   console.log("switched view");
+//   setRenderView(view);
+//   setCarDetails(data);
+//   setIndexOfArray(index);
+//   setOpenModal(true);
+// }
+
+// {
+//   switch (renderView) {
+//     case "main":
+//       console.log("main view");
+//       return (
+//         <Routes>
+//           <Route
+//             path="/"
+//             exact
+//             element={<Home onSwitch={switchRenderView} />}
+//           ></Route>
+//         </Routes>
+//       );
+//     // return (
+//     //   <Routes>
+//     //     <Route
+//     //       path="/"
+//     //       exact
+//     //       element={<Home onSwitch={switchRenderView} />}
+//     //     ></Route>
+//     //     <Route
+//     //       path="my_bookings"
+//     //       element={<MyBooking onSwitch={switchRenderView} />}
+//     //     ></Route>
+//     //   </Routes>
+//     // );
+
+//     case "img":
+//       return (
+//         <Routes>
+//           <Route
+//             path="/"
+//             exact
+//             element={
+//               <CarDetail
+//                 carInfo={carDetails}
+//                 selectedCar={indexOfArray}
+//                 onSwitch={switchRenderView}
+//               />
+//             }
+//           ></Route>
+//         </Routes>
+//       );
+//     case "about":
+//       return (
+//         <Routes>
+//           <Route
+//             path="/"
+//             exact
+//             element={<Home onSwitch={switchRenderView} />}
+//           ></Route>
+//         </Routes>
+//       );
+
+//     case "garage":
+//       return (
+//         <Routes>
+//           <Route
+//             path="/"
+//             exact
+//             element={<Home onSwitch={switchRenderView} />}
+//           ></Route>
+//         </Routes>
+//       );
+
+//     case "register":
+//       return (
+//         <Routes>
+//           <Route
+//             path="/"
+//             exact
+//             element={
+//               <div>
+//                 <Home onSwitch={switchRenderView} />
+//                 <Register
+//                   open={openModal}
+//                   onClose={() => setOpenModal(false)}
+//                 />
+//               </div>
+//             }
+//           ></Route>
+//         </Routes>
+//       );
+
+//     case "my_bookings":
+//       return (
+//         <Routes>
+//           <Route
+//             path="my_bookings"
+//             element={<MyBooking onSwitch={switchRenderView} />}
+//           ></Route>
+//         </Routes>
+//       );
+
+//     default:
+//       return (
+//         <Routes>
+//           <Route
+//             path="my_bookings"
+//             element={<MyBooking onSwitch={switchRenderView} />}
+//           ></Route>
+//         </Routes>
+//       );
+//       break;
+//   }
+// }

@@ -31,9 +31,9 @@ function AdminDashboard(props) {
           container
           xl={10}
           lg={10}
-          md={10}
-          sm={10}
-          xs={10}
+          md={12}
+          sm={12}
+          xs={12}
           className={classes.dashboard_container_1_1}
           justifyContent="space-between"
         >
@@ -41,9 +41,9 @@ function AdminDashboard(props) {
             container
             xl={3.3}
             lg={3.3}
-            md={3.3}
-            sm={3.3}
-            xs={3.3}
+            md={3.5}
+            sm={3.5}
+            xs={3.5}
             className={classes.dashboard_container_1_1_0}
           >
             <Paper
@@ -73,9 +73,9 @@ function AdminDashboard(props) {
             container
             xl={3.3}
             lg={3.3}
-            md={3.3}
-            sm={3.3}
-            xs={3.3}
+            md={12}
+            sm={12}
+            xs={12}
             className={classes.dashboard_container_1_1_0}
           >
             <Paper
@@ -104,9 +104,9 @@ function AdminDashboard(props) {
             container
             xl={3.3}
             lg={3.3}
-            md={3.3}
-            sm={3.3}
-            xs={3.3}
+            md={12}
+            sm={12}
+            xs={12}
             className={classes.dashboard_container_1_1_0}
           >
             <Paper
@@ -137,9 +137,9 @@ function AdminDashboard(props) {
           container
           xl={10}
           lg={10}
-          md={10}
-          sm={10}
-          xs={10}
+          md={12}
+          sm={12}
+          xs={12}
           className={classes.dashboard_container_1_2}
           justifyContent="space-between"
         >

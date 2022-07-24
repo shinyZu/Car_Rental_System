@@ -23,12 +23,20 @@ function FileChooser(props) {
           type="file"
           accept="*"
           hidden
+          multiple={props.multiple}
           onChange={(e) => {
             props.onUpload(e);
           }}
         />
       </Button>
-      <Box className={classes.uploaded__file}>{props.file}</Box>
+      {!props.displayFileName ? null : (
+        <Box
+          style={{ display: props.displayFileName }}
+          className={classes.uploaded__file}
+        >
+          {props.file}
+        </Box>
+      )}
     </div>
   );
 }

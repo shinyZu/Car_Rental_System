@@ -170,7 +170,7 @@ function TableSearchPage(props) {
           }}
           elevation={0}
         >
-          {props.page == "UM" ? (
+          {props.page == "UM" || props.page == "CR" ? (
             <Typography
               className={classes.text_style}
               variant="h3"
@@ -203,7 +203,7 @@ function TableSearchPage(props) {
             </Typography>
           )}
 
-          {props.page == "UM" ? null : (
+          {props.page == "UM" || props.page == "CR" ? null : (
             <>
               <Typography
                 className={classes.text_style}
@@ -410,7 +410,8 @@ function TableSearchPage(props) {
       props.page == "R" ||
       props.page == "RR" ||
       props.page == "NM" ||
-      props.page == "UM" ? (
+      props.page == "UM" ||
+      props.page == "CR" ? (
         <Grid
           container
           xl={props.page == "B" ? 10.3 : props.page == "C" ? 7.58 : 7.53}

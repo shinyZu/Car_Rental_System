@@ -15,8 +15,8 @@ function Home(props) {
 
   return (
     <div id="home">
-      {/* <Header /> */}
-      {/* <Main /> */}
+      <Header />
+      <Main />
       <AdminDashboard />
     </div>
   );

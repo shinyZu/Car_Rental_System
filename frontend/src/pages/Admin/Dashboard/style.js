@@ -26,6 +26,7 @@ export const styleSheet = {
     // border: "2px solid deeppink",
     // backgroundImage: `url("https://www.transparenttextures.com/patterns/wall-4-light.png"); !important`,
     // backgroundColor: "#ffffff",
+    fontSize: "1.5rem !important",
   },
 
   dashboard_container_1_2_0: {

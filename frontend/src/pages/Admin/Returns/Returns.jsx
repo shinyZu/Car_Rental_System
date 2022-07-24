@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
-import Returns from "../../../components/TableSearchPage/TableSearchPage";
+import TableReturn from "../../../components/TableSearchPage/TableSearchPage";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
@@ -52,7 +52,7 @@ function RentalReturns(props) {
           <Tooltip title="Return">
             <IconButton>
               <RestoreIcon
-                fontSize="large"
+                // fontSize="large"
                 onClick={() => {
                   console.log(cellValues.row);
                   setInvoiceDetails(cellValues.row);
@@ -198,9 +198,9 @@ function RentalReturns(props) {
     <>
       <AdminNavbar />
 
-      {/* //-------------------Return Tables--------------- */}
+      {/* //-------------------Return Table--------------- */}
 
-      <Returns
+      <TableReturn
         page="RR"
         pageTitle="Rental Returns"
         pageSubtitle="You can Search,View, Accept Rental Returns and Calculate Rental Payments here...."
