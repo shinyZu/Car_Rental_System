@@ -16,6 +16,7 @@ import RentalRequests from "./pages/Admin/Rentals/Rentals";
 import RentalReturns from "./pages/Admin/Returns/Returns";
 import Maintenance from "./pages/Admin/Maintenance/Maintenance";
 import ManageCar from "./pages/Admin/ManageCars/ManageCar";
+import NotFound from "./pages/Session/NotFound";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <Route path="/return_details" element={<RentalReturns />}></Route>
       <Route path="/maintenance" element={<Maintenance />}></Route>
       <Route path="/income" element={<Income />}></Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
