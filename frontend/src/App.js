@@ -18,26 +18,144 @@ import Maintenance from "./pages/Admin/Maintenance/Maintenance";
 import ManageCar from "./pages/Admin/ManageCars/ManageCar";
 import NotFound from "./pages/Session/NotFound";
 import DriverSchedule from "./pages/Driver/Driver";
+import { AuthProvider } from "./pages/Session/Auth";
+import TestLogin from "./pages/Login/TestLogin";
+import Profile from "./pages/Login/Profile";
+import RequireAuth from "./pages/Session/RequireAuth";
+import MyProfile from "./pages/Customer/MyProfile/MyProfile";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" exact element={<Home />}></Route>
-      <Route path="/car_details" element={<CarDetail />}></Route>
-      <Route path="/my_bookings" element={<MyBooking />}></Route>
-      <Route path="/my_payments" element={<MyPayments />}></Route>
-      <Route path="/confirmation_details" element={<Confirmation />}></Route>
-      <Route path="/dashboard" element={<Dashboard />}></Route>
-      <Route path="/manage_car" element={<ManageCar />}></Route>
-      <Route path="/manage_customer" element={<ViewCustomerPage />}></Route>
-      <Route path="/manage_driver" element={<ManageDrivers />}></Route>
-      <Route path="/rental_requests" element={<RentalRequests />}></Route>
-      <Route path="/return_details" element={<RentalReturns />}></Route>
-      <Route path="/maintenance" element={<Maintenance />}></Route>
-      <Route path="/income" element={<Income />}></Route>
-      <Route path="/driver_schedule" element={<DriverSchedule />}></Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" exact element={<Home />}></Route>
+        <Route path="/car_details" element={<CarDetail />}></Route>
+        <Route
+          path="/my_bookings"
+          element={
+            <RequireAuth>
+              <MyBooking />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/my_payments"
+          element={
+            <RequireAuth>
+              <MyPayments />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/my_profile"
+          element={
+            <RequireAuth>
+              <MyProfile />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/confirmation_details"
+          element={
+            <RequireAuth>
+              <Confirmation />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/manage_car"
+          element={
+            <RequireAuth>
+              <ManageCar />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/manage_customer"
+          element={
+            <RequireAuth>
+              <ViewCustomerPage />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/manage_driver"
+          element={
+            <RequireAuth>
+              <ManageDrivers />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/rental_requests"
+          element={
+            <RequireAuth>
+              <RentalRequests />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/return_details"
+          element={
+            <RequireAuth>
+              <RentalReturns />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/maintenance"
+          element={
+            <RequireAuth>
+              <Maintenance />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/income"
+          element={
+            <RequireAuth>
+              <Income />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/driver_schedule"
+          element={
+            <RequireAuth>
+              <DriverSchedule />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route path="*" element={<NotFound />} />
+
+        <Route
+          path="/driver_profile"
+          element={
+            <RequireAuth>
+              <MyProfile />
+            </RequireAuth>
+          }
+        />
+        {/* //------------------------ */}
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        />
+        <Route path="/testLogin" element={<TestLogin />} />
+      </Routes>
+    </AuthProvider>
   );
 }
 

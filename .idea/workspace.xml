@@ -25,19 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/RentalRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/RentalRequestRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/RentalRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/RentalRequestServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/DriverRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/DriverRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/lk/easycar/spring/repo/RentalRequestRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/DriverRepoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/test-classes/lk/easycar/spring/repo/DriverRepoTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Charts/DailyIncomeChart/DailyIncomeChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Charts/DailyIncomeChart/DailyIncomeChart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Admin/Income/Income.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Admin/Income/Income.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar/AdminNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar/AdminNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Admin/Dashboard/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Admin/Dashboard/Dashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login/Login.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,6 +282,7 @@
       <workItem from="1658111418721" duration="26000" />
       <workItem from="1658495172998" duration="8975000" />
       <workItem from="1658552566455" duration="4380000" />
+      <workItem from="1658716999168" duration="63000" />
     </task>
     <servers />
   </component>

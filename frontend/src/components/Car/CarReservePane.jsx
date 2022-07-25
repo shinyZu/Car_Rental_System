@@ -31,6 +31,8 @@ function CarReservePane(props) {
   let venueList = ["Rental Premises", "Galle", "Colombo", "Panadura"];
   let driverStatus = ["Required", "Not Required"];
 
+  const navigate = useNavigate();
+
   function handleRecieptUpload(e) {
     console.log("uploaded");
     if (!e.target.files) {
@@ -264,25 +266,28 @@ function CarReservePane(props) {
           xs={12}
           className={classes.reserve__btn__cell}
         >
-          <Link
+          {/* <Link
             // key={index}
-            to="/confirmation_details"
+            // to="/confirmation_details"
             // state={{
             //   fleet: "General",
             //   data: { generalCarList },
             //   selectedCar: { index },
             // }}
             className={classes.card__text}
-          >
-            <MyButton
-              label="Reserve"
-              size="small"
-              variant="outlined"
-              type="button"
-              className={classes.reserve__btn}
-              style={{ backgroundColor: "red" }}
-            />
-          </Link>
+          > */}
+          <MyButton
+            label="Reserve"
+            size="small"
+            variant="outlined"
+            type="button"
+            className={classes.reserve__btn}
+            style={{ backgroundColor: "red" }}
+            onClick={() => {
+              navigate("/confirmation_details");
+            }}
+          />
+          {/* </Link> */}
         </Grid>
       </Grid>
     </div>

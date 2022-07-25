@@ -6,6 +6,7 @@ import generalCarList from "../../db/general/generalCars";
 import premiumCarList from "../../db/premium/premiumCars";
 import luxuryCarList from "../../db/luxury/luxuryCars";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../Session/Auth";
 
 function Garage(props) {
   const { classes } = props;

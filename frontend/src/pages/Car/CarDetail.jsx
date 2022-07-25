@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavbarGuest from "../../components/NavBar/NavbarGuest";
 import NavbarRegistered from "../../components/NavBar/NavBarRegistered";
 import Grid from "@mui/material/Grid";
@@ -14,16 +14,28 @@ import Typography from "@mui/material/Typography";
 import CarReservePane from "../../components/Car/CarReservePane";
 import Dialog from "../../components/Dialog/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
+import { useAuth } from "../Session/Auth";
+import DriverNavbar from "../../components/NavBar/DriverNavbar";
+import AdminNavbar from "../../components/NavBar/AdminNavbar";
 
 function CarDetail(props) {
   const [mainImgURL, setMainImgURL] = useState(sub__img1);
   const [openReservePane, setOpenReservePane] = useState(false);
   const [openDailog, setOpenDialog] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(true);
-
+  const [isGuest, setIsGuest] = useState(true);
   const { classes } = props;
+  const auth = useAuth();
+  console.log(auth);
+
+  useEffect(() => {
+    if (auth.user == null) {
+      setIsGuest(true);
+    } else {
+      setIsGuest(false);
+    }
+  });
 
   const { state } = useLocation();
   let fleet = state.fleet;
@@ -79,7 +91,15 @@ function CarDetail(props) {
 
   return (
     <div id="carInfo">
-      {isRegistered ? <NavbarRegistered /> : <NavbarGuest />}
+      {isGuest ? (
+        <NavbarGuest />
+      ) : auth.user && auth.user.status == "Driver" ? (
+        <DriverNavbar />
+      ) : auth.user && auth.user.status == "Admin" ? (
+        <AdminNavbar />
+      ) : auth.user && auth.user.status == "Customer" ? (
+        <NavbarRegistered />
+      ) : null}
       <Grid container spacing={5} className={classes.container__1}>
         <Grid
           item
@@ -296,24 +316,41 @@ function CarDetail(props) {
               variant="outlined"
               type="button"
               className={classes.reserve__btn}
-              onClick={isRegistered ? popupReservePane : popupDialog}
+              onClick={
+                isGuest
+                  ? popupDialog
+                  : auth.user && auth.user.status == "Driver"
+                  ? popupDialog
+                  : (auth.user && auth.user.status == "Customer") ||
+                    (auth.user && auth.user.status == "Admin")
+                  ? popupReservePane
+                  : null
+              }
             />
           </Grid>
         </Grid>
       </Grid>
 
-      {isRegistered ? (
-        <CarReservePane open={openReservePane} onClose={closeReservePane} />
-      ) : (
+      {isGuest ? (
         <Dialog
           open={openDailog}
           onClose={closeDialog}
           title={"Want To Reserve a Car?"}
           content={
-            "To Reserve a Car you have to first Register as a Member of Easy Car Rental"
+            "To Reserve a Car you have to first Register at Easy Car Rental "
           }
         />
-      )}
+      ) : auth.user && auth.user.status == "Driver" ? (
+        <Dialog
+          open={openDailog}
+          onClose={closeDialog}
+          title={"Want To Reserve a Car?"}
+          content={"To Reserve a Car you have to register as a Customer"}
+        />
+      ) : (auth.user && auth.user.status == "Customer") ||
+        auth.user.status == "Admin" ? (
+        <CarReservePane open={openReservePane} onClose={closeReservePane} />
+      ) : null}
     </div>
   );
 }

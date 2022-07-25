@@ -87,6 +87,10 @@ body {
   border-bottom: 2px solid white;
 }
 
+/* .css-1l14upw-MuiButtonBase-root-MuiTab-root:active {
+  color: red;
+} */
+
 .css-1l14upw-MuiButtonBase-root-MuiTab-root.Mui-selected {
   border-bottom: 2px solid white;
 }

@@ -36,10 +36,14 @@ export const styleSheet = {
   },
 
   nav__text: {
+    // border: "2px solid green",
     color: "white",
     fontWeight: "700 !important",
     fontFamily: '"Acme", sans-serif !important',
     fontSize: "0.975rem !important",
     textDecoration: "none",
+    // "&:focus": {
+    //   color: "yellow",
+    // },
   },
 };

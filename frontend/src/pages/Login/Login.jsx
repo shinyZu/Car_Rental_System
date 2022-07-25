@@ -1,11 +1,5 @@
-import React, {
-  useEffect,
-  useState,
-  useNavigate,
-  Redirect,
-  useHistory,
-} from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, Redirect, useHistory } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import login__img from "../../assets/images/bg11.jpg";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.js";
@@ -16,6 +10,10 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Grid } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import { useAuth } from "../Session/Auth";
+import MySnackBar from "../../components/common/Snackbar/MySnackbar";
+
+const userRoles = ["Customer", "Admin", "Driver"];
 
 function Login(props) {
   const { classes } = props;
@@ -24,27 +22,38 @@ function Login(props) {
     pwd: "",
     status: "",
   });
-
-  let userRoles = ["Customer", "Admin", "Driver"];
+  const auth = useAuth();
 
   useEffect(() => {
     // console.log("I re-rendered");
     window.scrollTo(0, 0);
   });
 
-  // let navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // let history = useHistory();
+  const redirectPath = location.state?.path || "/";
 
-  function logCustomer() {
-    // // console.log(loginFormData);
-    // if (loginFormData.status == "Admin") {
-    //   console.log("Customer Logged Successfully");
-    //   // navigate("/dashboard");
-    <Redirect to="/dashboard" />;
-    // }
-    // console.log(history);
-    // history.push("/dashboard");
+  function logUser() {
+    if (loginFormData.status == "Admin") {
+      console.log("Admin Logged Successfully");
+      auth.login(loginFormData);
+      navigate("/dashboard" /* , { replace: true } */);
+
+      //------------
+    } else if (loginFormData.status == "Customer") {
+      console.log("Customer Logged Successfully");
+      auth.login(loginFormData);
+      navigate(redirectPath, { replace: true });
+      props.onClose();
+      props.handleSnackbar();
+
+      //--------
+    } else if (loginFormData.status == "Driver") {
+      console.log("Driver Logged Successfully");
+      auth.login(loginFormData);
+      navigate("/driver_schedule", { replace: true });
+    }
   }
 
   if (!props.open) return null;
@@ -67,7 +76,7 @@ function Login(props) {
               <PersonIcon className={classes.login__icon} />
             </div>
 
-            <ValidatorForm className="pt-2" onSubmit={logCustomer}>
+            <ValidatorForm className="pt-2" onSubmit={logUser}>
               <Grid
                 container
                 lg={12}

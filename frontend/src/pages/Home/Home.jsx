@@ -19,7 +19,7 @@ function Home(props) {
       <Header />
       <Main />
       {/* <AdminDashboard /> */}
-      <DriverSchedule />
+      {/* <DriverSchedule /> */}
     </div>
   );
 }

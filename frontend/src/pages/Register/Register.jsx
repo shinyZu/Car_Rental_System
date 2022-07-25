@@ -5,14 +5,14 @@ import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style.js";
 import Typography from "@mui/material/Typography";
 import PersonIcon from "@mui/icons-material/Person";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import FileChooser from "../../components/common/FileChooser/FileChooser";
 import MyTextField from "../../components/common/TextField/TextField";
 import Dialog from "@mui/material/Dialog";
-import { useLocation } from "react-router-dom";
 import Button from "../../components/common/Button/Button";
 import { Grid } from "@mui/material";
 import { matchRegexp } from "react-form-validator-core/lib/ValidationRules";
+import { useAuth } from "../Session/Auth";
 
 function Register(props) {
   const { classes } = props;
@@ -32,6 +32,10 @@ function Register(props) {
     nic_img_back: "",
     license_img: "",
   });
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation;
 
   const { state } = useLocation();
   // const { data } = state;

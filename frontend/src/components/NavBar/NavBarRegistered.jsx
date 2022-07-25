@@ -9,14 +9,25 @@ import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import { Routes, Route, useNavigate, Link, NavLink } from "react-router-dom";
 import MyBooking from "../../pages/Customer/MyBookings/MyBooking";
 import Home from "../../pages/Home/Home";
 import { HashLink } from "react-router-hash-link";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useAuth } from "../../pages/Session/Auth";
 
 function NavBarRegistered(props) {
   const [value, setValue] = useState("");
   //   const [openModal, setOpenModal] = useState(false);
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleCustomerLogout = () => {
+    console.log("logged out");
+    auth.logout();
+    navigate("/");
+  };
 
   function changePage(e) {
     // console.log(e);
@@ -25,6 +36,12 @@ function NavBarRegistered(props) {
   }
 
   const { classes } = props;
+
+  const navLinkStyle = ({ isActive }) => {
+    return {
+      color: isActive ? "rgb(244 249 0)" : "normal",
+    };
+  };
 
   return (
     <Box className={classes.nav__bar} style={{ backgroundColor: "#0c5199" }}>
@@ -46,30 +63,53 @@ function NavBarRegistered(props) {
             />
           </HashLink>
 
-          <HashLink smooth to="/my_bookings" className={classes.nav__text}>
+          <NavLink
+            smooth
+            to="/my_bookings"
+            className={classes.nav__text}
+            style={navLinkStyle}
+          >
             <Tab
               icon={<FactCheckIcon />}
               className={classes.nav__text}
               label="My Bookings"
             />
-          </HashLink>
+          </NavLink>
 
-          <HashLink smooth to="/my_payments" className={classes.nav__text}>
+          <NavLink
+            smooth
+            to="/my_payments"
+            className={classes.nav__text}
+            style={navLinkStyle}
+          >
             <Tab
               icon={<CreditScoreIcon />}
               className={classes.nav__text}
               label="Payments"
             />
-          </HashLink>
+          </NavLink>
         </div>
         <div className={classes.nav__right}>
-          <Link to="/" className={classes.nav__text}>
+          <NavLink
+            smooth
+            to="/my_profile"
+            className={classes.nav__text}
+            style={navLinkStyle}
+          >
             <Tab
-              icon={<LogoutIcon />}
+              icon={<AccountCircleIcon />}
               className={classes.nav__text}
-              label="Logout"
+              label="My Profile"
             />
-          </Link>
+          </NavLink>
+          {/* <Link to="/" className={classes.nav__text}> */}
+          <Tab
+            icon={<LogoutIcon />}
+            className={classes.nav__text}
+            label="Logout"
+            onClick={handleCustomerLogout}
+          />
+          {/* </Link> */}
         </div>
       </Tabs>
     </Box>

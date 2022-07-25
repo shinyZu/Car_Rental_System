@@ -9,15 +9,26 @@ import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { styleSheet } from "./style";
 import { withStyles } from "@mui/styles";
-import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import { Routes, Route, useNavigate, Link, NavLink } from "react-router-dom";
 import MyBooking from "../../pages/Customer/MyBookings/MyBooking";
 import Home from "../../pages/Home/Home";
 import { HashLink } from "react-router-hash-link";
 import DateRangeIcon from "@mui/icons-material/DateRange";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useAuth } from "../../pages/Session/Auth";
 
 function DriverNavbar(props) {
   const [value, setValue] = useState("");
   //   const [openModal, setOpenModal] = useState(false);
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleDriverLogout = () => {
+    console.log("logged out");
+    auth.logout();
+    navigate("/");
+  };
 
   function changePage(e) {
     // console.log(e);
@@ -26,6 +37,12 @@ function DriverNavbar(props) {
   }
 
   const { classes } = props;
+
+  const navLinkStyle = ({ isActive }) => {
+    return {
+      color: isActive ? "rgb(244 249 0)" : "normal",
+    };
+  };
 
   return (
     <Box className={classes.nav__bar} style={{ backgroundColor: "#0c5199" }}>
@@ -47,13 +64,18 @@ function DriverNavbar(props) {
             />
           </HashLink>
 
-          <HashLink smooth to="/my_schedule" className={classes.nav__text}>
+          <NavLink
+            smooth
+            to="/driver_schedule"
+            className={classes.nav__text}
+            style={navLinkStyle}
+          >
             <Tab
               icon={<DateRangeIcon />}
               className={classes.nav__text}
               label="My Schedule"
             />
-          </HashLink>
+          </NavLink>
 
           {/* <HashLink smooth to="/my_payments" className={classes.nav__text}>
             <Tab
@@ -64,13 +86,26 @@ function DriverNavbar(props) {
           </HashLink> */}
         </div>
         <div className={classes.nav__right}>
-          <Link to="/" className={classes.nav__text}>
+          <NavLink
+            smooth
+            to="/my_profile"
+            className={classes.nav__text}
+            style={navLinkStyle}
+          >
             <Tab
-              icon={<LogoutIcon />}
+              icon={<AccountCircleIcon />}
               className={classes.nav__text}
-              label="Logout"
+              label="My Profile"
             />
-          </Link>
+          </NavLink>
+          {/* <Link to="/" className={classes.nav__text}> */}
+          <Tab
+            icon={<LogoutIcon />}
+            className={classes.nav__text}
+            label="Logout"
+            onClick={handleDriverLogout}
+          />
+          {/* </Link> */}
         </div>
       </Tabs>
     </Box>

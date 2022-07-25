@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import bg__img from "../../assets/images/bg2.jpg";
 import { withStyles } from "@mui/styles";
@@ -12,11 +12,24 @@ import { display } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import { useAuth } from "../../pages/Session/Auth";
+import MySnackBar from "../common/Snackbar/MySnackbar";
+import CarStatusChart from "../Charts/CarStatusChart/CarStatusChart";
 
 function Header(props) {
-  const [openLogin, setOpenLogin] = useState(false);
-  const [openRegister, setOpenRegister] = useState(false);
   const { classes } = props;
+  const [openLogin, setOpenLogin] = useState(true);
+  const [openRegister, setOpenRegister] = useState(false);
+  const [openSuccessSnackbar, setOpenSuccessSnackbar] = useState(false);
+  const auth = useAuth();
+
+  useEffect(() => {
+    if (auth.user == null) {
+      setOpenLogin(true);
+    } else {
+      setOpenLogin(false);
+    }
+  }, []);
 
   function popupLogin() {
     if (openRegister) closeRegister();
@@ -59,16 +72,42 @@ function Header(props) {
                 Contacts
               </HashLink>
             </li>
-            <li>
-              <Link to="#login" onClick={popupLogin}>
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link to="#register" onClick={popupRegister}>
-                Register
-              </Link>
-            </li>
+            {auth.user && auth.user.status == "Customer" && (
+              <li>
+                <Link to="/my_profile">Profile</Link>
+              </li>
+            )}
+            {auth.user && auth.user.status == "Driver" && (
+              <li>
+                <Link to="/driver_profile">Profile</Link>
+              </li>
+            )}
+            {auth.user != null && auth.user.status == "Admin" && (
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            )}
+            {!auth.user && (
+              <li>
+                <Link to="#login" onClick={popupLogin}>
+                  Login
+                </Link>
+              </li>
+            )}
+            {!auth.user && (
+              <li>
+                <Link to="#register" onClick={popupRegister}>
+                  Register
+                </Link>
+              </li>
+            )}
+
+            {/* if user is not logged in --> if a new user, display the TestLogin navlink */}
+            {!auth.user && (
+              <li>
+                <Link to="/testLogin">TestLogin</Link>
+              </li>
+            )}
           </ul>
         </nav>
 
@@ -97,12 +136,32 @@ function Header(props) {
         </div>
       </header>
 
-      <Login open={openLogin} onClose={closeLogin} onSwitch={popupRegister} />
+      <Login
+        open={openLogin}
+        onClose={() => {
+          setOpenLogin(false);
+        }}
+        onSwitch={popupRegister}
+        handleSnackbar={() => {
+          setOpenSuccessSnackbar(true);
+        }}
+      />
 
       <Register
         open={openRegister}
         onClose={closeRegister}
         onSwitch={popupLogin}
+      />
+
+      <MySnackBar
+        open={openSuccessSnackbar}
+        alert="Successfully Logged In!!!"
+        severity="success"
+        variant="standard"
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        onClose={() => {
+          setOpenSuccessSnackbar(false);
+        }}
       />
     </div>
   );
