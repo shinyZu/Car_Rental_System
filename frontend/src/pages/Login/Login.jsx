@@ -12,6 +12,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "../Session/Auth";
 import MySnackBar from "../../components/common/Snackbar/MySnackbar";
+import LoginService from "../../services/LoginService";
 
 const userRoles = ["Customer", "Admin", "Driver"];
 
@@ -19,8 +20,14 @@ function Login(props) {
   const { classes } = props;
   const [loginFormData, setLoginFormData] = useState({
     email: "",
-    pwd: "",
-    status: "",
+    password: "",
+    userStatus: "",
+  });
+  const [openErrorMessage, setOpenErrorMessage] = useState({
+    open: "",
+    alert: "",
+    severity: "",
+    variant: "",
   });
   const auth = useAuth();
 
@@ -34,25 +41,48 @@ function Login(props) {
 
   const redirectPath = location.state?.path || "/";
 
-  function logUser() {
-    if (loginFormData.status == "Admin") {
-      console.log("Admin Logged Successfully");
-      auth.login(loginFormData);
-      navigate("/dashboard" /* , { replace: true } */);
+  async function logUser() {
+    // auth.login(loginFormData);
+    // let loginData = loginFormData;
+    // console.log(loginFormData);
+    // console.log(loginData);
 
-      //------------
-    } else if (loginFormData.status == "Customer") {
-      console.log("Customer Logged Successfully");
-      auth.login(loginFormData);
-      navigate(redirectPath, { replace: true });
-      props.onClose();
-      props.handleSnackbar();
+    let res = await LoginService.loginUser(loginFormData);
 
-      //--------
-    } else if (loginFormData.status == "Driver") {
-      console.log("Driver Logged Successfully");
-      auth.login(loginFormData);
-      navigate("/driver_schedule", { replace: true });
+    console.log(res);
+
+    if (res.status === 200) {
+      console.log(loginFormData);
+      if (loginFormData.userStatus == "Admin") {
+        console.log("Admin Logged Successfully");
+
+        auth.login(loginFormData);
+        navigate("/dashboard" /* , { replace: true } */);
+
+        //------------
+      } else if (loginFormData.userStatus == "Customer") {
+        console.log("Customer Logged Successfully");
+
+        auth.login(loginFormData);
+        navigate(redirectPath, { replace: true });
+
+        props.onClose();
+        props.handleSnackbar();
+        //--------
+      } else if (loginFormData.userStatus == "Driver") {
+        console.log("Driver Logged Successfully");
+
+        auth.login(loginFormData);
+        navigate("/driver_schedule", { replace: true });
+      }
+    } else {
+      console.log(res);
+      setOpenErrorMessage({
+        open: true,
+        alert: res.response.data.message,
+        severity: "error",
+        variant: "standard",
+      });
     }
   }
 
@@ -141,11 +171,11 @@ function Login(props) {
                     // style={{ marginLeft: "10px" }}
                     validators={["matchRegexp:^[A-z|0-9|@]{8,}$"]}
                     errorMessages={["must have atleast 8 characters"]}
-                    value={loginFormData.pwd}
+                    value={loginFormData.password}
                     onChange={(e) => {
                       setLoginFormData({
                         ...loginFormData,
-                        pwd: e.target.value,
+                        password: e.target.value,
                       });
                     }}
                   />
@@ -164,9 +194,9 @@ function Login(props) {
                     onChange={(e, v) => {
                       setLoginFormData({
                         ...loginFormData,
-                        status: v,
+                        userStatus: v,
                       });
-                      // console.log(loginFormData.status);
+                      // console.log(loginFormData.userStatus);
                     }}
                   />
                 </Grid>
@@ -191,26 +221,6 @@ function Login(props) {
               </Grid>
             </ValidatorForm>
 
-            {/* <div className={classes.login__content}>
-            <MyTextField
-              id="email"
-              label="Email"
-              type="email"
-              required={true}
-              style={{ marginBottom: "15px" }}
-            />
-            <MyTextField
-              id="pwd"
-              label="Password"
-              type="password"
-              required={true}
-            />
-          </div>
-
-          <div className={classes.login_btn_container}>
-            <button className={classes.btn__login}>Login</button>
-          </div> */}
-
             <div className={classes.login__footer}>
               <p>
                 Not a Member?{" "}
@@ -227,6 +237,15 @@ function Login(props) {
           </div>
         </div>
       </div>
+      <MySnackBar
+        open={openErrorMessage.open}
+        alert={openErrorMessage.alert}
+        severity={openErrorMessage.severity}
+        variant={openErrorMessage.variant}
+        onClose={() => {
+          setOpenErrorMessage({ open: false });
+        }}
+      />
     </>
   );
 }

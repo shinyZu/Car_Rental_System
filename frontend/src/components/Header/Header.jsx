@@ -22,6 +22,7 @@ function Header(props) {
   const [openRegister, setOpenRegister] = useState(false);
   const [openSuccessSnackbar, setOpenSuccessSnackbar] = useState(false);
   const auth = useAuth();
+  console.log(auth);
 
   useEffect(() => {
     if (auth.user == null) {
@@ -72,17 +73,17 @@ function Header(props) {
                 Contacts
               </HashLink>
             </li>
-            {auth.user && auth.user.status == "Customer" && (
+            {auth.user && auth.user.userStatus == "Customer" && (
               <li>
                 <Link to="/my_profile">Profile</Link>
               </li>
             )}
-            {auth.user && auth.user.status == "Driver" && (
+            {auth.user && auth.user.userStatus == "Driver" && (
               <li>
                 <Link to="/driver_profile">Profile</Link>
               </li>
             )}
-            {auth.user != null && auth.user.status == "Admin" && (
+            {auth.user != null && auth.user.userStatus == "Admin" && (
               <li>
                 <Link to="/dashboard">Dashboard</Link>
               </li>
@@ -103,11 +104,11 @@ function Header(props) {
             )}
 
             {/* if user is not logged in --> if a new user, display the TestLogin navlink */}
-            {!auth.user && (
+            {/* {!auth.user && (
               <li>
                 <Link to="/testLogin">TestLogin</Link>
               </li>
-            )}
+            )} */}
           </ul>
         </nav>
 
@@ -158,7 +159,7 @@ function Header(props) {
         alert="Successfully Logged In!!!"
         severity="success"
         variant="standard"
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        // anchorOrigin={{ vertical: "top", horizontal: "right" }}
         onClose={() => {
           setOpenSuccessSnackbar(false);
         }}

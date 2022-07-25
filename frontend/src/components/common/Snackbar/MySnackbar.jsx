@@ -5,12 +5,14 @@ import Alert, { AlertProps } from "@mui/material/Alert";
 
 function MySnackBar(props) {
   const [open, setOpen] = useState(false);
+
+  // function handleClose() {}
   return (
     <>
       <Snackbar
         open={props.open}
         autoHideDuration={2000}
-        anchorOrigin={props.anchorOrigin}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
         severity={props.severity}
         onClose={() => {
           props.onClose();

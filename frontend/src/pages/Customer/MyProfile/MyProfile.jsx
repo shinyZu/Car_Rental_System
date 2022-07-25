@@ -10,9 +10,9 @@ function MyProfile(props) {
 
   return (
     <>
-      {auth.user && auth.user.status == "Customer" && <NavBarRegistered />}
+      {auth.user && auth.user.userStatus == "Customer" && <NavBarRegistered />}
 
-      {auth.user && auth.user.status == "Driver" && <DriverNavbar />}
+      {auth.user && auth.user.userStatus == "Driver" && <DriverNavbar />}
     </>
   );
 }

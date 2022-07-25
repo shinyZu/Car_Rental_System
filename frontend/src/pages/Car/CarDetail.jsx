@@ -93,11 +93,11 @@ function CarDetail(props) {
     <div id="carInfo">
       {isGuest ? (
         <NavbarGuest />
-      ) : auth.user && auth.user.status == "Driver" ? (
+      ) : auth.user && auth.user.userStatus == "Driver" ? (
         <DriverNavbar />
-      ) : auth.user && auth.user.status == "Admin" ? (
+      ) : auth.user && auth.user.userStatus == "Admin" ? (
         <AdminNavbar />
-      ) : auth.user && auth.user.status == "Customer" ? (
+      ) : auth.user && auth.user.userStatus == "Customer" ? (
         <NavbarRegistered />
       ) : null}
       <Grid container spacing={5} className={classes.container__1}>
@@ -319,10 +319,10 @@ function CarDetail(props) {
               onClick={
                 isGuest
                   ? popupDialog
-                  : auth.user && auth.user.status == "Driver"
+                  : auth.user && auth.user.userStatus == "Driver"
                   ? popupDialog
-                  : (auth.user && auth.user.status == "Customer") ||
-                    (auth.user && auth.user.status == "Admin")
+                  : (auth.user && auth.user.userStatus == "Customer") ||
+                    (auth.user && auth.user.userStatus == "Admin")
                   ? popupReservePane
                   : null
               }
@@ -340,15 +340,15 @@ function CarDetail(props) {
             "To Reserve a Car you have to first Register at Easy Car Rental "
           }
         />
-      ) : auth.user && auth.user.status == "Driver" ? (
+      ) : auth.user && auth.user.userStatus == "Driver" ? (
         <Dialog
           open={openDailog}
           onClose={closeDialog}
           title={"Want To Reserve a Car?"}
           content={"To Reserve a Car you have to register as a Customer"}
         />
-      ) : (auth.user && auth.user.status == "Customer") ||
-        auth.user.status == "Admin" ? (
+      ) : (auth.user && auth.user.userStatus == "Customer") ||
+        auth.user.userStatus == "Admin" ? (
         <CarReservePane open={openReservePane} onClose={closeReservePane} />
       ) : null}
     </div>

@@ -17,7 +17,7 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @GetMapping(path = "user_login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "user_login",/* consumes = MediaType.APPLICATION_JSON_VALUE,*/ produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil login(@RequestBody LoginDTO dto) {
         System.out.println(dto);
         return new ResponseUtil(HttpServletResponse.SC_OK, "Login Status", loginService.login(dto) ? "Login Success" : "Login Fail");

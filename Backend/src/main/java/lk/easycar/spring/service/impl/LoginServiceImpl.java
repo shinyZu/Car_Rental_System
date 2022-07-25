@@ -19,9 +19,13 @@ public class LoginServiceImpl implements LoginService {
         if ((int) loginRepo.count() != 0) {
             if (loginRepo.existsById(dto.getEmail())) { // if already a User have logged in with a given email
                 if (loginRepo.getReferenceById(dto.getEmail()).getPassword().equals(dto.getPassword())) { // if it is provided with the correct password for that email
-                    return true;
+                    if (loginRepo.getReferenceById(dto.getEmail()).getUserStatus().equals(dto.getUserStatus())) { // if it matches the user type
+                        return true;
 
-                } else {
+                    } else {
+                        throw new RuntimeException("Invalid User..");
+                    }
+                }  else {
                     throw new RuntimeException("Invalid Password...Please check your Password...");
                 }
 

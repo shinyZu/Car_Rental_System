@@ -19,8 +19,8 @@ import ManageCar from "./pages/Admin/ManageCars/ManageCar";
 import NotFound from "./pages/Session/NotFound";
 import DriverSchedule from "./pages/Driver/Driver";
 import { AuthProvider } from "./pages/Session/Auth";
-import TestLogin from "./pages/Login/TestLogin";
-import Profile from "./pages/Login/Profile";
+import TestLogin from "./pages/Login/Test/TestLogin";
+import Profile from "./pages/Login/Test/Profile";
 import RequireAuth from "./pages/Session/RequireAuth";
 import MyProfile from "./pages/Customer/MyProfile/MyProfile";
 
