@@ -38,6 +38,7 @@ function NavbarGuest(props) {
       <Box
         className={classes.nav__bar}
         // style={{ backgroundColor: "#205a76 !important" }}
+        style={{ backgroundColor: "#0c5199" }}
       >
         <Tabs onChange={changePage} className={classes.nav__tabs}>
           <div className={classes.nav_left}>

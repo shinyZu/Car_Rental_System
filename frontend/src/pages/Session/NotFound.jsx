@@ -2,7 +2,6 @@ import { containerClasses } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-// import MyButton from "../../components/common/Button";
 import not_found from "../../assets/gifs/not_found.gif";
 
 const styleSheet = () => ({
@@ -32,10 +31,6 @@ class NotFound extends Component {
         <div className={classes.img__container}>
           <img src={not_found} alt="404" />
         </div>
-
-        {/* <Link to="/">
-          <MyButton label="Back to Home Page" />
-        </Link> */}
       </div>
     );
   }

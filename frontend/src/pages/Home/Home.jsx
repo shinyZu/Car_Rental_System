@@ -5,6 +5,7 @@ import { styleSheet } from "./style";
 import Header from "../../components/Header/Header";
 import Main from "../Main";
 import AdminDashboard from "../../pages/Admin/Dashboard/Dashboard";
+import DriverSchedule from "../Driver/Driver";
 
 function Home(props) {
   const { classes } = props;
@@ -17,7 +18,8 @@ function Home(props) {
     <div id="home">
       <Header />
       <Main />
-      <AdminDashboard />
+      {/* <AdminDashboard /> */}
+      <DriverSchedule />
     </div>
   );
 }

@@ -35,7 +35,7 @@ function About(props) {
           minima quaerat sapiente eum nobis fugit doloremque cum distinctio
           nesciunt, laboriosam quasi. Mollitia cupiditate itaque ratione alias
           placeat.Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Quibusdam neque labore, repellendus minima quaerat sapiente eum nobis
+          {/* Quibusdam neque labore, repellendus minima quaerat sapiente eum nobis
           fugit doloremque cum distinctio nesciunt, laboriosam quasi. Mollitia
           cupiditate itaque ratione alias placeat.Lorem, ipsum dolor sit amet
           consectetur adipisicing elit. Quibusdam neque labore, repellendus
@@ -55,7 +55,7 @@ function About(props) {
           consectetur adipisicing elit. Quibusdam neque labore, repellendus
           minima quaerat sapiente eum nobis fugit doloremque cum distinctio
           nesciunt, laboriosam quasi. Mollitia cupiditate itaque ratione alias
-          placeat.
+          placeat. */}
         </p>
       </div>
     </div>

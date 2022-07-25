@@ -228,6 +228,8 @@ function TableSearchPage(props) {
                   ? "return details"
                   : props.page == "NM"
                   ? "maintenace details"
+                  : props.page == "DS"
+                  ? "work schedule"
                   : "payments"}
                 )
               </Typography>

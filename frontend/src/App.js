@@ -17,6 +17,7 @@ import RentalReturns from "./pages/Admin/Returns/Returns";
 import Maintenance from "./pages/Admin/Maintenance/Maintenance";
 import ManageCar from "./pages/Admin/ManageCars/ManageCar";
 import NotFound from "./pages/Session/NotFound";
+import DriverSchedule from "./pages/Driver/Driver";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <Route path="/return_details" element={<RentalReturns />}></Route>
       <Route path="/maintenance" element={<Maintenance />}></Route>
       <Route path="/income" element={<Income />}></Route>
+      <Route path="/driver_schedule" element={<DriverSchedule />}></Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
