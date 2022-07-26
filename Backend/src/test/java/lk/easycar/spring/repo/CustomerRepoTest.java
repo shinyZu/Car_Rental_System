@@ -45,4 +45,15 @@ class CustomerRepoTest {
 //        }
     }
 
+    /*@Test
+    void countCustomersByContact_no() {
+        int i = customerRepo.countCustomersByContact_no(716455453);
+        System.out.println(i);
+    }*/
+
+    @Test
+    void searchForAnyDuplicateContact() {
+        int i = customerRepo.searchForAnyDuplicateContact("0716455451");
+        System.out.println(i);
+    }
 }

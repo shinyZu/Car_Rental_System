@@ -3,9 +3,7 @@ package lk.easycar.spring.service.impl;
 import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.entity.Login;
-import lk.easycar.spring.repo.CustomerRepo;
-import lk.easycar.spring.repo.LoginRepo;
-import lk.easycar.spring.repo.RentalRequestRepo;
+import lk.easycar.spring.repo.*;
 import lk.easycar.spring.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -27,6 +25,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private LoginRepo loginRepo;
+
+    @Autowired
+    private DriverRepo driverRepo;
+
+    @Autowired
+    private AdminRepo adminRepo;
 
     @Autowired
     private ModelMapper mapper;
@@ -61,18 +65,35 @@ public class CustomerServiceImpl implements CustomerService {
 
         if (!customerRepo.existsById(dto.getNic_no())) {
             int count = loginRepo.searchForAnyDuplicateEmail(dto.getEmail());
+            int customerContactCount = customerRepo.searchForAnyDuplicateContact(String.valueOf(dto.getContact_no()));
+            int driverContactCount = driverRepo.searchForAnyDuplicateContact(String.valueOf(dto.getContact_no()));
+            int adminContactCount = adminRepo.searchForAnyDuplicateContact(String.valueOf(dto.getContact_no()));
+
+            int anyDuplicateLicense = customerRepo.searchForAnyDuplicateLicense(dto.getLicense_no());
 
             if (count == 0) { // if there is no any users with the same email/ if no any duplicate emails
-                loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Customer"));
-                return mapper.map(customerRepo.save(mapper.map(dto, Customer.class)), CustomerDTO.class);
+
+                if (customerContactCount == 0 && driverContactCount == 0 && adminContactCount == 0) { // if no duplicate contacts
+
+                    if (anyDuplicateLicense == 0) { // if no duplicate license numbers
+                        loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Customer"));
+                        return mapper.map(customerRepo.save(mapper.map(dto, Customer.class)), CustomerDTO.class);
+
+                    } else {
+                        throw new RuntimeException("Duplicate License No.Please check your License No again....");
+                    }
+                } else {
+                    throw new RuntimeException("Duplicate Contact No.Please check your Contact No again....");
+                }
 
             } else {
                 throw new RuntimeException("A User with email " + dto.getEmail() + " already exists...");
             }
 
         } else {
-            throw new RuntimeException("Customer Already Exists...");
+            throw new RuntimeException("Customer Already Exists..Please check your NIC No.");
         }
+
     }
 
     @Override

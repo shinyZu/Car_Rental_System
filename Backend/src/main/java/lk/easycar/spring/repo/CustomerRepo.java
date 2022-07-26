@@ -11,4 +11,11 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
     @Query(value = "select u from Customer u")
     List<Customer> getAllCustomers();
 
+    @Query(value="select count(c.contact_no) from Customer c where c.contact_no=?1",nativeQuery=true)
+    int searchForAnyDuplicateContact(String contact_no);
+
+    @Query(value="select count(c.license_no) from Customer c where c.license_no=?1",nativeQuery=true)
+    int searchForAnyDuplicateLicense(String license_no);
+
+
 }

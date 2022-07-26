@@ -8,4 +8,6 @@ public interface LoginRepo extends JpaRepository<Login,String> {
 
     @Query(value="select count(l.email) from Login l where l.email=?1",nativeQuery=true)
     int searchForAnyDuplicateEmail(String email);
+
+
 }

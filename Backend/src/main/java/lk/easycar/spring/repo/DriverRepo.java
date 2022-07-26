@@ -39,4 +39,7 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
             "inner join Driver d on rd.driver_licenseNo = d.license_no " +
             "where r.pickUp_date between ?1 and ?2", nativeQuery = true)
     List<Custom> getWorkScheduleByDuration(LocalDate date1, LocalDate date2);
+
+    @Query(value="select count(d.contact_no) from Driver d where d.contact_no=?1",nativeQuery=true)
+    int searchForAnyDuplicateContact(String contact_no);
 }

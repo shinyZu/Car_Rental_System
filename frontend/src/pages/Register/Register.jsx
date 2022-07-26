@@ -13,6 +13,9 @@ import Button from "../../components/common/Button/Button";
 import { Grid } from "@mui/material";
 import { matchRegexp } from "react-form-validator-core/lib/ValidationRules";
 import { useAuth } from "../Session/Auth";
+import CustomerService from "../../services/CustomerService";
+import FileUploadService from "../../services/FileUploadService";
+import MySnackBar from "../../components/common/Snackbar/MySnackbar";
 
 function Register(props) {
   const { classes } = props;
@@ -20,31 +23,33 @@ function Register(props) {
   const [file_nicBack, setFile_NICBack] = useState("");
   const [file_license, setFile_License] = useState("");
   const [errorConfirm, setErrorConfirm] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
   const [regFormData, setRegFormData] = useState({
     email: "",
-    new_pwd: "",
+    password: "",
     confirm_pwd: "",
     address: "",
-    contact: "",
+    contact_no: "",
     nic_no: "",
     license_no: "",
-    nic_img_front: "",
-    nic_img_back: "",
+    nic_front: "",
+    nic_back: "",
     license_img: "",
+  });
+
+  const [openErrorMessage, setOpenErrorMessage] = useState({
+    open: "",
+    alert: "",
+    severity: "",
+    variant: "",
   });
 
   const auth = useAuth();
   const navigate = useNavigate();
   const location = useLocation;
+  let data = new FormData();
 
   const { state } = useLocation();
-  // const { data } = state;
-  // console.log(useLocation());
-  // let isOpen = state.open;
-  // console.log(props);
-  // console.log(state.data.d);
-  // console.log(data);
-  // console.log(isOpen);
 
   useEffect(() => {
     // console.log("I re-rendered");
@@ -54,12 +59,16 @@ function Register(props) {
 
   function handleNICFrontUpload(e) {
     console.log("uploaded");
+    console.log(e.target.files);
     if (!e.target.files) {
       return;
     }
     const file = e.target.files[0];
     const { name } = file;
     setFile_NICFront(name);
+    // setUploadedFiles([...uploadedFiles, name]);
+    data.append("nic_front", file);
+    // setRegFormData({ nic_front: name });
   }
 
   function handleNICBackUpload(e) {
@@ -69,6 +78,9 @@ function Register(props) {
     const file = e.target.files[0];
     const { name } = file;
     setFile_NICBack(name);
+    // setUploadedFiles([...uploadedFiles, name]);
+    data.append("nic_back", file);
+    // setRegFormData({ nic_back: name });
   }
 
   function handleLicenseUpload(e) {
@@ -78,16 +90,108 @@ function Register(props) {
     const file = e.target.files[0];
     const { name } = file;
     setFile_License(name);
+    // setUploadedFiles([...uploadedFiles, name]);
+    data.append("license_img", file);
+    // setRegFormData({ license_img: name });
   }
 
-  function registerCustomer() {
+  function clearRegForm() {
+    setRegFormData({
+      email: "",
+      password: "",
+      confirm_pwd: "",
+      address: "",
+      contact_no: "",
+      nic_no: "",
+      license_no: "",
+      nic_front: "",
+      nic_back: "",
+      license_img: "",
+    });
+  }
+
+  async function registerCustomer() {
+    // console.log(regFormData);
+    // console.log(file_nicFront);
+    // console.log(file_nicBack);
+    // console.log(file_license);
+    // console.log(data);
+
+    // setRegFormData({ ...regFormData, nic_front: file_nicFront });
+    // setRegFormData({ ...regFormData, nic_back: file_nicBack });
+    // setRegFormData({ ...regFormData, license_img: file_license });
+
     console.log(regFormData);
-    // console.log(regFormData.new_pwd);
-    // console.log(regFormData.confirm_pwd);
-    // if (regFormData.new_pwd != regFormData.confirm_pwd) {
-    //   console.log("pwds doesn't match");
-    //   setErrorConfirm("Passwords Doesn't Match");
-    // }
+
+    if (regFormData.password !== regFormData.confirm_pwd) {
+      setOpenErrorMessage({
+        open: true,
+        alert: "Passwords doesn't match",
+        severity: "error",
+        variant: "standard",
+      });
+      return;
+    }
+
+    if (file_nicFront != "" && file_nicBack != "" && file_license != "") {
+      console.log("registered");
+      let res1 = await CustomerService.saveCustomer(regFormData);
+      // console.log(res);
+      if (res1.status === 201) {
+        console.log("Customer is saved...now save the images");
+
+        data.append("nic_front", regFormData.nic_front);
+        data.append("nic_back", regFormData.nic_back);
+        data.append("license_img", regFormData.license_img);
+
+        let res2 = await FileUploadService.uploadCustomerFiles(
+          regFormData.nic_no,
+          data
+        );
+
+        if (res2.status === 200) {
+          console.log("all done...........");
+          auth.login({
+            email: regFormData.email,
+            password: regFormData.password,
+            userStatus: "Customer",
+          });
+          props.onClose();
+          clearRegForm();
+          props.handleSnackbar();
+        } else {
+          setOpenErrorMessage({
+            open: true,
+            alert: res2.response.data.message,
+            severity: "error",
+            variant: "standard",
+          });
+        }
+      } else {
+        setOpenErrorMessage({
+          open: true,
+          alert: res1.response.data.message,
+          severity: "error",
+          variant: "standard",
+        });
+      }
+    } else {
+      setOpenErrorMessage({
+        open: true,
+        alert: "Please choose the given files...",
+        severity: "warning",
+        variant: "standard",
+      });
+    }
+
+    // data.append("nic_front", regFormData.nic_front);
+    // data.append("nic_back", regFormData.nic_back);
+    // data.append("license_img", regFormData.license_img);
+
+    // let res = await FileUploadService.uploadCustomerFiles(
+    //   regFormData.nic_no,
+    //   data
+    // );
   }
 
   return (
@@ -120,84 +224,6 @@ function Register(props) {
             // className={classes.register__content}
             justifyContent="center"
           >
-            {/* <div className={classes.register__content}>
-            <MyTextField
-              id="email"
-              label="Email"
-              type="email"
-              required={true}
-            />
-
-            <div className={classes.content__sub_container}>
-              <MyTextField
-                id="new_pwd"
-                label="New Password"
-                type="password"
-                style={{ marginRight: "5px" }}
-                required={true}
-              />
-              <MyTextField
-                id="confirm_pwd"
-                label="Confirm Password"
-                type="password"
-                required={true}
-              />
-            </div>
-
-            <div className={classes.content__sub_container}>
-              <MyTextField
-                id="address"
-                label="Address"
-                type="text"
-                style={{ marginRight: "5px" }}
-                required={true}
-              />
-              <MyTextField
-                id="contact"
-                label="Contact No"
-                type="text"
-                required={true}
-              />
-            </div>
-
-            <div className={classes.content__sub_container}>
-              <MyTextField
-                id="nic_no"
-                label="NIC No"
-                type="text"
-                style={{ marginRight: "5px" }}
-                required={true}
-              />
-              <MyTextField
-                id="license_no"
-                label="License No"
-                type="text"
-                style={{ marginBottom: "15px" }}
-                required={true}
-              />
-            </div>
-
-            <FileChooser
-              text=" Upload NIC (Front)"
-              file={file_nicFront}
-              onUpload={handleNICFrontUpload}
-              />
-            <FileChooser
-              text=" Upload NIC (Back)"
-              file={file_nicBack}
-              onUpload={handleNICBackUpload}
-              />
-            <FileChooser
-              text=" Upload License"
-              file={file_license}
-              onUpload={handleLicenseUpload}
-              />
-          </div> */}
-
-            {/* <div className={classes.register_btn_container}>
-            <button className={classes.btn__register}>Register</button>
-          </div> */}
-
             <ValidatorForm className="pt-2" onSubmit={registerCustomer}>
               <Grid
                 container
@@ -260,11 +286,11 @@ function Register(props) {
                     // style={{ marginLeft: "10px" }}
                     validators={["matchRegexp:^[A-z|0-9|@]{8,}$"]}
                     errorMessages={["Must have atleast 8 characters"]}
-                    value={regFormData.new_pwd}
+                    value={regFormData.password}
                     onChange={(e) => {
                       setRegFormData({
                         ...regFormData,
-                        new_pwd: e.target.value,
+                        password: e.target.value,
                       });
                     }}
                   />
@@ -292,10 +318,7 @@ function Register(props) {
 
                     value={regFormData.confirm_pwd}
                     onChange={(e) => {
-                      // console.log(regFormData.new_pwd);
-                      // console.log(regFormData.confirm_pwd);
-                      // console.log(e.target.value);
-                      if (regFormData.new_pwd != e.target.value) {
+                      if (regFormData.password != e.target.value) {
                         setErrorConfirm(true);
                       } else {
                         setErrorConfirm(false);
@@ -357,11 +380,11 @@ function Register(props) {
                     // style={{ marginLeft: "10px" }}
                     validators={["matchRegexp:^[0-9]{10}$"]}
                     errorMessages={["Invalid contact no"]}
-                    value={regFormData.contact}
+                    value={regFormData.contact_no}
                     onChange={(e) => {
                       setRegFormData({
                         ...regFormData,
-                        contact: e.target.value,
+                        contact_no: e.target.value,
                       });
                     }}
                   />
@@ -425,18 +448,6 @@ function Register(props) {
                     }}
                   />
                 </Grid>
-
-                {/* <Grid
-                  container
-                  lg={12}
-                  md={12}
-                  xs={12}
-                  sm={12}
-                  className={classes.upload__section}
-                  // style={{ border: "2px solid red" }}
-                  // justifyContent="center"
-                  // alignItems="center"
-                > */}
                 <Grid
                   container
                   lg={6}
@@ -448,8 +459,16 @@ function Register(props) {
                 >
                   <FileChooser
                     text="NIC(Front)"
+                    // file={file_nicFront}
+                    // onUpload={handleNICFrontUpload}
                     file={file_nicFront}
-                    onUpload={handleNICFrontUpload}
+                    onUpload={(e) => {
+                      handleNICFrontUpload(e);
+                      setRegFormData({
+                        ...regFormData,
+                        nic_front: e.target.files[0],
+                      });
+                    }}
                     displayFileName={true}
                   />
                 </Grid>
@@ -465,8 +484,16 @@ function Register(props) {
                 >
                   <FileChooser
                     text="NIC(Back)"
+                    // file={file_nicBack}
+                    // onUpload={handleNICBackUpload}
                     file={file_nicBack}
-                    onUpload={handleNICBackUpload}
+                    onUpload={(e) => {
+                      handleNICBackUpload(e);
+                      setRegFormData({
+                        ...regFormData,
+                        nic_back: e.target.files[0],
+                      });
+                    }}
                     displayFileName={true}
                   />
                 </Grid>
@@ -482,12 +509,19 @@ function Register(props) {
                 >
                   <FileChooser
                     text="License"
+                    // file={file_license}
+                    // onUpload={handleLicenseUpload}
                     file={file_license}
-                    onUpload={handleLicenseUpload}
+                    onUpload={(e) => {
+                      handleLicenseUpload(e);
+                      setRegFormData({
+                        ...regFormData,
+                        license_img: e.target.files[0],
+                      });
+                    }}
                     displayFileName={true}
                   />
                 </Grid>
-                {/* </Grid> */}
                 <Grid
                   container
                   lg={12}
@@ -523,6 +557,15 @@ function Register(props) {
           </Grid>
         </div>
       </div>
+      <MySnackBar
+        open={openErrorMessage.open}
+        alert={openErrorMessage.alert}
+        severity={openErrorMessage.severity}
+        variant={openErrorMessage.variant}
+        onClose={() => {
+          setOpenErrorMessage({ open: false });
+        }}
+      />
     </div>
   );
 }

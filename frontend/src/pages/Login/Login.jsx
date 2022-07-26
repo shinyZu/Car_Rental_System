@@ -32,7 +32,6 @@ function Login(props) {
   const auth = useAuth();
 
   useEffect(() => {
-    // console.log("I re-rendered");
     window.scrollTo(0, 0);
   });
 
@@ -42,7 +41,6 @@ function Login(props) {
   const redirectPath = location.state?.path || "/";
 
   async function logUser() {
-    // auth.login(loginFormData);
     // let loginData = loginFormData;
     // console.log(loginFormData);
     // console.log(loginData);

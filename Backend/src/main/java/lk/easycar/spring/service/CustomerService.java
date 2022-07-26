@@ -1,6 +1,7 @@
 package lk.easycar.spring.service;
 
 import lk.easycar.spring.dto.CustomerDTO;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

@@ -25,7 +25,7 @@ function Header(props) {
   console.log(auth);
 
   useEffect(() => {
-    if (auth.user == null) {
+    if (auth.user == null || auth.user.email == "") {
       setOpenLogin(true);
     } else {
       setOpenLogin(false);
@@ -88,20 +88,22 @@ function Header(props) {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
             )}
-            {!auth.user && (
-              <li>
-                <Link to="#login" onClick={popupLogin}>
-                  Login
-                </Link>
-              </li>
-            )}
-            {!auth.user && (
-              <li>
-                <Link to="#register" onClick={popupRegister}>
-                  Register
-                </Link>
-              </li>
-            )}
+            {!auth.user ||
+              (auth.user.email == null && (
+                <li>
+                  <Link to="#login" onClick={popupLogin}>
+                    Login
+                  </Link>
+                </li>
+              ))}
+            {!auth.user ||
+              (auth.user.email == null && (
+                <li>
+                  <Link to="#register" onClick={popupRegister}>
+                    Register
+                  </Link>
+                </li>
+              ))}
 
             {/* if user is not logged in --> if a new user, display the TestLogin navlink */}
             {/* {!auth.user && (
@@ -152,6 +154,9 @@ function Header(props) {
         open={openRegister}
         onClose={closeRegister}
         onSwitch={popupLogin}
+        handleSnackbar={() => {
+          setOpenSuccessSnackbar(true);
+        }}
       />
 
       <MySnackBar
