@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
@@ -24,6 +24,9 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CarService from "../../../services/CarService";
+import MySnackBar from "../../../components/common/Snackbar/MySnackbar";
+import FileUploadService from "../../../services/FileUploadService";
 
 function ManageCar(props) {
   const { classes } = props;
@@ -32,18 +35,18 @@ function ManageCar(props) {
     brand: "",
     color: "",
     fleet: "",
-    passengers: "",
-    fuel: "",
-    transmission: "",
+    fuelType: "",
+    transmissionType: "",
+    noOfPassengers: "",
+    dailyRate: "",
+    monthlyRate: "",
+    price_extraKM: "",
+    freeKM_day: "",
+    freeKM_month: "",
     ldw: "",
-    daily_rate: "",
-    monthly_rate: "",
-    free_kmPerDay: "",
-    free_kmPerMonth: "",
-    price_peExtraKM: "",
   });
 
-  let fuelType = ["Petrol", "Diesel", "Gasoline"];
+  let fuelTypes = ["Petrol", "Diesel", "Gasoline"];
   let transmissionType = ["Manual", "Auto", "CVT"];
   let carFleet = ["General", "Premium", "Luxury"];
   let ldwFee = ["10000", "15000", "20000"];
@@ -62,35 +65,262 @@ function ManageCar(props) {
     "Purple",
   ];
 
-  const [front_img, setFront_Img] = useState("");
-  const [rear_img, setRear_Img] = useState("");
-  const [side_img, setSide_Img] = useState("");
-  const [interior_img, setInterior_Img] = useState("");
+  const [openAlert, setOpenAlert] = useState({
+    open: "",
+    alert: "",
+    severity: "",
+    variant: "",
+  });
 
-  const [files, setFiles] = useState([]);
+  // const [front_img, setFront_Img] = useState(null);
+  // const [rear_img, setRear_Img] = useState(null);
+  // const [side_img, setSide_Img] = useState(null);
+  // const [interior_img, setInterior_Img] = useState(null);
+
+  const [filesToUpload, setFilesToUpload] = useState([]);
+  const data = new FormData();
+
+  //----------------
+  const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
+  const [imageFiles, setImageFiles] = useState([]);
+  const [images, setImages] = useState([]);
+  const validImageFiles = [];
+  //---------------------
 
   function handleImageUpload(e) {
-    console.log("uploaded....");
-    // if (!e.target.files) {
-    //   return;
-    // }
+    const { files } = e.target;
+
+    // get the selected files one by one & if they are valid add to array "validImageFiles"
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (file.type.match(imageTypeRegex)) {
+        validImageFiles.push(file);
+      }
+    }
+
+    setFilesToUpload(validImageFiles);
+
+    console.log(validImageFiles);
+    console.log(filesToUpload);
+
+    if (validImageFiles.length) {
+      setImageFiles(validImageFiles);
+      return;
+    } else {
+      console.log(images);
+      setOpenAlert({
+        open: true,
+        alert: "You can upload only (png/jpg/jpeg)",
+        severity: "warning",
+        variant: "standard",
+      });
+    }
+  }
+
+  useEffect(() => {
+    let images = [],
+      fileReaders = [];
+    let isCancel = false;
+
+    if (imageFiles.length) {
+      imageFiles.forEach((file) => {
+        const fileReader = new FileReader();
+        fileReaders.push(fileReader);
+        fileReader.onload = (e) => {
+          const { result } = e.target;
+          if (result) {
+            images.push(result); // urls
+          }
+          if (images.length === imageFiles.length && !isCancel) {
+            setImages(images);
+          }
+        };
+        fileReader.readAsDataURL(file);
+      });
+    }
+
+    return () => {
+      isCancel = true;
+      fileReaders.forEach((fileReader) => {
+        if (fileReader.readyState === 1) {
+          fileReader.abort();
+        }
+      });
+    };
+  }, [imageFiles]);
+
+  function setCarImages(e) {
+    console.log("qqqqqqqqqqq");
     // const file = e.target.files[0];
     // const { name } = file;
-    // setFile_NICBack(name);
+    // setFront_Img(e.target.files[0]);
+    //------------------------------------------------------
+    // setFront_Img(files[0].name);
+    // setRear_Img(files[1].name);
+    // setSide_Img(files[2].name);
+    // setInterior_Img(files[3].name);
+    // console.log(front_img + "" + rear_img + "" + side_img + "" + interior_img);
+    //----------------------------------------------------
+    // var file = e.target.files[0];
+    // var files = e.target.files;
+    // setFront_Img(e.target.files[0]);
+    // setRear_Img(e.target.files[1]);
+    // setSide_Img(e.target.files[2]);
+    // setInterior_Img(e.target.files[3]);
+
+    // var reader = new FileReader();
+    // reader.addEventListener("load", (ev) => {
+    //   console.log(ev);
+    //   setFront_Img(reader.result);
+    // });
+    // reader.readAsDataURL(e.target.files[0]);
+
+    // reader.addEventListener("load", (ev) => {
+    //   console.log(ev);
+    //   setRear_Img(reader.result);
+    // });
+    // reader.readAsDataURL(e.target.files[1]);
+
+    // reader.addEventListener("load", (ev) => {
+    //   console.log(ev);
+    //   setSide_Img(reader.result);
+    // });
+    // reader.readAsDataURL(e.target.files[2]);
+
+    // reader.addEventListener("load", (ev) => {
+    //   console.log(ev);
+    //   setInterior_Img(reader.result);
+    // });
+    // reader.readAsDataURL(e.target.files[3]);
   }
 
-  function handleFileUpload(e) {
-    console.log(files);
-    console.log(e.target.files);
-    setFiles(() => {
-      return [...files, ...e.target.files];
+  // const itemData = [
+  //   {
+  //     img: front_img,
+  //     title: "front",
+  //   },
+  //   {
+  //     img: rear_img,
+  //     title: "rear",
+  //   },
+  //   {
+  //     img: side_img,
+  //     title: "side",
+  //   },
+  //   {
+  //     img: interior_img,
+  //     title: "interior",
+  //   },
+  // ];
+
+  // function handleFileUpload(e) {
+  //   console.log(e.target.files);
+
+  //   if (e.target.files.length > 4 || files.length > 4) {
+  //     console.log("file count has exceeded..........");
+  //     setFiles([]);
+  //     setOpenAlert({
+  //       open: true,
+  //       alert: "You can select only 4 images",
+  //       severity: "error",
+  //       variant: "standard",
+  //     });
+  //   } else {
+  //     setFiles(() => {
+  //       return [...files, ...e.target.files];
+  //     });
+  //   }
+  // }
+
+  function clearRegForm() {
+    setRegFormData({
+      reg_no: "",
+      brand: "",
+      color: "",
+      fleet: "",
+      fuelType: "",
+      transmissionType: "",
+      noOfPassengers: "",
+      dailyRate: "",
+      monthlyRate: "",
+      price_extraKM: "",
+      freeKM_day: "",
+      freeKM_month: "",
+      ldw: "",
     });
   }
-  console.log(files);
 
-  function saveCar() {
-    console.log(regFormData);
+  function clearFiles() {
+    setFilesToUpload([]);
   }
+
+  async function saveCar() {
+    console.log(regFormData);
+    console.log(filesToUpload);
+    console.log(validImageFiles);
+    console.log(data);
+
+    if (filesToUpload.length !== 0) {
+      console.log("files are choosen");
+
+      let res1 = await CarService.saveCar(regFormData);
+      console.log(res1);
+      if (res1.status === 201) {
+        console.log("Car is saved...now save the images");
+
+        // data.append("front", files[0]);
+        // data.append("rear", files[1]);
+        // data.append("side", files[2]);
+        // data.append("interior", files[3]);
+
+        data.append("front", filesToUpload[0]);
+        data.append("rear", filesToUpload[1]);
+        data.append("side", filesToUpload[2]);
+        data.append("interior", filesToUpload[3]);
+
+        let res2 = await FileUploadService.uploadCarFiles(
+          regFormData.fleet,
+          regFormData.brand,
+          data
+        );
+
+        if (res2.status === 200) {
+          console.log("all done...........");
+          // props.onClose();
+          setOpenAlert({
+            open: true,
+            alert: "Successully Saved!!!",
+            severity: "success",
+            variant: "standard",
+          });
+          clearRegForm();
+          clearFiles();
+        } else {
+          setOpenAlert({
+            open: true,
+            alert: res2.response.data.message,
+            severity: "error",
+            variant: "standard",
+          });
+        }
+      } else {
+        setOpenAlert({
+          open: true,
+          alert: res1.response.data.message,
+          severity: "error",
+          variant: "standard",
+        });
+      }
+    } else {
+      setOpenAlert({
+        open: true,
+        alert: "Please choose the Images for " + regFormData.brand,
+        severity: "warning",
+        variant: "standard",
+      });
+    }
+  }
+
   return (
     <>
       <AdminNavbar keepSelected={true} />
@@ -204,7 +434,7 @@ function ManageCar(props) {
                   //   justifyContent="center"
                 >
                   <TextValidator
-                    // id="outlined-basic"
+                    id="txt_reg_no"
                     label="Registration No"
                     type="text"
                     variant="outlined"
@@ -268,7 +498,7 @@ function ManageCar(props) {
                   //   justifyContent="center"
                 >
                   <TextValidator
-                    // id="outlined-basic"
+                    id="txt_brand"
                     label="Brand"
                     type="text"
                     variant="outlined"
@@ -276,13 +506,13 @@ function ManageCar(props) {
                     fullWidth
                     required={true}
                     // style={{ marginBottom: "5px" }}
-                    validators={["matchRegexp:^[A-Z]{2,}[-][0-9]{4}$"]}
+                    validators={["matchRegexp:^[A-z0-9 () /]*$"]}
                     errorMessages={["Invalid Registration No"]}
-                    value={regFormData.reg_no}
+                    value={regFormData.brand}
                     onChange={(e) => {
                       setRegFormData({
                         ...regFormData,
-                        reg_no: e.target.value,
+                        brand: e.target.value,
                       });
                     }}
                   />
@@ -297,14 +527,21 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <Autocomplete
+                    id="cmb_color"
                     disablePortal
-                    id="car_color"
+                    // id="car_color"
                     options={colors}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
                       <TextField {...params} label="Color" />
                     )}
+                    onChange={(e, v) => {
+                      setRegFormData({
+                        ...regFormData,
+                        color: v,
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid
@@ -319,18 +556,18 @@ function ManageCar(props) {
                   //   justifyContent="center"
                 >
                   <TextValidator
-                    // id="outlined-basic"
+                    id="txt_passengers"
                     label="Passengers"
                     type="number"
                     variant="outlined"
                     size="small"
                     fullWidth
                     required={true}
-                    value={regFormData.passengers}
+                    value={regFormData.noOfPassengers}
                     onChange={(e) => {
                       setRegFormData({
-                        // ...regFormData,
-                        passengers: e.target.value,
+                        ...regFormData,
+                        noOfPassengers: e.target.value,
                       });
                     }}
                   />
@@ -360,14 +597,20 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <Autocomplete
+                    id="cmb_fleet"
                     disablePortal
-                    id="fleet"
                     options={carFleet}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
                       <TextField {...params} label="Car Fleet" />
                     )}
+                    onChange={(e, v) => {
+                      setRegFormData({
+                        ...regFormData,
+                        fleet: v,
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid
@@ -380,14 +623,20 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <Autocomplete
+                    id="cmb_ldw_fee"
                     disablePortal
-                    id="ldw_fee"
                     options={ldwFee}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
                       <TextField {...params} label="Loss Damage Waiver(Rs)" />
                     )}
+                    onChange={(e, v) => {
+                      setRegFormData({
+                        ...regFormData,
+                        ldw: v,
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid
@@ -423,14 +672,20 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <Autocomplete
+                    id="cmb_fuel_type"
                     disablePortal
-                    id="car_color"
-                    options={fuelType}
+                    options={fuelTypes}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
                       <TextField {...params} label="Fuel Type" />
                     )}
+                    onChange={(e, v) => {
+                      setRegFormData({
+                        ...regFormData,
+                        fuelType: v,
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid
@@ -443,14 +698,20 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <Autocomplete
+                    id="cmb_gear"
                     disablePortal
-                    id="car_color"
                     options={transmissionType}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
                       <TextField {...params} label="Transmission Type" />
                     )}
+                    onChange={(e, v) => {
+                      setRegFormData({
+                        ...regFormData,
+                        transmissionType: v,
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid
@@ -487,18 +748,18 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <TextValidator
-                    // id="outlined-basic"
+                    id="txt_daily_rate"
                     label="Daily Rate(Rs)"
                     type="number"
                     variant="outlined"
                     size="small"
                     fullWidth
                     required={true}
-                    value={regFormData.daily_rate}
+                    value={regFormData.dailyRate}
                     onChange={(e) => {
                       setRegFormData({
                         ...regFormData,
-                        daily_rate: e.target.value,
+                        dailyRate: e.target.value,
                       });
                     }}
                   />
@@ -513,18 +774,18 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <TextValidator
-                    // id="outlined-basic"
+                    id="txt_monthly_rate"
                     label="Monthly Rate (Rs)"
                     type="number"
                     variant="outlined"
                     size="small"
                     fullWidth
                     required={true}
-                    value={regFormData.monthly_rate}
+                    value={regFormData.monthlyRate}
                     onChange={(e) => {
                       setRegFormData({
                         ...regFormData,
-                        monthly_rate: e.target.value,
+                        monthlyRate: e.target.value,
                       });
                     }}
                   />
@@ -563,18 +824,18 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <TextValidator
-                    // id="outlined-basic"
+                    id="txt_km_per_day"
                     label="Free KM per Day"
                     type="number"
                     variant="outlined"
                     size="small"
                     fullWidth
                     required={true}
-                    value={regFormData.free_kmPerDay}
+                    value={regFormData.freeKM_day}
                     onChange={(e) => {
                       setRegFormData({
                         ...regFormData,
-                        free_kmPerDay: e.target.value,
+                        freeKM_day: e.target.value,
                       });
                     }}
                   />
@@ -589,18 +850,18 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <TextValidator
-                    // id="outlined-basic"
+                    id="txt_km_per_month"
                     label="Free KM per Month"
                     type="number"
                     variant="outlined"
                     size="small"
                     fullWidth
                     required={true}
-                    value={regFormData.free_kmPerMonth}
+                    value={regFormData.freeKM_month}
                     onChange={(e) => {
                       setRegFormData({
                         ...regFormData,
-                        free_kmPerMonth: e.target.value,
+                        freeKM_month: e.target.value,
                       });
                     }}
                   />
@@ -615,18 +876,18 @@ function ManageCar(props) {
                   //   style={{ border: "2px solid blue" }}
                 >
                   <TextValidator
-                    // id="outlined-basic"
+                    id="txt_price_per_extraKM"
                     label="Price per Extra KM"
                     type="number"
                     variant="outlined"
                     size="small"
                     fullWidth
                     required={true}
-                    value={regFormData.price_peExtraKM}
+                    value={regFormData.price_extraKM}
                     onChange={(e) => {
                       setRegFormData({
                         ...regFormData,
-                        price_peExtraKM: e.target.value,
+                        price_extraKM: e.target.value,
                       });
                     }}
                   />
@@ -682,21 +943,84 @@ function ManageCar(props) {
               alignItems="center"
             >
               <ImageList
-                sx={{ width: 500, height: 380, margin: 1, cursor: "pointer" }}
+                style={{ border: "2px solid #ccc" }}
+                sx={{ width: 500, height: 374, margin: 1, cursor: "pointer" }}
                 cols={2}
                 gap={10}
                 rowHeight={180}
               >
-                {itemData.map((item) => (
+                {/* {itemData.map((item) => (
                   <ImageListItem key={item.img}>
                     <img
+                      // src={}
                       src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
                       srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                       alt={item.title}
                       loading="lazy"
                     />
                   </ImageListItem>
-                ))}
+                ))} */}
+
+                {/* //--------------- */}
+
+                {/* {images.map((img, index) => {
+                  <ImageListItem
+                    key={index}
+                    style={{ border: "2px solid blue" }}
+                  >
+                    <img
+                      src={img}
+                      // src={`${image}?w=164&h=164&fit=crop&auto=format`}
+                      alt={index}
+                      loading="lazy"
+                    />
+                  </ImageListItem>;
+                })} */}
+
+                {/* {images.map((img, index) => {
+                  // console.log(index);
+                  console.log(img);
+                  // console.log(`${img}`);
+                  console.log(images.length);
+                  <ImageListItem
+                    key={index}
+                    style={{ border: "2px solid blue" }}
+                  >
+                    ;kkkkkkkkkkkkkkkk
+                    <img key={img} src={img} alt="" loading="lazy" />
+                  </ImageListItem>;
+                })} */}
+
+                {/* //---------------- */}
+
+                <ImageListItem key={0}>
+                  <img
+                    src={images[0]}
+                    alt={imageTitles[0].title}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+                <ImageListItem key={1}>
+                  <img
+                    src={images[1]}
+                    alt={imageTitles[1].title}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+                <ImageListItem key={2}>
+                  <img
+                    src={images[2]}
+                    alt={imageTitles[1].title}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+                <ImageListItem key={3}>
+                  <img
+                    src={images[3]}
+                    alt={imageTitles[1].title}
+                    loading="lazy"
+                  />
+                </ImageListItem>
               </ImageList>
             </Grid>
             <Grid
@@ -713,9 +1037,13 @@ function ManageCar(props) {
             >
               <FileChooser
                 text="Upload Images"
-                file={front_img}
+                // file={front_img}
                 multiple={true}
-                onUpload={handleFileUpload}
+                onUpload={(e) => {
+                  // handleFileUpload(e);
+                  // setCarImages(e);
+                  handleImageUpload(e);
+                }}
                 displayFileName={false}
               />
             </Grid>
@@ -738,34 +1066,20 @@ function ManageCar(props) {
       >
         <TableCars page="CR" tableColumns={columns} tableData={rows} />
       </Grid>
+      <MySnackBar
+        open={openAlert.open}
+        alert={openAlert.alert}
+        severity={openAlert.severity}
+        variant={openAlert.variant}
+        onClose={() => {
+          setOpenAlert({ open: false });
+        }}
+      />
     </>
   );
 }
 
 export default withStyles(styleSheet)(ManageCar);
-
-const itemData = [
-  {
-    // img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    img: sample_img,
-    title: "Breakfast",
-  },
-  {
-    // img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    img: sample_img,
-    title: "Burger",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    img: sample_img,
-    title: "Camera",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    img: sample_img,
-    title: "Coffee",
-  },
-];
 
 const columns = [
   {
@@ -962,3 +1276,29 @@ const rows = [
     status: "Available",
   },
 ];
+
+// const itemData = [
+//   {
+//     // img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+//     // img: sample_img,
+//     img: front_img,
+//     title: "front",
+//   },
+//   {
+//     // img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+//     img: rear_img,
+//     title: "rear",
+//   },
+//   {
+//     // img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
+//     img: side_img,
+//     title: "side",
+//   },
+//   {
+//     // img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+//     img: interior_img,
+//     title: "interior",
+//   },
+// ];
+
+const imageTitles = ["front", "rear", "side", "interior"];

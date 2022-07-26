@@ -1,6 +1,7 @@
 package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.CarDTO;
+import lk.easycar.spring.dto.CarFleetDTO;
 import lk.easycar.spring.dto.Custom;
 import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.entity.Car;
@@ -131,18 +132,30 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDTO saveCar(CarDTO dto) {
         if (!carRepo.existsById(dto.getReg_no())) {
-            String fleet_id = dto.getFleet().getFleet_id(); // fleet_id of the Car to be added
+//            String fleet_id = dto.getFleet().getFleet_id(); // fleet_id of the Car to be added
+            /*System.out.println(fleet_id); // General
+            System.out.println(dto.getFleet()); // CarFleet(fleet_id=General, description=null, noOfCars=0)
+            System.out.println(dto.getFleet().getDescription()); // null
+            CarFleetDTO carFleetDTO = new CarFleetDTO(dto.getFleet().getFleet_id());*/
+            String fleetID = carFleetRepo.getCarFleetByDescription(dto.getFleet().getFleet_id());
 
-            if (carFleetRepo.existsById(fleet_id)) { // checks whether the car which is going to be added is a Car of an existing Fleet
+            if (fleetID != null) { // if an existing fleet
+//            if (carFleetRepo.existsById(fleet_id)) { // checks whether the car which is going to be added is a Car of an existing Fleet
+                System.out.println("exist...................");
+                dto.setFleet(new CarFleet(fleetID));
+                dto.setCurrentStatus("Available");
                 CarDTO carDTO = mapper.map(carRepo.save(mapper.map(dto, Car.class)), CarDTO.class);// save Car
 
-                CarFleet carFleet = carFleetRepo.getReferenceById(fleet_id); // Update no of cars in the relevant Car Fleet
-                carFleet.setNoOfCars(carFleet.getNoOfCars() + 1);
+//                CarFleet carFleet = carFleetRepo.getReferenceById(fleet_id); // Update no of cars in the relevant Car Fleet
+//                carFleet.setNoOfCars(carFleet.getNoOfCars() + 1);
+
+                CarFleet carFleet = carFleetRepo.getReferenceById(fleetID); // Update no of cars in the relevant Car Fleet
+                carFleet.setNoOfCars(carFleet.getNoOfCars()+1);
 
                 return carDTO;
 
             } else { // if not the Car shouldn't be added
-                throw new RuntimeException("Unable to find a CarFleet with ID "+ fleet_id);
+                throw new RuntimeException("Unable to find a CarFleet with ID "+ fleetID);
             }
 
         } else {

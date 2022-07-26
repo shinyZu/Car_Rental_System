@@ -27,4 +27,6 @@ public class CarDTO {
     private double freeKM_day;
     private double freeKM_month;
     private String currentStatus;
+
+
 }
