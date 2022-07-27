@@ -109,25 +109,18 @@ function ConfirmDialog(props) {
           }}
           onClick={() => setConfirmDialog({ ...confirmDialog, isOpen: false })}
         />
+        {confirmDialog.action2 == "Deny" ? (
+          <Button
+            label="Deny"
+            style={confirmDialog.denyBtnStyle}
+            onClick={confirmDialog.onDeny}
+          />
+        ) : null}
         <Button
-          label="Yes"
-          //   style={{
-          //     backgroundColor: "#2c4ea9",
-          //     color: "#fff",
-          //   }}
+          label={confirmDialog.action2 == "Deny" ? "Accept" : "Yes"}
           style={confirmDialog.confirmBtnStyle}
           onClick={confirmDialog.onConfirm}
         />
-        {/* <Controls.Button
-          text="No"
-          color="default"
-          onClick={() => setConfirmDialog({ ...confirmDialog, isOpen: false })}
-        /> */}
-        {/* <Controls.Button
-          text="Yes"
-          color="secondary"
-          onClick={confirmDialog.onConfirm}
-        /> */}
       </DialogActions>
     </Dialog>
   );

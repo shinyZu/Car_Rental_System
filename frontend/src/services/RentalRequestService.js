@@ -44,6 +44,34 @@ class RentalRequestService {
     });
     return await promise;
   };
+
+  acceptRental = async (data) => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .put("rentals/accept", data)
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  denyRental = async (data) => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .put("rentals/deny", data)
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new RentalRequestService();
