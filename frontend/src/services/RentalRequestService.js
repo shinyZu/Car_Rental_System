@@ -30,6 +30,20 @@ class RentalRequestService {
     });
     return await promise;
   };
+
+  getAllRequestDetails = async () => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("rentals/all_requests")
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new RentalRequestService();

@@ -95,4 +95,20 @@ class DriverRepoTest {
             System.out.println(workSchedule.getRequestStatus());
         }
     }
+
+    @Test
+    void getAllWorkSchedules() {
+        List<Custom> list = driverRepo.getSchedulesOfAllDrivers();
+        for (Custom workSchedule : list) {
+            System.out.println(workSchedule.getRental_id());
+            System.out.println(workSchedule.getLicense_no());
+            System.out.println(workSchedule.getContact_no());
+            System.out.println(workSchedule.getPickUp_date());
+            System.out.println(workSchedule.getPickUp_time());
+            System.out.println(workSchedule.getPickUp_venue());
+            System.out.println(workSchedule.getReturn_date());
+            System.out.println(workSchedule.getReturn_time());
+            System.out.println(workSchedule.getReturn_venue());
+        }
+    }
 }

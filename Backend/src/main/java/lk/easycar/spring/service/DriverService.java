@@ -15,6 +15,8 @@ public interface DriverService {
 
     List<CustomDTO> getWorkSchedule(String license_no);
 
+    List<CustomDTO> getSchedulesOfAllDrivers();
+
     List<CustomDTO> getWorkScheduleByDuration(CustomDTO dto);
 
     DriverDTO saveDriver(DriverDTO dto);

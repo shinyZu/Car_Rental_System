@@ -40,4 +40,12 @@ public interface Custom {
 
     String getIncome();
 
+    String getNic_no();
+
+    double getKm_atPickUp();
+
+    double getKm_atReturn();
+
+    double getTotalPaymentForRental();
+
 }

@@ -42,4 +42,13 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
 
     @Query(value="select count(d.contact_no) from Driver d where d.contact_no=?1",nativeQuery=true)
     int searchForAnyDuplicateContact(String contact_no);
+
+    @Query(value="select r.rental_id, c.reg_no, d.license_no, r.pickUp_date, r.pickUp_time, r.pickUp_venue, r.return_date,r.return_time,r.return_venue, d.contact_no\n" +
+            "from RentalRequest r inner join RentalDetail rd\n" +
+            "on r.rental_id = rd.rental_id\n" +
+            "inner join Driver d\n" +
+            "on rd.driver_licenseNo = d.license_no\n" +
+            "inner join Car c\n" +
+            "on rd.reg_no = c.reg_no",nativeQuery=true)
+    List<Custom> getSchedulesOfAllDrivers();
 }

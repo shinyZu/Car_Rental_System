@@ -53,14 +53,14 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public List<CustomDTO> getWorkSchedule(String license_no) {
-        /*ArrayList<CustomDTO> schedule = new ArrayList<>();
+        ArrayList<CustomDTO> schedule = new ArrayList<>();
         for (Custom custom : driverRepo.getWorkSchedule(license_no)) {
             schedule.add(new CustomDTO(
                     custom.getRental_id(),
                     custom.getLicense_no(),
-                    custom.getCurrentStatus(),
-                    custom.getContact_no(),
                     custom.getReg_no(),
+                    custom.getContact_no(),
+                    custom.getCurrentStatus(),
                     custom.getPickUp_date(),
                     custom.getPickUp_time(),
                     custom.getPickUp_venue(),
@@ -70,15 +70,37 @@ public class DriverServiceImpl implements DriverService {
                     custom.getRequestStatus()
             ));
         }
-        return schedule;*/
-        List<Custom> list = driverRepo.getWorkSchedule(license_no);
-        return mapper.map(list,new TypeToken<List<CustomDTO>>(){}.getType());
+        return schedule;
+//        List<Custom> list = driverRepo.getWorkSchedule(license_no);
+//        return mapper.map(list,new TypeToken<List<CustomDTO>>(){}.getType());
 
     }
 
     @Override
+    public List<CustomDTO> getSchedulesOfAllDrivers() {
+        /*List<Custom> list = driverRepo.getSchedulesOfAllDrivers();
+        return mapper.map(list,new TypeToken<List<CustomDTO>>(){}.getType());*/
+        ArrayList<CustomDTO> schedule = new ArrayList<>();
+        for (Custom custom : driverRepo.getSchedulesOfAllDrivers()) {
+            schedule.add(new CustomDTO(
+                    custom.getRental_id(),
+                    custom.getLicense_no(),
+                    custom.getContact_no(),
+                    custom.getReg_no(),
+                    custom.getPickUp_date(),
+                    custom.getPickUp_time(),
+                    custom.getPickUp_venue(),
+                    custom.getReturn_date(),
+                    custom.getReturn_time(),
+                    custom.getReturn_venue()
+            ));
+        }
+        return schedule;
+    }
+
+    @Override
     public List<CustomDTO> getWorkScheduleByDuration(CustomDTO dto) {
-        /*ArrayList<CustomDTO> schedule = new ArrayList<>();
+        ArrayList<CustomDTO> schedule = new ArrayList<>();
         for (Custom custom : driverRepo.getWorkScheduleByDuration(dto.getPickUp_date(),dto.getReturn_date())) {
             schedule.add(new CustomDTO(
                     custom.getRental_id(),
@@ -95,9 +117,9 @@ public class DriverServiceImpl implements DriverService {
                     custom.getRequestStatus()
             ));
         }
-        return schedule;*/
-        List<Custom> list = driverRepo.getWorkScheduleByDuration(dto.getPickUp_date(),dto.getReturn_date());
-        return mapper.map(list,new TypeToken<List<CustomDTO>>(){}.getType());
+        return schedule;
+        /*List<Custom> list = driverRepo.getWorkScheduleByDuration(dto.getPickUp_date(),dto.getReturn_date());
+        return mapper.map(list,new TypeToken<List<CustomDTO>>(){}.getType());*/
     }
 
     @Override

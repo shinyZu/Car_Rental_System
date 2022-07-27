@@ -57,6 +57,30 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public List<CustomDTO> getAllRentalsRequests() {
+        ArrayList<CustomDTO> requests = new ArrayList<>();
+        for (Custom request : rentalRequestRepo.getAllRentalsRequests()) {
+            requests.add(new CustomDTO(
+                    request.getRental_id(),
+                    request.getLicense_no(),
+                    request.getReg_no(),
+                    request.getPickUp_date(),
+                    request.getPickUp_time(),
+                    request.getPickUp_venue(),
+                    request.getReturn_date(),
+                    request.getReturn_time(),
+                    request.getReturn_venue(),
+                    request.getRequestStatus(),
+                    request.getNic_no(),
+                    request.getKm_atPickUp(),
+                    request.getKm_atReturn(),
+                    request.getTotalPaymentForRental()
+            ));
+        }
+        return requests;
+    }
+
+    @Override
     public String generateNextID() {
         long count = rentalRequestRepo.count();
         System.out.println("count : " + count);

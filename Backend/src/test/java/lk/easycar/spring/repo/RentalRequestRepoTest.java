@@ -160,4 +160,14 @@ class RentalRequestRepoTest {
             System.out.println(custom.getIncome());
         }
     }
+
+    @Test
+    void getAllRentalsRequests() {
+        List<Custom> requests = rentalRequestRepo.getAllRentalsRequests();
+        for (Custom request : requests) {
+            System.out.println(request.getTotalPaymentForRental());
+            System.out.println(request.getKm_atPickUp());
+            System.out.println(request.getKm_atReturn());
+        }
+    }
 }

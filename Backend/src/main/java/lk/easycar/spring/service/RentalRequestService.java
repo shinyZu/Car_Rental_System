@@ -9,6 +9,8 @@ import java.util.List;
 public interface RentalRequestService {
     List<RentalRequestDTO> getAllRentals();
 
+    List<CustomDTO> getAllRentalsRequests();
+
     String generateNextID();
 
     RentalRequestDTO searchRental(String rental_id);
@@ -24,17 +26,17 @@ public interface RentalRequestService {
     double calculateTotalPaymentForRental(String rental_id);
 
     double calculateAmountToReturn(String rental_id);
-
     //    double calculateDailyIncome(LocalDate date);
+
     List<CustomDTO> calculateDailyIncome(LocalDate date);
-
     //    double calculateMonthlyIncome(int month);
+
     List<CustomDTO> calculateMonthlyIncome();
-
     //    double calculateWeeklyIncome(String date);
-    List<CustomDTO> calculateWeeklyIncome();
 
+    List<CustomDTO> calculateWeeklyIncome();
     //    double calculateAnnualIncome(String date);
+
     List<CustomDTO> calculateAnnualIncome();
 
     boolean placeRentalRequest(RentalRequestDTO dto);

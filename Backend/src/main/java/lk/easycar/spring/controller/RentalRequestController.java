@@ -32,6 +32,11 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", rentalRequestService.getAllRentals());
     }
 
+    @GetMapping(path = "all_requests", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllRentalsRequests() {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "OK", rentalRequestService.getAllRentalsRequests());
+    }
+
     @GetMapping(path = "next_id", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil generateNextID (){
         return new ResponseUtil(HttpServletResponse.SC_OK, "Next ID", rentalRequestService.generateNextID());

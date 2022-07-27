@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
@@ -20,99 +20,201 @@ import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
 import MyButton from "../../../components/common/Button/Button";
 import Footer from "../../../components/Footer/Footer";
+import DriverService from "../../../services/DriverService";
 // import MyTextField from "../../../components/common/TextField/TextField";
-
-const columns = [
-  {
-    field: "rental_id",
-    headerName: "Rental ID",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "license_no",
-    headerName: "License No",
-    width: 140,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "pickUp_date",
-    headerName: "PickUp Date",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "pickUp_time",
-    headerName: "PickUp Time",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "pickUp_venue",
-    headerName: "PickUp Venue",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "return_date",
-    headerName: "Return Date",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "return_time",
-    headerName: "Return Time",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "return_venue",
-    headerName: "Return Venue",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "driver_contact",
-    headerName: "Driver Contact",
-    width: 140,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-];
+import Tooltip from "@mui/material/Tooltip";
+import EditIcon from "@mui/icons-material/Edit";
 
 const rows = [];
 
-let driverList = ["B1234567", "B1234567", "B1234567", "B1234567"];
+// let driverList = ["B1234567", "B1234567", "B1234567", "B1234567"];
+let driverList = [];
 
 function ManageDrivers(props) {
+  const columns = [
+    {
+      field: "id",
+      headerName: "Actions",
+      renderCell: (cellValues) => {
+        // console.log(cellValues);
+        return (
+          <>
+            <Tooltip title="Change Driver">
+              <IconButton>
+                <EditIcon
+                  // fontSize="large"
+                  onClick={() => {
+                    console.log("clicked row : " + cellValues.id);
+                    // console.log(carData[cellValues.id]);
+                    changeAssignedDriver(
+                      cellValues.id,
+                      tableRows[cellValues.id]
+                    );
+                  }}
+                />
+              </IconButton>
+            </Tooltip>
+          </>
+        );
+      },
+      width: 100,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "license_no",
+      headerName: "License No",
+      width: 140,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "reg_no",
+      headerName: "Registration No",
+      width: 140,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "rental_id",
+      headerName: "Rental ID",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "pickUp_date",
+      headerName: "PickUp Date",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "pickUp_time",
+      headerName: "PickUp Time",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "pickUp_venue",
+      headerName: "PickUp Venue",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "return_date",
+      headerName: "Return Date",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "return_time",
+      headerName: "Return Time",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "return_venue",
+      headerName: "Return Venue",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "contact_no",
+      headerName: "Driver Contact",
+      width: 140,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+  ];
+
   const { classes } = props;
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
+  const [tableRows, setTableRows] = useState([]);
+  // const [driverList, setDriverList] = useState([]);
+  const [changeInfo, setChangeInfo] = useState([]);
+  const [id, setId] = useState("");
+  const [currentDriver, setCurrentDriver] = useState("");
+
+  useEffect(() => {
+    getSchedulesOfAllDrivers();
+    getAllDrivers();
+  }, []);
+
+  useEffect(() => {
+    console.log(changeInfo);
+  }, [changeInfo]);
+
+  function changeAssignedDriver(index, row) {
+    let info = {};
+    info = { rental_id: row.rental_id, license_no: row.license_no };
+    setChangeInfo((changeInfo) => ({
+      ...changeInfo,
+      ...info,
+    }));
+
+    let res = DriverService.changeAssignedDriver();
+  }
+
+  async function getSchedulesOfAllDrivers() {
+    let res = await DriverService.getSchedulesOfAllDrivers();
+    if (res.status === 200) {
+      console.log(res);
+
+      if (res.data.data != []) {
+        let schedules = res.data.data;
+        console.log(schedules);
+        setTableRows(() => {
+          return [...res.data.data];
+        });
+        console.log(tableRows);
+      }
+    }
+  }
+
+  async function getAllDrivers() {
+    let res = await DriverService.getAllDrivers();
+    if (res.status === 200) {
+      console.log(res);
+
+      if (res.data.data != []) {
+        let drivers = res.data.data;
+        console.log(drivers);
+        driverList.length = 0;
+        drivers.map((driver) => {
+          driverList.push(driver.license_no);
+        });
+        console.log(driverList);
+      }
+    }
+  }
 
   return (
     <>
@@ -217,11 +319,23 @@ function ManageDrivers(props) {
             }}
           >
             <DriverScheduleTable
-              rows={rows}
+              // rows={rows}
               columns={columns}
               pageSize={5}
               rowsPerPageOptions={[5]}
-              //   checkboxSelection
+              rows={tableRows.map((schedule, index) => ({
+                id: index,
+                rental_id: schedule.rental_id,
+                license_no: schedule.license_no,
+                reg_no: schedule.reg_no,
+                pickUp_date: schedule.pickUp_date,
+                pickUp_time: schedule.pickUp_time,
+                pickUp_venue: schedule.pickUp_venue,
+                return_date: schedule.return_date,
+                return_time: schedule.return_time,
+                return_venue: schedule.return_venue,
+                contact_no: "0" + schedule.contact_no,
+              }))}
             />
           </Box>
         </Grid>
@@ -295,11 +409,13 @@ function ManageDrivers(props) {
             >
               <TextField
                 disabled
-                id="outlined-disabled"
+                id="txt_rental_id"
                 label="Rental ID"
                 defaultValue="    "
                 variant="outlined"
                 fullWidth
+                value={changeInfo.rental_id}
+                // placeholder={changeInfo.rental_id}
               />
             </Grid>
             <Grid
@@ -314,11 +430,12 @@ function ManageDrivers(props) {
             >
               <TextField
                 disabled
-                id="outlined-disabled"
+                id="txt_currentDriver"
                 label="Current Driver"
                 defaultValue="    "
                 variant="outlined"
                 fullWidth
+                value={changeInfo.license_no}
               />
             </Grid>
             <Grid
@@ -333,13 +450,20 @@ function ManageDrivers(props) {
             >
               <Autocomplete
                 disablePortal
-                id="drivers"
+                id="cmb_drivers"
                 options={driverList}
+                // inputValue={regFormData.transmissionType}
                 fullWidth
                 xl={{ width: 300 }}
                 renderInput={(params) => (
                   <TextField {...params} label="Change Driver To" fullWidth />
                 )}
+                onChange={(e, v) => {
+                  setChangeInfo({
+                    ...changeInfo,
+                    new_driver: v,
+                  });
+                }}
               />
             </Grid>
             <Grid

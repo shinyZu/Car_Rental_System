@@ -39,6 +39,11 @@ public class DriverController {
         return new ResponseUtil(HttpServletResponse.SC_OK, " Driver Schedule", driverService.getWorkSchedule(license_no));
     }
 
+    @GetMapping(path = "driver_schedules", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getSchedulesOfAllDrivers() {
+        return new ResponseUtil(HttpServletResponse.SC_OK, " All Driver Schedules", driverService.getSchedulesOfAllDrivers());
+    }
+
     @GetMapping(path = "schedule_by_duration", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getWorkScheduleByDuration(@RequestBody CustomDTO dto) {
         return new ResponseUtil(HttpServletResponse.SC_OK, " Driver Schedule from " + dto.getPickUp_date()+" to "+dto.getReturn_date(), driverService.getWorkScheduleByDuration(dto));

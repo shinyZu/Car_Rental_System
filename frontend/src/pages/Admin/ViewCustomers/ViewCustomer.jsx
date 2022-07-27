@@ -62,10 +62,11 @@ const columns = [
   // },
 ];
 
-let rows = [];
+// let rows = [];
 
 function ViewCustomerPage() {
   const [tableRows, setTableRows] = useState([]);
+
   useEffect(() => {
     loadAllCustomers();
   }, []);

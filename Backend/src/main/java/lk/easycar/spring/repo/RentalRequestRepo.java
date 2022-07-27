@@ -93,4 +93,19 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
     @Query(value = "select r.rental_id from RentalRequest r order by r.rental_id desc LIMIT 1", nativeQuery=true)
     String getLastID();
 
+    @Query(value = "select r.rental_id, c.reg_no, cu.nic_no, r.requestStatus, \n" +
+            "r.pickUp_date,r.pickUp_time,r.pickUp_venue,\n" +
+            "r.return_date,r.return_time,r.return_venue, \n" +
+            "d.license_no,\n" +
+            "rd.km_atPickUp, rd.km_atReturn, \n" +
+            "r.totalPaymentForRental\n" +
+            "from RentalRequest r inner join RentalDetail rd\n" +
+            "on r.rental_id = rd.rental_id\n" +
+            "inner join Driver d\n" +
+            "on rd.driver_licenseNo = d.license_no\n" +
+            "inner join Car c\n" +
+            "on rd.reg_no = c.reg_no\n" +
+            "inner join Customer cu \n" +
+            "on r.customer_nic = cu.nic_no", nativeQuery=true)
+    List<Custom> getAllRentalsRequests();
 }

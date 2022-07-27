@@ -44,6 +44,11 @@ public class CustomDTO {
     private String day;
     private String income;
 
+    private String nic_no;
+    private double km_atPickUp;
+    private double km_atReturn;
+    private double totalPaymentForRental;
+
     public CustomDTO(String year, String income) {
         this.year = year;
         this.income = income;
@@ -70,7 +75,37 @@ public class CustomDTO {
         this.income = income;
     }
 
-    public CustomDTO(String rental_id, String license_no, String currentStatus, int contact_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus) {
+    public CustomDTO(String rental_id, String license_no, int contact_no, String reg_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue) {
+        this.rental_id = rental_id;
+        this.license_no = license_no;
+        this.contact_no = contact_no;
+        this.reg_no = reg_no;
+        this.pickUp_date = pickUp_date;
+        this.pickUp_time = pickUp_time;
+        this.pickUp_venue = pickUp_venue;
+        this.return_date = return_date;
+        this.return_time = return_time;
+        this.return_venue = return_venue;
+    }
+
+    public CustomDTO(String rental_id, String license_no, String currentStatus, int contact_no, String reg_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus) {
+        this.rental_id = rental_id;
+        this.license_no = license_no;
+        this.currentStatus = currentStatus;
+        this.contact_no = contact_no;
+        this.reg_no = reg_no;
+        this.pickUp_date = pickUp_date;
+        this.pickUp_time = pickUp_time;
+        this.pickUp_venue = pickUp_venue;
+        this.return_date = return_date;
+        this.return_time = return_time;
+        this.return_venue = return_venue;
+        this.requestStatus = requestStatus;
+    }
+
+
+
+    /* public CustomDTO(String rental_id, String license_no, String currentStatus, int contact_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus) {
         this.rental_id = rental_id;
         this.license_no = license_no;
         this.currentStatus = currentStatus;
@@ -82,7 +117,22 @@ public class CustomDTO {
         this.return_time = return_time;
         this.return_venue = return_venue;
         this.requestStatus = requestStatus;
+    }*/
+
+    public CustomDTO(String rental_id, String license_no, String reg_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus, String nic_no, double km_atPickUp, double km_atReturn, double totalPaymentForRental) {
+        this.rental_id = rental_id;
+        this.license_no = license_no;
+        this.reg_no = reg_no;
+        this.pickUp_date = pickUp_date;
+        this.pickUp_time = pickUp_time;
+        this.pickUp_venue = pickUp_venue;
+        this.return_date = return_date;
+        this.return_time = return_time;
+        this.return_venue = return_venue;
+        this.requestStatus = requestStatus;
+        this.nic_no = nic_no;
+        this.km_atPickUp = km_atPickUp;
+        this.km_atReturn = km_atReturn;
+        this.totalPaymentForRental = totalPaymentForRental;
     }
-
-
 }

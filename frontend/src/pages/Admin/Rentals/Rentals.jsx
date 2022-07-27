@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../../../components/Footer/Footer";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
 import Rentals from "../../../components/TableSearchPage/TableSearchPage";
+import RentalRequestService from "../../../services/RentalRequestService";
 
 function RentalRequests() {
+  const [tableRows, setTableRows] = useState([]);
+
+  useEffect(() => {
+    loadAllRentalDetails();
+  }, []);
+
+  async function loadAllRentalDetails() {
+    let res = await RentalRequestService.getAllRequestDetails();
+    if (res.status === 200) {
+      console.log(res);
+      if (res.data.data != []) {
+        let details = res.data.data;
+        console.log(details);
+        setTableRows(() => {
+          return [...res.data.data];
+        });
+        console.log(tableRows);
+      }
+    }
+  }
+
   return (
     <>
       <AdminNavbar />
@@ -16,7 +38,24 @@ function RentalRequests() {
         // tableWidth_xl={10}
         // tableWidth_lg={10}
         tableColumns={columns}
-        tableData={rows}
+        // tableData={rows}
+        tableData={tableRows.map((request, index) => ({
+          id: index,
+          rental_id: request.rental_id,
+          reg_no: request.reg_no,
+          nic_no: request.nic_no,
+          requestStatus: request.requestStatus,
+          pickUp_date: request.pickUp_date,
+          pickUp_time: request.pickUp_time,
+          pickUp_venue: request.pickUp_venue,
+          return_date: request.return_date,
+          return_time: request.return_time,
+          return_venue: request.return_venue,
+          license_no: request.license_no,
+          km_atPickUp: request.km_atPickUp,
+          km_atReturn: request.km_atReturn,
+          totalPaymentForRental: request.totalPaymentForRental,
+        }))}
       />
     </>
   );
@@ -52,8 +91,17 @@ const columns = [
     align: "Center",
   },
 
+  // {
+  //   field: "contact_no",
+  //   headerName: "Customer Contact",
+  //   width: 130,
+  //   headerClassName: "header_color",
+  //   headerAlign: "center",
+  //   align: "Center",
+  // },
+
   {
-    field: "request_status",
+    field: "requestStatus",
     headerName: "Request Status",
     width: 140,
     headerClassName: "header_color",
@@ -142,17 +190,17 @@ const columns = [
     align: "Center",
   },
 
-  {
-    field: "driver_fee", // null at first after returned updated
-    headerName: "Driver Fee(Rs)",
-    width: 140,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
+  // {
+  //   field: "driver_fee", // null at first after returned updated
+  //   headerName: "Driver Fee(Rs)",
+  //   width: 140,
+  //   headerClassName: "header_color",
+  //   headerAlign: "center",
+  //   align: "Center",
+  // },
 
   {
-    field: "total_rental", // null at first after returned updated
+    field: "totalPaymentForRental", // null at first after returned updated
     headerName: "Rental Payment(Rs)",
     width: 140,
     headerClassName: "header_color",
