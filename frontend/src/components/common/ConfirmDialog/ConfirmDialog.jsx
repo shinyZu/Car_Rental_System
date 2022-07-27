@@ -11,6 +11,8 @@ import {
 // import Controls from "./controls/Controls";
 // import NotListedLocationIcon from "@material-ui/icons/NotListedLocation";
 import HelpIcon from "@mui/icons-material/Help";
+import WarningIcon from "@mui/icons-material/Warning";
+import ErrorIcon from "@mui/icons-material/Error";
 import Button from "../Button/Button";
 
 const useStyles = makeStyles((theme) => ({
@@ -29,11 +31,40 @@ const useStyles = makeStyles((theme) => ({
   dialogAction: {
     justifyContent: "center",
   },
-  titleIcon: {
+
+  titleIconBlue: {
     // backgroundColor: theme.palette.secondary.light,
     color: "#2c4ea9",
     "&:hover": {
       backgroundColor: "#2c4ea9",
+      color: "#fff",
+      cursor: "default",
+      padding: "0",
+    },
+    "& .MuiSvgIcon-root": {
+      fontSize: "8rem",
+    },
+  },
+
+  titleIconGreen: {
+    // backgroundColor: theme.palette.secondary.light,
+    color: "rgb(26, 188, 156)",
+    "&:hover": {
+      backgroundColor: "rgb(26, 188, 156)",
+      color: "#fff",
+      cursor: "default",
+      padding: "0",
+    },
+    "& .MuiSvgIcon-root": {
+      fontSize: "8rem",
+    },
+  },
+
+  titleIconRed: {
+    // backgroundColor: theme.palette.secondary.light,
+    color: "red",
+    "&:hover": {
+      backgroundColor: "red",
       color: "#fff",
       cursor: "default",
       padding: "0",
@@ -51,8 +82,18 @@ function ConfirmDialog(props) {
   return (
     <Dialog open={confirmDialog.isOpen} classes={{ paper: classes.dialog }}>
       <DialogTitle className={classes.dialogTitle}>
-        <IconButton disableRipple className={classes.titleIcon}>
-          <HelpIcon />
+        <IconButton
+          disableRipple
+          /* className={classes.titleIconBlue} */
+          className={
+            confirmDialog.action == "Delete"
+              ? classes.titleIconRed
+              : confirmDialog.action == "Save"
+              ? classes.titleIconGreen
+              : classes.titleIconBlue
+          }
+        >
+          {confirmDialog.action == "Delete" ? <ErrorIcon /> : <HelpIcon />}
         </IconButton>
       </DialogTitle>
       <DialogContent className={classes.dialogContent}>
@@ -70,10 +111,11 @@ function ConfirmDialog(props) {
         />
         <Button
           label="Yes"
-          style={{
-            backgroundColor: "#2c4ea9",
-            color: "#fff",
-          }}
+          //   style={{
+          //     backgroundColor: "#2c4ea9",
+          //     color: "#fff",
+          //   }}
+          style={confirmDialog.confirmBtnStyle}
           onClick={confirmDialog.onConfirm}
         />
         {/* <Controls.Button

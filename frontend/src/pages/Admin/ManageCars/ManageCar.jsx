@@ -91,6 +91,8 @@ function ManageCar(props) {
     isOpen: false,
     title: "",
     subTitle: "",
+    confirmBtnStyle: {},
+    action: "",
   });
 
   const columns = [
@@ -109,8 +111,6 @@ function ManageCar(props) {
                     console.log("clicked row : " + cellValues.id);
                     console.log(carData[cellValues.id]);
                     loadDataToFields(cellValues.id, carData[cellValues.id]);
-                    //   handleAddRow(cellValues.row);
-                    //   handleRemoveRow(cellValues.id);
                   }}
                 />
               </IconButton>
@@ -122,6 +122,7 @@ function ManageCar(props) {
                   // fontSize="large"
                   onClick={() => {
                     console.log("clicked row : " + cellValues.id);
+                    deleteCar(carData[cellValues.id]);
                   }}
                 />
               </IconButton>
@@ -456,7 +457,7 @@ function ManageCar(props) {
         console.log("all done...........");
         setOpenAlert({
           open: true,
-          alert: "Successully Saved!!!",
+          alert: res1.data.message,
           severity: "success",
           variant: "standard",
         });
@@ -505,6 +506,11 @@ function ManageCar(props) {
         isOpen: true,
         title: "Are you sure you want to Save this Car ?",
         subTitle: "You can't revert this operation",
+        action: "Save",
+        confirmBtnStyle: {
+          backgroundColor: "rgb(26, 188, 156)",
+          color: "white",
+        },
         onConfirm: () => proceedSave(),
       });
     } else {
@@ -544,7 +550,7 @@ function ManageCar(props) {
           console.log("all done...........");
           setOpenAlert({
             open: true,
-            alert: "Successully Updated!!!",
+            alert: res1.data.message,
             severity: "success",
             variant: "standard",
           });
@@ -552,6 +558,7 @@ function ManageCar(props) {
           clearRegForm();
           clearFiles();
           setConfirmDialog({ isOpen: false });
+          setBtnProps({ btnLabel: "Add Car", btnColor: "rgb(26, 188, 156)" });
         } else {
           setConfirmDialog({ isOpen: false });
           setOpenAlert({
@@ -573,10 +580,11 @@ function ManageCar(props) {
     } else {
       // if want to update without images
       let res = await CarService.updateCar(regFormData);
+      console.log(res);
       if (res.status === 200) {
         setOpenAlert({
           open: true,
-          alert: "Successully Updated!!!",
+          alert: res.data.message,
           severity: "success",
           variant: "standard",
         });
@@ -584,6 +592,7 @@ function ManageCar(props) {
         clearRegForm();
         clearFiles();
         setConfirmDialog({ isOpen: false });
+        setBtnProps({ btnLabel: "Add Car", btnColor: "rgb(26, 188, 156)" });
       } else {
         setConfirmDialog({ isOpen: false });
         setOpenAlert({
@@ -604,6 +613,7 @@ function ManageCar(props) {
         isOpen: true,
         title: "No any Image Files selected, want to continue?",
         subTitle: "or click No to select image files and proceed",
+        confirmBtnStyle: { backgroundColor: "#2c4ea9", color: "white" },
         onConfirm: () => proceedUpdate(),
       });
     } else {
@@ -612,9 +622,46 @@ function ManageCar(props) {
         isOpen: true,
         title: "Are you sure you want to Update this Car ?",
         subTitle: "You can't revert this operation",
+        confirmBtnStyle: { backgroundColor: "#2c4ea9", color: "white" },
         onConfirm: () => proceedUpdate(),
       });
     }
+  }
+
+  async function proceedDelete(reg_no) {
+    console.log(reg_no);
+    let res = await CarService.deleteCar(reg_no);
+    if (res.status === 200) {
+      setOpenAlert({
+        open: true,
+        alert: res.data.message,
+        severity: "success",
+        variant: "standard",
+      });
+      loadData();
+      clearRegForm();
+      clearFiles();
+      setConfirmDialog({ isOpen: false });
+    } else {
+      setOpenAlert({
+        open: true,
+        alert: res.response.data.message,
+        severity: "error",
+        variant: "standard",
+      });
+    }
+  }
+
+  function deleteCar(car) {
+    console.log(car);
+    setConfirmDialog({
+      isOpen: true,
+      title: "Are you sure you want to remove this Car?",
+      subTitle: "You can't revert this operation",
+      confirmBtnStyle: { backgroundColor: "red", color: "white" },
+      action: "Delete",
+      onConfirm: () => proceedDelete(car.reg_no),
+    });
   }
 
   return (
@@ -899,9 +946,9 @@ function ManageCar(props) {
                     renderInput={(params) => (
                       <TextField {...params} label="Car Fleet" />
                     )}
-                    onInputChange={(e) => {
-                      console.log(e);
-                    }}
+                    // onInputChange={(e) => {
+                    //   console.log(e);
+                    // }}
                     onChange={(e, v) => {
                       console.log(v);
                       setRegFormData({
