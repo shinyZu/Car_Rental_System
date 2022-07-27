@@ -29,6 +29,20 @@ class CarService {
     });
     return await promise;
   };
+
+  updateCar = async (data) => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .put("cars", data)
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new CarService();

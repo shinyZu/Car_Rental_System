@@ -370,6 +370,7 @@ function ManageCar(props) {
       console.log(carData);
     }
   }
+
   let tempArray = [];
   async function loadDataToFields(rowId, car) {
     // console.log(carData[rowId].fleet.description);
@@ -492,10 +493,10 @@ function ManageCar(props) {
   }
 
   function saveCar() {
-    console.log(regFormData);
-    console.log(filesToUpload);
-    console.log(validImageFiles);
-    console.log(data);
+    // console.log(regFormData);
+    // console.log(filesToUpload);
+    // console.log(validImageFiles);
+    // console.log(data);
 
     if (filesToUpload.length !== 0) {
       console.log("files are choosen");
@@ -509,25 +510,111 @@ function ManageCar(props) {
     } else {
       setOpenAlert({
         open: true,
-        alert: "Please choose the Images for " + regFormData.brand,
+        alert: "Please choose Image Files for " + regFormData.brand,
         severity: "warning",
         variant: "standard",
       });
     }
   }
 
-  function proceedUpdate() {
+  async function proceedUpdate() {
     console.log("updated");
+
+    if (filesToUpload.length !== 0) {
+      // if update is done with images
+
+      let res1 = await CarService.updateCar(regFormData);
+      console.log(res1);
+      if (res1.status === 200) {
+        console.log("Car is Updatd...now update the images");
+
+        data.append("front", filesToUpload[0]);
+        data.append("rear", filesToUpload[1]);
+        data.append("side", filesToUpload[2]);
+        data.append("interior", filesToUpload[3]);
+
+        let res2 = await FileUploadService.uploadCarFiles(
+          regFormData.reg_no,
+          regFormData.fleet,
+          regFormData.brand,
+          data
+        );
+
+        if (res2.status === 200) {
+          console.log("all done...........");
+          setOpenAlert({
+            open: true,
+            alert: "Successully Updated!!!",
+            severity: "success",
+            variant: "standard",
+          });
+          loadData();
+          clearRegForm();
+          clearFiles();
+          setConfirmDialog({ isOpen: false });
+        } else {
+          setConfirmDialog({ isOpen: false });
+          setOpenAlert({
+            open: true,
+            alert: res2.response.data.message,
+            severity: "error",
+            variant: "standard",
+          });
+        }
+      } else {
+        setConfirmDialog({ isOpen: false });
+        setOpenAlert({
+          open: true,
+          alert: res1.response.data.message,
+          severity: "error",
+          variant: "standard",
+        });
+      }
+    } else {
+      // if want to update without images
+      let res = await CarService.updateCar(regFormData);
+      if (res.status === 200) {
+        setOpenAlert({
+          open: true,
+          alert: "Successully Updated!!!",
+          severity: "success",
+          variant: "standard",
+        });
+        loadData();
+        clearRegForm();
+        clearFiles();
+        setConfirmDialog({ isOpen: false });
+      } else {
+        setConfirmDialog({ isOpen: false });
+        setOpenAlert({
+          open: true,
+          alert: res.response.data.message,
+          severity: "error",
+          variant: "standard",
+        });
+      }
+    }
   }
 
   function updateCar() {
-    console.log("update car");
-    setConfirmDialog({
-      isOpen: true,
-      title: "Are you sure you want to Update this Car ?",
-      subTitle: "You can't revert this operation",
-      onConfirm: () => proceedUpdate(),
-    });
+    console.log(filesToUpload);
+    if (filesToUpload.length === 0) {
+      // if no images are selected or if update doesn't need any images
+      setConfirmDialog({
+        isOpen: true,
+        title: "No any Image Files selected, want to continue?",
+        subTitle: "or click No to select image files and proceed",
+        onConfirm: () => proceedUpdate(),
+      });
+    } else {
+      // if want to update with images
+      setConfirmDialog({
+        isOpen: true,
+        title: "Are you sure you want to Update this Car ?",
+        subTitle: "You can't revert this operation",
+        onConfirm: () => proceedUpdate(),
+      });
+    }
   }
 
   return (

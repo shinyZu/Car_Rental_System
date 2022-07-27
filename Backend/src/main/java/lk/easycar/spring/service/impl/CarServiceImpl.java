@@ -166,6 +166,8 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDTO updateCar(CarDTO dto) {
         if (carRepo.existsById(dto.getReg_no())) {
+            String fleetID = carFleetRepo.getCarFleetByDescription(dto.getFleet().getFleet_id());
+            dto.setFleet(new CarFleet(fleetID));
             return mapper.map(carRepo.save(mapper.map(dto, Car.class)), CarDTO.class);
         } else {
             throw new RuntimeException("No Such Car..Please check the Reg_No...");
