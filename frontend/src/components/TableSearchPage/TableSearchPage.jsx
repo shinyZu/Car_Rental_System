@@ -11,135 +11,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import MyTable from "../common/Table/Table";
 import Box from "@mui/material/Box";
 
-// const columns = [
-//   {
-//     field: "rental_id",
-//     headerName: "Booking ID",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "reg_no",
-//     headerName: "Reg No",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "brand",
-//     headerName: "Brand",
-//     width: 200,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "pickUp_date",
-//     headerName: "PickUp Date",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "pickUp_time",
-//     headerName: "PickUp Time",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "pickUp_venue",
-//     headerName: "PickUp Venue",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "return_date",
-//     headerName: "Return Date",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "return_time",
-//     headerName: "Return Time",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "return_venue",
-//     headerName: "Return Venue",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "request_status",
-//     headerName: "Booking Status",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "driver_status",
-//     headerName: "Driver Status",
-//     width: 140,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-
-//   {
-//     field: "driver_contact",
-//     headerName: "Driver Contact",
-//     width: 130,
-//     headerClassName: "header_color",
-//     headerAlign: "center",
-//   },
-// ];
-
-// const rows = [
-//   // {
-//   //   rental_id: "RNTL-0001",
-//   //   reg_no: "GC-5951",
-//   //   brand: "Suzuki",
-//   //   pickUp_date: "2022-07-21",
-//   //   pickUp_time: "12:00:00",
-//   //   pickUp_venue: "asas",
-//   //   return_date: "2022-07-24",
-//   //   return_time: "assa",
-//   //   return_venue: "asa",
-//   //   request_status: "Accepted",
-//   //   driver_status: "Required",
-//   //   driver_contact: "0776455451",
-//   // },
-//   // {
-//   //   rental_id: "RNTL-0001",
-//   //   reg_no: "GC-5951",
-//   //   brand: "Suzuki",
-//   //   pickUp_date: "2022-07-21",
-//   //   pickUp_time: "12:00:00",
-//   //   pickUp_venue: "asas",
-//   //   return_date: "2022-07-24",
-//   //   return_time: "assa",
-//   //   return_venue: "asa",
-//   //   request_status: "Accepted",
-//   //   driver_status: "Required",
-//   //   driver_contact: "0776455451",
-//   // },
-// ];
-
 function TableSearchPage(props) {
   const { classes } = props;
 
@@ -416,8 +287,8 @@ function TableSearchPage(props) {
       props.page == "CR" ? (
         <Grid
           container
-          xl={props.page == "B" ? 10.3 : props.page == "C" ? 7.58 : 7.53}
-          lg={props.page == "B" ? 10 : props.page == "C" ? 10.1 : 10}
+          xl={props.page == "B" ? 10.3 : props.page == "C" ? 6.7 : 7.53}
+          lg={props.page == "B" ? 10 : props.page == "C" ? 8.94 : 10}
           md={10}
           sm={10}
           xs={10}
