@@ -15,6 +15,20 @@ class CustomerService {
     });
     return await promise;
   };
+
+  getCustomerCount = async () => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("customer/getCount")
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new CustomerService();

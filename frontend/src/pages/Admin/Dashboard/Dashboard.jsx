@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { withStyles } from "@mui/styles";
 import { styleSheet } from "./style";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
@@ -9,12 +9,67 @@ import DailyIncomeChart from "../../../components/Charts/DailyIncomeChart/DailyI
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Footer from "../../../components/Footer/Footer";
+import CustomerService from "../../../services/CustomerService";
+import RentalRequestService from "../../../services/RentalRequestService";
 
 function AdminDashboard(props) {
   const { classes } = props;
   const [card1, setCard1] = useState("10");
   const [card2, setCard2] = useState("18");
   const [card3, setCard3] = useState("12");
+
+  useEffect(() => {
+    getCustomerCount();
+    getNoOfTotalRentalsForTheDay();
+    getNoOfActiveRentalsForTheDay();
+  }, []);
+
+  function formatDate(date) {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  }
+
+  async function getCustomerCount() {
+    let res = await CustomerService.getCustomerCount();
+    if (res.status === 200) {
+      console.log(res);
+      if (res.data.data < 10) {
+        let count = "0" + res.data.data;
+        setCard1(count);
+      }
+    }
+  }
+
+  async function getNoOfTotalRentalsForTheDay() {
+    let today = formatDate(new Date());
+    let res = await RentalRequestService.getNoOfTotalRentalsForTheDay(today);
+    if (res.status === 200) {
+      console.log(res);
+      if (res.data.data < 10) {
+        let count = "0" + res.data.data;
+        setCard2(count);
+      }
+    }
+  }
+
+  async function getNoOfActiveRentalsForTheDay() {
+    let today = formatDate(new Date());
+    let res = await RentalRequestService.getNoOfActiveRentalsForTheDay(today);
+    if (res.status === 200) {
+      console.log(res);
+      if (res.data.data < 10) {
+        let count = "0" + res.data.data;
+        setCard3(count);
+      }
+    }
+  }
 
   return (
     <>
@@ -168,7 +223,7 @@ function AdminDashboard(props) {
             justifyContent="center"
             alignItems="center"
           >
-            <DailyIncomeChart for="dashboard" />
+            <DailyIncomeChart for="dashboard" page="Dashboard" />
           </Grid>
           <Grid
             container

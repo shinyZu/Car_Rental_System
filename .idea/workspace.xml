@@ -24,12 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CarDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CarDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/CarServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Admin/ManageCars/ManageCar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Admin/ManageCars/ManageCar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/CarService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/CarService.js" afterDir="false" />
-    </list>
+    <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -288,7 +283,7 @@
       <workItem from="1658765840383" duration="4764000" />
       <workItem from="1658809107137" duration="4149000" />
       <workItem from="1658815993886" duration="251000" />
-      <workItem from="1658816383419" duration="21139000" />
+      <workItem from="1658816383419" duration="22341000" />
     </task>
     <servers />
   </component>
