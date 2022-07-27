@@ -27,14 +27,11 @@
     <list default="true" id="f0e9c5dc-c81d-4594-b02f-752dae0f1fca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/FileUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/controller/FileUploadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CarDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CarDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CarFleetDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/dto/CarFleetDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/CarFleetRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/repo/CarFleetRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/lk/easycar/spring/service/impl/CarServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/FileUploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/Backend-1.0.0/WEB-INF/classes/lk/easycar/spring/controller/FileUploadController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/FileUploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/lk/easycar/spring/controller/FileUploadController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Admin/ManageCars/ManageCar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Admin/ManageCars/ManageCar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/CarService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/CarService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/services/FileUploadService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/FileUploadService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -295,7 +292,7 @@
       <workItem from="1658765840383" duration="4764000" />
       <workItem from="1658809107137" duration="4149000" />
       <workItem from="1658815993886" duration="251000" />
-      <workItem from="1658816383419" duration="14714000" />
+      <workItem from="1658816383419" duration="18924000" />
     </task>
     <servers />
   </component>

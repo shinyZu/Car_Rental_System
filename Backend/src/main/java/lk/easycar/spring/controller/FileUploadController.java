@@ -23,7 +23,10 @@ public class FileUploadController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllUploadedImages() {
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Car View Uploaded", allImages );
+        for (String image : allImages) {
+            System.out.println(image);
+        }
+        return new ResponseUtil(HttpServletResponse.SC_OK, "All Images", allImages );
     }
 
    /* @PostMapping(path = "cars", params = {"fleet"}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -97,8 +100,8 @@ public class FileUploadController {
         }
     }*/
 
-    @PostMapping(path = "cars", params = {"fleet","brand"}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadCarViews(@RequestPart("front") MultipartFile front,@RequestPart("rear") MultipartFile rear, @RequestPart("side") MultipartFile side,@RequestPart("interior") MultipartFile interior,@RequestParam("fleet") String carFleet,@RequestParam("brand") String brand) {
+    @PostMapping(path = "cars", params = {"reg_no","fleet","brand"}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil uploadCarViews(@RequestPart("front") MultipartFile front,@RequestPart("rear") MultipartFile rear, @RequestPart("side") MultipartFile side,@RequestPart("interior") MultipartFile interior, @RequestParam("reg_no") String reg_no,@RequestParam("fleet") String carFleet,@RequestParam("brand") String brand) {
         MultipartFile[] fileArray = {front, rear, side, interior};
         try {
             projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
@@ -117,7 +120,7 @@ public class FileUploadController {
             File brandDir = null;
 
             if (carFleet.equals("General")) {
-                brandDir = new File(fleetDir + "/" +brand);
+                brandDir = new File(fleetDir + "/" +reg_no);
                 brandDir.mkdir();
 
                 /*for (MultipartFile file : fileArray) {
@@ -141,7 +144,7 @@ public class FileUploadController {
                 allImages.add( brandDir + brand + interior.getOriginalFilename());*/
 
             } else if (carFleet.equals("Premium")) {
-                brandDir = new File(fleetDir + "/" +brand);
+                brandDir = new File(fleetDir + "/" +reg_no);
                 brandDir.mkdir();
 
                 /*myFile.transferTo(new File(premiumDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
@@ -163,7 +166,7 @@ public class FileUploadController {
                 allImages.add("uploads/cars/Premium Cars/"+brand + interior.getOriginalFilename());*/
 
             } else if (carFleet.equals("Luxury")) {
-                brandDir = new File(fleetDir + "/" +brand);
+                brandDir = new File(fleetDir + "/" +reg_no);
                 brandDir.mkdir();
 
                 /*myFile.transferTo(new File(luxuryDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
@@ -186,7 +189,7 @@ public class FileUploadController {
             }
             for (MultipartFile file : fileArray) {
                 file.transferTo(new File(brandDir.getAbsolutePath() + "/" + file.getOriginalFilename()));
-                allImages.add( brandDir + file.getOriginalFilename());
+                allImages.add( brandDir +"/"+ file.getOriginalFilename());
             }
 
             return new ResponseUtil(HttpServletResponse.SC_OK, "Car View Uploaded Successfully", null );

@@ -19,14 +19,28 @@ class FileUploadService {
     return await promise;
   };
 
-  uploadCarFiles = async (fleet, brand, data) => {
+  uploadCarFiles = async (reg_no, fleet, brand, data) => {
     console.log(data);
 
     const promise = new Promise((resolve, reject) => {
       axios
         .post("upload/cars", data, {
-          params: { fleet: fleet, brand: brand },
+          params: { reg_no: reg_no, fleet: fleet, brand: brand },
         })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  getCarFiles = async () => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("upload")
         .then((res) => {
           return resolve(res);
         })

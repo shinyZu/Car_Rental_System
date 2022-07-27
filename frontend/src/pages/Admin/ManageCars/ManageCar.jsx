@@ -27,10 +27,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CarService from "../../../services/CarService";
 import MySnackBar from "../../../components/common/Snackbar/MySnackbar";
 import FileUploadService from "../../../services/FileUploadService";
+import ConfirmDialog from "../../../components/common/ConfirmDialog/ConfirmDialog";
 
 function ManageCar(props) {
   const { classes } = props;
   const [regFormData, setRegFormData] = useState({
+    id: "",
     reg_no: "",
     brand: "",
     color: "",
@@ -44,11 +46,24 @@ function ManageCar(props) {
     freeKM_day: "",
     freeKM_month: "",
     ldw: "",
+    currentStatus: "",
   });
+
+  const [btnProps, setBtnProps] = useState({
+    btnLabel: "Add Car",
+    btnColor: "#1abc9c",
+  });
+
+  const [carData, setCarData] = useState([]);
 
   let fuelTypes = ["Petrol", "Diesel", "Gasoline"];
   let transmissionType = ["Manual", "Auto", "CVT"];
-  let carFleet = ["General", "Premium", "Luxury"];
+  // let carFleet = ["General", "Premium", "Luxury"];
+  let carFleet = [
+    { fleet: "General", fee: "10000" },
+    { fleet: "Premium", fee: "15000" },
+    { fleet: "Luxury", fee: "20000" },
+  ];
   let ldwFee = ["10000", "15000", "20000"];
   let colors = [
     "White",
@@ -72,10 +87,171 @@ function ManageCar(props) {
     variant: "",
   });
 
-  // const [front_img, setFront_Img] = useState(null);
-  // const [rear_img, setRear_Img] = useState(null);
-  // const [side_img, setSide_Img] = useState(null);
-  // const [interior_img, setInterior_Img] = useState(null);
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+
+  const columns = [
+    {
+      field: "id",
+      headerName: "Actions",
+      renderCell: (cellValues) => {
+        // console.log(cellValues);
+        return (
+          <>
+            <Tooltip title="Edit">
+              <IconButton>
+                <EditIcon
+                  // fontSize="large"
+                  onClick={() => {
+                    console.log("clicked row : " + cellValues.id);
+                    console.log(carData[cellValues.id]);
+                    loadDataToFields(cellValues.id, carData[cellValues.id]);
+                    //   handleAddRow(cellValues.row);
+                    //   handleRemoveRow(cellValues.id);
+                  }}
+                />
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteIcon
+                  // fontSize="large"
+                  onClick={() => {
+                    console.log("clicked row : " + cellValues.id);
+                  }}
+                />
+              </IconButton>
+            </Tooltip>
+          </>
+        );
+      },
+      width: 150,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "reg_no",
+      headerName: "Registration No",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "brand",
+      headerName: "Brand",
+      width: 140,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "color",
+      headerName: "Color",
+      width: 140,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "fleet",
+      headerName: "Car Fleet",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "fuel",
+      headerName: "Fuel Type",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "transmission",
+      headerName: "Transmission Type",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "passengers",
+      headerName: "Passengers",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "daily_rate",
+      headerName: "Daily Rate (Rs)",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "monthly_rate",
+      headerName: "Monthly Rate (Rs)",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "price_extraKM",
+      headerName: "Price per Extra KM (Rs)",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "freeKM_day",
+      headerName: "Free KM per Day",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "freeKM_month",
+      headerName: "Free KM per Month",
+      width: 130,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+
+    {
+      field: "status",
+      headerName: "Current Status",
+      width: 140,
+      headerClassName: "header_color",
+      headerAlign: "center",
+      align: "Center",
+    },
+  ];
 
   const [filesToUpload, setFilesToUpload] = useState([]);
   const data = new FormData();
@@ -149,91 +325,18 @@ function ManageCar(props) {
     };
   }, [imageFiles]);
 
-  function setCarImages(e) {
-    console.log("qqqqqqqqqqq");
-    // const file = e.target.files[0];
-    // const { name } = file;
-    // setFront_Img(e.target.files[0]);
-    //------------------------------------------------------
-    // setFront_Img(files[0].name);
-    // setRear_Img(files[1].name);
-    // setSide_Img(files[2].name);
-    // setInterior_Img(files[3].name);
-    // console.log(front_img + "" + rear_img + "" + side_img + "" + interior_img);
-    //----------------------------------------------------
-    // var file = e.target.files[0];
-    // var files = e.target.files;
-    // setFront_Img(e.target.files[0]);
-    // setRear_Img(e.target.files[1]);
-    // setSide_Img(e.target.files[2]);
-    // setInterior_Img(e.target.files[3]);
+  useEffect(() => {
+    loadData();
+  }, []);
 
-    // var reader = new FileReader();
-    // reader.addEventListener("load", (ev) => {
-    //   console.log(ev);
-    //   setFront_Img(reader.result);
-    // });
-    // reader.readAsDataURL(e.target.files[0]);
-
-    // reader.addEventListener("load", (ev) => {
-    //   console.log(ev);
-    //   setRear_Img(reader.result);
-    // });
-    // reader.readAsDataURL(e.target.files[1]);
-
-    // reader.addEventListener("load", (ev) => {
-    //   console.log(ev);
-    //   setSide_Img(reader.result);
-    // });
-    // reader.readAsDataURL(e.target.files[2]);
-
-    // reader.addEventListener("load", (ev) => {
-    //   console.log(ev);
-    //   setInterior_Img(reader.result);
-    // });
-    // reader.readAsDataURL(e.target.files[3]);
-  }
-
-  // const itemData = [
-  //   {
-  //     img: front_img,
-  //     title: "front",
-  //   },
-  //   {
-  //     img: rear_img,
-  //     title: "rear",
-  //   },
-  //   {
-  //     img: side_img,
-  //     title: "side",
-  //   },
-  //   {
-  //     img: interior_img,
-  //     title: "interior",
-  //   },
-  // ];
-
-  // function handleFileUpload(e) {
-  //   console.log(e.target.files);
-
-  //   if (e.target.files.length > 4 || files.length > 4) {
-  //     console.log("file count has exceeded..........");
-  //     setFiles([]);
-  //     setOpenAlert({
-  //       open: true,
-  //       alert: "You can select only 4 images",
-  //       severity: "error",
-  //       variant: "standard",
-  //     });
-  //   } else {
-  //     setFiles(() => {
-  //       return [...files, ...e.target.files];
-  //     });
-  //   }
-  // }
+  useEffect(() => {
+    console.log("filesToUpload re-rendered");
+    setFilesToUpload([]);
+  }, []);
 
   function clearRegForm() {
     setRegFormData({
+      id: "",
       reg_no: "",
       brand: "",
       color: "",
@@ -247,14 +350,148 @@ function ManageCar(props) {
       freeKM_day: "",
       freeKM_month: "",
       ldw: "",
+      currentStatus: "",
     });
   }
 
   function clearFiles() {
+    setImages([]);
     setFilesToUpload([]);
   }
 
-  async function saveCar() {
+  async function loadData() {
+    let res = await CarService.getAllCars();
+    console.log(res); // object
+    console.log(res.data.data); // array
+    if (res.status === 200) {
+      setCarData(() => {
+        return [...res.data.data];
+      });
+      console.log(carData);
+    }
+  }
+  let tempArray = [];
+  async function loadDataToFields(rowId, car) {
+    // console.log(carData[rowId].fleet.description);
+    let fd = carData[rowId].fleet.description;
+    let fleet_fee;
+    carFleet.map((f, i) => {
+      if (f.fleet == fd) {
+        console.log(f.fee);
+        fleet_fee = f.fee;
+      }
+    });
+    setBtnProps({ btnLabel: "Edit Details", btnColor: "rgb(74 102 165)" });
+    setRegFormData({
+      reg_no: car.reg_no,
+      brand: car.brand,
+      color: car.color,
+      fleet: car.fleet.description,
+      fuelType: car.fuelType,
+      transmissionType: car.transmissionType,
+      noOfPassengers: car.noOfPassengers,
+      dailyRate: car.dailyRate,
+      monthlyRate: car.monthlyRate,
+      price_extraKM: car.price_extraKM,
+      freeKM_day: car.freeKM_day,
+      freeKM_month: car.freeKM_month,
+      ldw: fleet_fee,
+      currentStatus: car.currentStatus,
+    });
+
+    // let res = await FileUploadService.getCarFiles();
+    // // console.log(res);
+    // // if (res.status === 200) {
+    //   // setImages(() => {
+    //   //   return [...res.data.data];
+    //   // });
+    //   // tempArray = res.data.data;
+    //   // console.log(tempArray);
+    //   // setImages(...tempArray);
+    //   // console.log(images);
+    // }
+  }
+
+  function handleSaveUpdateBtn() {
+    if (btnProps.btnLabel == "Add Car") {
+      setConfirmDialog({
+        isOpen: true,
+        title: "Are you sure you want to Save this Car ?",
+        subTitle: "You can't revert this operation",
+        onConfirm: () => saveCar(),
+      });
+    } else {
+      setConfirmDialog({
+        isOpen: true,
+        title: "Are you sure you want to Update this Car ?",
+        subTitle: "You can't revert this operation",
+        onConfirm: () => updateCar(),
+      });
+    }
+  }
+
+  async function proceedSave() {
+    // if (filesToUpload.length !== 0) {
+    //   console.log("files are choosen");
+
+    let res1 = await CarService.saveCar(regFormData);
+    console.log(res1);
+    if (res1.status === 201) {
+      console.log("Car is saved...now save the images");
+
+      data.append("front", filesToUpload[0]);
+      data.append("rear", filesToUpload[1]);
+      data.append("side", filesToUpload[2]);
+      data.append("interior", filesToUpload[3]);
+
+      let res2 = await FileUploadService.uploadCarFiles(
+        regFormData.reg_no,
+        regFormData.fleet,
+        regFormData.brand,
+        data
+      );
+
+      if (res2.status === 200) {
+        console.log("all done...........");
+        setOpenAlert({
+          open: true,
+          alert: "Successully Saved!!!",
+          severity: "success",
+          variant: "standard",
+        });
+        loadData();
+        clearRegForm();
+        clearFiles();
+        setConfirmDialog({ isOpen: false });
+      } else {
+        setConfirmDialog({ isOpen: false });
+        setOpenAlert({
+          open: true,
+          alert: res2.response.data.message,
+          severity: "error",
+          variant: "standard",
+        });
+      }
+    } else {
+      setConfirmDialog({ isOpen: false });
+      setOpenAlert({
+        open: true,
+        alert: res1.response.data.message,
+        severity: "error",
+        variant: "standard",
+      });
+    }
+    // } else {
+    //   setOpenAlert({
+    //     open: true,
+    //     alert: "Please choose the Images for " + regFormData.brand,
+    //     severity: "warning",
+    //     variant: "standard",
+    //   });
+    // }
+  }
+
+  function saveCar() {
     console.log(regFormData);
     console.log(filesToUpload);
     console.log(validImageFiles);
@@ -263,54 +500,12 @@ function ManageCar(props) {
     if (filesToUpload.length !== 0) {
       console.log("files are choosen");
 
-      let res1 = await CarService.saveCar(regFormData);
-      console.log(res1);
-      if (res1.status === 201) {
-        console.log("Car is saved...now save the images");
-
-        // data.append("front", files[0]);
-        // data.append("rear", files[1]);
-        // data.append("side", files[2]);
-        // data.append("interior", files[3]);
-
-        data.append("front", filesToUpload[0]);
-        data.append("rear", filesToUpload[1]);
-        data.append("side", filesToUpload[2]);
-        data.append("interior", filesToUpload[3]);
-
-        let res2 = await FileUploadService.uploadCarFiles(
-          regFormData.fleet,
-          regFormData.brand,
-          data
-        );
-
-        if (res2.status === 200) {
-          console.log("all done...........");
-          // props.onClose();
-          setOpenAlert({
-            open: true,
-            alert: "Successully Saved!!!",
-            severity: "success",
-            variant: "standard",
-          });
-          clearRegForm();
-          clearFiles();
-        } else {
-          setOpenAlert({
-            open: true,
-            alert: res2.response.data.message,
-            severity: "error",
-            variant: "standard",
-          });
-        }
-      } else {
-        setOpenAlert({
-          open: true,
-          alert: res1.response.data.message,
-          severity: "error",
-          variant: "standard",
-        });
-      }
+      setConfirmDialog({
+        isOpen: true,
+        title: "Are you sure you want to Save this Car ?",
+        subTitle: "You can't revert this operation",
+        onConfirm: () => proceedSave(),
+      });
     } else {
       setOpenAlert({
         open: true,
@@ -321,12 +516,24 @@ function ManageCar(props) {
     }
   }
 
+  function proceedUpdate() {
+    console.log("updated");
+  }
+
+  function updateCar() {
+    console.log("update car");
+    setConfirmDialog({
+      isOpen: true,
+      title: "Are you sure you want to Update this Car ?",
+      subTitle: "You can't revert this operation",
+      onConfirm: () => proceedUpdate(),
+    });
+  }
+
   return (
     <>
       <AdminNavbar keepSelected={true} />
-
       {/* //--------------Title---------------- */}
-
       <Grid
         container
         xl={12}
@@ -346,9 +553,7 @@ function ManageCar(props) {
           Manage Cars
         </Typography>
       </Grid>
-
       {/* //-------------------------Subtitle--------------- */}
-
       <Grid
         container
         xl={12}
@@ -368,9 +573,7 @@ function ManageCar(props) {
           (Click on the relevant column to search/filter Cars)
         </Typography>
       </Grid>
-
       {/* //----------------------Details & Upload----------------- */}
-
       <Grid
         container
         xl={12}
@@ -397,7 +600,9 @@ function ManageCar(props) {
         >
           <ValidatorForm
             // className="pt-2"
-            onSubmit={saveCar}
+            // onSubmit={saveCar}
+            onSubmit={btnProps.btnLabel == "Add Car" ? saveCar : updateCar}
+            // onSubmit={handleSaveUpdateBtn}
             // style={{ /* border: "3px solid deeppink",  */ width: "100%" }}
           >
             <Grid
@@ -529,8 +734,8 @@ function ManageCar(props) {
                   <Autocomplete
                     id="cmb_color"
                     disablePortal
-                    // id="car_color"
                     options={colors}
+                    inputValue={regFormData.color}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
@@ -599,16 +804,23 @@ function ManageCar(props) {
                   <Autocomplete
                     id="cmb_fleet"
                     disablePortal
+                    inputValue={regFormData.fleet}
                     options={carFleet}
+                    getOptionLabel={(option) => option.fleet}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
                       <TextField {...params} label="Car Fleet" />
                     )}
+                    onInputChange={(e) => {
+                      console.log(e);
+                    }}
                     onChange={(e, v) => {
+                      console.log(v);
                       setRegFormData({
                         ...regFormData,
-                        fleet: v,
+                        fleet: v.fleet,
+                        ldw: v.fee,
                       });
                     }}
                   />
@@ -625,18 +837,33 @@ function ManageCar(props) {
                   <Autocomplete
                     id="cmb_ldw_fee"
                     disablePortal
-                    options={ldwFee}
+                    // options={ldwFee}
+                    options={carFleet}
+                    getOptionLabel={(option) => option.fee}
+                    inputValue={regFormData.ldw}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
-                      <TextField {...params} label="Loss Damage Waiver(Rs)" />
+                      <TextField
+                        {...params}
+                        label="Loss Damage Waiver(Rs)"
+                        // value={regFormData.ldw}
+                      />
                     )}
                     onChange={(e, v) => {
                       setRegFormData({
                         ...regFormData,
-                        ldw: v,
+                        ldw: v.fee,
+                        fleet: v.fleet,
                       });
                     }}
+                    // isOptionEqualToValue={(option, v) => {
+                    //   // console.log(option);
+                    //   // console.log(v);
+                    //   console.log(option === v);
+                    //   console.log(regFormData.fleet);
+                    //   // option.value === regFormData.fleet
+                    // }}
                   />
                 </Grid>
                 <Grid
@@ -675,10 +902,15 @@ function ManageCar(props) {
                     id="cmb_fuel_type"
                     disablePortal
                     options={fuelTypes}
+                    inputValue={regFormData.fuelType}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
-                      <TextField {...params} label="Fuel Type" />
+                      <TextField
+                        {...params}
+                        label="Fuel Type"
+                        // value={regFormData.fuelType}
+                      />
                     )}
                     onChange={(e, v) => {
                       setRegFormData({
@@ -701,10 +933,15 @@ function ManageCar(props) {
                     id="cmb_gear"
                     disablePortal
                     options={transmissionType}
+                    inputValue={regFormData.transmissionType}
                     xl={{ width: 300 }}
                     size="small"
                     renderInput={(params) => (
-                      <TextField {...params} label="Transmission Type" />
+                      <TextField
+                        {...params}
+                        label="Transmission Type"
+                        // value={regFormData.transmissionType}
+                      />
                     )}
                     onChange={(e, v) => {
                       setRegFormData({
@@ -903,8 +1140,12 @@ function ManageCar(props) {
               //   style={{ border: "2px solid red" }}
               className={classes.register_btn_container}
             >
-              <button type="submit" className={classes.btn__register}>
-                Add Car
+              <button
+                type="submit"
+                className={classes.btn__register}
+                style={{ backgroundColor: btnProps.btnColor }}
+              >
+                {btnProps.btnLabel}
               </button>
             </Grid>
           </ValidatorForm>
@@ -963,36 +1204,6 @@ function ManageCar(props) {
 
                 {/* //--------------- */}
 
-                {/* {images.map((img, index) => {
-                  <ImageListItem
-                    key={index}
-                    style={{ border: "2px solid blue" }}
-                  >
-                    <img
-                      src={img}
-                      // src={`${image}?w=164&h=164&fit=crop&auto=format`}
-                      alt={index}
-                      loading="lazy"
-                    />
-                  </ImageListItem>;
-                })} */}
-
-                {/* {images.map((img, index) => {
-                  // console.log(index);
-                  console.log(img);
-                  // console.log(`${img}`);
-                  console.log(images.length);
-                  <ImageListItem
-                    key={index}
-                    style={{ border: "2px solid blue" }}
-                  >
-                    ;kkkkkkkkkkkkkkkk
-                    <img key={img} src={img} alt="" loading="lazy" />
-                  </ImageListItem>;
-                })} */}
-
-                {/* //---------------- */}
-
                 <ImageListItem key={0}>
                   <img
                     src={images[0]}
@@ -1050,7 +1261,6 @@ function ManageCar(props) {
           </Grid>
         </Grid>
       </Grid>
-
       {/* //-------------------Car Table--------------- */}
       <Grid
         container
@@ -1064,7 +1274,28 @@ function ManageCar(props) {
           marginTop: "5vh",
         }}
       >
-        <TableCars page="CR" tableColumns={columns} tableData={rows} />
+        <TableCars
+          page="CR"
+          tableColumns={columns}
+          tableData={carData.map((item, index) => ({
+            id: index,
+            reg_no: item.reg_no,
+            brand: item.brand,
+            color: item.color,
+            fleet: item.fleet.description,
+            fuel: item.fuelType,
+            transmission: item.transmissionType,
+            passengers: item.noOfPassengers,
+            daily_rate: item.dailyRate,
+            monthly_rate: item.monthlyRate,
+            price_extraKM: item.price_extraKM,
+            freeKM_day: item.freeKM_day,
+            freeKM_month: item.freeKM_month,
+            status: item.currentStatus,
+          }))}
+          // getRowId={(row) => row.reg_no}
+          rowsPerPageOptions={5}
+        />
       </Grid>
       <MySnackBar
         open={openAlert.open}
@@ -1075,230 +1306,216 @@ function ManageCar(props) {
           setOpenAlert({ open: false });
         }}
       />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
+      ;
     </>
   );
 }
 
 export default withStyles(styleSheet)(ManageCar);
 
-const columns = [
-  {
-    field: "id",
-    headerName: "Actions",
-    renderCell: (cellValues) => {
-      // console.log(cellValues);
-      return (
-        <>
-          <Tooltip title="Edit">
-            <IconButton>
-              <EditIcon
-                // fontSize="large"
-                onClick={() => {
-                  console.log("clicked row : " + cellValues.id);
-                  //   handleAddRow(cellValues.row);
-                  //   handleRemoveRow(cellValues.id);
-                }}
-              />
-            </IconButton>
-          </Tooltip>
-
-          <Tooltip title="Delete">
-            <IconButton>
-              <DeleteIcon
-                // fontSize="large"
-                onClick={() => {
-                  console.log("clicked row : " + cellValues.id);
-                  //   handleAddRow(cellValues.row);
-                  //   handleRemoveRow(cellValues.id);
-                }}
-              />
-            </IconButton>
-          </Tooltip>
-        </>
-      );
-    },
-    width: 150,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "reg_no",
-    headerName: "Registration No",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "brand",
-    headerName: "Brand",
-    width: 140,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "color",
-    headerName: "Color",
-    width: 140,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "fleet",
-    headerName: "Car Fleet",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "fuel",
-    headerName: "Fuel Type",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "transmission",
-    headerName: "Transmission Type",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "passengers",
-    headerName: "Passengers",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "daily_rate",
-    headerName: "Daily Rate (Rs)",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "monthly_rate",
-    headerName: "Monthly Rate (Rs)",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "price_extraKM",
-    headerName: "Price per Extra KM (Rs)",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "freeKM_day",
-    headerName: "Free KM per Day",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "freeKM_month",
-    headerName: "Free KM per Month",
-    width: 130,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-
-  {
-    field: "status",
-    headerName: "Current Status",
-    width: 140,
-    headerClassName: "header_color",
-    headerAlign: "center",
-    align: "Center",
-  },
-];
-
-const rows = [
-  {
-    id: "0",
-    reg_no: "GC-5951",
-    brand: "Suzuki",
-    color: "White",
-    fleet: "General",
-    fuel: "Petrol",
-    transmission: "Manual",
-    passengers: "04",
-    daily_rate: "1000",
-    monthly_rate: "64500",
-    price_extraKM: "30",
-    freeKM_day: "100",
-    freeKM_month: "2400",
-    status: "Available",
-  },
-
-  {
-    id: "1",
-    reg_no: "GC-5952",
-    brand: "Suzuki",
-    color: "Black",
-    fleet: "General",
-    fuel: "Petrol",
-    transmission: "Auto",
-    passengers: "04",
-    daily_rate: "1000",
-    monthly_rate: "64500",
-    price_extraKM: "30",
-    freeKM_day: "100",
-    freeKM_month: "2400",
-    status: "Available",
-  },
-];
-
-// const itemData = [
+// const columns = [
 //   {
-//     // img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-//     // img: sample_img,
-//     img: front_img,
-//     title: "front",
+//     field: "id",
+//     headerName: "Actions",
+//     renderCell: (cellValues) => {
+//       // console.log(cellValues);
+//       return (
+//         <>
+//           <Tooltip title="Edit">
+//             <IconButton>
+//               <EditIcon
+//                 // fontSize="large"
+//                 onClick={() => {
+//                   console.log("clicked row : " + cellValues.id);
+//                   console.log(carData[cellValues.id]);
+//                   //   handleAddRow(cellValues.row);
+//                   //   handleRemoveRow(cellValues.id);
+//                 }}
+//               />
+//             </IconButton>
+//           </Tooltip>
+
+//           <Tooltip title="Delete">
+//             <IconButton>
+//               <DeleteIcon
+//                 // fontSize="large"
+//                 onClick={() => {
+//                   console.log("clicked row : " + cellValues.id);
+//                   //   handleAddRow(cellValues.row);
+//                   //   handleRemoveRow(cellValues.id);
+//                 }}
+//               />
+//             </IconButton>
+//           </Tooltip>
+//         </>
+//       );
+//     },
+//     width: 150,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
 //   },
+
 //   {
-//     // img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-//     img: rear_img,
-//     title: "rear",
+//     field: "reg_no",
+//     headerName: "Registration No",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
 //   },
+
 //   {
-//     // img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-//     img: side_img,
-//     title: "side",
+//     field: "brand",
+//     headerName: "Brand",
+//     width: 140,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
 //   },
+
 //   {
-//     // img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-//     img: interior_img,
-//     title: "interior",
+//     field: "color",
+//     headerName: "Color",
+//     width: 140,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "fleet",
+//     headerName: "Car Fleet",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "fuel",
+//     headerName: "Fuel Type",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "transmission",
+//     headerName: "Transmission Type",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "passengers",
+//     headerName: "Passengers",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "daily_rate",
+//     headerName: "Daily Rate (Rs)",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "monthly_rate",
+//     headerName: "Monthly Rate (Rs)",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "price_extraKM",
+//     headerName: "Price per Extra KM (Rs)",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "freeKM_day",
+//     headerName: "Free KM per Day",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "freeKM_month",
+//     headerName: "Free KM per Month",
+//     width: 130,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+
+//   {
+//     field: "status",
+//     headerName: "Current Status",
+//     width: 140,
+//     headerClassName: "header_color",
+//     headerAlign: "center",
+//     align: "Center",
+//   },
+// ];
+
+// let rows = [
+//   {
+//     id: "GC-5951",
+//     reg_no: "GC-5951",
+//     brand: "Suzuki",
+//     color: "White",
+//     fleet: "General",
+//     fuel: "Petrol",
+//     transmission: "Manual",
+//     passengers: "04",
+//     daily_rate: "1000",
+//     monthly_rate: "64500",
+//     price_extraKM: "30",
+//     freeKM_day: "100",
+//     freeKM_month: "2400",
+//     status: "Available",
+//   },
+
+//   {
+//     id: "1",
+//     reg_no: "GC-5952",
+//     brand: "Suzuki",
+//     color: "Black",
+//     fleet: "General",
+//     fuel: "Petrol",
+//     transmission: "Auto",
+//     passengers: "04",
+//     daily_rate: "1000",
+//     monthly_rate: "64500",
+//     price_extraKM: "30",
+//     freeKM_day: "100",
+//     freeKM_month: "2400",
+//     status: "Available",
 //   },
 // ];
 
 const imageTitles = ["front", "rear", "side", "interior"];
+
+// setFiles(() => {
+//       return [...files, ...e.target.files];
+//     });
