@@ -120,6 +120,7 @@ function ViewCustomerPage() {
           address: customer.address,
           contact_no: "0" + customer.contact_no,
         }))}
+        rowsPerPageOptions={5}
       />
     </>
   );

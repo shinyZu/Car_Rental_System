@@ -76,7 +76,7 @@ class RentalRequestRepoTest {
 
     @Test
     void getRentalDuration() {
-        String duration = rentalRequestRepo.getRentalDuration("RNTL-0001");
+        String duration = rentalRequestRepo.getRentalDuration("RNTL-0004");
         System.out.println(duration);
     }
 
@@ -169,5 +169,23 @@ class RentalRequestRepoTest {
             System.out.println(request.getKm_atPickUp());
             System.out.println(request.getKm_atReturn());
         }
+    }
+
+    @Test
+    void getAllReturns() {
+        List<Custom> active = rentalRequestRepo.getAllReturns("Active");
+        System.out.println(active);
+        System.out.println(active.get(0).getNic_no());
+        for (Custom request : active) {
+            System.out.println(request.getRental_id());
+            System.out.println(request.getNic_no());
+            System.out.println(request.getKm_atPickUp());
+//            System.out.println(request.getKm_atReturn());
+        }
+    }
+
+    @Test
+    void searchRentalByIDAndRegNo() {
+        List<Custom> active = rentalRequestRepo.searchRentalByIDAndRegNo("RNTL-0004","PB-5954");
     }
 }

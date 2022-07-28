@@ -48,4 +48,8 @@ public interface Custom {
 
     double getTotalPaymentForRental();
 
+    String getDriverStatus();
+
+    double getFee();
+
 }

@@ -47,10 +47,26 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", rentalRequestService.searchRental(rental_id));
     }
 
+    //Invoice Details
+    @GetMapping(path = "/{rental_id}", params={"reg_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchRentalByIDAndRegNo(@PathVariable("rental_id") String rental_id, @RequestParam("reg_no") String reg_no) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", rentalRequestService.searchRentalByIDAndRegNo(rental_id,reg_no));
+    }
+
+    @GetMapping(path = "duration", params={"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getRentalDuration( @RequestParam("rental_id") String rental_id) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Duration", rentalRequestService.getRentalDuration(rental_id));
+    }
+
     // getRentalForReturn
     @GetMapping(params = {"return_by"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchActiveRentalByCustomer(@RequestParam("return_by") String nic_no) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Details of the Rental To Be Returned by Customer "+nic_no, rentalRequestService.searchActiveRentalByCustomer(nic_no));
+    }
+
+    @GetMapping(path = "get_returns", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getReturns() {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Details of the Rental To Be Returned ", rentalRequestService.getAllReturns());
     }
 
     @GetMapping(params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)

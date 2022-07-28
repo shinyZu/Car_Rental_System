@@ -49,6 +49,10 @@ public class CustomDTO {
     private double km_atReturn;
     private double totalPaymentForRental;
 
+    private String driverStatus;
+    private double fee;
+
+
     public CustomDTO(String year, String income) {
         this.year = year;
         this.income = income;
@@ -73,6 +77,23 @@ public class CustomDTO {
         this.week = week;
         this.day = day;
         this.income = income;
+    }
+
+    public CustomDTO(String rental_id, String license_no, String reg_no, String nic_no, double km_atPickUp) {
+        this.rental_id = rental_id;
+        this.license_no = license_no;
+        this.reg_no = reg_no;
+        this.nic_no = nic_no;
+        this.km_atPickUp = km_atPickUp;
+    }
+
+    public CustomDTO(String rental_id, String license_no, String reg_no, String nic_no, double km_atPickUp, double km_atReturn) {
+        this.rental_id = rental_id;
+        this.license_no = license_no;
+        this.reg_no = reg_no;
+        this.nic_no = nic_no;
+        this.km_atPickUp = km_atPickUp;
+        this.km_atReturn = km_atReturn;
     }
 
     public CustomDTO(String rental_id, String license_no, int contact_no, String reg_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue) {
@@ -134,5 +155,21 @@ public class CustomDTO {
         this.km_atPickUp = km_atPickUp;
         this.km_atReturn = km_atReturn;
         this.totalPaymentForRental = totalPaymentForRental;
+    }
+
+    public CustomDTO(String rental_id, String license_no, String reg_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String nic_no, double km_atPickUp, String driverStatus, double fee) {
+        this.rental_id = rental_id;
+        this.license_no = license_no;
+        this.reg_no = reg_no;
+        this.pickUp_date = pickUp_date;
+        this.pickUp_time = pickUp_time;
+        this.pickUp_venue = pickUp_venue;
+        this.return_date = return_date;
+        this.return_time = return_time;
+        this.return_venue = return_venue;
+        this.nic_no = nic_no;
+        this.km_atPickUp = km_atPickUp;
+        this.driverStatus = driverStatus;
+        this.fee = fee;
     }
 }

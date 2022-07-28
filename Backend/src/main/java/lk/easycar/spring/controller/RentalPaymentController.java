@@ -27,12 +27,12 @@ public class RentalPaymentController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", rentalPaymentService.getAllRentalPayments());
     }
 
-    @GetMapping(path = "/{fee_id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchRentalPayment (@PathVariable("fee_id") String fee_id) {
+    @GetMapping(params = {"fee_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchRentalPayment (@RequestParam("fee_id") String fee_id) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", rentalPaymentService.searchRentalPayment(fee_id));
     }
 
-    @GetMapping(path = "calculate_rental", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/calculate_rental",  consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculatePaymentForEachCar(@RequestBody RentalDetailDTO dto) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Payment", rentalPaymentService.calculatePaymentForEachCar(dto));
     }

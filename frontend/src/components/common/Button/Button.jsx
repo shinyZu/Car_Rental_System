@@ -20,7 +20,7 @@ function MyButton(props) {
       onClick={() => {
         props.onClick();
       }}
-      style={props.style}
+      style={props.disabled ? props.btnDisableStyle : props.style}
     >
       {props.label}
       {/* {this.returnChildren(label, children)} */}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminNavbar from "../../../components/NavBar/AdminNavbar";
 import TableReturn from "../../../components/TableSearchPage/TableSearchPage";
 import { Grid } from "@mui/material";
@@ -31,6 +31,10 @@ import TextField from "@mui/material/TextField";
 
 import MyButton from "../../../components/common/Button/Button";
 import Footer from "../../../components/Footer/Footer";
+import RentalRequestService from "../../../services/RentalRequestService";
+import MySnackBar from "../../../components/common/Snackbar/MySnackbar";
+import RentalPaymentService from "../../../services/RentalPaymentService";
+import CarService from "../../../services/CarService";
 
 function RentalReturns(props) {
   const { classes } = props;
@@ -88,7 +92,7 @@ function RentalReturns(props) {
     },
 
     {
-      field: "customer_nic",
+      field: "nic_no",
       headerName: "Customer NIC",
       width: 200,
       headerClassName: "header_color",
@@ -170,7 +174,7 @@ function RentalReturns(props) {
   const [driverStatus, setDriverStatus] = useState("Required");
   const [licenseNo, setLicenseNo] = useState("B1234567");
   const [driverFee, setDriverFee] = useState(0);
-  const [ldwFee, setLDWFee] = useState("10000.0");
+  const [ldwFee, setLDWFee] = useState("20000.0");
   const [feeDeducted, setFeeDeducted] = useState(0);
   const [duration, setDuration] = useState(2);
 
@@ -179,11 +183,30 @@ function RentalReturns(props) {
 
   const [invoiceIsShown, setInvoiceIsShown] = useState("none");
 
+  const [tableRows, setTableRows] = useState([]);
+  const [invoiceData, setInvoiceData] = useState([]);
+
+  const [openAlert, setOpenAlert] = useState({
+    open: "",
+    alert: "",
+    severity: "",
+    variant: "",
+  });
+
+  const [isCalBtnDisable, setIsCalBtnDisable] = useState(true);
+  const [isDefectiveBtnDisable, setIsDefectiveBtnDisable] = useState(true);
+  const [isMaintBtnDisable, setIsMaintBtnDisable] = useState(true);
+  const [isConfirmBtnDisable, setIsConfirmBtnDisable] = useState(true);
+
+  useEffect(() => {
+    getAllRentalsToBeReturned();
+  }, []);
+
   function setInvoiceDetails(row) {
-    //   getInvoiceDetailsFromDB(row.rental_id, row.reg_no);
+    getInvoiceDetailsFromDB(row.rental_id, row.reg_no);
     setRentalID(row.rental_id);
     setRegNo(row.reg_no);
-    setCustNIC(row.customer_nic);
+    setCustNIC(row.nic_no);
     setKmAtPick(row.km_atPickUp);
     if (row.license_no == "null") {
       setLicenseNo("-");
@@ -191,6 +214,226 @@ function RentalReturns(props) {
     } else {
       setLicenseNo(row.license_no);
       setDriverStatus("Required");
+    }
+  }
+
+  async function getInvoiceDetailsFromDB(rental_id, reg_no) {
+    let res = await RentalRequestService.getInvoiceDetails(rental_id, reg_no);
+    console.log(res);
+    if (res.status === 200) {
+      if (res.data.data != []) {
+        let details = res.data.data[0];
+        console.log(details);
+        setDatePick(details.pickUp_date);
+        setTimePick(details.pickUp_time);
+        setVenuePick(details.pickUp_venue);
+        setDateReturn(details.return_date);
+        setTimeReturn(details.return_time);
+        setVenueReturn(details.return_venue);
+        setLDWFee(details.fee);
+        getRentalDuration(rental_id);
+      }
+    }
+  }
+
+  async function getRentalDuration(rental_id) {
+    let res = await RentalRequestService.getRentalDuration(rental_id);
+    console.log(res);
+    if (res.status === 200) {
+      if (res.data.data != []) {
+        let duration = res.data.data;
+        console.log(duration);
+        setDuration(duration);
+      }
+    }
+  }
+
+  async function getAllRentalsToBeReturned() {
+    let res = await RentalRequestService.getAllRentalsToBeReturned();
+    console.log(res);
+    if (res.status === 200) {
+      if (res.data.data != []) {
+        let details = res.data.data;
+        console.log(details);
+        setTableRows(() => {
+          return [...res.data.data];
+        });
+        console.log(tableRows);
+      }
+    }
+  }
+
+  function handleCalBtnStatus() {
+    if (driverFee <= 0 && kmAtReturn <= 0 && feeDeducted <= 0) {
+      setIsCalBtnDisable(true);
+    } else {
+      setIsCalBtnDisable(false);
+    }
+  }
+
+  async function calculatePayment() {
+    console.log("Payment");
+    console.log(driverFee);
+    if (driverFee == 0 || kmAtReturn == 0 || feeDeducted == 0) {
+      setOpenAlert({
+        open: true,
+        alert: "Please fill the requied fields to Calculate Payment",
+        severity: "warning",
+        variant: "standard",
+      });
+    } else if (driverFee < 0 || kmAtReturn < 0 || feeDeducted < 0) {
+      setOpenAlert({
+        open: true,
+        alert: "Invalid Inputs...Check your inputs",
+        severity: "warning",
+        variant: "standard",
+      });
+    } else {
+      console.log("Cal Payment");
+      let details = {
+        rental_id: rentalID,
+        reg_no: regNo,
+        feeDeductedFromLDW: feeDeducted,
+        km_atReturn: kmAtReturn,
+      };
+      console.log(details);
+      let res1 = await RentalPaymentService.calculatePaymentForEachCar(details);
+      console.log(res1.data.data);
+
+      if (res1.status === 200) {
+        let res2 = await RentalRequestService.calculateTotalPaymentForRental(
+          rentalID
+        );
+        console.log(res2);
+        let totalPayment = res2.data.data;
+        console.log(totalPayment);
+        setTotalRental(totalPayment);
+
+        if (res2.status === 200) {
+          let res3 = await RentalRequestService.calculateAmountToReturn(
+            rentalID
+          );
+          console.log(res3);
+          let returnBack = res3.data.data;
+          console.log(returnBack);
+          setAmountReturn(returnBack);
+
+          if (res3.status === 200) {
+            console.log(res3.data.message);
+
+            let updateInfo = {
+              reg_no: regNo,
+              currentStatus: "Available",
+            };
+            let res4 = await CarService.updateCarStatus(updateInfo);
+            console.log(res4);
+            if (res4.status === 200) {
+              setOpenAlert({
+                open: true,
+                alert: "Payment Recorded Successfully!",
+                severity: "success",
+                variant: "standard",
+              });
+              // clearInvoiceFields();
+              setIsCalBtnDisable(true);
+              setIsDefectiveBtnDisable(false);
+              setIsMaintBtnDisable(false);
+              setIsConfirmBtnDisable(false);
+            }
+          } else {
+            setOpenAlert({
+              open: true,
+              alert: res3.response.data.message,
+              severity: "error",
+              variant: "standard",
+            });
+          }
+        } else {
+          setOpenAlert({
+            open: true,
+            alert: res2.response.data.message,
+            severity: "error",
+            variant: "standard",
+          });
+        }
+      } else {
+        setOpenAlert({
+          open: true,
+          alert: res1.response.data.message,
+          severity: "error",
+          variant: "standard",
+        });
+      }
+    }
+  }
+
+  function clearInvoiceFields() {
+    setRentalID("");
+    setRegNo("");
+    setCustNIC("");
+    setDatePick("");
+    setTimePick("");
+    setVenuePick("");
+    setDateReturn("");
+    setTimeReturn("");
+    setVenueReturn("");
+    setDriverStatus("");
+    setLicenseNo("");
+    setLDWFee("");
+    getRentalDuration("");
+    setDriverFee(0);
+    setKmAtPick("");
+    setKmAtReturn(0);
+    setKmTravelled("");
+    setLDWFee("");
+    setFeeDeducted(0);
+    setDuration(0);
+    setIsCalBtnDisable(true);
+  }
+
+  async function markCarAsDefective() {
+    if (totalRental != 0) {
+      let updateInfo = {
+        reg_no: regNo,
+        currentStatus: "Need Maintenance",
+      };
+      let res = await CarService.updateCarStatus(updateInfo);
+      if (res.status === 200) {
+        setOpenAlert({
+          open: true,
+          alert: res.data.message,
+          severity: "success",
+          variant: "standard",
+        });
+      }
+    }
+  }
+  async function addCarToMaintenance() {
+    if (totalRental != 0) {
+      let updateInfo = {
+        reg_no: regNo,
+        currentStatus: "Under Maintenance",
+      };
+      let res = await CarService.updateCarStatus(updateInfo);
+      if (res.status === 200) {
+        setOpenAlert({
+          open: true,
+          alert: res.data.message,
+          severity: "success",
+          variant: "standard",
+        });
+      }
+    }
+  }
+  async function finalizeRentalProcess() {
+    if (totalRental != 0) {
+      clearInvoiceFields();
+      setIsCalBtnDisable(true);
+      setIsDefectiveBtnDisable(true);
+      setIsMaintBtnDisable(true);
+      setIsConfirmBtnDisable(true);
+      setInvoiceIsShown("none");
+      getAllRentalsToBeReturned();
     }
   }
 
@@ -205,8 +448,18 @@ function RentalReturns(props) {
         pageTitle="Rental Returns"
         pageSubtitle="You can Search,View, Accept Rental Returns and Calculate Rental Payments here...."
         tableColumns={columns}
-        tableData={rows}
+        // tableData={rows}
+        tableData={tableRows.map((detail, index) => ({
+          id: index,
+          rental_id: detail.rental_id,
+          reg_no: detail.reg_no,
+          nic_no: detail.nic_no,
+          license_no: detail.license_no,
+          km_atPickUp: detail.km_atPickUp,
+          km_atReturn: detail.km_atReturn,
+        }))}
         stickyHeader={true}
+        rowsPerPageOptions={5}
       />
 
       {/* //---------------Invoice Details displayed on Button clicked--------- */}
@@ -485,6 +738,7 @@ function RentalReturns(props) {
                     type="number"
                     onChange={(e) => {
                       setDriverFee(e.target.value);
+                      handleCalBtnStatus();
                     }}
                   />
                 </Typography>
@@ -549,6 +803,7 @@ function RentalReturns(props) {
                     onChange={(e) => {
                       setKmAtReturn(e.target.value);
                       setKmTravelled(e.target.value - kmAtPick);
+                      handleCalBtnStatus();
                     }}
                   />
                 </Typography>
@@ -613,19 +868,22 @@ function RentalReturns(props) {
                     type="number"
                     onChange={(e) => {
                       setFeeDeducted(e.target.value);
+                      handleCalBtnStatus();
                     }}
                   />
                 </Typography>
                 <Typography variant="h7">
                   {" "}
                   : &nbsp;
-                  {duration < 30
+                  {duration < 30 && duration > 0
                     ? duration + " Day/s"
                     : duration / 30 >= 1
                     ? (duration / 30) % 1 == 0
-                      ? +(duration / 30) + " Month/s"
-                      : (duration / 30).toFixed(1) + " Month/s"
-                    : ""}
+                    : +(duration / 30) + " Month/s"
+                    ? (duration / 30).toFixed(1) + " Month/s"
+                    : duration == 0
+                    ? "0 Days"
+                    : null}
                 </Typography>
               </Grid>
             </Grid>
@@ -648,6 +906,9 @@ function RentalReturns(props) {
               variant="outlined"
               type="button"
               className={classes.calculate_btn}
+              onClick={calculatePayment}
+              disabled={isCalBtnDisable}
+              btnDisableStyle={{ backgroundColor: "#92c3b9 !important" }}
             />
           </Grid>
 
@@ -706,7 +967,7 @@ function RentalReturns(props) {
             </Grid>
           </Grid>
 
-          {/* //---------Confirm Return, AddTo Maintenanc, Mark Defective Buttons-------------should update km-AtPickUp = km_AtReturn in DB  */}
+          {/* //---------Confirm Return, AddTo Maintenance, Mark Defective Buttons-------------should update km-AtPickUp = km_AtReturn in DB  */}
 
           <Grid
             container
@@ -737,7 +998,9 @@ function RentalReturns(props) {
                 label="Mark Defective"
                 variant="outlined"
                 type="button"
+                disabled={isDefectiveBtnDisable}
                 className={classes.mark_defective_btn}
+                onClick={markCarAsDefective}
               />
             </Grid>
             <Grid
@@ -758,7 +1021,9 @@ function RentalReturns(props) {
                 label="Add To Maintenance"
                 variant="outlined"
                 type="button"
+                disabled={isMaintBtnDisable}
                 className={classes.add_to_maintenance_btn}
+                onClick={addCarToMaintenance}
               />
             </Grid>
             <Grid
@@ -779,12 +1044,23 @@ function RentalReturns(props) {
                 label="Confirm Return"
                 variant="outlined"
                 type="button"
+                disabled={isConfirmBtnDisable}
                 className={classes.confirm_return_btn}
+                onClick={finalizeRentalProcess} // mark car as Available if not mark as defective or added to maintenance
               />
             </Grid>
           </Grid>
         </Grid>
       </div>
+      <MySnackBar
+        open={openAlert.open}
+        alert={openAlert.alert}
+        severity={openAlert.severity}
+        variant={openAlert.variant}
+        onClose={() => {
+          setOpenAlert({ open: false });
+        }}
+      />
     </>
   );
 }

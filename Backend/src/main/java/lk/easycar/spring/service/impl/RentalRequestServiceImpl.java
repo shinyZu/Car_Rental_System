@@ -117,6 +117,34 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public List<CustomDTO> searchRentalByIDAndRegNo(String rental_id, String reg_no) {
+        ArrayList<CustomDTO> returnDetails = new ArrayList<>();
+        for (Custom custom: rentalRequestRepo.searchRentalByIDAndRegNo(rental_id,reg_no)) {
+            returnDetails.add(new CustomDTO(
+                    custom.getRental_id(),
+                    custom.getLicense_no(),
+                    custom.getReg_no(),
+                    custom.getPickUp_date(),
+                    custom.getPickUp_time(),
+                    custom.getPickUp_venue(),
+                    custom.getReturn_date(),
+                    custom.getReturn_time(),
+                    custom.getReturn_venue(),
+                    custom.getNic_no(),
+                    custom.getKm_atPickUp(),
+                    custom.getDriverStatus(),
+                    custom.getFee()
+            ));
+        }
+        return returnDetails;
+    }
+
+    @Override
+    public String getRentalDuration(String rental_id) {
+        return rentalRequestRepo.getRentalDuration(rental_id);
+    }
+
+    @Override
     public RentalRequestDTO searchActiveRentalByCustomer(String nic_no) {
         if (customerRepo.existsById(nic_no)) {
             RentalRequest activeRental = rentalRequestRepo.getRentalRequestByCustomer(nic_no, "Active");
@@ -130,6 +158,22 @@ public class RentalRequestServiceImpl implements RentalRequestService {
         } else {
             throw new RuntimeException("No Customer with NIC No " + nic_no + "... Please check the Customer NIC...");
         }
+    }
+
+    @Override
+    public List<CustomDTO> getAllReturns() {
+        ArrayList<CustomDTO> returns = new ArrayList<>();
+        for (Custom custom: rentalRequestRepo.getAllReturns("Active")) {
+            returns.add(new CustomDTO(
+                    custom.getRental_id(),
+                    custom.getLicense_no(),
+                    custom.getReg_no(),
+                    custom.getNic_no(),
+                    custom.getKm_atPickUp()
+//                    custom.getKm_atReturn()
+            ));
+        }
+       return returns;
     }
 
     @Override

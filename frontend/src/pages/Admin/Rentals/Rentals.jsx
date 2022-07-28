@@ -11,6 +11,7 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import ConfirmDialog from "../../../components/common/ConfirmDialog/ConfirmDialog";
 import MySnackBar from "../../../components/common/Snackbar/MySnackbar";
 
@@ -18,7 +19,7 @@ function RentalRequests() {
   const columns = [
     {
       field: "id",
-      headerName: "Actions",
+      headerName: "Action/Status",
       renderCell: (cellValues) => {
         return (
           <>
@@ -39,6 +40,18 @@ function RentalRequests() {
                 <IconButton>
                   <CancelIcon
                     style={{ color: "red" }}
+                    onClick={() => {
+                      // console.log("clicked row : " + cellValues.id);
+                      // console.log(tableRows[cellValues.id]);
+                    }}
+                  />
+                </IconButton>
+              </Tooltip>
+            ) : tableRows[cellValues.id].requestStatus === "Active" ? (
+              <Tooltip title="Active Rentals">
+                <IconButton>
+                  <AccessTimeFilledIcon
+                    // style={{ color: "red" }}
                     onClick={() => {
                       // console.log("clicked row : " + cellValues.id);
                       // console.log(tableRows[cellValues.id]);
@@ -269,7 +282,7 @@ function RentalRequests() {
   }
 
   async function proceedAccept(rental) {
-    let data = { rental_id: rental.rental_id, requestStatus: "Accepted" };
+    let data = { rental_id: rental.rental_id, requestStatus: "Active" };
     console.log(data);
     let res = await RentalRequestService.acceptRental(data);
     console.log(res);
@@ -343,6 +356,7 @@ function RentalRequests() {
           km_atReturn: request.km_atReturn,
           totalPaymentForRental: request.totalPaymentForRental,
         }))}
+        rowsPerPageOptions={5}
       />
       <MySnackBar
         open={openAlert.open}

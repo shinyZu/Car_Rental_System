@@ -108,4 +108,36 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
             "inner join Customer cu \n" +
             "on r.customer_nic = cu.nic_no", nativeQuery=true)
     List<Custom> getAllRentalsRequests();
+
+    @Query(value = "select r.rental_id, c.reg_no, cu.nic_no, d.license_no, rd.km_atPickUp\n" +
+            "from RentalRequest r inner join RentalDetail rd\n" +
+            "on r.rental_id = rd.rental_id\n" +
+            "inner join Driver d\n" +
+            "on rd.driver_licenseNo = d.license_no\n" +
+            "inner join Car c\n" +
+            "on rd.reg_no = c.reg_no\n" +
+            "inner join Customer cu \n" +
+            "on r.customer_nic = cu.nic_no\n" +
+            "where r.requestStatus =?1", nativeQuery=true)
+    List<Custom> getAllReturns(String status);
+
+    @Query(value = "select r.rental_id, c.reg_no, cu.nic_no, \n" +
+            "r.pickUp_date,r.pickUp_time,r.pickUp_venue,\n" +
+            "r.return_date,r.return_time,r.return_venue, \n" +
+            "rd.driverStatus,d.license_no, \n" +
+            "rd.km_atPickUp, ldw.fee\n" +
+            "from RentalRequest r inner join RentalDetail rd\n" +
+            "on r.rental_id = rd.rental_id\n" +
+            "inner join Driver d\n" +
+            "on rd.driver_licenseNo = d.license_no\n" +
+            "inner join Car c\n" +
+            "on rd.reg_no = c.reg_no\n" +
+            "inner join Customer cu \n" +
+            "on r.customer_nic = cu.nic_no\n" +
+            "inner join CarFleet cf\n" +
+            "on c.fleet_id = cf.fleet_id\n" +
+            "inner join LDWPayment ldw\n" +
+            "on cf.fleet_id = ldw.fleet_id\n" +
+            "where c.reg_no = ?2 and r.rental_id = ?1", nativeQuery=true)
+    List<Custom> searchRentalByIDAndRegNo(String rental_id, String reg_no);
 }
