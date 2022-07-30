@@ -146,6 +146,64 @@ class RentalRequestService {
     });
     return await promise;
   };
+
+  generateNextID = async () => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("rentals/next_id")
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  placeRentalRequest = async (data) => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .post("rentals", data)
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  getCustomerBookings = async (nic_no) => {
+    let params = { nic_no: nic_no };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("rentals/bookings", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  searchRentalByID = async (rental_id) => {
+    // let params = { rental_id: rental_id };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("rentals/" + rental_id)
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new RentalRequestService();

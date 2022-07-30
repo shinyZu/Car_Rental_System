@@ -60,6 +60,7 @@ function AdminNavbar(props) {
   }
 
   const { classes } = props;
+  console.log(auth);
 
   const navLinkStyle = ({ isActive }) => {
     // isActive will be set to true if the link is the current route

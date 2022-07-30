@@ -9,6 +9,9 @@ export const AuthProvider = ({ children }) => {
     email: null,
     password: null,
     userStatus: null,
+    // email: "",
+    // password: "",
+    // userStatus: "",
   });
 
   const login = (user) => {

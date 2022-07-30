@@ -119,7 +119,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     @Override
     public List<CustomDTO> searchRentalByIDAndRegNo(String rental_id, String reg_no) {
         ArrayList<CustomDTO> returnDetails = new ArrayList<>();
-        for (Custom custom: rentalRequestRepo.searchRentalByIDAndRegNo(rental_id,reg_no)) {
+        for (Custom custom : rentalRequestRepo.searchRentalByIDAndRegNo(rental_id, reg_no)) {
             returnDetails.add(new CustomDTO(
                     custom.getRental_id(),
                     custom.getLicense_no(),
@@ -163,7 +163,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     @Override
     public List<CustomDTO> getAllReturns() {
         ArrayList<CustomDTO> returns = new ArrayList<>();
-        for (Custom custom: rentalRequestRepo.getAllReturns("Active")) {
+        for (Custom custom : rentalRequestRepo.getAllReturns("Active")) {
             returns.add(new CustomDTO(
                     custom.getRental_id(),
                     custom.getLicense_no(),
@@ -173,7 +173,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
 //                    custom.getKm_atReturn()
             ));
         }
-       return returns;
+        return returns;
     }
 
     @Override
@@ -346,7 +346,31 @@ public class RentalRequestServiceImpl implements RentalRequestService {
     }
 
     @Override
+    public List<CustomDTO> getCustomerBookings(String nic_no) {
+        ArrayList<CustomDTO> bookings = new ArrayList<>();
+        for (Custom custom : rentalRequestRepo.getCustomerBookings(nic_no)) {
+            bookings.add(new CustomDTO(
+                    custom.getRental_id(),
+                    custom.getContact_no(),
+                    custom.getReg_no(),
+                    custom.getPickUp_date(),
+                    custom.getPickUp_time(),
+                    custom.getPickUp_venue(),
+                    custom.getReturn_date(),
+                    custom.getReturn_time(),
+                    custom.getReturn_venue(),
+                    custom.getRequestStatus(),
+                    custom.getTotalPaymentForRental(),
+                    custom.getDriverStatus(),
+                    custom.getBrand()
+            ));
+        }
+        return bookings;
+    }
+
+    @Override
     public boolean placeRentalRequest(RentalRequestDTO dto) {
+        System.out.println("--------------------------" + dto.getPickUp_time());
         RentalRequest rentalRequest = mapper.map(dto, RentalRequest.class);
         List<RentalDetail> rentalDetails = rentalRequest.getRentalDetails();
 

@@ -85,6 +85,11 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Total No Of Rentals For The Day", rentalRequestService.getNoOfTotalRentalsForTheDay(LocalDate.parse(date)));
     }
 
+    @GetMapping(path = "bookings", params = {"nic_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCustomerBookings(@RequestParam("nic_no") String nic_no) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Total No Of Rentals For The Day", rentalRequestService.getCustomerBookings(nic_no));
+    }
+
     @GetMapping(path = "calculate_total_rental_of", params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateTotalPaymentForRental(@RequestParam("rental_id") String rental_id) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Total Rental Payment", rentalRequestService.calculateTotalPaymentForRental(rental_id));
@@ -130,6 +135,8 @@ public class RentalRequestController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil placeRentalRequest(@RequestBody RentalRequestDTO dto) {
+        System.out.println(dto);
+        System.out.println(dto.getPickUp_time());
         return new ResponseUtil(HttpServletResponse.SC_CREATED, "Rental Request Placed Successfully..!", rentalRequestService.placeRentalRequest(dto));
     }
 

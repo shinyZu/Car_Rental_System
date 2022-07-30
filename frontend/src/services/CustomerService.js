@@ -43,6 +43,21 @@ class CustomerService {
     });
     return await promise;
   };
+
+  getCustomerByEmail = async (email) => {
+    let params = { email: email };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("customer", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new CustomerService();

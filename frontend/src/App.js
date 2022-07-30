@@ -26,136 +26,138 @@ import MyProfile from "./pages/Customer/MyProfile/MyProfile";
 
 function App() {
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path="/" exact element={<Home />}></Route>
-        <Route path="/car_details" element={<CarDetail />}></Route>
-        <Route
-          path="/my_bookings"
-          element={
-            <RequireAuth>
-              <MyBooking />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/my_payments"
-          element={
-            <RequireAuth>
-              <MyPayments />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/my_profile"
-          element={
-            <RequireAuth>
-              <MyProfile />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/confirmation_details"
-          element={
-            <RequireAuth>
-              <Confirmation />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/dashboard"
-          element={
-            <RequireAuth>
-              <Dashboard />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/manage_car"
-          element={
-            <RequireAuth>
-              <ManageCar />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/manage_customer"
-          element={
-            <RequireAuth>
-              <ViewCustomerPage />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/manage_driver"
-          element={
-            <RequireAuth>
-              <ManageDrivers />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/rental_requests"
-          element={
-            <RequireAuth>
-              <RentalRequests />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/return_details"
-          element={
-            <RequireAuth>
-              <RentalReturns />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/maintenance"
-          element={
-            <RequireAuth>
-              <Maintenance />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/income"
-          element={
-            <RequireAuth>
-              <Income />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/driver_schedule"
-          element={
-            <RequireAuth>
-              <DriverSchedule />
-            </RequireAuth>
-          }
-        ></Route>
-        <Route path="*" element={<NotFound />} />
+    <>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" exact element={<Home />}></Route>
+          <Route path="/car_details" element={<CarDetail />}></Route>
+          <Route
+            path="/my_bookings"
+            element={
+              <RequireAuth>
+                <MyBooking />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/my_payments"
+            element={
+              <RequireAuth>
+                <MyPayments />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/my_profile"
+            element={
+              <RequireAuth>
+                <MyProfile />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/confirmation_details"
+            element={
+              <RequireAuth>
+                <Confirmation />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/manage_car"
+            element={
+              <RequireAuth>
+                <ManageCar />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/manage_customer"
+            element={
+              <RequireAuth>
+                <ViewCustomerPage />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/manage_driver"
+            element={
+              <RequireAuth>
+                <ManageDrivers />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/rental_requests"
+            element={
+              <RequireAuth>
+                <RentalRequests />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/return_details"
+            element={
+              <RequireAuth>
+                <RentalReturns />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/maintenance"
+            element={
+              <RequireAuth>
+                <Maintenance />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/income"
+            element={
+              <RequireAuth>
+                <Income />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/driver_schedule"
+            element={
+              <RequireAuth>
+                <DriverSchedule />
+              </RequireAuth>
+            }
+          ></Route>
 
-        <Route
-          path="/driver_profile"
-          element={
-            <RequireAuth>
-              <MyProfile />
-            </RequireAuth>
-          }
-        />
-        {/* //------------------------ */}
-        <Route
-          path="/profile"
-          element={
-            <RequireAuth>
-              <Profile />
-            </RequireAuth>
-          }
-        />
-        <Route path="/testLogin" element={<TestLogin />} />
-      </Routes>
-    </AuthProvider>
+          <Route
+            path="/driver_profile"
+            element={
+              <RequireAuth>
+                <MyProfile />
+              </RequireAuth>
+            }
+          />
+          {/* //------------------------ */}
+          <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+          />
+          <Route path="/testLogin" element={<TestLogin />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AuthProvider>
+    </>
   );
 }
 

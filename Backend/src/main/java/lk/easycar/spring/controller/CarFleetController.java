@@ -35,6 +35,11 @@ public class CarFleetController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", carFleetService.searchCarFleet(fleet_id));
     }
 
+    @GetMapping(path = "get_ldw", params = {"description","reg_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getLDWFeeByDescription(@RequestParam("description") String description, @RequestParam("reg_no") String reg_no){
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", carFleetService.getLDWFeeByDescription(description,reg_no));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCarFleet(@ModelAttribute CarFleetDTO dto) {

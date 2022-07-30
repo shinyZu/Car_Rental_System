@@ -56,6 +56,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public CustomerDTO getCustomerByEmail(String email) {
+        return mapper.map(customerRepo.getCustomerByEmail(email),CustomerDTO.class);
+    }
+
+    @Override
     public CustomerDTO saveCustomer(CustomerDTO dto) {
         /*if (!customerRepo.existsById(dto.getNic_no())) {
             return mapper.map(customerRepo.save(mapper.map(dto, Customer.class)),CustomerDTO.class);

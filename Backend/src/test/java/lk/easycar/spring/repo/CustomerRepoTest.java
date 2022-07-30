@@ -1,6 +1,7 @@
 package lk.easycar.spring.repo;
 
 import lk.easycar.spring.config.JPAConfig;
+import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.entity.RentalRequest;
 import org.junit.jupiter.api.Test;
@@ -55,5 +56,11 @@ class CustomerRepoTest {
     void searchForAnyDuplicateContact() {
         int i = customerRepo.searchForAnyDuplicateContact("0716455451");
         System.out.println(i);
+    }
+
+    @Test
+    void getCustomerByEmail() {
+        Customer customer = customerRepo.getCustomerByEmail("bimal@gmail.com");
+        System.out.println(customer);
     }
 }

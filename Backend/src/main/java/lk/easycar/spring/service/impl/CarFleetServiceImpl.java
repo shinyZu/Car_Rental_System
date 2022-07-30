@@ -7,6 +7,7 @@ import lk.easycar.spring.entity.Car;
 import lk.easycar.spring.entity.CarFleet;
 import lk.easycar.spring.entity.Customer;
 import lk.easycar.spring.repo.CarFleetRepo;
+import lk.easycar.spring.repo.CarRepo;
 import lk.easycar.spring.service.CarFleetService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -22,6 +23,9 @@ public class CarFleetServiceImpl implements CarFleetService {
 
     @Autowired
     private CarFleetRepo carFleetRepo;
+
+    @Autowired
+    private CarRepo carRepo;
 
     @Autowired
     private ModelMapper mapper;
@@ -63,6 +67,20 @@ public class CarFleetServiceImpl implements CarFleetService {
             return mapper.map(carFleetRepo.findById(fleet_id), CarFleetDTO.class);
         } else {
             throw new RuntimeException("No Any Car Fleet with with ID " + fleet_id);
+        }
+    }
+
+    @Override
+    public double getLDWFeeByDescription(String fleet,String reg_no) {
+        if (carFleetRepo.getCarFleetByDescription(fleet) != null) {
+
+            if (carRepo.existsById(reg_no)) {
+                return carFleetRepo.getLDWFeeByDescription(fleet, reg_no);
+            } else {
+                throw new RuntimeException(reg_no + " currently not available");
+            }
+        } else {
+            throw new RuntimeException("No Car Fleet named " + fleet);
         }
     }
 

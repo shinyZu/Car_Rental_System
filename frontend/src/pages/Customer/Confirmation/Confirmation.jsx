@@ -9,9 +9,15 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import { Grid } from "@mui/material";
+import { useAuth } from "../../Session/Auth";
+import { useLocation } from "react-router-dom";
+import RentalRequestService from "../../../services/RentalRequestService";
 
 function Confirmation(props) {
   const { classes } = props;
+  const auth = useAuth();
+  const { state } = useLocation();
+  console.log(state);
   const [bookingStatus, setBookingStatus] = useState("Accepted");
   const [rentalID, setRentalID] = useState("RNTL-0000");
   const [customerEmail, setCustomerEmail] = useState("kamal@gmail.com");
@@ -34,11 +40,38 @@ function Confirmation(props) {
   useEffect(() => {
     if (props.requestStatus == "Accepted") {
       setBookingStatus("Accepted");
-      setRentalID(props.nextRentalID);
+      // setRentalID(props.nextRentalID);
+      setRentalID(state.rental_id);
+      // setConfirmationInfo(state);
+      getRequestDetails(rentalID);
     } else if (props.requestStatus == "Denied") {
       setBookingStatus("Denied");
     }
   }, []);
+
+  function setConfirmationInfo() {
+    setInvoice({
+      customer_nic: state.customer.nic_no,
+      reg_no: state.rentalDetails[0].reg_no,
+      brand: "BMW i8",
+      fleet: "Luxury",
+      ldw: "20000",
+      driver_contact: "0766455451",
+      p_date: "2022-07-21",
+      p_time: "09:30",
+      p_venue: "Rental Premises",
+      r_date: "2022-07-25",
+      r_time: "13:00",
+      r_venue: "Rental Premises",
+    });
+  }
+
+  async function getRequestDetails(rental_id) {
+    let res = await RentalRequestService.searchRentalByID(rental_id);
+    if (res.status === 200) {
+      console.log(res);
+    }
+  }
 
   return (
     <>
@@ -61,7 +94,8 @@ function Confirmation(props) {
               fontSize="100px"
               className={classes.confirm__icon}
             />
-            Request {bookingStatus}
+            {/* Request {bookingStatus} */}
+            Request Sent Successfully!!!
           </Typography>
         </Paper>
       </Grid>
@@ -83,9 +117,11 @@ function Confirmation(props) {
             <Typography variant="h5" color="#898989" align="center">
               Your Rental ID is : <b>{rentalID}</b>
             </Typography>
-            (Please make a <b>note</b> of your Rental ID <b>now</b>, which may
+            {/* (Please make a <b>note</b> of your Rental ID <b>now</b>, which may
             be useful in case you need to get more details regarding your
-            booking)
+            booking) */}
+            You can check your Request Status (Accepted/Denied) at your Bookings
+            Section...
             <Typography variant="h6" color="#b7b6b6" align="center">
               You may have recieved a confirmation email to{" "}
               <email>{customerEmail}</email>, if not please contact us....

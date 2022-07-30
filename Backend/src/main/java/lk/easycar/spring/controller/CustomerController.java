@@ -33,6 +33,11 @@ public class CustomerController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", customerService.searchCustomer(nic_no));
     }
 
+    @GetMapping(params = {"email"} , produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCustomerByEmail(@RequestParam("email") String email) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Customer By Email", customerService.getCustomerByEmail(email));
+    }
+
     // Register Customer
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

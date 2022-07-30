@@ -76,7 +76,7 @@ function NavBarRegistered(props) {
             />
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             smooth
             to="/my_payments"
             className={classes.nav__text}
@@ -87,7 +87,7 @@ function NavBarRegistered(props) {
               className={classes.nav__text}
               label="Payments"
             />
-          </NavLink>
+          </NavLink> */}
         </div>
         <div className={classes.nav__right}>
           <NavLink

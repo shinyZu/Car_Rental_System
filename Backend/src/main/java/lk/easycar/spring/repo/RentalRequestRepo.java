@@ -140,4 +140,20 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
             "on cf.fleet_id = ldw.fleet_id\n" +
             "where c.reg_no = ?2 and r.rental_id = ?1", nativeQuery=true)
     List<Custom> searchRentalByIDAndRegNo(String rental_id, String reg_no);
+
+    @Query(value = "select r.rental_id, c.reg_no, c.brand,\n" +
+            "r.pickUp_date,r.pickUp_time,r.pickUp_venue,\n" +
+            "r.return_date,r.return_time,r.return_venue,\n" +
+            "r.requestStatus, \n" +
+            "rd.driverStatus,d.contact_no, r.totalPaymentForRental\n" +
+            "from RentalRequest r inner join RentalDetail rd\n" +
+            "on r.rental_id = rd.rental_id\n" +
+            "inner join Driver d\n" +
+            "on rd.driver_licenseNo = d.license_no\n" +
+            "inner join Car c\n" +
+            "on rd.reg_no = c.reg_no\n" +
+            "inner join Customer cu \n" +
+            "on r.customer_nic = cu.nic_no\n" +
+            "where cu.nic_no = ?1", nativeQuery=true)
+    List<Custom> getCustomerBookings(String nic_no);
 }

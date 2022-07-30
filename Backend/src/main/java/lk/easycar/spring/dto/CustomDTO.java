@@ -52,6 +52,8 @@ public class CustomDTO {
     private String driverStatus;
     private double fee;
 
+    private String brand;
+
 
     public CustomDTO(String year, String income) {
         this.year = year;
@@ -171,5 +173,36 @@ public class CustomDTO {
         this.km_atPickUp = km_atPickUp;
         this.driverStatus = driverStatus;
         this.fee = fee;
+    }
+
+    public CustomDTO(String rental_id, int contact_no, String reg_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus, String driverStatus, String brand) {
+        this.rental_id = rental_id;
+        this.contact_no = contact_no;
+        this.reg_no = reg_no;
+        this.pickUp_date = pickUp_date;
+        this.pickUp_time = pickUp_time;
+        this.pickUp_venue = pickUp_venue;
+        this.return_date = return_date;
+        this.return_time = return_time;
+        this.return_venue = return_venue;
+        this.requestStatus = requestStatus;
+        this.driverStatus = driverStatus;
+        this.brand = brand;
+    }
+
+    public CustomDTO(String rental_id, int contact_no, String reg_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus, double totalPaymentForRental, String driverStatus, String brand) {
+        this.rental_id = rental_id;
+        this.contact_no = contact_no;
+        this.reg_no = reg_no;
+        this.pickUp_date = pickUp_date;
+        this.pickUp_time = pickUp_time;
+        this.pickUp_venue = pickUp_venue;
+        this.return_date = return_date;
+        this.return_time = return_time;
+        this.return_venue = return_venue;
+        this.requestStatus = requestStatus;
+        this.totalPaymentForRental = totalPaymentForRental;
+        this.driverStatus = driverStatus;
+        this.brand = brand;
     }
 }

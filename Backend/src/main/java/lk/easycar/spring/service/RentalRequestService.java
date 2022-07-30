@@ -47,6 +47,8 @@ public interface RentalRequestService {
 
     List<CustomDTO> calculateAnnualIncome();
 
+    List<CustomDTO> getCustomerBookings(String nic_no);
+
     boolean placeRentalRequest(RentalRequestDTO dto);
 
     RentalRequestDTO updateRental(RentalRequestDTO dto);

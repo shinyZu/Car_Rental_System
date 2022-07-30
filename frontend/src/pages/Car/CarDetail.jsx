@@ -30,7 +30,7 @@ function CarDetail(props) {
   console.log(auth);
 
   useEffect(() => {
-    if (auth.user == null) {
+    if (auth.user.email == null) {
       setIsGuest(true);
     } else {
       setIsGuest(false);
@@ -45,6 +45,7 @@ function CarDetail(props) {
   // console.log(carInfo);
   // console.log(selectedCar);
   // console.log(fleet);
+  console.log(state);
   // console.log(carInfo[selectedCar]);
 
   if (fleet == "General") {
@@ -99,7 +100,9 @@ function CarDetail(props) {
         <AdminNavbar />
       ) : auth.user && auth.user.userStatus == "Customer" ? (
         <NavbarRegistered />
-      ) : null}
+      ) : (
+        <NavbarGuest />
+      )}
       <Grid container spacing={5} className={classes.container__1}>
         <Grid
           item
@@ -225,7 +228,7 @@ function CarDetail(props) {
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
-                Mileage
+                Mileage(KM)
               </Typography>
 
               <Typography variant="h6" className={classes.description_key}>
@@ -324,7 +327,7 @@ function CarDetail(props) {
                   : (auth.user && auth.user.userStatus == "Customer") ||
                     (auth.user && auth.user.userStatus == "Admin")
                   ? popupReservePane
-                  : null
+                  : popupDialog
               }
             />
           </Grid>
@@ -349,7 +352,14 @@ function CarDetail(props) {
         />
       ) : (auth.user && auth.user.userStatus == "Customer") ||
         auth.user.userStatus == "Admin" ? (
-        <CarReservePane open={openReservePane} onClose={closeReservePane} />
+        <CarReservePane
+          open={openReservePane}
+          onClose={closeReservePane}
+          regNo={carInfo[selectedCar].reg_no}
+          mileage={carInfo[selectedCar].mileage}
+          fleet={state.fleet}
+          brand={carInfo[selectedCar].brand}
+        />
       ) : null}
     </div>
   );

@@ -52,4 +52,6 @@ public interface Custom {
 
     double getFee();
 
+    String getBrand();
+
 }
