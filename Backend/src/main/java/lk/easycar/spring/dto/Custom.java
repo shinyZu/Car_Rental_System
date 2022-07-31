@@ -54,4 +54,12 @@ public interface Custom {
 
     String getBrand();
 
+    String getDescription();
+
+    String getTransmissionType();
+
+    String getFuelType();
+
+    String getColor();
+
 }

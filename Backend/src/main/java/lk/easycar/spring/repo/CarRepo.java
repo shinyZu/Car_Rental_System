@@ -44,4 +44,16 @@ public interface CarRepo extends JpaRepository<Car, String> {
 
     List<Car> getCarsByFuelTypeEquals(String fuel_type);
 
+    @Query(value = "select c.reg_no,c.brand, rd.km_atPickUp, cf.description, c.transmissionType,c.fuelType,\n" +
+            "c.color,r.return_date\n" +
+            "from RentalRequest r inner join RentalDetail rd\n" +
+            "on r.rental_id = rd.rental_id\n" +
+            "inner join Car c\n" +
+            "on rd.reg_no = c.reg_no\n" +
+            "inner join CarFleet cf\n" +
+            "on c.fleet_id = cf.fleet_id\n" +
+            "where c.currentStatus = ?1\n " +
+            "group by c.reg_no", nativeQuery=true)
+    List<Custom> getCarsToRepair(String currentStatus);
+
 }

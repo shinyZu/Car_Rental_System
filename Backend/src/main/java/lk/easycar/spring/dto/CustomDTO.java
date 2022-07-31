@@ -53,6 +53,10 @@ public class CustomDTO {
     private double fee;
 
     private String brand;
+    private String description;
+    private String transmissionType;
+    private String fuelType;
+    private String color;
 
 
     public CustomDTO(String year, String income) {
@@ -204,5 +208,16 @@ public class CustomDTO {
         this.totalPaymentForRental = totalPaymentForRental;
         this.driverStatus = driverStatus;
         this.brand = brand;
+    }
+
+    public CustomDTO(String reg_no, LocalDate return_date, double km_atPickUp, String brand, String description, String transmissionType, String fuelType, String color) {
+        this.reg_no = reg_no;
+        this.return_date = return_date;
+        this.km_atPickUp = km_atPickUp;
+        this.brand = brand;
+        this.description = description;
+        this.transmissionType = transmissionType;
+        this.fuelType = fuelType;
+        this.color = color;
     }
 }

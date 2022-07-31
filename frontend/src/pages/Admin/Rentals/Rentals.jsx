@@ -262,7 +262,7 @@ function RentalRequests() {
   function acceptRental(index, rental) {
     setConfirmDialog({
       isOpen: true,
-      title: "Are you sue you want to ACCEPT this Request ?",
+      title: "Are you sure you want to ACCEPT this Request ?",
       subTitle: "You can't revert this operation",
       acceptLabel: "Accept",
       denyLabel: "Deny",

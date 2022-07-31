@@ -76,6 +76,11 @@ public class CarController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Sorted By Fuel Type", carService.sortCarsByFuelType(fuel_type));
     }
 
+    @GetMapping(path = "maintenance", params = {"currentStatus"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCarsToRepair(@RequestParam("currentStatus") String currentStatus) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Cars Need_Under Maintenance", carService.getCarsToRepair(currentStatus));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveCar(@RequestBody CarDTO dto) {

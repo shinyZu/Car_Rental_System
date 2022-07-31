@@ -156,4 +156,6 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
             "on r.customer_nic = cu.nic_no\n" +
             "where cu.nic_no = ?1", nativeQuery=true)
     List<Custom> getCustomerBookings(String nic_no);
+
+
 }

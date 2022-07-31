@@ -29,6 +29,8 @@ public interface CarService {
 
     List<CarDTO> sortCarsByFuelType(String fuel_type);
 
+    List<CustomDTO> getCarsToRepair(String currentStatus);
+
     CarDTO saveCar(CarDTO dto);
 
     CarDTO updateCar(CarDTO dto);

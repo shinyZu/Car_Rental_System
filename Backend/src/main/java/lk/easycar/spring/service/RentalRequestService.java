@@ -1,5 +1,5 @@
-
 package lk.easycar.spring.service;
+
 import lk.easycar.spring.dto.CustomDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
 
@@ -39,12 +39,12 @@ public interface RentalRequestService {
     //    double calculateMonthlyIncome(int month);
     List<CustomDTO> calculateMonthlyIncome();
 
-    //    double calculateWeeklyIncome(String date);
 
+    //    double calculateWeeklyIncome(String date);
     List<CustomDTO> calculateWeeklyIncome();
 
-    //    double calculateAnnualIncome(String date);
 
+    //    double calculateAnnualIncome(String date);
     List<CustomDTO> calculateAnnualIncome();
 
     List<CustomDTO> getCustomerBookings(String nic_no);

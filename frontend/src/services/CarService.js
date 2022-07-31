@@ -87,6 +87,21 @@ class CarService {
     });
     return await promise;
   };
+
+  getCarsToRepair = async (currentStatus) => {
+    let params = { currentStatus: currentStatus };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("cars/maintenance", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new CarService();

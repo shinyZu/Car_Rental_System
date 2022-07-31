@@ -111,4 +111,11 @@ class CarRepoTest {
             System.out.println(car.getFuelType());
         }
     }
+
+    @Test
+    void getCarsToRepair() {
+        List<Custom> toRepair = carRepo.getCarsToRepair("Available");
+        System.out.println(toRepair);
+        System.out.println(toRepair.get(0).getReg_no());
+    }
 }

@@ -188,4 +188,6 @@ class RentalRequestRepoTest {
     void searchRentalByIDAndRegNo() {
         List<Custom> active = rentalRequestRepo.searchRentalByIDAndRegNo("RNTL-0004","PB-5954");
     }
+
+
 }

@@ -130,6 +130,24 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public List<CustomDTO> getCarsToRepair(String currentStatus) {
+        ArrayList<CustomDTO> toRepair = new ArrayList<>();
+        for (Custom custom : carRepo.getCarsToRepair(currentStatus)) {
+            toRepair.add(new CustomDTO(
+                    custom.getReg_no(),
+                    custom.getReturn_date(),
+                    custom.getKm_atPickUp(),
+                    custom.getBrand(),
+                    custom.getDescription(),
+                    custom.getTransmissionType(),
+                    custom.getFuelType(),
+                    custom.getColor()
+            ));
+        }
+        return toRepair;
+    }
+
+    @Override
     public CarDTO saveCar(CarDTO dto) {
         if (!carRepo.existsById(dto.getReg_no())) {
 //            String fleet_id = dto.getFleet().getFleet_id(); // fleet_id of the Car to be added

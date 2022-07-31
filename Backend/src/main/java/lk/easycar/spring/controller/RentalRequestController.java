@@ -87,8 +87,10 @@ public class RentalRequestController {
 
     @GetMapping(path = "bookings", params = {"nic_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getCustomerBookings(@RequestParam("nic_no") String nic_no) {
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Total No Of Rentals For The Day", rentalRequestService.getCustomerBookings(nic_no));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "My Bookings", rentalRequestService.getCustomerBookings(nic_no));
     }
+
+
 
     @GetMapping(path = "calculate_total_rental_of", params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateTotalPaymentForRental(@RequestParam("rental_id") String rental_id) {

@@ -88,7 +88,9 @@ function ConfirmDialog(props) {
           className={
             confirmDialog.action == "Delete"
               ? classes.titleIconRed
-              : confirmDialog.action == "Save"
+              : confirmDialog.action == "Save" ||
+                confirmDialog.action == "Add" ||
+                confirmDialog.action == "Return"
               ? classes.titleIconGreen
               : classes.titleIconBlue
           }
