@@ -23,6 +23,22 @@ class IncomeService {
       axios
         .get("rentals/annual_income")
         .then((res) => {
+          // console.log(res);
+          return resolve(res);
+        })
+        .catch((er) => {
+          console.log(er);
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  calculateMonthlyIncome = async () => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("rentals/monthly_income")
+        .then((res) => {
           console.log(res);
           return resolve(res);
         })

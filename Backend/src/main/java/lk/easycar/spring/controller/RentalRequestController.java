@@ -1,7 +1,5 @@
 package lk.easycar.spring.controller;
 
-import lk.easycar.spring.dto.CustomDTO;
-import lk.easycar.spring.dto.RentalDetailDTO;
 import lk.easycar.spring.dto.RentalRequestDTO;
 import lk.easycar.spring.service.RentalRequestService;
 import lk.easycar.spring.util.ResponseUtil;
@@ -11,13 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.Calendar;
-import java.util.List;
-
-import static javax.swing.UIManager.get;
 
 @RestController
 @CrossOrigin
@@ -38,7 +30,7 @@ public class RentalRequestController {
     }
 
     @GetMapping(path = "next_id", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil generateNextID (){
+    public ResponseUtil generateNextID() {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Next ID", rentalRequestService.generateNextID());
     }
 
@@ -48,20 +40,20 @@ public class RentalRequestController {
     }
 
     //Invoice Details
-    @GetMapping(path = "/{rental_id}", params={"reg_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{rental_id}", params = {"reg_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchRentalByIDAndRegNo(@PathVariable("rental_id") String rental_id, @RequestParam("reg_no") String reg_no) {
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", rentalRequestService.searchRentalByIDAndRegNo(rental_id,reg_no));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", rentalRequestService.searchRentalByIDAndRegNo(rental_id, reg_no));
     }
 
-    @GetMapping(path = "duration", params={"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getRentalDuration( @RequestParam("rental_id") String rental_id) {
+    @GetMapping(path = "duration", params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getRentalDuration(@RequestParam("rental_id") String rental_id) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Duration", rentalRequestService.getRentalDuration(rental_id));
     }
 
     // getRentalForReturn
     @GetMapping(params = {"return_by"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchActiveRentalByCustomer(@RequestParam("return_by") String nic_no) {
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Details of the Rental To Be Returned by Customer "+nic_no, rentalRequestService.searchActiveRentalByCustomer(nic_no));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Details of the Rental To Be Returned by Customer " + nic_no, rentalRequestService.searchActiveRentalByCustomer(nic_no));
     }
 
     @GetMapping(path = "get_returns", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -103,17 +95,17 @@ public class RentalRequestController {
     @GetMapping(path = "daily_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateDailyIncome(@RequestParam("date") String date) {
 //        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome(LocalDate.parse(date)));
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date "+date, rentalRequestService.calculateDailyIncome((LocalDate.parse(date))));
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Daily Income for Date " + date, rentalRequestService.calculateDailyIncome((LocalDate.parse(date))));
     }
 
-    @GetMapping(path = "monthly_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil calculateMonthlyIncome(@RequestParam("date") String date) {
+    @GetMapping(path = "monthly_income",/* params = {"date"},*/ produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil calculateMonthlyIncome() {
         /*Month month = LocalDate.parse(date).getMonth();
         System.out.println("month : "+month); // July
         System.out.println(month.getClass().getSimpleName()); // Month
         System.out.println("month : "+month.getValue()); // 7*/
 //        return new ResponseUtil(HttpServletResponse.SC_OK, "Monthly Income for Month "+ LocalDate.parse(date).getMonth(), rentalRequestService.calculateMonthlyIncome(LocalDate.parse(date).getMonth().getValue()));
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Monthly Income for Month "+ LocalDate.parse(date).getMonth(), rentalRequestService.calculateMonthlyIncome());
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Monthly Income", rentalRequestService.calculateMonthlyIncome());
     }
 
     @GetMapping(path = "weekly_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -121,11 +113,10 @@ public class RentalRequestController {
         /*LocalDate date1 = LocalDate.parse(date).minusDays(7); // 2022-07-10 - 7 days
         System.out.println("7 days before is : "+date1);// 2022-07-03*/
 //        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+ end_date, rentalRequestService.calculateWeeklyIncome(end_date));
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+ end_date, rentalRequestService.calculateWeeklyIncome());
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until " + end_date, rentalRequestService.calculateWeeklyIncome());
     }
 
-    @GetMapping(path = "annual_income",/* params = {"date"}, */produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseUtil calculateAnnualIncome(@RequestParam("date") String date) {
+    @GetMapping(path = "annual_income", /*params = {"date"},*/ produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateAnnualIncome() {
         /*int year = LocalDate.parse(date).getYear();
         System.out.println("year : "+ year); // 2022*/
@@ -150,21 +141,21 @@ public class RentalRequestController {
     @PutMapping(path = "status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateRequestStatus(@RequestBody RentalRequestDTO dto) {
         rentalRequestService.updateRequestStatus(dto);
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Request Status Updated Successfully", null );
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Request Status Updated Successfully", null);
     }
 
     // When Request is Accepted
     @PutMapping(path = "accept", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil acceptRental(@RequestBody RentalRequestDTO dto) {
         rentalRequestService.acceptRental(dto);
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request "+dto.getRental_id()+" is Accepted", null );
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request " + dto.getRental_id() + " is Accepted", null);
     }
 
     // When Request is Denied
     @PutMapping(path = "deny", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil denyRental(@RequestBody RentalRequestDTO dto) {
         rentalRequestService.denyRental(dto);
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request "+dto.getRental_id()+" is Denied", null );
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Rental Request " + dto.getRental_id() + " is Denied", null);
     }
 
     @DeleteMapping(params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)

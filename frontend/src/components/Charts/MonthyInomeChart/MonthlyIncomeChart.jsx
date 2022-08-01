@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Chart,
@@ -11,24 +11,48 @@ import {
   Connector,
   Size,
 } from "devextreme-react/chart";
+import IncomeService from "../../../services/IncomeService";
 
 function MonthlyIncomeChart() {
   const [year, setYear] = useState("2021");
 
-  const dataSource = [
-    { month: "Jan", income: 100000 },
-    { month: "Feb", income: 105000 },
-    { month: "Mar", income: 100000 },
-    { month: "Apr", income: 210000 },
-    { month: "May", income: 309000 },
-    { month: "Jun", income: 432000 },
-    { month: "Jul", income: 234400 },
-    { month: "Aug", income: 543000 },
-    { month: "Sep", income: 700234 },
-    { month: "Oct", income: 839600 },
-    { month: "Nov", income: 754900 },
-    { month: "Dec", income: 400800 },
-  ];
+  const [dataSource, setDataSource] = useState([
+    { month: "Jan", income: 0 },
+    { month: "Feb", income: 0 },
+    { month: "Mar", income: 0 },
+    { month: "Apr", income: 0 },
+    { month: "May", income: 0 },
+    { month: "Jun", income: 0 },
+    // { month: "Jul", income: 0 },
+    // { month: "Aug", income: 0 },
+    // { month: "Sep", income: 70023 },
+    // { month: "Oct", income: 83960 },
+    // { month: "Nov", income: 75490 },
+    // { month: "Dec", income: 40080 },
+  ]);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+    getMonthlyIncome();
+  }, []);
+
+  async function getMonthlyIncome() {
+    let res = await IncomeService.calculateMonthlyIncome();
+    // console.log(res.data.data);
+    if (res.status === 200) {
+      let incomeData = res.data.data;
+      let data = {};
+      for (let obj of incomeData) {
+        if (obj.year == new Date().getFullYear()) {
+          data = { month: obj.month.substring(0, 3), income: obj.income };
+          console.log(data);
+          setDataSource((prev) => {
+            return [...prev, data];
+          });
+        }
+      }
+    }
+  }
 
   return (
     <>
