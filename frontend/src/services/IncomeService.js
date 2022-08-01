@@ -17,5 +17,21 @@ class IncomeService {
     });
     return await promise;
   };
+
+  calculateAnnualIncome = async () => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("rentals/annual_income")
+        .then((res) => {
+          console.log(res);
+          return resolve(res);
+        })
+        .catch((er) => {
+          console.log(er);
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 export default new IncomeService();

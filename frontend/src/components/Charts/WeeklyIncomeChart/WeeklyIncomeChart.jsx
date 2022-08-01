@@ -35,7 +35,9 @@ function WeeklyIncomeChart() {
           type="bar"
           ignoreEmptyPoints={true}
           barPadding={0.4}
-        />
+        >
+          {/* <Format type="hundreds" /> */}
+        </CommonSeriesSettings>
         <SeriesTemplate nameField="week" />
         <Title text="Weekly Income" subtitle={`as of ${month} ${year}`} />
         <Tooltip enabled={true} />

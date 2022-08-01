@@ -92,7 +92,7 @@ function DailyIncomeChart(props) {
       >
         <Format type="hundreds" />
       </CommonSeriesSettings>
-      <SeriesTemplate nameField="day" forma />
+      <SeriesTemplate nameField="day" format />
       <Title
         text="Daily Income"
         subtitle={

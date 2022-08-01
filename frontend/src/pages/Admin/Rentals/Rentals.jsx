@@ -11,6 +11,7 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+import HistoryToggleOffIcon from "@mui/icons-material/HistoryToggleOff";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import ConfirmDialog from "../../../components/common/ConfirmDialog/ConfirmDialog";
 import MySnackBar from "../../../components/common/Snackbar/MySnackbar";
@@ -43,6 +44,17 @@ function RentalRequests() {
                     onClick={() => {
                       // console.log("clicked row : " + cellValues.id);
                       // console.log(tableRows[cellValues.id]);
+                    }}
+                  />
+                </IconButton>
+              </Tooltip>
+            ) : tableRows[cellValues.id].requestStatus === "Accepted" ? (
+              <Tooltip title="Mark Active">
+                <IconButton>
+                  <HistoryToggleOffIcon
+                    // style={{ color: "red" }}
+                    onClick={() => {
+                      markRentalActive(tableRows[cellValues.id]);
                     }}
                   />
                 </IconButton>
@@ -259,6 +271,44 @@ function RentalRequests() {
     }
   }
 
+  function markRentalActive(rental) {
+    setConfirmDialog({
+      isOpen: true,
+      title: "Are you sure you want to mark this Rental as Active ?",
+      subTitle: "You can't revert this operation",
+      action: "Active",
+      confirmBtnStyle: {
+        backgroundColor: "rgb(26, 188, 156)",
+        color: "white",
+      },
+      onConfirm: () => proceedMarkRentalActive(rental),
+    });
+  }
+
+  async function proceedMarkRentalActive(rental) {
+    let data = { rental_id: rental.rental_id, requestStatus: "Active" };
+    let res = await RentalRequestService.updateRequestStatus(data);
+    console.log(res);
+    if (res.status === 200) {
+      setConfirmDialog({ isOpen: false });
+      setOpenAlert({
+        open: true,
+        alert: "Rental " + rental.rental_id + " is now Active!",
+        severity: "success",
+        variant: "standard",
+      });
+      loadAllRentalDetails();
+    } else {
+      setConfirmDialog({ isOpen: false });
+      setOpenAlert({
+        open: true,
+        alert: res.response.data.message,
+        severity: "error",
+        variant: "standard",
+      });
+    }
+  }
+
   function acceptRental(index, rental) {
     setConfirmDialog({
       isOpen: true,
@@ -282,7 +332,7 @@ function RentalRequests() {
   }
 
   async function proceedAccept(rental) {
-    let data = { rental_id: rental.rental_id, requestStatus: "Active" };
+    let data = { rental_id: rental.rental_id, requestStatus: "Accepted" };
     console.log(data);
     let res = await RentalRequestService.acceptRental(data);
     console.log(res);

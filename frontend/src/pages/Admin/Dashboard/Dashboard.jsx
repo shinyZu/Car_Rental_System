@@ -152,7 +152,7 @@ function AdminDashboard(props) {
                 {card2}
               </Typography>
               <Typography variant="h5" color="#9b59b6">
-                Today's TOTAL Bookings
+                Today's TOTAL Rentals
               </Typography>
             </Paper>
           </Grid>
@@ -183,7 +183,7 @@ function AdminDashboard(props) {
                 {card3}
               </Typography>
               <Typography variant="h5" color="#2ecc71">
-                Today's ACTIVE Bookings
+                Today's ACTIVE Rentals
               </Typography>
             </Paper>
           </Grid>

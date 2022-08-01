@@ -204,6 +204,20 @@ class RentalRequestService {
     });
     return await promise;
   };
+
+  updateRequestStatus = async (data) => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .put("rentals/status", data)
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new RentalRequestService();

@@ -132,7 +132,7 @@ function CarStatusChart(props) {
         horizontalAlignment="center"
         verticalAlignment="center"
       >
-        <Format type="number" />
+        {/* <Format type="number" /> */}
       </Tooltip>
 
       {/* <Export enabled={true}  /> */}

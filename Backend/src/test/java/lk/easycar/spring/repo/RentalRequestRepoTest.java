@@ -190,4 +190,16 @@ class RentalRequestRepoTest {
     }
 
 
+    @Test
+    void testCountActiveRentalsForTheDay() {
+        int active = rentalRequestRepo.countActiveRentalsForTheDay("Active", LocalDate.parse("2022-08-01"));
+        System.out.println(active);
+
+    }
+
+    @Test
+    void testCountTotalRentalsForTheDay() {
+        int i = rentalRequestRepo.countTotalRentalsForTheDay(LocalDate.parse("2022-08-01"));
+        System.out.println(i);
+    }
 }

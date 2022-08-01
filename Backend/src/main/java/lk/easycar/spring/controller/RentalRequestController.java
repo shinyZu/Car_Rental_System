@@ -90,8 +90,6 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "My Bookings", rentalRequestService.getCustomerBookings(nic_no));
     }
 
-
-
     @GetMapping(path = "calculate_total_rental_of", params = {"rental_id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil calculateTotalPaymentForRental(@RequestParam("rental_id") String rental_id) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Total Rental Payment", rentalRequestService.calculateTotalPaymentForRental(rental_id));
@@ -126,12 +124,13 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+ end_date, rentalRequestService.calculateWeeklyIncome());
     }
 
-    @GetMapping(path = "annual_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil calculateAnnualIncome(@RequestParam("date") String date) {
+    @GetMapping(path = "annual_income",/* params = {"date"}, */produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseUtil calculateAnnualIncome(@RequestParam("date") String date) {
+    public ResponseUtil calculateAnnualIncome() {
         /*int year = LocalDate.parse(date).getYear();
         System.out.println("year : "+ year); // 2022*/
 //        return new ResponseUtil(HttpServletResponse.SC_OK, "Annual Income for Year "+ LocalDate.parse(date).getYear(), rentalRequestService.calculateAnnualIncome(date));
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Annual Income for Year "+ LocalDate.parse(date).getYear(), rentalRequestService.calculateAnnualIncome());
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Annual Income", rentalRequestService.calculateAnnualIncome());
     }
 
     @ResponseStatus(HttpStatus.CREATED)
