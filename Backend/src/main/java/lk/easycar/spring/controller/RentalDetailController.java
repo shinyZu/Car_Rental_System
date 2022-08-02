@@ -23,6 +23,11 @@ public class RentalDetailController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "OK", rentalDetailService.getAllRentalDetailsByRentalID(rental_id));
     }
 
+    @GetMapping(path = "mileage", params = {"reg_no"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getMileage(@RequestParam("reg_no") String reg_no){
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Mileage", rentalDetailService.getMileage(reg_no));
+    }
+
     @PutMapping(params = {"changeDriverTo"}, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil changeAssignedDriver(@RequestBody RentalDetailDTO dto, @RequestParam("changeDriverTo") String newDriver) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Driver Changed Successfully", rentalDetailService.changeAssignedDriver(dto,newDriver));

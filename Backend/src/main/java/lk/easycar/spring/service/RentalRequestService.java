@@ -40,8 +40,8 @@ public interface RentalRequestService {
     List<CustomDTO> calculateMonthlyIncome();
 
 
-    //    double calculateWeeklyIncome(String date);
-    List<CustomDTO> calculateWeeklyIncome();
+    List<CustomDTO> calculateWeeklyIncome(String date);
+//    List<CustomDTO> calculateWeeklyIncome();
 
 
     //    double calculateAnnualIncome(String date);

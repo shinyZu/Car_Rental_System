@@ -294,18 +294,32 @@ public class RentalRequestServiceImpl implements RentalRequestService {
         return monthlyIncome;
     }
 
-    /*@Override
-    public double calculateWeeklyIncome(String date) {
-        LocalDate start_date = LocalDate.parse(date).minusDays(7);
-        List<RentalRequest> allPaymentsByDate = rentalRequestRepo.getAllPaymentsForWeek(start_date, LocalDate.parse(date));
-        double monthly_income = 0.0;
-        for (RentalRequest request : allPaymentsByDate) {
-            monthly_income += request.getTotalPaymentForRental();
-        }
-        return monthly_income;
-    }*/
-
     @Override
+    public List<CustomDTO> calculateWeeklyIncome(String date) {
+        int year = LocalDate.parse(date).getYear();
+        int monthValue = LocalDate.parse(date).getMonthValue();
+        String d = null;
+        if (monthValue < 10) {
+            d = year+"-0"+monthValue+"__";
+        } else {
+            d = year+"-"+monthValue+"__";
+        }
+
+        ArrayList<CustomDTO> weeklyIncome = new ArrayList<>();
+
+        List<Custom> weeklyIncomeList = rentalRequestRepo.calculateWeeklyIncome(d);
+        for (Custom custom : weeklyIncomeList) {
+            weeklyIncome.add(new CustomDTO(
+                    custom.getYear(),
+                    custom.getMonth(),
+                    custom.getWeek(),
+                    custom.getIncome()
+            ));
+        }
+        return weeklyIncome;
+    }
+
+    /*@Override
     public List<CustomDTO> calculateWeeklyIncome() {
         ArrayList<CustomDTO> weeklyIncome = new ArrayList<>();
 
@@ -319,7 +333,7 @@ public class RentalRequestServiceImpl implements RentalRequestService {
             ));
         }
         return weeklyIncome;
-    }
+    }*/
 
     /*@Override
     public double calculateAnnualIncome(String date) {

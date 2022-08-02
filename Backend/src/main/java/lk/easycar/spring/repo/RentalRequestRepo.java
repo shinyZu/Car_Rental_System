@@ -5,6 +5,7 @@ import lk.easycar.spring.entity.RentalRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -63,12 +64,19 @@ public interface RentalRequestRepo extends JpaRepository<RentalRequest, String> 
             "GROUP BY Week",  nativeQuery = true)
     List<Custom> calculateDailyIncome(LocalDate date);
 
+    /*@Query(value="SELECT CAST((((day(return_date)-1) / 7) + 1) as Integer) AS Week,\n" +
+            "MONTHNAME(return_date) AS Month,\n" +
+            "YEAR(return_date) AS Year,\n" +
+            "SUM(r.totalPaymentForRental) as Income\n" +
+            "FROM RentalRequest r",  nativeQuery = true)*/
     @Query(value="SELECT CAST((((day(return_date)-1) / 7) + 1) as Integer) AS Week,\n" +
             "MONTHNAME(return_date) AS Month,\n" +
             "YEAR(return_date) AS Year,\n" +
             "SUM(r.totalPaymentForRental) as Income\n" +
-            "FROM RentalRequest r",  nativeQuery = true)
-    List<Custom> calculateWeeklyIncome();
+            "FROM RentalRequest r\n" +
+            "WHERE r.return_date LIKE CONCAT('%',:date,'%')" +
+            "GROUP BY Week",  nativeQuery = true)
+    List<Custom> calculateWeeklyIncome(@Param("date") String date);
 
     @Query(value="SELECT MONTHNAME(return_date) AS Month,\n" +
             "YEAR(return_date) AS Year,\n" +

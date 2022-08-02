@@ -49,5 +49,22 @@ class IncomeService {
     });
     return await promise;
   };
+
+  calculateWeeklyIncome = async (date) => {
+    let params = { date: date };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("rentals/weekly_income", { params: params })
+        .then((res) => {
+          console.log(res);
+          return resolve(res);
+        })
+        .catch((er) => {
+          console.log(er);
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 export default new IncomeService();

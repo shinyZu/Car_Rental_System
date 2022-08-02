@@ -9,6 +9,8 @@ public interface RentalDetailService {
 
     List<RentalDetailDTO> getAllRentalDetailsByRentalID(String rental_id);
 
+    String getMileage(String reg_no);
+
     boolean changeAssignedDriver(RentalDetailDTO dto, String license_no);
 
     int updateDetailsAfterReturn(RentalDetailDTO dto);

@@ -37,6 +37,14 @@ public class RentalDetailServiceImpl implements RentalDetailService {
     }
 
     @Override
+    public String getMileage(String reg_no) {
+        if (rentalDetailRepo.getMileage(reg_no) != null){
+            return rentalDetailRepo.getMileage(reg_no);
+        }
+        return "5000";
+    }
+
+    @Override
     public boolean changeAssignedDriver(RentalDetailDTO dto, String license_no) {
         RentalDetail rentalDetail = mapper.map(dto, RentalDetail.class);
         Driver newDriverToBeAssigned = driverRepo.getReferenceById(license_no);

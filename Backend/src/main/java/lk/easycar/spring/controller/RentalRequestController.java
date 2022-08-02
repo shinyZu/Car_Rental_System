@@ -109,11 +109,11 @@ public class RentalRequestController {
     }
 
     @GetMapping(path = "weekly_income", params = {"date"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil calculateWeeklyIncome(@RequestParam("date") String end_date) {
+    public ResponseUtil calculateWeeklyIncome(@RequestParam("date") String date) {
         /*LocalDate date1 = LocalDate.parse(date).minusDays(7); // 2022-07-10 - 7 days
         System.out.println("7 days before is : "+date1);// 2022-07-03*/
-//        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+ end_date, rentalRequestService.calculateWeeklyIncome(end_date));
-        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until " + end_date, rentalRequestService.calculateWeeklyIncome());
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until "+ date, rentalRequestService.calculateWeeklyIncome(date));
+//        return new ResponseUtil(HttpServletResponse.SC_OK, "Weekly Income Until", rentalRequestService.calculateWeeklyIncome());
     }
 
     @GetMapping(path = "annual_income", /*params = {"date"},*/ produces = MediaType.APPLICATION_JSON_VALUE)

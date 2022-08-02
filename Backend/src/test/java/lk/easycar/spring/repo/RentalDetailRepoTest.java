@@ -68,4 +68,10 @@ class RentalDetailRepoTest {
         String rental_id = rentalDetailRepo.getRental_idOfActiveReg_no("PB-5951", "Active");
         System.out.println(rental_id);
     }
+
+    @Test
+    void getMileage() {
+        String mileage = rentalDetailRepo.getMileage("PB-5951");
+        System.out.println(mileage);
+    }
 }

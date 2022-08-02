@@ -41,6 +41,8 @@ function MonthlyIncomeChart() {
     // console.log(res.data.data);
     if (res.status === 200) {
       let incomeData = res.data.data;
+      incomeData.reverse();
+      // console.log(incomeData);
       let data = {};
       for (let obj of incomeData) {
         if (obj.year == new Date().getFullYear()) {

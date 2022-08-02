@@ -133,7 +133,7 @@ class RentalRequestRepoTest {
 
     @Test
     void calculateWeeklyIncome() {
-        List<Custom> weeklyIncome = rentalRequestRepo.calculateWeeklyIncome();
+        List<Custom> weeklyIncome = rentalRequestRepo.calculateWeeklyIncome("2022-07-__");
         for (Custom custom : weeklyIncome) {
             System.out.println(custom.getYear());
             System.out.println(custom.getMonth());

@@ -19,12 +19,14 @@ import Box from "@mui/material/Box";
 import { useAuth } from "../Session/Auth";
 import DriverNavbar from "../../components/NavBar/DriverNavbar";
 import AdminNavbar from "../../components/NavBar/AdminNavbar";
+import CarService from "../../services/CarService";
 
 function CarDetail(props) {
   const [mainImgURL, setMainImgURL] = useState(sub__img1);
   const [openReservePane, setOpenReservePane] = useState(false);
   const [openDailog, setOpenDialog] = useState(false);
   const [isGuest, setIsGuest] = useState(true);
+  const [mileage, setMileage] = useState("");
   const { classes } = props;
   const auth = useAuth();
   console.log(auth);
@@ -56,6 +58,7 @@ function CarDetail(props) {
     carInfo = state.data.luxuryCarList;
   }
 
+  console.log(carInfo);
   function handleImageClick(e) {
     // console.log(e.target.id);
     // console.log(e.target.style);
@@ -69,6 +72,19 @@ function CarDetail(props) {
       setMainImgURL(sub__img3);
     } else if (e.target.id == 4) {
       setMainImgURL(sub__img4);
+    }
+  }
+
+  useEffect(() => {
+    getMileage(carInfo[selectedCar].reg_no);
+  }, []);
+
+  async function getMileage(reg_no) {
+    let res = await CarService.getMileage(reg_no);
+    if (res.status === 200) {
+      if (res.data.data != []) {
+        setMileage(res.data.data);
+      }
     }
   }
 
@@ -268,19 +284,19 @@ function CarDetail(props) {
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fleet}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fleet[0].description}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].passengers}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].noOfPassengers}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].transmission}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].transmissionType}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fuel}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].fuelType}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
@@ -288,27 +304,28 @@ function CarDetail(props) {
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].mileage}
+                {/* : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].mileage} */}:
+                &nbsp;&nbsp;&nbsp;{mileage}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].daily_rate}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].dailyRate}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_perDay}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_day}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].monthly_rate}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].monthlyRate}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_perMonth}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].freeKM_month}
               </Typography>
 
               <Typography variant="h6" className={classes.description_value}>
-                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].price_perExtraKM}
+                : &nbsp;&nbsp;&nbsp;{carInfo[selectedCar].price_extraKM}
               </Typography>
             </Grid>
           </Grid>

@@ -1,7 +1,5 @@
 package lk.easycar.spring.repo;
 
-import com.sun.org.apache.xpath.internal.objects.XBoolean;
-import lk.easycar.spring.dto.RentalDetailDTO;
 import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.entity.RentalCar_PK;
 import lk.easycar.spring.entity.RentalDetail;
@@ -34,4 +32,10 @@ public interface RentalDetailRepo extends JpaRepository<RentalDetail, RentalCar_
 
     @Query(value="select rd.rental_id from RentalRequest r inner join RentalDetail rd on r.rental_id=rd.rental_id where rd.reg_no=?1 and r.requestStatus=?2",nativeQuery=true)
     String getRental_idOfActiveReg_no(String reg_no, String requestStatus);
+
+    @Query(value = "select km_atReturn \n" +
+            "from RentalDetail\n" +
+            "where reg_no= ?1\n" +
+            "order by rental_id DESC LIMIT 1;",nativeQuery=true)
+    String getMileage(String reg_no);
 }
