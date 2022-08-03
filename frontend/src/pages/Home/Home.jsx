@@ -18,8 +18,6 @@ function Home(props) {
     <div id="home">
       <Header />
       <Main />
-      {/* <AdminDashboard /> */}
-      {/* <DriverSchedule /> */}
     </div>
   );
 }

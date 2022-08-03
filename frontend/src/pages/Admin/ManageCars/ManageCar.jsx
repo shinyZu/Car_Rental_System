@@ -29,6 +29,8 @@ import MySnackBar from "../../../components/common/Snackbar/MySnackbar";
 import FileUploadService from "../../../services/FileUploadService";
 import ConfirmDialog from "../../../components/common/ConfirmDialog/ConfirmDialog";
 
+import imageToBase64 from "image-to-base64/browser";
+
 function ManageCar(props) {
   const { classes } = props;
   const [regFormData, setRegFormData] = useState({
@@ -77,6 +79,7 @@ function ManageCar(props) {
     "Green",
     "Beige",
     "Yellow",
+    "Orange",
     "Purple",
   ];
 
@@ -298,23 +301,34 @@ function ManageCar(props) {
     let images = [],
       fileReaders = [];
     let isCancel = false;
-
+    console.log(1);
+    console.log(imageFiles);
     if (imageFiles.length) {
+      console.log(2);
       imageFiles.forEach((file) => {
         const fileReader = new FileReader();
         fileReaders.push(fileReader);
         fileReader.onload = (e) => {
           const { result } = e.target;
           if (result) {
+            console.log(3);
             images.push(result); // urls
           }
           if (images.length === imageFiles.length && !isCancel) {
+            console.log(4);
             setImages(images);
           }
         };
+        console.log(5);
         fileReader.readAsDataURL(file);
       });
     }
+    console.log(6);
+    console.log(images);
+    console.log(imageFiles);
+    console.log(fileReaders);
+    console.log(validImageFiles);
+    console.log(filesToUpload);
 
     return () => {
       isCancel = true;
@@ -328,6 +342,7 @@ function ManageCar(props) {
 
   useEffect(() => {
     loadData();
+    setImages([]);
   }, []);
 
   useEffect(() => {
@@ -401,17 +416,18 @@ function ManageCar(props) {
       currentStatus: car.currentStatus,
     });
 
-    // let res = await FileUploadService.getCarFiles();
-    // // console.log(res);
-    // // if (res.status === 200) {
-    //   // setImages(() => {
-    //   //   return [...res.data.data];
-    //   // });
-    //   // tempArray = res.data.data;
-    //   // console.log(tempArray);
-    //   // setImages(...tempArray);
-    //   // console.log(images);
-    // }
+    let res = await FileUploadService.getCarImages(car.reg_no);
+    console.log(res);
+    if (res.status === 200) {
+      tempArray = res.data.data;
+      console.log(images);
+      setImages([]);
+      setImages(() => {
+        // return [...tempArray];
+        return [...res.data.data];
+      });
+      console.log(images);
+    }
   }
 
   function handleSaveUpdateBtn() {
@@ -1341,6 +1357,7 @@ function ManageCar(props) {
                 <ImageListItem key={0}>
                   <img
                     src={images[0]}
+                    // src={`${tempArray[0]}?w=164&h=164&fit=crop&auto=format`}
                     alt={imageTitles[0].title}
                     loading="lazy"
                   />

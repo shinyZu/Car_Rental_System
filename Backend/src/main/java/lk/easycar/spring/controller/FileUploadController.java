@@ -1,5 +1,6 @@
 package lk.easycar.spring.controller;
 
+import lk.easycar.spring.dto.CarDTO;
 import lk.easycar.spring.util.ResponseUtil;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class FileUploadController {
 
     private static final ArrayList<String> allImages = new ArrayList<>();
+//    private static final ArrayList<String> allImages = null;
     private static String projectPath;
 
 
@@ -27,6 +29,48 @@ public class FileUploadController {
             System.out.println(image);
         }
         return new ResponseUtil(HttpServletResponse.SC_OK, "All Images", allImages );
+    }
+
+    @GetMapping(path = "clear_images",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil eraseImages() {
+        allImages.clear();
+        return new ResponseUtil(HttpServletResponse.SC_OK, "All Images Cleared", allImages );
+    }
+
+    @GetMapping(params = {"reg_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCarImages(@RequestParam("reg_no") String reg_no) {
+        ArrayList<String> carImages = new ArrayList<>();
+        for (String image : allImages) {
+            boolean contains = image.contains(reg_no);
+            if (contains){
+//                System.out.println(image);
+                String path = image.split("easycar/")[1];
+//                System.out.println(path);
+                String imagePath = "http://localhost:8080/easycar/"+path;
+//                System.out.println(imagePath);
+                carImages.add(imagePath);
+            }
+        }
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Car Images of "+reg_no, carImages );
+    }
+
+//    @GetMapping(path = "front_images", consumes = MediaType.APPLICATION_JSON_VALUE ,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "front", params = {"reg_no","brand"}, /* consumes = MediaType.APPLICATION_JSON_VALUE,*/ produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllFrontImages(@RequestParam("reg_no") String reg_no, @RequestParam("brand") String brand) {
+        System.out.println("--------------------------------inside--------------------------");
+        ArrayList<String> allFrontImages = new ArrayList<>();
+        for (String image : allImages) {
+            boolean contains = image.contains("/"+brand+"/"+reg_no+"/front");
+            if (contains){
+                System.out.println(image);
+                String path = image.split("easycar/")[1];
+                System.out.println(path);
+                String imagePath = "http://localhost:8080/easycar/"+path;
+                System.out.println(imagePath);
+                allFrontImages.add(imagePath);
+            }
+        }
+        return new ResponseUtil(HttpServletResponse.SC_OK, "All Car Front Images", allFrontImages );
     }
 
    /* @PostMapping(path = "cars", params = {"fleet"}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -118,10 +162,13 @@ public class FileUploadController {
             File fleetDir = new File(carDir + "/" + carFleet);
             fleetDir.mkdir();
             File brandDir = null;
+            File regNoDir = null;
 
             if (carFleet.equals("General")) {
-                brandDir = new File(fleetDir + "/" +reg_no);
+                brandDir = new File(fleetDir + "/" + brand);
                 brandDir.mkdir();
+                regNoDir = new File(brandDir + "/" +reg_no);
+                regNoDir.mkdir();
 
                 /*for (MultipartFile file : fileArray) {
                     file.transferTo(new File(brandDir.getAbsolutePath() + "/" + file.getOriginalFilename()));
@@ -144,8 +191,13 @@ public class FileUploadController {
                 allImages.add( brandDir + brand + interior.getOriginalFilename());*/
 
             } else if (carFleet.equals("Premium")) {
-                brandDir = new File(fleetDir + "/" +reg_no);
+                /*brandDir = new File(fleetDir + "/" +reg_no);
+                brandDir.mkdir();*/
+
+                brandDir = new File(fleetDir + "/" + brand);
                 brandDir.mkdir();
+                regNoDir = new File(brandDir + "/" +reg_no);
+                regNoDir.mkdir();
 
                 /*myFile.transferTo(new File(premiumDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
                 allImages.add("uploads/cars/Premium Cars" + myFile.getOriginalFilename());*/
@@ -166,8 +218,13 @@ public class FileUploadController {
                 allImages.add("uploads/cars/Premium Cars/"+brand + interior.getOriginalFilename());*/
 
             } else if (carFleet.equals("Luxury")) {
-                brandDir = new File(fleetDir + "/" +reg_no);
+                /*brandDir = new File(fleetDir + "/" +reg_no);
+                brandDir.mkdir();*/
+
+                brandDir = new File(fleetDir + "/" + brand);
                 brandDir.mkdir();
+                regNoDir = new File(brandDir + "/" +reg_no);
+                regNoDir.mkdir();
 
                 /*myFile.transferTo(new File(luxuryDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
                 allImages.add("uploads/cars/Luxury Cars" + myFile.getOriginalFilename());*/
@@ -188,8 +245,10 @@ public class FileUploadController {
                 allImages.add("uploads/cars/Luxury Cars/"+brand + interior.getOriginalFilename());*/
             }
             for (MultipartFile file : fileArray) {
-                file.transferTo(new File(brandDir.getAbsolutePath() + "/" + file.getOriginalFilename()));
-                allImages.add( brandDir +"/"+ file.getOriginalFilename());
+                /*file.transferTo(new File(brandDir.getAbsolutePath() + "/" + file.getOriginalFilename()));
+                allImages.add( brandDir +"/"+ file.getOriginalFilename());*/
+                file.transferTo(new File(regNoDir.getAbsolutePath() + "/" + file.getOriginalFilename()));
+                allImages.add( regNoDir +"/"+ file.getOriginalFilename());
             }
 
             return new ResponseUtil(HttpServletResponse.SC_OK, "Car View Uploaded Successfully", null );

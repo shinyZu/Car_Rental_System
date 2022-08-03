@@ -20,8 +20,8 @@ function MyCard(props) {
             <CardMedia
               component="img"
               height="240"
-              image={cardImg}
-              // image={props.image}
+              // image={cardImg}
+              image={props.image}
               alt="car"
               // onClick={(e) => {
               //   console.log("inside Card Component");

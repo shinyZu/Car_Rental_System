@@ -33,16 +33,21 @@ export const styleSheet = {
   container__sub__imgs: {
     // border: "2px solid blue",
     width: "100%",
-    height: "200px",
+    // height: "200px",
+    height: "175px",
     display: "flex",
   },
 
   car__views: {
     // border: "2px solid orange !important",
-    width: "25%",
+    // width: "25%",
+    width: "23.5%",
     backgroundSize: "cover",
     backgroundPosition: "bottom",
     margin: "5px !important",
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
 
   arrow__icons: {

@@ -20,14 +20,21 @@ import { useAuth } from "../Session/Auth";
 import DriverNavbar from "../../components/NavBar/DriverNavbar";
 import AdminNavbar from "../../components/NavBar/AdminNavbar";
 import CarService from "../../services/CarService";
+import FileUploadService from "../../services/FileUploadService";
+import { Url } from "devextreme-react/chart";
 
 function CarDetail(props) {
-  const [mainImgURL, setMainImgURL] = useState(sub__img1);
+  const [mainImgURL, setMainImgURL] = useState("");
   const [openReservePane, setOpenReservePane] = useState(false);
   const [openDailog, setOpenDialog] = useState(false);
   const [isGuest, setIsGuest] = useState(true);
   const [mileage, setMileage] = useState("");
+  const [front, setFront] = useState("");
+  const [rear, setRear] = useState("");
+  const [side, setSide] = useState("");
+  const [interior, setInterior] = useState("");
   const { classes } = props;
+  const baseURL = "http://localhost:8080/easycar/";
   const auth = useAuth();
   console.log(auth);
 
@@ -47,7 +54,7 @@ function CarDetail(props) {
   // console.log(carInfo);
   // console.log(selectedCar);
   // console.log(fleet);
-  console.log(state);
+  // console.log(state);
   // console.log(carInfo[selectedCar]);
 
   if (fleet == "General") {
@@ -58,26 +65,70 @@ function CarDetail(props) {
     carInfo = state.data.luxuryCarList;
   }
 
-  console.log(carInfo);
+  // console.log(carInfo);
   function handleImageClick(e) {
-    // console.log(e.target.id);
+    console.log(e.target.id);
     // console.log(e.target.style);
     // console.log(e.target.style.backgroundImage.split("/")[3].slice(0, -2));
     // let tempURL = e.target.style.backgroundImage.split("/")[3].slice(0, -2);
+    // if (e.target.id == 1) {
+    //   setMainImgURL(sub__img1);
+    // } else if (e.target.id == 2) {
+    //   setMainImgURL(sub__img2);
+    // } else if (e.target.id == 3) {
+    //   setMainImgURL(sub__img3);
+    // } else if (e.target.id == 4) {
+    //   setMainImgURL(sub__img4);
+    // }
+    console.log(front);
+    console.log(rear);
+    console.log(side);
+    console.log(interior);
+
     if (e.target.id == 1) {
-      setMainImgURL(sub__img1);
+      setMainImgURL(front);
     } else if (e.target.id == 2) {
-      setMainImgURL(sub__img2);
+      setMainImgURL(rear);
     } else if (e.target.id == 3) {
-      setMainImgURL(sub__img3);
+      setMainImgURL(side);
     } else if (e.target.id == 4) {
-      setMainImgURL(sub__img4);
+      setMainImgURL(interior);
     }
+
+    console.log(mainImgURL);
   }
 
   useEffect(() => {
     getMileage(carInfo[selectedCar].reg_no);
-  }, []);
+    getCarImages(carInfo[selectedCar].reg_no);
+  }, [front]);
+
+  async function getCarImages(reg_no) {
+    console.log(reg_no);
+    let res = await FileUploadService.getCarImages(reg_no);
+    if (res.status === 200) {
+      console.log(res);
+      setFront(res.data.data[0]);
+      setMainImgURL(front);
+      console.log(front);
+      // sub__img1 = front;
+      // console.log(sub__img1);
+      setRear(res.data.data[1]);
+      console.log(rear);
+      setSide(res.data.data[2]);
+      console.log(side);
+      setInterior(res.data.data[3]);
+      console.log(interior);
+      // console.log(res.data.data[0].split("/easycar"));
+      // console.log(
+      //   baseURL + "api/v1/upload" + res.data.data[0].split("/easycar")[1]
+      // );
+      // setFront(
+      //   baseURL + "api/v1/upload" + res.data.data[0].split("/easycar")[1]
+      // );
+      // console.log(front);
+    }
+  }
 
   async function getMileage(reg_no) {
     let res = await CarService.getMileage(reg_no);
@@ -131,10 +182,14 @@ function CarDetail(props) {
           className={classes.container__left}
           direction="column"
         >
-          <Button
-            className={classes.container__main__img}
-            style={{ backgroundImage: `url(${mainImgURL})` }}
-          ></Button>
+          {/* <Button
+            // className={classes.container__main__img}
+            style={{
+              background: `url(${mainImgURL}) !important`,
+            }}
+          > */}
+          <img src={mainImgURL} className={classes.container__main__img} />
+          {/* </Button> */}
 
           <Grid
             item
@@ -145,30 +200,59 @@ function CarDetail(props) {
             xs={6}
             className={classes.container__sub__imgs}
           >
-            <Button
+            {/* <Button
               id={1}
-              style={{ backgroundImage: `url(${sub__img1})` }}
+              // style={{ backgroundImage: `url(${front})` }}
+              style={{ backgroundImage: `url(${front}) !important` }}
+              // className={classes.car__views}
+              // onClick={handleImageClick}
+            > */}
+            <img
+              id={1}
+              src={front}
               className={classes.car__views}
               onClick={handleImageClick}
             />
-            <Button
+            {/* </Button> */}
+            {/* <Button
               id={2}
-              style={{ backgroundImage: `url(${sub__img2})` }}
+              style={{ backgroundImage: `url(${rear})` }}
+              // className={classes.car__views}
+              // onClick={handleImageClick}
+            > */}
+            <img
+              id={2}
+              src={rear}
               className={classes.car__views}
               onClick={handleImageClick}
             />
-            <Button
+            {/* </Button> */}
+            {/* <Button
               id={3}
-              style={{ backgroundImage: `url(${sub__img3})` }}
+              style={{ backgroundImage: `url(${side})` }}
+              // className={classes.car__views}
+              // onClick={handleImageClick}
+            > */}
+            <img
+              id={3}
+              src={side}
               className={classes.car__views}
               onClick={handleImageClick}
             />
-            <Button
+            {/* </Button> */}
+            {/* <Button
               id={4}
-              style={{ backgroundImage: `url(${sub__img4})` }}
+              style={{ backgroundImage: `url(${interior})` }}
+              // className={classes.car__views}
+              // onClick={handleImageClick}
+            > */}
+            <img
+              id={4}
+              src={interior}
               className={classes.car__views}
               onClick={handleImageClick}
             />
+            {/* </Button> */}
           </Grid>
         </Grid>
 

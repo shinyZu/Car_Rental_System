@@ -37,10 +37,40 @@ class FileUploadService {
     return await promise;
   };
 
-  getCarFiles = async () => {
+  getAllUploadedImages = async () => {
     const promise = new Promise((resolve, reject) => {
       axios
         .get("upload")
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  getAllFrontImages = async (brand, reg_no) => {
+    let params = { reg_no: reg_no, brand: brand };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("upload/front", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  getCarImages = async (reg_no) => {
+    let params = { reg_no: reg_no };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("upload", { params: params })
         .then((res) => {
           return resolve(res);
         })

@@ -28,7 +28,8 @@ public class CarDTO {
     private double freeKM_month;
     private String currentStatus;
 
-
-
-
+    public CarDTO(String reg_no, String brand) {
+        this.reg_no = reg_no;
+        this.brand = brand;
+    }
 }
