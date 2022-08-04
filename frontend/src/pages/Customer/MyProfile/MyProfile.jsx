@@ -64,7 +64,11 @@ function MyProfile(props) {
   async function getAvatar(nic_no) {
     let res = await FileUploadService.getAvatar(nic_no);
     if (res.status === 200) {
-      setProfileImg(res.data.data);
+      if (res.data.data == "") {
+        setProfileImg(profile);
+      } else {
+        setProfileImg(res.data.data);
+      }
       // setProfileData({
       //   ...profileData,
       //   avatar_img: res.data.data,
