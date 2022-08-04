@@ -57,7 +57,6 @@ public class FileUploadController {
 //    @GetMapping(path = "front_images", consumes = MediaType.APPLICATION_JSON_VALUE ,produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping(path = "front", params = {"reg_no","brand"}, /* consumes = MediaType.APPLICATION_JSON_VALUE,*/ produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllFrontImages(@RequestParam("reg_no") String reg_no, @RequestParam("brand") String brand) {
-        System.out.println("--------------------------------inside--------------------------");
         ArrayList<String> allFrontImages = new ArrayList<>();
         for (String image : allImages) {
             boolean contains = image.contains("/"+brand+"/"+reg_no+"/front");
