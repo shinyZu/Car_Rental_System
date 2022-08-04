@@ -312,4 +312,35 @@ public class FileUploadController {
             return new ResponseUtil(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage(), null );
         }
     }
+
+    @PostMapping( path = "{nic_no}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil uploadProfilePic(@PathVariable("nic_no") String nic_no, @RequestPart("avatar") MultipartFile avatar) {
+        try {
+            projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+
+            File uploadsDir = new File(projectPath + "/uploads");
+            uploadsDir.mkdir();
+
+            File customerDir = new File(uploadsDir + "/customers");
+            System.out.println("customerDir : " + customerDir); // --> /opt/apache-tomcat-8.5.78/webapps/easycar/uploads/customers
+            customerDir.mkdir();
+
+            File uniqueDir = new File(uploadsDir + "/customers/"+nic_no);
+            System.out.println("uniqueDir : " + uniqueDir); // --> /opt/apache-tomcat-8.5.78/webapps/easycar/uploads/customers/995922127v
+            uniqueDir.mkdir();
+
+            File profileData = new File(uploadsDir + "/customers/"+nic_no+"/avatar");
+            System.out.println("profileData : " + profileData); // --> /opt/apache-tomcat-8.5.78/webapps/easycar/uploads/customers/995922127v/avatar
+            profileData.mkdir();
+
+            avatar.transferTo(new File(profileData.getAbsolutePath() + "/" + avatar.getOriginalFilename()));
+            allImages.add(profileData + avatar.getOriginalFilename());
+
+            return new ResponseUtil(HttpServletResponse.SC_OK, "Customer Avatar Uploaded Successfully", null );
+
+        } catch (URISyntaxException | IOException e) {
+            e.printStackTrace();
+            return new ResponseUtil(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage(), null );
+        }
+    }
 }

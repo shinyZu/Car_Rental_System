@@ -58,6 +58,20 @@ class CustomerService {
     });
     return await promise;
   };
+
+  updateCustomer = async (data) => {
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .put("customer", data)
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new CustomerService();

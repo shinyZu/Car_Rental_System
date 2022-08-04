@@ -18,12 +18,12 @@ function WeeklyIncomeChart() {
   const [month, setMonth] = useState("June");
 
   const [dataSource, setDataSource] = useState([
-    // { week: "01", income: 10000 },
-    // { week: "02", income: 10500 },
-    // { week: "03", income: 45000 },
-    // { week: "04", income: 30900 },
-    // { week: "05", income: 0 },
-    // { week: "06", income: 0 },
+    { week: "01", income: 0 },
+    { week: "02", income: 0 },
+    { week: "03", income: 0 },
+    { week: "04", income: 0 },
+    { week: "05", income: 0 },
+    { week: "06", income: 0 },
   ]);
 
   useEffect(() => {

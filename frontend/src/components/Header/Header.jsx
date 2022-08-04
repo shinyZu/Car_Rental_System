@@ -80,7 +80,7 @@ function Header(props) {
             )}
             {auth.user && auth.user.userStatus == "Driver" && (
               <li>
-                <Link to="/driver_profile">Profile</Link>
+                <Link to="/driver_schedule">My Schedule</Link>
               </li>
             )}
             {auth.user != null && auth.user.userStatus == "Admin" && (

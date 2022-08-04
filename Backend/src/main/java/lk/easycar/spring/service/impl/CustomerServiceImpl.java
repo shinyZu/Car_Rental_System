@@ -123,8 +123,9 @@ public class CustomerServiceImpl implements CustomerService {
 
             if (ongoing_rentals == 0) { // if no any ongoing rentals
                 if (dto.getEmail().equals(customerRepo.getReferenceById(dto.getNic_no()).getEmail())) { // if Customers are NOT changing their email
+                    loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Customer"));
                     mapper.map(customerRepo.save(mapper.map(dto, Customer.class)), CustomerDTO.class);
-                    return "Customer Updated Successfully";
+                    return "Profile Updated Successfully";
 
                 } else { // if Customers are gonna change their email
                     int count = loginRepo.searchForAnyDuplicateEmail(dto.getEmail());
@@ -133,7 +134,7 @@ public class CustomerServiceImpl implements CustomerService {
                         loginRepo.deleteById(customerRepo.getReferenceById(dto.getNic_no()).getEmail());
                         loginRepo.save(new Login(dto.getEmail(), dto.getPassword(), "Customer"));
                         mapper.map(customerRepo.save(mapper.map(dto, Customer.class)), CustomerDTO.class);
-                        return "Customer Updated Successfully";
+                        return "Profile Updated Successfully";
 
                     } else {
                         throw new RuntimeException("A User with email " + dto.getEmail() + " already exists...");
@@ -141,7 +142,8 @@ public class CustomerServiceImpl implements CustomerService {
                 }
             } else {
                 customerRepo.getReferenceById(dto.getNic_no()).setContact_no(dto.getContact_no());
-                return "You have " + ongoing_rentals + " ongoing Rental/s..You can only Update your Contact Number...\nTry Again once your Rentals are returned...";
+//                return "You have " + ongoing_rentals + " ongoing Rental/s..You can only Update your Contact Number...\nTry Again once your Rentals are returned...";
+                return "You have " + ongoing_rentals + " ongoing Rental/s..Your Contact was Updated Successfully!";
             }
 
 

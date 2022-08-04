@@ -77,8 +77,8 @@ public class RentalRequestController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Total No Of Rentals For The Day", rentalRequestService.getNoOfTotalRentalsForTheDay(LocalDate.parse(date)));
     }
 
-    @GetMapping(path = "bookings", params = {"nic_no"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getCustomerBookings(@RequestParam("nic_no") String nic_no) {
+    @GetMapping(path = "bookings/{nic_no}", /*params = {"nic_no"},*/ produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCustomerBookings(@PathVariable("nic_no") String nic_no) {
         return new ResponseUtil(HttpServletResponse.SC_OK, "My Bookings", rentalRequestService.getCustomerBookings(nic_no));
     }
 

@@ -179,7 +179,7 @@ class RentalRequestService {
     let params = { nic_no: nic_no };
     const promise = new Promise((resolve, reject) => {
       axios
-        .get("rentals/bookings", { params: params })
+        .get("rentals/bookings/" + nic_no)
         .then((res) => {
           return resolve(res);
         })

@@ -161,12 +161,13 @@ function MyBooking(props) {
   useEffect(() => {
     getCustomerByEmail(auth.user.email);
     getMyBookings(customerNIC);
-  }, []);
+  }, [customerNIC]);
 
   async function getCustomerByEmail(email) {
     let res = await CustomerService.getCustomerByEmail(email);
     if (res.status === 200) {
       setCustomerNIC(res.data.data.nic_no);
+      getMyBookings(customerNIC);
     }
   }
 

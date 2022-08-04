@@ -31,7 +31,15 @@ function DailyIncomeChart(props) {
   //   { day: "Sunday", income: 109000 },
   // ];
 
-  const [dataSource, setDataSource] = useState([]);
+  const [dataSource, setDataSource] = useState([
+    { day: "Monday", income: 0 },
+    { day: "Tuesday", income: 0 },
+    { day: "Wednesday", income: 0 },
+    { day: "Thursday", income: 0 },
+    { day: "Friday", income: 0 },
+    { day: "Saturday", income: 0 },
+    { day: "Sunday", income: 0 },
+  ]);
 
   useEffect(() => {
     calculateDailyIncome();
@@ -53,12 +61,16 @@ function DailyIncomeChart(props) {
     let today = formatDate(new Date());
     let month = new Date().getMonth();
     let year = new Date().getFullYear();
-    setMonth(month);
-    setYear(year);
+    // console.log(month);
+    // setMonth(month);
+    // setYear(year);
     // let res = await IncomeService.getDailyIncome(today);
-    let res = await IncomeService.getDailyIncome("2021-06-27");
+    // let res = await IncomeService.getDailyIncome("2021-06-27");
+    let res = await IncomeService.getDailyIncome("2022-08-01");
     if (res.status === 200) {
       if (res.data.data != null) {
+        setMonth(res.data.data[0].month);
+        setYear(res.data.data[0].year);
         let incomeData = res.data.data;
         incomeData.map((dailyData, index) => {
           let data = { day: dailyData.day, income: dailyData.income };

@@ -10,7 +10,7 @@ function About(props) {
       <div className={classes.section__title}>
         <h1>About Us</h1>
       </div>
-      <Avatar />
+      <Avatar page="about" />
       <div>
         <p className={classes.about_div}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam

@@ -20,6 +20,20 @@ export const styleSheet = {
     },
   },
 
+  upload__btn_without_style: {
+    border: "none !important",
+    marginTop: "-115px !important",
+    marginRight: "242px !important",
+    marginLeft: "425px !important",
+    color: "black !important",
+    zIndex: "4",
+    // fontSize: "90px !important",
+
+    "&:hover": {
+      backgroundColor: "none !important",
+    },
+  },
+
   uploaded__file: {
     // border: "2px solid blue !important",
     width: "100%",
