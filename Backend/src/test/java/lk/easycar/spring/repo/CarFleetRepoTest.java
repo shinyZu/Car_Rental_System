@@ -31,4 +31,10 @@ class CarFleetRepoTest {
         double premium = carFleetRepo.getLDWFeeByDescription("Premium","PC-5951");
         System.out.println(premium);
     }
+
+    @Test
+    void getFleetByRegNo() {
+        String fleet = carFleetRepo.getFleetByRegNo("PB-5951");
+        System.out.println(fleet);
+    }
 }

@@ -8,10 +8,12 @@ import FlakyIcon from "@mui/icons-material/Flaky";
 import { useAuth } from "../../Session/Auth";
 import CustomerService from "../../../services/CustomerService";
 import RentalRequestService from "../../../services/RentalRequestService";
+import { useNavigate } from "react-router-dom";
 
 function MyBooking(props) {
   const { classes } = props;
   const auth = useAuth();
+  const navigate = useNavigate();
   const [customerNIC, setCustomerNIC] = useState(null);
   const [tableRows, setTableRows] = useState([]);
   const columns = [
@@ -27,7 +29,7 @@ function MyBooking(props) {
                   onClick={() => {
                     console.log("clicked row : " + cellValues.id);
                     console.log(cellValues.id);
-                    // checkbookingStatus(tableRows[cellValues.id])
+                    checkbookingStatus(tableRows[cellValues.id]);
                   }}
                 />
               </IconButton>
@@ -169,6 +171,17 @@ function MyBooking(props) {
       setCustomerNIC(res.data.data.nic_no);
       getMyBookings(customerNIC);
     }
+  }
+
+  function checkbookingStatus(booking) {
+    console.log(booking.rental_id);
+    navigate("/confirmation_details", {
+      state: {
+        rental_id: booking.rental_id,
+        requestStatus: booking.requestStatus,
+        brand: booking.brand,
+      },
+    });
   }
 
   async function getMyBookings(customerNIC) {

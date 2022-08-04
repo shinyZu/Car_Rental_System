@@ -31,4 +31,11 @@ export const styleSheet = {
   card__text: {
     textDecoration: "none",
   },
+
+  filter__container: {
+    marginTop: "50px !important",
+    width: "95%",
+    height: "100px",
+    // marginBottom: "50px !important",
+  },
 };

@@ -19,4 +19,10 @@ public interface CarFleetRepo extends JpaRepository<CarFleet, String> {
             "on cf.fleet_id = ldw.fleet_id\n" +
             "where cf.description = ?1 and c.reg_no=?2", nativeQuery=true)
     double getLDWFeeByDescription(String fleet,String reg_no);
+
+    @Query(value = "select cf.description\n" +
+            "from Car c inner join CarFleet cf\n" +
+            "on c.fleet_id = cf.fleet_id\n" +
+            "where c.reg_no = ?1", nativeQuery=true)
+    String getFleetByRegNo(String reg_no);
 }

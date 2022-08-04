@@ -11,6 +11,8 @@ public interface CarFleetService {
 
     CarFleetDTO searchCarFleet(String fleet_id);
 
+    String getFleetByRegNo(String reg_no);
+
     double getLDWFeeByDescription(String fleet, String reg_no);
 
     CarFleetDTO saveCarFleet(CarFleetDTO dto);

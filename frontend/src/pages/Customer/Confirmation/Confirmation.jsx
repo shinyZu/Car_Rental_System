@@ -12,6 +12,7 @@ import { Grid } from "@mui/material";
 import { useAuth } from "../../Session/Auth";
 import { useLocation } from "react-router-dom";
 import RentalRequestService from "../../../services/RentalRequestService";
+import CarFleetService from "../../../services/CarFleetService";
 
 function Confirmation(props) {
   const { classes } = props;
@@ -38,38 +39,53 @@ function Confirmation(props) {
   });
 
   useEffect(() => {
-    if (props.requestStatus == "Accepted") {
-      setBookingStatus("Accepted");
-      // setRentalID(props.nextRentalID);
-      setRentalID(state.rental_id);
-      // setConfirmationInfo(state);
-      getRequestDetails(rentalID);
-    } else if (props.requestStatus == "Denied") {
-      setBookingStatus("Denied");
-    }
-  }, []);
+    setRentalID(state.rental_id);
+    getRequestDetails(rentalID);
 
-  function setConfirmationInfo() {
+    if (state.requestStatus == "Accepted") {
+      setBookingStatus("Request Accepted");
+    } else if (state.requestStatus == "Denied") {
+      setBookingStatus("Request Denied");
+    } else if (state.requestStatus == "Pending") {
+      setBookingStatus("Request Sent Successfully!!!");
+    } else if (state.requestStatus == "Returned") {
+      setBookingStatus("Rental Request Finalized");
+    } else if (state.requestStatus == "Active") {
+      setBookingStatus("Rental Request is Ongoing");
+    }
+  }, [rentalID]);
+
+  async function setConfirmationInfo(booking) {
+    let fleet;
+    let res = await CarFleetService.getFleetByRegNo(
+      booking.rentalDetails[0].reg_no
+    );
+    if (res.status === 200) {
+      console.log(res.data.data);
+      fleet = res.data.data;
+    }
+
     setInvoice({
-      customer_nic: state.customer.nic_no,
-      reg_no: state.rentalDetails[0].reg_no,
-      brand: "BMW i8",
-      fleet: "Luxury",
-      ldw: "20000",
-      driver_contact: "0766455451",
-      p_date: "2022-07-21",
-      p_time: "09:30",
-      p_venue: "Rental Premises",
-      r_date: "2022-07-25",
-      r_time: "13:00",
-      r_venue: "Rental Premises",
+      customer_nic: booking.customer.nic_no,
+      reg_no: booking.rentalDetails[0].reg_no,
+      brand: state.brand,
+      fleet: fleet,
+      ldw: booking.rentalDetails[0].feeDeductedFromLDW,
+      driver_contact: "0" + booking.rentalDetails[0].driver.contact_no,
+      p_date: booking.pickUp_date,
+      p_time: booking.pickUp_time,
+      p_venue: booking.pickUp_venue,
+      r_date: booking.return_date,
+      r_time: booking.return_time,
+      r_venue: booking.return_venue,
     });
   }
 
   async function getRequestDetails(rental_id) {
-    let res = await RentalRequestService.searchRentalByID(rental_id);
+    let res = await RentalRequestService.searchRentalByID(rentalID);
     if (res.status === 200) {
-      console.log(res);
+      console.log(res.data.data);
+      setConfirmationInfo(res.data.data);
     }
   }
 
@@ -94,8 +110,8 @@ function Confirmation(props) {
               fontSize="100px"
               className={classes.confirm__icon}
             />
-            {/* Request {bookingStatus} */}
-            Request Sent Successfully!!!
+            {bookingStatus}
+            {/* Request Sent Successfully!!! */}
           </Typography>
         </Paper>
       </Grid>

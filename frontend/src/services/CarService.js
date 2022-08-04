@@ -117,6 +117,66 @@ class CarService {
     });
     return await promise;
   };
+
+  sortCarsByNoOfPassengers = async (passenger_count) => {
+    let params = { passenger_count: passenger_count };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("cars/by_passengers", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  sortCarsByBrand = async (brand) => {
+    let params = { brand: brand };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("cars/by_brand", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  sortCarsByFuelType = async (fuel_type) => {
+    let params = { fuel_type: fuel_type };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("cars/by_fuel_type", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  sortCarsByTransmissionType = async (transmission_type) => {
+    let params = { transmission_type: transmission_type };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("cars/by_transmission_type", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new CarService();

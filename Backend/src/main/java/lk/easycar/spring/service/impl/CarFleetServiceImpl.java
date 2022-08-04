@@ -71,6 +71,11 @@ public class CarFleetServiceImpl implements CarFleetService {
     }
 
     @Override
+    public String getFleetByRegNo(String reg_no) {
+        return carFleetRepo.getFleetByRegNo(reg_no);
+    }
+
+    @Override
     public double getLDWFeeByDescription(String fleet,String reg_no) {
         if (carFleetRepo.getCarFleetByDescription(fleet) != null) {
 
