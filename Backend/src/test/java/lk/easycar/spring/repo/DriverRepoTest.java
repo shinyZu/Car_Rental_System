@@ -62,7 +62,7 @@ class DriverRepoTest {
 
     @Test
     void getWorkSchedule() {
-        List<Custom> list = driverRepo.getWorkSchedule("DL-1000002");
+        List<Custom> list = driverRepo.getWorkSchedule("DL-1000003");
         for (Custom workSchedule : list) {
             System.out.println(workSchedule.getRental_id());
             System.out.println(workSchedule.getLicense_no());
@@ -75,6 +75,8 @@ class DriverRepoTest {
             System.out.println(workSchedule.getReturn_time());
             System.out.println(workSchedule.getReturn_venue());
             System.out.println(workSchedule.getRequestStatus());
+            System.out.println(workSchedule.getDriverStatus());
+            System.out.println(workSchedule.getBrand());
         }
     }
 
@@ -110,5 +112,11 @@ class DriverRepoTest {
             System.out.println(workSchedule.getReturn_time());
             System.out.println(workSchedule.getReturn_venue());
         }
+    }
+
+    @Test
+    void getDriverByEmail() {
+        Driver driverByEmail = driverRepo.getDriverByEmail("bandara@gmail.com");
+        System.out.println(driverByEmail.getLicense_no());
     }
 }

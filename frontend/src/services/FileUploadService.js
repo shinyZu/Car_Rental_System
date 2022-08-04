@@ -80,6 +80,36 @@ class FileUploadService {
     });
     return await promise;
   };
+
+  uploadProfilePic = async (nic_no, data) => {
+    console.log(data);
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .post("upload/" + nic_no, data)
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  getAvatar = async (nic_no) => {
+    let params = { nic_no: nic_no };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("upload/avatar", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new FileUploadService();

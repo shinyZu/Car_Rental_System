@@ -58,6 +58,36 @@ class DriverService {
     });
     return await promise;
   };
+
+  getWorkSchedule = async (license_no) => {
+    let params = { schedule_of: license_no };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("driver", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
+
+  searchDriverByEmail = async (email) => {
+    let params = { email: email };
+    const promise = new Promise((resolve, reject) => {
+      axios
+        .get("driver/driverByEmail", { params: params })
+        .then((res) => {
+          return resolve(res);
+        })
+        .catch((er) => {
+          return resolve(er);
+        });
+    });
+    return await promise;
+  };
 }
 
 export default new DriverService();

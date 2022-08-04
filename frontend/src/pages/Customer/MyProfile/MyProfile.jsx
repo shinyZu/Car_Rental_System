@@ -11,11 +11,12 @@ import Paper from "@mui/material/Paper";
 import Avatar from "../../../components/Avatar/Avatar";
 import TextField from "@mui/material/TextField";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import profile from "../../../assets/images/female_profile.jpg";
+import profile from "../../../assets/images/male_profile.jpg";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import FileChooser from "../../../components/common/FileChooser/FileChooser";
 import CustomerService from "../../../services/CustomerService";
 import MySnackBar from "../../../components/common/Snackbar/MySnackbar";
+import FileUploadService from "../../../services/FileUploadService";
 
 function MyProfile(props) {
   const auth = useAuth();
@@ -34,7 +35,7 @@ function MyProfile(props) {
     contact_no: "",
     email: "",
     password: "",
-    avatar_img: "",
+    avatar_img: profile,
   });
 
   const [openErrorMessage, setOpenErrorMessage] = useState({
@@ -44,11 +45,32 @@ function MyProfile(props) {
     variant: "",
   });
 
-  const [profileImg, setProfileImg] = useState(profile);
+  const [profileImg, setProfileImg] = useState("");
 
   useEffect(() => {
-    getCustomerByEmail(auth.user.email);
-  }, []);
+    if (auth.user.userStatus === "Customer") {
+      getCustomerByEmail(auth.user.email);
+    } else {
+      setProfileImg(profile);
+    }
+    // getAvatar(nicNo);
+  }, [nicNo]);
+
+  console.log(nicNo);
+  // useEffect(() => {
+  //   getAvatar(nicNo);
+  // }, []);
+
+  async function getAvatar(nic_no) {
+    let res = await FileUploadService.getAvatar(nic_no);
+    if (res.status === 200) {
+      setProfileImg(res.data.data);
+      // setProfileData({
+      //   ...profileData,
+      //   avatar_img: res.data.data,
+      // });
+    }
+  }
 
   async function getCustomerByEmail(email) {
     let res = await CustomerService.getCustomerByEmail(email);
@@ -64,8 +86,13 @@ function MyProfile(props) {
         password: "",
         avatar_img: "",
       });
+      setNicNo(customer.nic_no);
+      getAvatar(nicNo);
+      console.log(nicNo);
     }
   }
+
+  let data = new FormData();
 
   async function updateProfile() {
     console.log("profile updated");
@@ -73,6 +100,33 @@ function MyProfile(props) {
     let res1 = await CustomerService.updateCustomer(profileData);
 
     if (res1.status === 200) {
+      let res2;
+      console.log(profileImg);
+      console.log(profileData.avatar_img);
+      if (profileData.avatar_img != "") {
+        data.append("avatar", profileData.avatar_img);
+        res2 = await FileUploadService.uploadProfilePic(
+          profileData.nic_no,
+          data
+        );
+        if (res2.status === 200) {
+          console.log(res2.data.message);
+          setOpenErrorMessage({
+            open: true,
+            // alert: "Profile Updated Successfully!",
+            alert: res1.data.data,
+            severity: "success",
+            variant: "standard",
+          });
+        } else {
+          setOpenErrorMessage({
+            open: true,
+            alert: res2.response.data.message,
+            severity: "error",
+            variant: "standard",
+          });
+        }
+      }
       setOpenErrorMessage({
         open: true,
         // alert: "Profile Updated Successfully!",
@@ -98,6 +152,14 @@ function MyProfile(props) {
       console.log(result);
       if (result) {
         setProfileImg(result); // urls
+        // setProfileData({
+        //   ...profileData,
+        //   avatar_img: result,
+        // });
+        // setProfileData({
+        //   ...profileData,
+        //   avatar_img: result,
+        // });
       }
     };
     fileReader.readAsDataURL(files[0]);
@@ -158,8 +220,9 @@ function MyProfile(props) {
                   handleAvatarUpload(e);
                   setProfileData({
                     ...profileData,
-                    profile_img: e.target.files[0],
+                    avatar_img: e.target.files[0],
                   });
+                  setProfileImg(e.target.files[0]);
                 }}
               />
             </Paper>

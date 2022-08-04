@@ -29,6 +29,11 @@ public class DriverController {
         return new ResponseUtil(HttpServletResponse.SC_OK, "Search Done", driverService.searchDriver(license_no));
     }
 
+    @GetMapping(path = "driverByEmail", params = {"email"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchDriverByEmail(@RequestParam("email") String email) {
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Driver By Email", driverService.searchDriverByEmail(email));
+    }
+
     @GetMapping(path = "count_of", params = {"currentStatus"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getNoOfDriversByStatus(@RequestParam("currentStatus") String status) {
         return new ResponseUtil(HttpServletResponse.SC_OK, status + " Driver Count", driverService.getNoOfDriversByStatus(status));

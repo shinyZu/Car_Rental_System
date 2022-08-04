@@ -334,7 +334,7 @@ public class FileUploadController {
             profileData.mkdir();
 
             avatar.transferTo(new File(profileData.getAbsolutePath() + "/" + avatar.getOriginalFilename()));
-            allImages.add(profileData + avatar.getOriginalFilename());
+            allImages.add(profileData +"/"+ avatar.getOriginalFilename());
 
             return new ResponseUtil(HttpServletResponse.SC_OK, "Customer Avatar Uploaded Successfully", null );
 
@@ -342,5 +342,22 @@ public class FileUploadController {
             e.printStackTrace();
             return new ResponseUtil(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage(), null );
         }
+    }
+
+    @GetMapping(path = "avatar", params = {"nic_no"}, /* consumes = MediaType.APPLICATION_JSON_VALUE,*/ produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAvatar(@RequestParam("nic_no") String nic_no) {
+//        ArrayList<String> allFrontImages = new ArrayList<>();
+        String avatarPath = "";
+        for (String image : allImages) {
+            boolean contains = image.contains("/"+nic_no+"/avatar");
+            if (contains){
+                System.out.println(image);
+                String path = image.split("easycar/")[1];
+                System.out.println(path);
+                avatarPath = "http://localhost:8080/easycar/"+path;
+                System.out.println(avatarPath);
+            }
+        }
+        return new ResponseUtil(HttpServletResponse.SC_OK, "Avatar of "+nic_no, avatarPath );
     }
 }

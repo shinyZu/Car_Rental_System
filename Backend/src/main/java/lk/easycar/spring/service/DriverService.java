@@ -11,6 +11,8 @@ public interface DriverService {
 
     DriverDTO searchDriver(String license_no);
 
+    DriverDTO searchDriverByEmail(String email);
+
     int getNoOfDriversByStatus(String status);
 
     List<CustomDTO> getWorkSchedule(String license_no);

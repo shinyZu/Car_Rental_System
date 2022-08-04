@@ -24,7 +24,7 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
 
     int countDriversByCurrentStatus(String status);
 
-    @Query(value = "select r.rental_id,  cr.reg_no, d.license_no, d.currentStatus, c.contact_no, r.pickUp_date, r.pickUp_time, r.pickUp_venue, r.return_date, r.return_time, r.return_venue, r.requestStatus " +
+    @Query(value = "select r.rental_id,  cr.reg_no, cr.brand, d.license_no, d.currentStatus, c.contact_no, r.pickUp_date, r.pickUp_time, r.pickUp_venue, r.return_date, r.return_time, r.return_venue, r.requestStatus " +
             "from Customer c inner join RentalRequest r on c.nic_no = r.customer_nic " +
             "inner join RentalDetail rd on rd.rental_id = r.rental_id " +
             "inner join Car cr on rd.reg_no = cr.reg_no " +
@@ -51,4 +51,6 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
             "inner join Car c\n" +
             "on rd.reg_no = c.reg_no",nativeQuery=true)
     List<Custom> getSchedulesOfAllDrivers();
+
+    Driver getDriverByEmail(String email);
 }

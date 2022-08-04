@@ -2,6 +2,7 @@ package lk.easycar.spring.service.impl;
 
 import lk.easycar.spring.dto.Custom;
 import lk.easycar.spring.dto.CustomDTO;
+import lk.easycar.spring.dto.CustomerDTO;
 import lk.easycar.spring.dto.DriverDTO;
 import lk.easycar.spring.entity.Driver;
 import lk.easycar.spring.entity.Login;
@@ -47,6 +48,11 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
+    public DriverDTO searchDriverByEmail(String email) {
+        return mapper.map(driverRepo.getDriverByEmail(email), DriverDTO.class);
+    }
+
+    @Override
     public int getNoOfDriversByStatus(String status) {
         return (int) driverRepo.countDriversByCurrentStatus(status);
     }
@@ -58,16 +64,18 @@ public class DriverServiceImpl implements DriverService {
             schedule.add(new CustomDTO(
                     custom.getRental_id(),
                     custom.getLicense_no(),
-                    custom.getReg_no(),
-                    custom.getContact_no(),
                     custom.getCurrentStatus(),
+                    custom.getContact_no(),
+                    custom.getReg_no(),
                     custom.getPickUp_date(),
                     custom.getPickUp_time(),
                     custom.getPickUp_venue(),
                     custom.getReturn_date(),
                     custom.getReturn_time(),
                     custom.getReturn_venue(),
-                    custom.getRequestStatus()
+                    custom.getRequestStatus(),
+                    custom.getDriverStatus(),
+                    custom.getBrand()
             ));
         }
         return schedule;

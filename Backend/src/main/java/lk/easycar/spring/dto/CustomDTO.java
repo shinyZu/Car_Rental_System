@@ -130,7 +130,23 @@ public class CustomDTO {
         this.requestStatus = requestStatus;
     }
 
-
+    //getWorkSchedule
+    public CustomDTO(String rental_id, String license_no, String currentStatus, int contact_no, String reg_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus, String driverStatus, String brand) {
+        this.rental_id = rental_id;
+        this.license_no = license_no;
+        this.currentStatus = currentStatus;
+        this.contact_no = contact_no;
+        this.reg_no = reg_no;
+        this.pickUp_date = pickUp_date;
+        this.pickUp_time = pickUp_time;
+        this.pickUp_venue = pickUp_venue;
+        this.return_date = return_date;
+        this.return_time = return_time;
+        this.return_venue = return_venue;
+        this.requestStatus = requestStatus;
+        this.driverStatus = driverStatus;
+        this.brand = brand;
+    }
 
     /* public CustomDTO(String rental_id, String license_no, String currentStatus, int contact_no, LocalDate pickUp_date, LocalTime pickUp_time, String pickUp_venue, LocalDate return_date, LocalTime return_time, String return_venue, String requestStatus) {
         this.rental_id = rental_id;
