@@ -10,6 +10,8 @@
 
 - React JS
 - Axios
+- MUI Components
+- DevExtreme Charts
 - Spring Web MVC
 - Spring Data JPA
 - Apache Tomcat Web Container
