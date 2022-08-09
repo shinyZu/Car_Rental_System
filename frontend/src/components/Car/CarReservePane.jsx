@@ -212,7 +212,11 @@ function CarReservePane(props) {
           props.onClose();
           // navigate("/confirmation_details", { state: {invoice:data, fleet:props.fleet,brand:props.brand} });
           navigate("/confirmation_details", {
-            state: { rental_id: nextRentalID },
+            state: {
+              rental_id: nextRentalID,
+              requestStatus: "Pending",
+              brand: props.brand,
+            },
           });
         } else {
           setOpenAlert({
