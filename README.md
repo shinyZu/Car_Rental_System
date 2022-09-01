@@ -6,7 +6,7 @@
 
 <br>
 
-## Used :
+## Technology Stack :
 
 - React JS
 - Axios
